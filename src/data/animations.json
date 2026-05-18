@@ -1,0 +1,124 @@
+{
+  "animations": [
+    {
+      "id": 17,
+      "name": "超兽武装",
+      "year": 2011,
+      "genre": ["机甲", "热血", "科幻"],
+      "color": "#a94b35",
+      "description": "超兽战士的热血征程，至今仍让人想起那句信念不灭。",
+      "poster": "/images/posters/armor-hero.jpg"
+    },
+    {
+      "id": 5,
+      "name": "猪猪侠",
+      "year": 2005,
+      "genre": ["搞笑", "冒险", "童话"],
+      "color": "#d95742",
+      "description": "那只戴着红帽的小英雄，把晚饭前的客厅变成了冒险现场。",
+      "poster": "/images/posters/pig-hero.jpg"
+    },
+    {
+      "id": 13,
+      "name": "果宝特攻",
+      "year": 2010,
+      "genre": ["机甲", "搞笑", "战斗"],
+      "color": "#e7a825",
+      "description": "水果机甲的热血战斗，是国产动画黄金期的高能回声。",
+      "poster": "/images/posters/fruit-robots.jpg"
+    },
+    {
+      "id": 14,
+      "name": "洛洛历险记",
+      "year": 2008,
+      "genre": ["机甲", "热血", "冒险"],
+      "color": "#4f6f93",
+      "description": "机车族与猛兽族的世界，藏着很多人的第一份机战记忆。",
+      "poster": "/images/posters/robot-adventure.jpg"
+    },
+    {
+      "id": 6,
+      "name": "虹猫蓝兔七侠传",
+      "year": 2006,
+      "genre": ["武侠", "冒险", "励志"],
+      "color": "#7067a7",
+      "description": "七剑合璧的江湖传说，是一代人对侠义最早的想象。",
+      "poster": "/images/posters/rainbow-rabbit.jpg"
+    },
+    {
+      "id": 15,
+      "name": "神兵小将",
+      "year": 2007,
+      "genre": ["冒险", "奇幻", "战斗"],
+      "color": "#5f9f67",
+      "description": "神兵天降的奇幻旅程，守护世界，也守护那个暑假。",
+      "poster": "/images/posters/magic-warrior.jpg"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "2005",
+      "label": "萌芽期",
+      "items": [
+        { "name": "猪猪侠", "year": 2005, "poster": "/images/posters/pig-hero.jpg" }
+      ]
+    },
+    {
+      "period": "2006-2007",
+      "label": "崛起期",
+      "items": [
+        { "name": "虹猫蓝兔七侠传", "year": 2006, "poster": "/images/posters/rainbow-rabbit.jpg" },
+        { "name": "神兵小将", "year": 2007, "poster": "/images/posters/magic-warrior.jpg" }
+      ]
+    },
+    {
+      "period": "2008-2009",
+      "label": "黄金期",
+      "items": [
+        { "name": "洛洛历险记", "year": 2008, "poster": "/images/posters/robot-adventure.jpg" }
+      ]
+    },
+    {
+      "period": "2010-2012",
+      "label": "巅峰期",
+      "items": [
+        { "name": "果宝特攻", "year": 2010, "poster": "/images/posters/fruit-robots.jpg" },
+        { "name": "超兽武装", "year": 2011, "poster": "/images/posters/armor-hero.jpg" }
+      ]
+    },
+    {
+      "period": "2013-2015",
+      "label": "创新期",
+      "items": [
+        { "name": "记忆仍在继续", "year": 2015, "poster": "/images/memories/dusk-street.jpg" }
+      ]
+    }
+  ],
+  "memories": [
+    {
+      "quote": "大风车吱呀吱哟地转，这里的风景真好看。",
+      "attribution": "每次听到这首歌，就知道动画要开始了",
+      "image": "/images/memories/dusk-street.jpg"
+    },
+    {
+      "quote": "为了看动画，我能在电视机前乖乖坐上一整晚。",
+      "attribution": "那时的快乐很简单",
+      "image": "/images/memories/tv-room.jpg"
+    },
+    {
+      "quote": "小当家干脆面，奥特曼卡片，是我们最宝贵的收藏。",
+      "attribution": "一碗零花钱的动力",
+      "image": "/images/memories/snack-cards.jpg"
+    },
+    {
+      "quote": "作业写完了，动画也看完了，该睡觉了。",
+      "attribution": "妈妈的声音响起",
+      "image": "/images/memories/homework-night.jpg"
+    },
+    {
+      "quote": "那些角色的名字，我们现在还能脱口而出。",
+      "attribution": "因为他们是童年",
+      "image": "/images/memories/notebook.jpg"
+    }
+  ]
+}
