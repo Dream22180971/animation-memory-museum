@@ -5,6 +5,7 @@ export const COPYRIGHT_YEAR = 2026;
 export const AUTHOR_GITHUB = "https://github.com/Dream22180971";
 export const REPOSITORY_URL = "https://github.com/Dream22180971/animation-memory-museum";
 export const FEEDBACK_URL = "https://github.com/Dream22180971/animation-memory-museum/issues";
+export const SITE_URL = "https://museum.seanwalter.top/";
 
 export const NAV_LINKS = [
   { label: "首页", href: "/" },
