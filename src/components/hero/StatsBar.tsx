@@ -9,7 +9,7 @@ export default function StatsBar() {
       </div>
       <div className="flex items-center gap-4">
         <div className="flex -space-x-2">
-          {["超", "猪", "果", "虹", "神"].map((label, index) => (
+          {["超", "猪", "果", "侠", "神"].map((label, index) => (
             <span
               key={label}
               className="grid h-8 w-8 place-items-center rounded-full border-2 border-[#17110b] text-xs font-bold text-white"

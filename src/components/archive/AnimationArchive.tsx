@@ -30,57 +30,69 @@ export default function AnimationArchive() {
       variants={sectionVariants}
       initial="hidden"
       animate="visible"
-      className="museum-section min-h-[760px] border-b border-[#c99a45]/12 px-5 py-16 lg:px-14"
+      className="museum-section border-b border-[#c99a45]/12 px-4 py-14 sm:px-8 lg:px-12"
     >
-      <motion.div variants={cardVariants} className="mb-12 flex items-end justify-between gap-6">
+      <motion.div variants={cardVariants} className="mb-9 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
+          <p className="mb-3 text-xs font-black uppercase tracking-[0.34em] text-[#f3c76a]/70">Classic Archive</p>
           <h2 className="font-hand flex items-center gap-3 text-5xl text-[#fff6e8]">
             经典动画档案 <Star size={24} className="text-[#ffd24d]" />
           </h2>
-          <p className="mt-4 text-base text-[#d9c39a]/82">那些年我们追过的国产动画神作</p>
+          <p className="mt-4 max-w-2xl text-base leading-7 text-[#d9c39a]/82">
+            不做模糊截图堆叠，把每部动画整理成一张清晰、发光、适合停留的主题海报。
+          </p>
         </div>
         <motion.button
           whileHover={{ x: 4, borderColor: "rgba(255,210,77,.75)" }}
-          className="hidden items-center gap-2 rounded-full border border-[#d8ac55]/45 px-5 py-2 text-sm text-[#f4d57d] md:flex"
+          className="flex w-fit items-center gap-2 rounded-full border border-[#d8ac55]/45 bg-[#ffd24d]/8 px-5 py-2 text-sm font-bold text-[#f4d57d]"
         >
           查看全部 <ArrowRight size={16} />
         </motion.button>
       </motion.div>
 
-      <div className="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-6">
-        {animations.animations.map((anim) => (
+      <div className="archive-wall grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {animations.animations.map((anim, index) => (
           <motion.article
             key={anim.id}
             variants={cardVariants}
-            whileHover={{ y: -10, scale: 1.025 }}
+            whileHover={{ y: -8, scale: 1.012 }}
             transition={{ type: "spring", stiffness: 260, damping: 24 }}
-            className="group min-h-[430px] overflow-hidden rounded-lg border border-[#c89a44]/38 bg-[#100e0a]/78 shadow-[0_18px_40px_rgba(0,0,0,.25)]"
+            className="archive-poster group card-glow relative min-h-[290px] overflow-hidden rounded-[1.35rem] border border-[#c89a44]/30 bg-[#100e0a]/78 shadow-[0_18px_52px_rgba(0,0,0,.28)] sm:min-h-[320px]"
           >
-            <div className="relative h-[270px] overflow-hidden">
-              <motion.div
-                className="absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${anim.poster})` }}
-                whileHover={{ scale: 1.08 }}
-                transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              />
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#090806] to-transparent" />
-            </div>
-            <div className="flex min-h-[160px] flex-col p-4">
-              <h3 className="truncate text-lg font-bold text-[#fff1d8]">{anim.name}</h3>
-              <p className="mt-2 text-sm text-[#d9c39a]/80">{anim.year}</p>
-              <p className="mt-3 line-clamp-3 text-xs leading-5 text-[#d9c39a]/68">{anim.description}</p>
-              <div className="mt-auto flex flex-wrap gap-1.5 pt-4">
-                {anim.genre.map((genre) => (
-                  <span key={genre} className="rounded border border-[#d4a54d]/42 px-2 py-0.5 text-[11px] text-[#f2c96a]">
-                    {genre}
-                  </span>
-                ))}
+            <motion.div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{ backgroundImage: `url(${anim.poster})` }}
+              whileHover={{ scale: 1.055 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,6,.9)_0%,rgba(7,8,6,.48)_42%,rgba(7,8,6,.12)_100%),linear-gradient(180deg,rgba(7,8,6,.03)_0%,rgba(7,8,6,.9)_100%)] transition-opacity duration-500 group-hover:opacity-86" />
+            <div className="archive-poster-shine absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+            <div className="relative z-10 flex h-full min-h-[290px] flex-col justify-between p-5 sm:min-h-[320px] sm:p-6">
+              <div className="flex items-start justify-between gap-4">
+                <span className="rounded-full border border-[#ffd24d]/24 bg-black/32 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe4a3] backdrop-blur-md">
+                  File {String(index + 1).padStart(2, "0")}
+                </span>
+                <span className="rounded-full bg-[#ffd24d]/14 px-3 py-1 text-xs font-black text-[#f7d577]">{anim.year}</span>
+              </div>
+
+              <div className="max-w-[84%]">
+                <h3 className="font-hand text-4xl leading-none text-[#fff6e8] drop-shadow-[0_4px_18px_rgba(0,0,0,.6)]">
+                  {anim.name}
+                </h3>
+                <p className="mt-4 line-clamp-2 text-sm leading-6 text-[#f0ddba]/82">{anim.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {anim.genre.map((genre) => (
+                    <span key={genre} className="rounded-full border border-[#d4a54d]/36 bg-[#120d07]/60 px-2.5 py-1 text-[11px] font-bold text-[#f2c96a]">
+                      {genre}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </motion.article>
         ))}
       </div>
-
     </motion.section>
   );
 }

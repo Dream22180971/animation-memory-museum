@@ -1,6 +1,6 @@
 export const SITE_NAME = "00后动画记忆馆";
-export const SITE_NAME_EN = "数字童年博物馆";
-export const SITE_DESCRIPTION = "放学后的17:30，是我们等了很久的动画时间。";
+export const SITE_NAME_EN = "Digital Childhood Museum";
+export const SITE_DESCRIPTION = "放学后的 17:30，是我们等了很久的动画时间。";
 export const COPYRIGHT_YEAR = 2026;
 export const AUTHOR_GITHUB = "https://github.com/Dream22180971";
 export const REPOSITORY_URL = "https://github.com/Dream22180971/animation-memory-museum";

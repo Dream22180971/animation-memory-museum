@@ -21,12 +21,12 @@
 }
 
 * {
-  padding: 0;
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 104px;
 }
 
 body {
@@ -57,14 +57,12 @@ nextjs-portal {
 
 .hero-room {
   background:
-    radial-gradient(circle at 18% 27%, rgba(255, 142, 55, 0.46), transparent 22%),
-    radial-gradient(circle at 70% 45%, rgba(30, 20, 12, 0.08), transparent 26%),
-    linear-gradient(90deg, rgba(7, 6, 4, 0.02), rgba(7, 6, 4, 0.2)),
-    url("/images/memories/tv-room.jpg");
-  background-size: min(860px, 70vw) auto;
+    linear-gradient(90deg, rgba(7, 6, 4, 0.3), rgba(7, 6, 4, 0.06) 42%, rgba(7, 6, 4, 0.34)),
+    url("/images/memories/tv-room-hero-4k.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: 56% 18%;
-  filter: saturate(1.16) contrast(1.04) brightness(1.08);
+  background-position: center;
+  filter: saturate(1.05) contrast(1.02) brightness(.96);
 }
 
 .hero-room::before {
@@ -74,6 +72,15 @@ nextjs-portal {
   background:
     linear-gradient(90deg, rgba(2, 2, 1, .1), rgba(2, 2, 1, .02) 48%, rgba(2, 2, 1, .46)),
     radial-gradient(circle at 16% 28%, rgba(255, 188, 83, .48), transparent 24%);
+}
+
+.museum-section,
+.scroll-anchor {
+  scroll-margin-top: 104px;
+}
+
+.scroll-anchor {
+  height: 1px;
 }
 
 .sunset-window {
@@ -92,7 +99,6 @@ nextjs-portal {
     inset 0 0 35px rgba(255, 193, 88, .16),
     0 0 60px rgba(255, 124, 50, .16);
   opacity: .96;
-  filter: blur(.1px);
 }
 
 .sunset-window::after {
@@ -113,12 +119,12 @@ nextjs-portal {
   opacity: .34;
   background:
     linear-gradient(12deg, rgba(232, 183, 86, .28), rgba(40, 25, 18, .6)),
-    url("/images/posters/rainbow-rabbit.jpg");
+    url("/images/posters/rainbow-rabbit-hd.png");
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(216, 172, 85, .22);
   transform: rotate(-2deg);
-  filter: blur(.4px) brightness(.82);
+  filter: brightness(.82);
 }
 
 .hero-desk {
@@ -160,20 +166,29 @@ nextjs-portal {
 }
 
 .site-shell {
-  width: min(1328px, calc(100% - 96px));
+  width: 100%;
   margin-inline: auto;
 }
 
 .hero-shell {
-  width: min(1320px, calc(100% - 96px));
+  width: 100%;
   margin-inline: auto;
+  padding-inline: clamp(24px, 5vw, 72px);
 }
 
 @media (max-width: 640px) {
   .site-shell,
   .hero-shell {
-    width: calc(100% - 24px);
+    width: 100%;
   }
+
+  .hero-shell {
+    padding-inline: 24px;
+  }
+}
+
+.immersive-shell {
+  border-radius: 0;
 }
 
 ::selection {
@@ -329,6 +344,87 @@ nextjs-portal {
   opacity: 1;
 }
 
+.archive-wall {
+  perspective: 1400px;
+}
+
+.archive-poster {
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+.archive-poster::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 231, 173, .08);
+  pointer-events: none;
+}
+
+.archive-poster-shine {
+  background:
+    linear-gradient(120deg, transparent 10%, rgba(255, 231, 173, .2) 42%, transparent 66%),
+    radial-gradient(circle at 80% 18%, rgba(255, 210, 77, .18), transparent 24%);
+  mix-blend-mode: screen;
+  transform: translateX(-24%);
+  animation: memory-shine 5.2s ease-in-out infinite;
+}
+
+.memory-collage {
+  perspective: 1200px;
+}
+
+.memory-card {
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+.memory-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, .08) 0 1px, transparent 1px 18px),
+    linear-gradient(180deg, rgba(255, 210, 77, .08), transparent 38%);
+  opacity: .16;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.memory-card-shine {
+  background:
+    linear-gradient(115deg, transparent 18%, rgba(255, 231, 173, .24) 42%, transparent 62%),
+    radial-gradient(circle at 78% 18%, rgba(255, 210, 77, .22), transparent 26%);
+  transform: translateX(-22%);
+  animation: memory-shine 4.8s ease-in-out infinite;
+}
+
+.about-hero {
+  isolation: isolate;
+}
+
+.about-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 5px),
+    linear-gradient(115deg, transparent 0%, rgba(255, 210, 77, .07) 48%, transparent 64%);
+  opacity: .22;
+  animation: museum-drift 9s ease-in-out infinite alternate;
+}
+
+.about-crt {
+  animation: pulse-glow 4.6s ease-in-out infinite;
+}
+
+.about-signal {
+  animation: float 3.8s ease-in-out infinite;
+}
+
 /* ==================== Scrollbar ==================== */
 
 ::-webkit-scrollbar {
@@ -377,6 +473,16 @@ nextjs-portal {
   50% { transform: translateY(-6px); }
 }
 
+@keyframes memory-shine {
+  0%, 100% { transform: translateX(-28%); opacity: .26; }
+  48% { transform: translateX(18%); opacity: .48; }
+}
+
+@keyframes museum-drift {
+  0% { transform: translate3d(-10px, -6px, 0); }
+  100% { transform: translate3d(12px, 8px, 0); }
+}
+
 .animate-flicker {
   animation: flicker 4s ease-in-out infinite;
 }
@@ -387,4 +493,18 @@ nextjs-portal {
 
 .animate-float {
   animation: float 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
 }
