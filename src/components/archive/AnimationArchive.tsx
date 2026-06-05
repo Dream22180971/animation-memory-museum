@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Star } from "lucide-react";
+import { ArrowRight, ExternalLink, Star } from "lucide-react";
 import animations from "@/data/animations.json";
 
 const sectionVariants: Variants = {
@@ -73,21 +73,33 @@ export default function AnimationArchive() {
                 <span className="rounded-full border border-[#ffd24d]/24 bg-black/32 px-3 py-1 text-[10px] font-black uppercase tracking-[0.22em] text-[#ffe4a3] backdrop-blur-md">
                   File {String(index + 1).padStart(2, "0")}
                 </span>
-                <span className="rounded-full bg-[#ffd24d]/14 px-3 py-1 text-xs font-black text-[#f7d577]">{anim.year}</span>
               </div>
 
-              <div className="max-w-[84%]">
+              <div className="max-w-[88%]">
                 <h3 className="font-hand text-4xl leading-none text-[#fff6e8] drop-shadow-[0_4px_18px_rgba(0,0,0,.6)]">
                   {anim.name}
                 </h3>
                 <p className="mt-4 line-clamp-2 text-sm leading-6 text-[#f0ddba]/82">{anim.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
+                  <span className="rounded-full border border-[#d4a54d]/36 bg-[#120d07]/60 px-2.5 py-1 text-[11px] font-bold text-[#f2c96a]">
+                    {anim.year}
+                  </span>
                   {anim.genre.map((genre) => (
                     <span key={genre} className="rounded-full border border-[#d4a54d]/36 bg-[#120d07]/60 px-2.5 py-1 text-[11px] font-bold text-[#f2c96a]">
                       {genre}
                     </span>
                   ))}
                 </div>
+                <a
+                  href={anim.baikeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-[#ffd24d]/34 bg-[#ffd24d]/12 px-4 py-2 text-xs font-black text-[#ffe4a3] shadow-[0_0_28px_rgba(255,210,77,.08)] transition hover:-translate-y-0.5 hover:border-[#ffd24d]/75 hover:bg-[#ffd24d]/22 hover:text-white"
+                  aria-label={`查看${anim.name}的百度百科介绍`}
+                >
+                  百度百科介绍
+                  <ExternalLink size={14} />
+                </a>
               </div>
             </div>
           </motion.article>

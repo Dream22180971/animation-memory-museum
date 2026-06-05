@@ -7,7 +7,20 @@
       "genre": ["机甲", "热血", "科幻"],
       "color": "#a94b35",
       "description": "信念、轮回与宇宙战场交织在一起，那份少年热血至今仍会被重新点亮。",
-      "poster": "/images/posters/armor-hero-hd.png"
+      "poster": "/images/posters/armor-hero-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/超兽武装",
+      "classicQuotes": [
+        {
+          "line": "已有的事，后必再有；已行的事，后必再行。",
+          "speaker": "玄易子",
+          "context": "轮回宿命"
+        },
+        {
+          "line": "强者不会改变自己的信念。",
+          "speaker": "超兽战士",
+          "context": "热血信念"
+        }
+      ]
     },
     {
       "id": 5,
@@ -16,7 +29,20 @@
       "genre": ["搞笑", "冒险", "童话"],
       "color": "#d95742",
       "description": "戴着红帽的小英雄把晚饭前的客厅变成冒险现场，快乐来得直接又明亮。",
-      "poster": "/images/posters/pig-hero-hd.png"
+      "poster": "/images/posters/pig-hero-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/猪猪侠",
+      "classicQuotes": [
+        {
+          "line": "超级棒棒糖！",
+          "speaker": "猪猪侠",
+          "context": "变身记忆点"
+        },
+        {
+          "line": "勇敢一点，办法总会有的。",
+          "speaker": "猪猪侠",
+          "context": "童话冒险"
+        }
+      ]
     },
     {
       "id": 13,
@@ -25,7 +51,20 @@
       "genre": ["机甲", "搞笑", "战斗"],
       "color": "#e7a825",
       "description": "水果机甲、爆笑对白和燃到起飞的战斗，是国产动画黄金期的高能回声。",
-      "poster": "/images/posters/fruit-robots-hd.png"
+      "poster": "/images/posters/fruit-robots-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/果宝特攻",
+      "classicQuotes": [
+        {
+          "line": "果宝机甲，归位！",
+          "speaker": "果宝特攻",
+          "context": "机甲登场"
+        },
+        {
+          "line": "菠萝吹雪，参上！",
+          "speaker": "菠萝吹雪",
+          "context": "角色登场"
+        }
+      ]
     },
     {
       "id": 14,
@@ -34,7 +73,20 @@
       "genre": ["机甲", "热血", "冒险"],
       "color": "#4f6f93",
       "description": "机车族与猛兽族的世界，藏着很多人的第一份机战记忆。",
-      "poster": "/images/posters/robot-adventure-hd.png"
+      "poster": "/images/posters/robot-adventure-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/洛洛历险记",
+      "classicQuotes": [
+        {
+          "line": "霹雳火，准备战斗！",
+          "speaker": "霹雳火",
+          "context": "机车族记忆"
+        },
+        {
+          "line": "战争没有胜利者，只有幸存者。",
+          "speaker": "机战王世界",
+          "context": "战场感悟"
+        }
+      ]
     },
     {
       "id": 6,
@@ -43,7 +95,20 @@
       "genre": ["武侠", "冒险", "励志"],
       "color": "#7067a7",
       "description": "七剑合璧的江湖传说，是一代人对侠义最早的想象。",
-      "poster": "/images/posters/rainbow-rabbit-hd.png"
+      "poster": "/images/posters/rainbow-rabbit-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/虹猫蓝兔七侠传",
+      "classicQuotes": [
+        {
+          "line": "七剑合璧。",
+          "speaker": "七侠",
+          "context": "江湖名场面"
+        },
+        {
+          "line": "长虹剑主，虹猫。",
+          "speaker": "虹猫",
+          "context": "侠义登场"
+        }
+      ]
     },
     {
       "id": 15,
@@ -52,7 +117,20 @@
       "genre": ["冒险", "奇幻", "战斗"],
       "color": "#5f9f67",
       "description": "神兵天降的奇幻旅程，守护世界，也守护那个暑假的期待。",
-      "poster": "/images/posters/magic-warrior-hd.png"
+      "poster": "/images/posters/magic-warrior-hd.png",
+      "baikeUrl": "https://baike.baidu.com/item/神兵小将",
+      "classicQuotes": [
+        {
+          "line": "神兵兽，变身！",
+          "speaker": "神兵小将",
+          "context": "神兵唤醒"
+        },
+        {
+          "line": "守护同伴，也守护这个世界。",
+          "speaker": "小将们",
+          "context": "冒险信念"
+        }
+      ]
     }
   ],
   "timeline": [

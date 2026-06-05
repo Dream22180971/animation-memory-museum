@@ -9,6 +9,7 @@ export const SITE_URL = "https://museum.seanwalter.top/";
 
 export const NAV_LINKS = [
   { label: "首页", href: "/" },
+  { label: "贡献回忆", href: "/#contribute" },
   { label: "动画档案", href: "/#archive" },
   { label: "年代时间线", href: "/#timeline" },
   { label: "名台词", href: "/#memories" },

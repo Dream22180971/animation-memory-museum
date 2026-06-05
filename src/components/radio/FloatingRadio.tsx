@@ -1,36 +1,63 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useDragControls } from "framer-motion";
-import { Music2, Pause, Play, SkipForward, Volume2 } from "lucide-react";
+import { useCallback, useEffect, useRef, useState, type PointerEvent } from "react";
+import { motion } from "framer-motion";
+import { Music2, Pause, Play, Volume2 } from "lucide-react";
 
-const tracks = [
-  {
-    title: "放学后的 17:30",
-    subtitle: "8-bit 主题曲",
-    notes: [392, 523, 587, 659, 587, 523, 440, 392],
-  },
-  {
-    title: "电视雪花片头",
-    subtitle: "CRT Prelude",
-    notes: [330, 392, 494, 523, 494, 392, 349, 330],
-  },
-  {
-    title: "夏日晚霞回放",
-    subtitle: "Memory Loop",
-    notes: [262, 330, 392, 440, 392, 330, 294, 262],
-  },
-];
+const radioTrack = {
+  title: "大风车",
+  subtitle: "童年片头单曲",
+  notes: [392, 440, 494, 523, 587, 523, 494, 440, 392, 440, 494, 523, 494, 440, 392, 330],
+};
+
+const STORAGE_KEY = "animation-memory-radio-position";
+const VIEWPORT_GUTTER = 12;
+
+type RadioPosition = {
+  x: number;
+  y: number;
+};
+
+type DragState = {
+  startX: number;
+  startY: number;
+  origin: RadioPosition;
+  lastPosition: RadioPosition;
+  moved: boolean;
+};
 
 export default function FloatingRadio() {
   const [isOpen, setIsOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [trackIndex, setTrackIndex] = useState(0);
-  const dragControls = useDragControls();
-  const constraintsRef = useRef<HTMLDivElement | null>(null);
+  const [position, setPosition] = useState<RadioPosition>({ x: VIEWPORT_GUTTER, y: VIEWPORT_GUTTER });
+  const [wasDragged, setWasDragged] = useState(false);
+  const radioRef = useRef<HTMLElement | null>(null);
+  const dragStateRef = useRef<DragState | null>(null);
   const audioContextRef = useRef<AudioContext | null>(null);
   const timerRef = useRef<number | null>(null);
   const stepRef = useRef(0);
+
+  const clampPosition = useCallback((nextPosition: RadioPosition, node = radioRef.current) => {
+    const width = node?.offsetWidth ?? (isOpen ? 320 : 56);
+    const height = node?.offsetHeight ?? (isOpen ? 230 : 56);
+    const maxX = Math.max(VIEWPORT_GUTTER, window.innerWidth - width - VIEWPORT_GUTTER);
+    const maxY = Math.max(VIEWPORT_GUTTER, window.innerHeight - height - VIEWPORT_GUTTER);
+
+    return {
+      x: Math.min(Math.max(VIEWPORT_GUTTER, nextPosition.x), maxX),
+      y: Math.min(Math.max(VIEWPORT_GUTTER, nextPosition.y), maxY),
+    };
+  }, [isOpen]);
+
+  const savePosition = useCallback((nextPosition: RadioPosition) => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(nextPosition));
+  }, []);
+
+  const updatePosition = useCallback((nextPosition: RadioPosition) => {
+    const clampedPosition = clampPosition(nextPosition);
+    setPosition(clampedPosition);
+    savePosition(clampedPosition);
+  }, [clampPosition, savePosition]);
 
   useEffect(() => {
     return () => {
@@ -55,51 +82,136 @@ export default function FloatingRadio() {
     const playNote = () => {
       const context = audioContextRef.current;
       if (!context) return;
-      const track = tracks[trackIndex];
-      const frequency = track.notes[stepRef.current % track.notes.length];
+      const frequency = radioTrack.notes[stepRef.current % radioTrack.notes.length];
       stepRef.current += 1;
 
       const oscillator = context.createOscillator();
       const gain = context.createGain();
-      oscillator.type = "triangle";
+      oscillator.type = "sine";
       oscillator.frequency.setValueAtTime(frequency, context.currentTime);
       gain.gain.setValueAtTime(0.0001, context.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.035, context.currentTime + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.32);
+      gain.gain.exponentialRampToValueAtTime(0.045, context.currentTime + 0.025);
+      gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + 0.38);
       oscillator.connect(gain);
       gain.connect(context.destination);
       oscillator.start();
-      oscillator.stop(context.currentTime + 0.34);
+      oscillator.stop(context.currentTime + 0.4);
     };
 
     playNote();
-    timerRef.current = window.setInterval(playNote, 360);
+    timerRef.current = window.setInterval(playNote, 420);
     return () => {
       if (timerRef.current) window.clearInterval(timerRef.current);
       timerRef.current = null;
     };
-  }, [isPlaying, trackIndex]);
+  }, [isPlaying]);
 
-  const nextTrack = () => {
-    stepRef.current = 0;
-    setTrackIndex((index) => (index + 1) % tracks.length);
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      const savedPosition = window.localStorage.getItem(STORAGE_KEY);
+      if (savedPosition) {
+        try {
+          updatePosition(JSON.parse(savedPosition) as RadioPosition);
+          return;
+        } catch {
+          window.localStorage.removeItem(STORAGE_KEY);
+        }
+      }
+
+      updatePosition({ x: window.innerWidth - 84, y: window.innerHeight - 84 });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [updatePosition]);
+
+  useEffect(() => {
+    const keepRadioInViewport = () => {
+      setPosition((currentPosition) => {
+        const clampedPosition = clampPosition(currentPosition);
+        savePosition(clampedPosition);
+        return clampedPosition;
+      });
+    };
+    window.addEventListener("resize", keepRadioInViewport);
+    return () => window.removeEventListener("resize", keepRadioInViewport);
+  }, [clampPosition, savePosition]);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      setPosition((currentPosition) => {
+        const clampedPosition = clampPosition(currentPosition);
+        savePosition(clampedPosition);
+        return clampedPosition;
+      });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [clampPosition, savePosition, isOpen]);
+
+  const startRadioDrag = (event: PointerEvent<HTMLElement>) => {
+    if (event.button !== 0) return;
+
+    dragStateRef.current = {
+      startX: event.clientX,
+      startY: event.clientY,
+      origin: position,
+      lastPosition: position,
+      moved: false,
+    };
+
+    const handlePointerMove = (moveEvent: globalThis.PointerEvent) => {
+      const dragState = dragStateRef.current;
+      if (!dragState) return;
+
+      const deltaX = moveEvent.clientX - dragState.startX;
+      const deltaY = moveEvent.clientY - dragState.startY;
+      if (Math.abs(deltaX) + Math.abs(deltaY) > 6) {
+        dragState.moved = true;
+        setWasDragged(true);
+      }
+
+      const nextPosition = clampPosition({
+        x: dragState.origin.x + deltaX,
+        y: dragState.origin.y + deltaY,
+      });
+
+      dragState.lastPosition = nextPosition;
+      setPosition(nextPosition);
+    };
+
+    const handlePointerUp = () => {
+      const dragState = dragStateRef.current;
+      if (dragState) {
+        savePosition(dragState.lastPosition);
+      }
+
+      dragStateRef.current = null;
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("pointerup", handlePointerUp);
+      window.setTimeout(() => setWasDragged(false), 140);
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("pointerup", handlePointerUp);
   };
 
   if (!isOpen) {
     return (
-      <div ref={constraintsRef} className="pointer-events-none fixed inset-3 z-50">
+      <div className="pointer-events-none fixed inset-0 z-50">
         <motion.button
-          drag
-          dragControls={dragControls}
-          dragConstraints={constraintsRef}
-          dragElastic={0.08}
-          dragMomentum={false}
+          ref={(node) => {
+            radioRef.current = node;
+          }}
+          style={{ left: position.x, top: position.y }}
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          onPointerDown={(event) => dragControls.start(event)}
-          onClick={() => setIsOpen(true)}
-          className="pointer-events-auto absolute bottom-3 right-3 grid h-14 w-14 cursor-grab place-items-center rounded-full border border-[#f0c45d]/55 bg-[#120d08]/90 text-[#f0c45d] shadow-[0_16px_40px_rgba(0,0,0,.42)] backdrop-blur-md active:cursor-grabbing max-sm:bottom-24"
+          onPointerDown={startRadioDrag}
+          onClick={() => {
+            if (!wasDragged) setIsOpen(true);
+          }}
+          className="pointer-events-auto absolute grid h-14 w-14 cursor-grab touch-none select-none place-items-center rounded-full border border-[#f0c45d]/55 bg-[#120d08]/90 text-[#f0c45d] shadow-[0_16px_40px_rgba(0,0,0,.42)] backdrop-blur-md active:cursor-grabbing"
           aria-label="打开怀旧电台"
+          title="拖动移动电台，点击打开"
         >
           <Music2 size={22} />
         </motion.button>
@@ -107,24 +219,20 @@ export default function FloatingRadio() {
     );
   }
 
-  const track = tracks[trackIndex];
-
   return (
-    <div ref={constraintsRef} className="pointer-events-none fixed inset-3 z-50">
+    <div className="pointer-events-none fixed inset-0 z-50">
       <motion.aside
-        drag
-        dragControls={dragControls}
-        dragListener={false}
-        dragConstraints={constraintsRef}
-        dragElastic={0.08}
-        dragMomentum={false}
+        ref={(node) => {
+          radioRef.current = node;
+        }}
+        style={{ left: position.x, top: position.y }}
         initial={{ opacity: 0, y: 24, scale: 0.96 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
-        className="pointer-events-auto absolute bottom-3 right-3 w-[320px] rounded-2xl border border-[#f0c45d]/30 bg-[#120d08]/88 p-4 text-[#fff1d8] shadow-[0_22px_60px_rgba(0,0,0,.5)] backdrop-blur-xl max-sm:left-1 max-sm:right-1 max-sm:w-auto"
+        className="pointer-events-auto absolute w-[min(320px,calc(100vw-24px))] rounded-2xl border border-[#f0c45d]/30 bg-[#120d08]/88 p-4 text-[#fff1d8] shadow-[0_22px_60px_rgba(0,0,0,.5)] backdrop-blur-xl"
       >
         <div
           className="flex cursor-grab touch-none items-start justify-between gap-4 active:cursor-grabbing"
-          onPointerDown={(event) => dragControls.start(event)}
+          onPointerDown={startRadioDrag}
           title="拖动这里移动电台"
         >
           <div className="flex items-center gap-3">
@@ -133,7 +241,7 @@ export default function FloatingRadio() {
             </div>
             <div>
               <p className="font-hand text-2xl leading-none">怀旧电台</p>
-              <p className="mt-1 text-xs text-[#d9c39a]/70">{track.subtitle}</p>
+              <p className="mt-1 text-xs text-[#d9c39a]/70">{radioTrack.subtitle}</p>
             </div>
           </div>
           <button onClick={() => setIsOpen(false)} className="text-xs text-[#d9c39a]/60 hover:text-[#fff1d8]">
@@ -142,7 +250,7 @@ export default function FloatingRadio() {
         </div>
 
         <div className="mt-4 rounded-xl border border-[#c99a45]/18 bg-[#070806]/70 p-3">
-          <p className="truncate text-sm font-bold">{track.title}</p>
+          <p className="truncate text-sm font-bold">{radioTrack.title}</p>
           <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#3a2a14]">
             <motion.div
               className="h-full rounded-full bg-[#f0c45d]"
@@ -162,14 +270,7 @@ export default function FloatingRadio() {
           >
             {isPlaying ? <Pause size={18} /> : <Play size={18} fill="currentColor" />}
           </motion.button>
-          <button
-            onClick={nextTrack}
-            className="grid h-11 w-11 place-items-center rounded-full border border-[#f0c45d]/35 text-[#f0c45d] hover:bg-[#f0c45d]/10"
-            aria-label="下一首"
-          >
-            <SkipForward size={17} />
-          </button>
-          <p className="text-xs leading-5 text-[#d9c39a]/72">点击播放会生成一段 8-bit 怀旧旋律。</p>
+          <p className="text-xs leading-5 text-[#d9c39a]/72">默认单曲循环，后面可以继续加入更多童年片头。</p>
         </div>
       </motion.aside>
     </div>

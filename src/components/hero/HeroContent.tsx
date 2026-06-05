@@ -1,10 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { PenLine, Play } from "lucide-react";
+
+const sloganVariants = [
+  "这里不是动画博物馆，是我们的青春放映厅。",
+  "把放学后的电视光，重新调回童年的频道。",
+  "每一部动画，都是一代人的暗号。",
+] as const;
 
 export default function HeroContent() {
   const scrollToArchive = () => document.getElementById("archive")?.scrollIntoView({ behavior: "smooth" });
+  const scrollToContribute = () => document.getElementById("contribute")?.scrollIntoView({ behavior: "smooth" });
+  const slogan = sloganVariants[new Date().getDate() % sloganVariants.length];
 
   return (
     <motion.div
@@ -22,13 +30,25 @@ export default function HeroContent() {
       <p className="mt-8 max-w-[540px] text-base leading-8 text-[#f7ebd4]/88">
         这里收藏着 00 后记忆里的国产动画。把热血、感动、晚饭前的电视光，整理成一间可以慢慢逛的数字展厅。
       </p>
-      <button
-        onClick={scrollToArchive}
-        className="mt-9 inline-flex items-center gap-3 rounded-full bg-[#f5dfad] px-10 py-4 text-lg font-black text-[#21170d] shadow-[0_14px_40px_rgba(0,0,0,.38)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#ffe9ba] hover:shadow-[0_18px_48px_rgba(245,223,173,.22)]"
-      >
-        <Play size={22} fill="currentColor" />
-        开启回忆之旅
-      </button>
+      <div className="mt-7 max-w-[590px] rounded-xl border border-[#ffd24d]/24 bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-[#ffe2a0] shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-md">
+        {slogan} 加入 8,921 位小伙伴，一起补全我们的童年动画记忆库。
+      </div>
+      <div className="mt-9 flex flex-wrap gap-3">
+        <button
+          onClick={scrollToArchive}
+          className="inline-flex items-center gap-3 rounded-full bg-[#f5dfad] px-8 py-4 text-base font-black text-[#21170d] shadow-[0_14px_40px_rgba(0,0,0,.38)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#ffe9ba] hover:shadow-[0_18px_48px_rgba(245,223,173,.22)] sm:px-10 sm:text-lg"
+        >
+          <Play size={22} fill="currentColor" />
+          开启回忆之旅
+        </button>
+        <button
+          onClick={scrollToContribute}
+          className="inline-flex items-center gap-3 rounded-full border border-[#d8ac55]/55 bg-[#120d08]/64 px-7 py-4 text-base font-black text-[#f4d57d] shadow-[0_14px_40px_rgba(0,0,0,.22)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd24d]/80 hover:bg-[#ffd24d]/12 hover:text-[#fff6e8]"
+        >
+          <PenLine size={20} />
+          贡献我的回忆
+        </button>
+      </div>
     </motion.div>
   );
 }

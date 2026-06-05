@@ -401,6 +401,54 @@ nextjs-portal {
   animation: memory-shine 4.8s ease-in-out infinite;
 }
 
+.quote-marquee-space {
+  margin-inline: calc(clamp(20px, 5vw, 70px) * -1);
+  overflow: hidden;
+  padding-block: 10px;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+}
+
+.quote-marquee {
+  perspective: 1100px;
+}
+
+.quote-marquee-track {
+  animation: quote-marquee-left 34s linear infinite;
+  padding-inline: clamp(20px, 5vw, 70px);
+}
+
+.quote-marquee-track-reverse {
+  animation-name: quote-marquee-right;
+  animation-duration: 38s;
+}
+
+.quote-marquee:hover .quote-marquee-track,
+.quote-marquee:focus-within .quote-marquee-track {
+  animation-play-state: paused;
+}
+
+.quote-card {
+  transform-style: preserve-3d;
+  isolation: isolate;
+}
+
+.quote-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.035) 0 1px, transparent 1px 5px),
+    linear-gradient(115deg, transparent 10%, rgba(255, 231, 173, .08) 42%, transparent 62%);
+  opacity: .32;
+  pointer-events: none;
+}
+
+.quote-card:hover {
+  z-index: 5;
+}
+
 .about-hero {
   isolation: isolate;
 }
@@ -481,6 +529,16 @@ nextjs-portal {
 @keyframes museum-drift {
   0% { transform: translate3d(-10px, -6px, 0); }
   100% { transform: translate3d(12px, 8px, 0); }
+}
+
+@keyframes quote-marquee-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes quote-marquee-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 .animate-flicker {

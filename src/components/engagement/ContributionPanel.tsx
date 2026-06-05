@@ -1,0 +1,178 @@
+"use client";
+
+import { FormEvent, useState } from "react";
+import { motion, type Variants } from "framer-motion";
+import { CheckCircle2, Clipboard, HeartHandshake, PenLine, Share2 } from "lucide-react";
+import { SITE_URL } from "@/lib/constants";
+
+const sectionVariants: Variants = {
+  hidden: { opacity: 0, y: 34 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.08 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.56, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+const STORAGE_KEY = "animation-memory-user-contributions";
+
+type ContributionDraft = {
+  animationName: string;
+  memory: string;
+  nickname: string;
+};
+
+export default function ContributionPanel() {
+  const [draft, setDraft] = useState<ContributionDraft>({ animationName: "", memory: "", nickname: "" });
+  const [submitState, setSubmitState] = useState<"idle" | "saved">("idle");
+  const [shareState, setShareState] = useState<"idle" | "copied" | "shared">("idle");
+
+  const updateDraft = (field: keyof ContributionDraft, value: string) => {
+    setSubmitState("idle");
+    setDraft((currentDraft) => ({ ...currentDraft, [field]: value }));
+  };
+
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const savedItems = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]") as Array<ContributionDraft & { createdAt: string }>;
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify([{ ...draft, createdAt: new Date().toISOString() }, ...savedItems].slice(0, 20)));
+    setDraft({ animationName: "", memory: "", nickname: "" });
+    setSubmitState("saved");
+  };
+
+  const handleShare = async () => {
+    const shareText = "我在 00 后动画记忆馆重温童年国产动画，一起补全我们的动画记忆库。";
+    if (navigator.share) {
+      await navigator.share({ title: "00后动画记忆馆", text: shareText, url: SITE_URL });
+      setShareState("shared");
+      return;
+    }
+
+    await navigator.clipboard.writeText(`${shareText} ${SITE_URL}`);
+    setShareState("copied");
+  };
+
+  return (
+    <motion.section
+      id="contribute"
+      variants={sectionVariants}
+      initial="hidden"
+      animate="visible"
+      className="museum-section border-b border-[#c99a45]/12 px-4 py-14 sm:px-8 lg:px-12"
+    >
+      <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
+        <motion.div
+          variants={itemVariants}
+          className="relative overflow-hidden rounded-xl border border-[#c89a44]/28 bg-[#120d08]/72 p-6 shadow-[0_18px_52px_rgba(0,0,0,.28)]"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,210,77,.18),transparent_32%),linear-gradient(135deg,rgba(255,210,77,.08),transparent_52%)]" />
+          <div className="relative z-10">
+            <p className="mb-3 text-xs font-black uppercase tracking-[0.34em] text-[#f3c76a]/70">Join the Archive</p>
+            <h2 className="font-hand text-5xl leading-none text-[#fff6e8]">一起补全童年记忆</h2>
+            <p className="mt-5 text-base leading-8 text-[#d9c39a]/84">
+              先从一段文字开始。你可以写下某部动画、某句台词，或者放学后守在电视机前的一个瞬间。
+            </p>
+            <div className="mt-7 grid gap-3 text-sm font-bold text-[#ffe4a3] sm:grid-cols-3">
+              {["写下动画", "留下回忆", "邀请朋友"].map((label, index) => (
+                <div key={label} className="rounded-lg border border-[#ffd24d]/18 bg-black/24 p-3">
+                  <span className="text-[#ffd24d]">0{index + 1}</span>
+                  <p className="mt-1">{label}</p>
+                </div>
+              ))}
+            </div>
+            <button
+              onClick={handleShare}
+              className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ffd24d]/34 bg-[#ffd24d]/12 px-5 py-3 text-sm font-black text-[#ffe4a3] transition hover:-translate-y-0.5 hover:border-[#ffd24d]/75 hover:bg-[#ffd24d]/22 hover:text-white"
+            >
+              <Share2 size={17} />
+              邀请朋友一起回忆
+            </button>
+            <p className="mt-3 text-xs font-bold text-[#d9c39a]/64">
+              {shareState === "shared" ? "已打开分享面板。" : shareState === "copied" ? "分享文案和链接已复制。" : "分享链接会带上本站地址。"}
+            </p>
+          </div>
+        </motion.div>
+
+        <motion.form
+          variants={itemVariants}
+          onSubmit={handleSubmit}
+          className="rounded-xl border border-[#c89a44]/30 bg-[#090806]/78 p-5 shadow-[0_18px_52px_rgba(0,0,0,.24)] sm:p-6"
+        >
+          <div className="mb-5 flex items-center gap-3">
+            <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#f0c45d]/30 bg-[#21160c] text-[#f0c45d]">
+              <HeartHandshake size={20} />
+            </span>
+            <div>
+              <h3 className="text-lg font-black text-[#fff6e8]">贡献我的回忆</h3>
+              <p className="mt-1 text-xs font-bold text-[#d9c39a]/68">当前为前端暂存版本，后续可接入审核与公开展示。</p>
+            </div>
+          </div>
+
+          <label className="block text-sm font-black text-[#ffe4a3]">
+            动画名称
+            <input
+              required
+              value={draft.animationName}
+              onChange={(event) => updateDraft("animationName", event.target.value)}
+              placeholder="例如：超兽武装"
+              className="mt-2 w-full rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+            />
+          </label>
+
+          <label className="mt-4 block text-sm font-black text-[#ffe4a3]">
+            你的回忆
+            <textarea
+              required
+              value={draft.memory}
+              onChange={(event) => updateDraft("memory", event.target.value)}
+              placeholder="写一句最难忘的片段、台词或当时的心情。"
+              rows={4}
+              className="mt-2 w-full resize-none rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm leading-6 text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+            />
+          </label>
+
+          <label className="mt-4 block text-sm font-black text-[#ffe4a3]">
+            昵称
+            <input
+              required
+              value={draft.nickname}
+              onChange={(event) => updateDraft("nickname", event.target.value)}
+              placeholder="例如：放学别跑"
+              className="mt-2 w-full rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+            />
+          </label>
+
+          <div className="mt-5 flex flex-wrap items-center gap-3">
+            <button
+              type="submit"
+              className="inline-flex items-center gap-2 rounded-full bg-[#f5dfad] px-6 py-3 text-sm font-black text-[#21170d] transition hover:-translate-y-0.5 hover:bg-[#ffe9ba]"
+            >
+              <PenLine size={17} />
+              暂存这段回忆
+            </button>
+            {submitState === "saved" ? (
+              <span className="inline-flex items-center gap-2 text-sm font-bold text-[#9ee6a8]">
+                <CheckCircle2 size={16} />
+                已保存到本地草稿
+              </span>
+            ) : (
+              <span className="inline-flex items-center gap-2 text-xs font-bold text-[#d9c39a]/64">
+                <Clipboard size={15} />
+                后续可升级为公开投稿
+              </span>
+            )}
+          </div>
+        </motion.form>
+      </div>
+    </motion.section>
+  );
+}
