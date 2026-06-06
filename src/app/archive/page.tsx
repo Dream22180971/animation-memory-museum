@@ -4,7 +4,6 @@ import { ArrowLeft, Database, PenLine } from "lucide-react";
 import ArchiveExplorer from "@/components/archive/ArchiveExplorer";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import FloatingRadio from "@/components/radio/FloatingRadio";
 import { SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -51,7 +50,6 @@ export default function ArchivePage() {
 
         <ArchiveExplorer />
       </main>
-      <FloatingRadio />
       <Footer />
     </div>
   );

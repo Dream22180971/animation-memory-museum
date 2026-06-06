@@ -32,16 +32,16 @@ export default function ParticleBackground() {
 
     const createParticles = () => {
       particles = [];
-      const count = Math.floor((canvas.width * canvas.height) / 25000);
+      const count = Math.floor((canvas.width * canvas.height) / 14000);
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.1,
-          hue: Math.random() * 40 + 30, // warm gold/orange hues
+          size: Math.random() * 3 + 1,
+          speedX: (Math.random() - 0.5) * 0.35,
+          speedY: (Math.random() - 0.5) * 0.35,
+          opacity: Math.random() * 0.7 + 0.2,
+          hue: Math.random() * 50 + 25, // warm gold/orange hues
         });
       }
     };
@@ -59,13 +59,15 @@ export default function ParticleBackground() {
         if (p.y < 0) p.y = canvas.height;
         if (p.y > canvas.height) p.y = 0;
 
-        // Draw particle with glow
+        // Draw particle with enhanced glow
+        const glowRadius = p.size * 5;
         ctx.beginPath();
-        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
-        gradient.addColorStop(0, `hsla(${p.hue}, 80%, 60%, ${p.opacity})`);
-        gradient.addColorStop(1, `hsla(${p.hue}, 80%, 60%, 0)`);
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, glowRadius);
+        gradient.addColorStop(0, `hsla(${p.hue}, 90%, 70%, ${p.opacity})`);
+        gradient.addColorStop(0.4, `hsla(${p.hue}, 85%, 55%, ${p.opacity * 0.5})`);
+        gradient.addColorStop(1, `hsla(${p.hue}, 80%, 50%, 0)`);
         ctx.fillStyle = gradient;
-        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.arc(p.x, p.y, glowRadius, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -90,7 +92,7 @@ export default function ParticleBackground() {
     <canvas
       ref={canvasRef}
       className="pointer-events-none fixed inset-0 z-0"
-      style={{ opacity: 0.6 }}
+      style={{ opacity: 0.85 }}
     />
   );
 }

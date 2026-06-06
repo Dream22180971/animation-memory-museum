@@ -1,7 +1,6 @@
-import { Code2, Heart, Mail, MonitorPlay, Radio, Sparkles, Tv } from "lucide-react";
+import { Code2, Heart, Mail, MonitorPlay, Music, Sparkles, Tv } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import FloatingRadio from "@/components/radio/FloatingRadio";
 import { AUTHOR_GITHUB, FEEDBACK_URL, REPOSITORY_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
 
 const principles = [
@@ -118,7 +117,7 @@ export default function AboutPage() {
                   这个项目尝试把“放学回家打开电视”的体验，翻译成一个可以浏览、截图、继续扩展的网页。
                 </p>
                 <p>
-                  第一阶段聚焦动画档案、年代时间线、怀旧文案和电台氛围。后续可以继续扩展角色关系、名台词档案、童年浓度测试，以及更多 old web 与数字记忆的互动。
+                  第一阶段聚焦动画档案、年代时间线、怀旧文案和动画歌曲。后续可以继续扩展角色关系、名台词档案、童年浓度测试，以及更多 old web 与数字记忆的互动。
                 </p>
                 <a
                   href={REPOSITORY_URL}
@@ -137,10 +136,10 @@ export default function AboutPage() {
             <div className="museum-card flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-full bg-[#ffd24d]/12 text-[#ffd24d]">
-                  <Radio size={22} />
+                  <Music size={22} />
                 </span>
                 <div>
-                  <p className="retro-title text-3xl text-[#fff6e8]">电台还在播放</p>
+                  <p className="retro-title text-3xl text-[#fff6e8]">歌曲还在播放</p>
                   <p className="mt-1 text-sm text-[#d9c39a]/78">这个页面现在和主页共享同一套展馆语气、光效和复古互动。</p>
                 </div>
               </div>
@@ -151,7 +150,6 @@ export default function AboutPage() {
           </section>
         </section>
       </main>
-      <FloatingRadio />
       <Footer />
     </div>
   );

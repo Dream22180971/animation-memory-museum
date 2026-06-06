@@ -5,7 +5,7 @@ import AnimationArchive from "@/components/archive/AnimationArchive";
 import ContributionPanel from "@/components/engagement/ContributionPanel";
 import YearTimeline from "@/components/timeline/YearTimeline";
 import MemoryQuotes from "@/components/memories/MemoryQuotes";
-import FloatingRadio from "@/components/radio/FloatingRadio";
+import SongCards from "@/components/songs/SongCards";
 import ParticleBackground from "@/components/hero/ParticleBackground";
 
 export default function Home() {
@@ -20,10 +20,9 @@ export default function Home() {
           <AnimationArchive />
           <YearTimeline />
           <MemoryQuotes />
-          <div id="radio" className="scroll-anchor" aria-hidden="true" />
+          <SongCards />
         </div>
       </main>
-      <FloatingRadio />
       <Footer />
     </div>
   );

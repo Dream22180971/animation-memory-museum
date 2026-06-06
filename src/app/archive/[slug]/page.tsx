@@ -6,7 +6,6 @@ import ShareDetailButton from "@/components/archive/ShareDetailButton";
 import WatchedButton from "@/components/archive/WatchedButton";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import FloatingRadio from "@/components/radio/FloatingRadio";
 import animationsData from "@/data/animations.json";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
@@ -184,7 +183,6 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
           </section>
         </section>
       </main>
-      <FloatingRadio />
       <Footer />
     </div>
   );

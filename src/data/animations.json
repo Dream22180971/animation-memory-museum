@@ -51,6 +51,10 @@
           "speaker": "冥王",
           "context": "孤独与强大"
         }
+      ],
+      "songs": [
+        { "name": "超兽武装", "type": "主题曲", "singer": "毛华锋" },
+        { "name": "刹那永恒", "type": "片尾曲", "singer": "黄英" }
       ]
     },
     {
@@ -104,6 +108,10 @@
           "speaker": "猪猪侠",
           "context": "伙伴牵挂"
         }
+      ],
+      "songs": [
+        { "name": "猪猪侠", "type": "主题曲", "singer": "陈洁丽" },
+        { "name": "超级棒棒糖", "type": "片头曲", "singer": "陈洁丽" }
       ]
     },
     {
@@ -157,6 +165,10 @@
           "speaker": "果宝特攻",
           "context": "戏仿名句"
         }
+      ],
+      "songs": [
+        { "name": "果宝特攻", "type": "主题曲", "singer": "王巍" },
+        { "name": "果宝机甲之歌", "type": "片头曲", "singer": "陈洁丽" }
       ]
     },
     {
@@ -210,6 +222,10 @@
           "speaker": "机车族",
           "context": "阵营信念"
         }
+      ],
+      "songs": [
+        { "name": "龙斗", "type": "主题曲", "singer": "张楚格" },
+        { "name": "机车族之歌", "type": "片头曲", "singer": "张楚格" }
       ]
     },
     {
@@ -263,6 +279,11 @@
           "speaker": "达达",
           "context": "七剑身份"
         }
+      ],
+      "songs": [
+        { "name": "人生不过一百年", "type": "主题曲", "singer": "汤俊" },
+        { "name": "嘎嘎", "type": "片头曲", "singer": "汤俊" },
+        { "name": "心中想的就是他", "type": "片尾曲", "singer": "汤俊" }
       ]
     },
     {
@@ -316,6 +337,10 @@
           "speaker": "神兵小将",
           "context": "主题记忆"
         }
+      ],
+      "songs": [
+        { "name": "神兵小将", "type": "主题曲", "singer": "陈洁丽" },
+        { "name": "天晶兽之歌", "type": "片头曲", "singer": "李殊" }
       ]
     }
   ],
