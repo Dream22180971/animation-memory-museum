@@ -21,13 +21,13 @@ export default function HeroContent() {
       transition={{ duration: 0.7, ease: "easeOut" }}
       className="max-w-[760px] pt-12 lg:pt-0"
     >
-      <h1 className="hero-title font-hand leading-[1.12] text-[#fff6e6]">
+      <h1 className="hero-title retro-title leading-[1.12] text-[#fff6e6]">
         <span className="block text-[50px] sm:text-[70px] lg:text-[78px]">
           放学后的 <span className="text-[#ffd450]">17:30</span>
         </span>
         <span className="mt-3 block text-[32px] sm:text-[46px] lg:text-[54px]">是我们等了很久的动画时间</span>
       </h1>
-      <p className="mt-8 max-w-[540px] text-base leading-8 text-[#f7ebd4]/88">
+      <p className="memory-text mt-8 max-w-[540px] text-base text-[#f7ebd4]/88">
         这里收藏着 00 后记忆里的国产动画。把热血、感动、晚饭前的电视光，整理成一间可以慢慢逛的数字展厅。
       </p>
       <div className="mt-7 max-w-[590px] rounded-xl border border-[#ffd24d]/24 bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-[#ffe2a0] shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-md">
@@ -36,14 +36,14 @@ export default function HeroContent() {
       <div className="mt-9 flex flex-wrap gap-3">
         <button
           onClick={scrollToArchive}
-          className="inline-flex items-center gap-3 rounded-full bg-[#f5dfad] px-8 py-4 text-base font-black text-[#21170d] shadow-[0_14px_40px_rgba(0,0,0,.38)] transition-all duration-300 hover:-translate-y-1 hover:bg-[#ffe9ba] hover:shadow-[0_18px_48px_rgba(245,223,173,.22)] sm:px-10 sm:text-lg"
+          className="retro-button retro-button-primary retro-button-lg sm:px-10 sm:text-lg"
         >
           <Play size={22} fill="currentColor" />
           开启回忆之旅
         </button>
         <button
           onClick={scrollToContribute}
-          className="inline-flex items-center gap-3 rounded-full border border-[#d8ac55]/55 bg-[#120d08]/64 px-7 py-4 text-base font-black text-[#f4d57d] shadow-[0_14px_40px_rgba(0,0,0,.22)] transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd24d]/80 hover:bg-[#ffd24d]/12 hover:text-[#fff6e8]"
+          className="retro-button retro-button-secondary retro-button-lg"
         >
           <PenLine size={20} />
           贡献我的回忆

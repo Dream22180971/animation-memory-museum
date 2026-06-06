@@ -29,19 +29,19 @@ export default function AboutPage() {
     <div className="relative min-h-screen bg-[#070806] text-[#fff3df] vignette">
       <Navbar />
       <main className="pt-24">
-        <section className="site-shell overflow-hidden rounded-2xl border border-[#c99a45]/18 bg-[#080d0f]/88 shadow-[0_30px_100px_rgba(0,0,0,.35)] backdrop-blur-sm">
+        <section className="museum-card site-shell rounded-2xl backdrop-blur-sm">
           <div className="about-hero relative min-h-[640px] px-5 py-14 sm:px-10 lg:px-16 lg:py-20">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_20%,rgba(255,157,73,.22),transparent_28%),radial-gradient(circle_at_84%_22%,rgba(255,210,77,.14),transparent_30%),linear-gradient(180deg,rgba(255,210,77,.03),transparent_58%)]" />
             <div className="absolute inset-x-10 top-10 hidden h-px bg-gradient-to-r from-transparent via-[#ffd24d]/32 to-transparent lg:block" />
 
             <div className="relative grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.36em] text-[#d8ac55]/78">About The Museum</p>
-                <h1 className="hero-title font-hand mt-5 text-5xl leading-[1.08] text-[#fff6e6] sm:text-6xl lg:text-7xl">
+                <p className="archive-kicker text-xs font-black text-[#d8ac55]/78">About The Museum</p>
+                <h1 className="hero-title retro-title mt-5 text-5xl leading-[1.08] text-[#fff6e6] sm:text-6xl lg:text-7xl">
                   关于<br />动画记忆馆
                 </h1>
-                <p className="mt-7 max-w-2xl text-lg leading-9 text-[#f7ebd4]/88">{SITE_DESCRIPTION}</p>
-                <p className="mt-5 max-w-2xl text-base leading-8 text-[#d9c39a]/84">
+                <p className="memory-text mt-7 max-w-2xl text-lg text-[#f7ebd4]/88">{SITE_DESCRIPTION}</p>
+                <p className="memory-text mt-5 max-w-2xl text-base text-[#d9c39a]/84">
                   {SITE_NAME} 想把国产动画黄金时代里那些熟悉、柔软、带着颗粒感的片段，重新整理成一间可以慢慢逛的数字房间。
                   它不追求资料库式的冰冷完整，而是让人一打开页面，就像回到一间被时间封存的客厅。
                 </p>
@@ -51,7 +51,7 @@ export default function AboutPage() {
                     href={AUTHOR_GITHUB}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-3 rounded-full bg-[#f5dfad] px-6 py-3.5 font-black text-[#21170d] shadow-[0_14px_40px_rgba(0,0,0,.38)] transition hover:-translate-y-0.5 hover:bg-[#ffe7ad] hover:shadow-[0_18px_44px_rgba(245,223,173,.18)]"
+                    className="retro-button retro-button-primary text-sm"
                   >
                     <Code2 size={19} />
                     联系作者
@@ -60,7 +60,7 @@ export default function AboutPage() {
                     href={FEEDBACK_URL}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-3 rounded-full border border-[#d8ac55]/45 px-6 py-3.5 font-bold text-[#f4d57d] transition hover:-translate-y-0.5 hover:bg-[#f0c45d]/10"
+                    className="retro-button retro-button-ghost text-sm"
                   >
                     <Mail size={19} />
                     GitHub 反馈
@@ -68,23 +68,23 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              <div className="about-crt relative rounded-[1.2rem] border border-[#c99a45]/26 bg-[#080806]/74 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
+              <div className="about-crt archive-card relative overflow-hidden rounded-[1.2rem] border border-[#c99a45]/26 bg-[#080806]/74 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
                 <div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[url('/images/memories/tv-room-hero-4k.jpg')] bg-cover bg-center shadow-[inset_0_0_90px_rgba(0,0,0,.52)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_48%_43%,rgba(255,210,77,.12),transparent_30%),linear-gradient(180deg,transparent,rgba(0,0,0,.72))]" />
                   <div className="crt-scanlines absolute inset-0" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <p className="font-mono text-xs uppercase tracking-[0.28em] text-[#ffd24d]/80">Now Playing</p>
-                    <p className="font-hand mt-2 text-4xl text-[#fff6e8]">一间回忆客厅</p>
+                    <p className="archive-kicker text-xs text-[#ffd24d]/80">Now Playing</p>
+                    <p className="retro-title mt-2 text-4xl text-[#fff6e8]">一间回忆客厅</p>
                   </div>
                 </div>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {roomTags.map((item) => (
-                    <span key={item} className="rounded-full border border-[#c99a45]/22 bg-[#14100a]/78 px-3 py-1.5 text-xs font-bold text-[#f3d99b]">
+                    <span key={item} className="cassette-label cassette-label-muted">
                       {item}
                     </span>
                   ))}
                 </div>
-                <div className="about-signal absolute -right-5 -top-5 hidden rounded-full border border-[#ffd24d]/28 bg-[#151008]/90 px-4 py-3 text-xs font-black uppercase tracking-[0.22em] text-[#ffd24d] shadow-[0_0_38px_rgba(255,210,77,.16)] lg:block">
+                <div className="cassette-label absolute -right-5 -top-5 hidden px-4 py-3 lg:flex">
                   Signal On
                 </div>
               </div>
@@ -98,8 +98,8 @@ export default function AboutPage() {
                 <article key={item.title} className="group relative min-h-[230px] overflow-hidden border-b border-[#c99a45]/12 p-7 transition hover:bg-[#ffd24d]/[0.035] lg:border-b-0 lg:border-r last:lg:border-r-0 lg:border-[#c99a45]/12">
                   <div className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-[#ffd24d] to-transparent transition duration-500 group-hover:scale-x-100" />
                   <Icon className="text-[#ffd24d]" size={28} />
-                  <h2 className="font-hand mt-5 text-4xl text-[#fff6e8]">{item.title}</h2>
-                  <p className="mt-4 max-w-sm text-sm leading-7 text-[#d9c39a]/84">{item.text}</p>
+                  <h2 className="retro-title mt-5 text-4xl text-[#fff6e8]">{item.title}</h2>
+                  <p className="memory-text mt-4 max-w-sm text-sm text-[#d9c39a]/84">{item.text}</p>
                 </article>
               );
             })}
@@ -109,10 +109,10 @@ export default function AboutPage() {
             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(255,210,77,.045),transparent_22%,transparent_78%,rgba(255,210,77,.045))]" />
             <div className="relative grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
               <div>
-                <p className="text-xs font-black uppercase tracking-[0.34em] text-[#d8ac55]/75">Why Build It</p>
-                <h2 className="font-hand mt-4 text-5xl leading-tight text-[#fff6e8]">为什么做这个网站？</h2>
+                <p className="archive-kicker text-xs font-black text-[#d8ac55]/75">Why Build It</p>
+                <h2 className="retro-title mt-4 text-5xl leading-tight text-[#fff6e8]">为什么做这个网站？</h2>
               </div>
-              <div className="space-y-5 text-base leading-8 text-[#d9c39a]/84">
+              <div className="memory-text space-y-5 text-base text-[#d9c39a]/84">
                 <p>
                   很多童年记忆不适合只用片名和年份保存。它们需要光线、声音、场景和一点点等待感。
                   这个项目尝试把“放学回家打开电视”的体验，翻译成一个可以浏览、截图、继续扩展的网页。
@@ -124,7 +124,7 @@ export default function AboutPage() {
                   href={REPOSITORY_URL}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-3 rounded-full border border-[#d8ac55]/45 px-6 py-3 text-sm font-bold text-[#f4d57d] transition hover:-translate-y-0.5 hover:bg-[#f0c45d]/10"
+                  className="retro-button retro-button-ghost text-sm"
                 >
                   <Sparkles size={18} />
                   查看项目仓库
@@ -134,17 +134,17 @@ export default function AboutPage() {
           </section>
 
           <section className="relative border-t border-[#c99a45]/12 px-5 py-10 sm:px-10 lg:px-16">
-            <div className="flex flex-col gap-4 rounded-2xl border border-[#c99a45]/18 bg-[#0d0b07]/72 p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className="museum-card flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
                 <span className="grid h-12 w-12 place-items-center rounded-full bg-[#ffd24d]/12 text-[#ffd24d]">
                   <Radio size={22} />
                 </span>
                 <div>
-                  <p className="font-hand text-3xl text-[#fff6e8]">电台还在播放</p>
+                  <p className="retro-title text-3xl text-[#fff6e8]">电台还在播放</p>
                   <p className="mt-1 text-sm text-[#d9c39a]/78">这个页面现在和主页共享同一套展馆语气、光效和复古互动。</p>
                 </div>
               </div>
-              <span className="rounded-full border border-[#ffd24d]/25 bg-[#ffd24d]/10 px-4 py-2 text-xs font-black uppercase tracking-[0.24em] text-[#f6d47d]">
+              <span className="cassette-label">
                 Archive Alive
               </span>
             </div>

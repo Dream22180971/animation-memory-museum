@@ -74,28 +74,28 @@ export default function HeroSwiper() {
                   <div className="absolute inset-x-0 bottom-0 p-5">
                     <div className="mb-2 flex items-center gap-2">
                       {anim.genre.slice(0, 2).map((g) => (
-                        <span key={g} className="rounded border border-[#ffd24d]/50 bg-black/25 px-2 py-0.5 text-[10px] text-[#ffd24d]">
+                        <span key={g} className="cassette-label cassette-label-muted">
                           {g}
                         </span>
                       ))}
-                      <span className="text-[11px] text-[#d9c39a]/78">{anim.year}</span>
+                      <span className="cassette-label cassette-label-muted">{anim.year}</span>
                     </div>
-                    <h3 className="font-hand text-3xl text-white drop-shadow-lg">{anim.name}</h3>
-                    <p className="mt-1 line-clamp-2 max-w-[420px] text-xs leading-5 text-white/76">{anim.description}</p>
+                    <h3 className="retro-title text-3xl text-white">{anim.name}</h3>
+                    <p className="memory-text mt-1 line-clamp-2 max-w-[420px] text-xs text-white/76">{anim.description}</p>
                   </div>
                 </div>
               ))}
 
               <button
                 onClick={prev}
-                className="absolute left-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-white/85 backdrop-blur-sm transition-all hover:bg-black/75 hover:text-white"
+                className="retro-icon-button absolute left-3 top-1/2 z-10 h-9 w-9 -translate-y-1/2 text-white/85 backdrop-blur-sm"
                 aria-label="上一张海报"
               >
                 <ChevronLeft size={18} />
               </button>
               <button
                 onClick={next}
-                className="absolute right-3 top-1/2 z-10 grid h-9 w-9 -translate-y-1/2 place-items-center rounded-full bg-black/55 text-white/85 backdrop-blur-sm transition-all hover:bg-black/75 hover:text-white"
+                className="retro-icon-button absolute right-3 top-1/2 z-10 h-9 w-9 -translate-y-1/2 text-white/85 backdrop-blur-sm"
                 aria-label="下一张海报"
               >
                 <ChevronRight size={18} />

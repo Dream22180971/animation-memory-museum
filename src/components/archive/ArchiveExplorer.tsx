@@ -19,6 +19,7 @@ type UserContribution = {
 
 type ArchiveItem = {
   id: string;
+  slug?: string;
   name: string;
   year: number | null;
   genres: string[];
@@ -35,6 +36,7 @@ const allYears = Array.from(new Set(animationsData.animations.map((item) => item
 
 const toArchiveItem = (animation: OfficialAnimation): ArchiveItem => ({
   id: `official-${animation.id}`,
+  slug: animation.slug,
   name: animation.name,
   year: animation.year,
   genres: animation.genre,
@@ -123,9 +125,9 @@ export default function ArchiveExplorer() {
 
   return (
     <section className="site-shell immersive-shell border border-[#c99a45]/18 bg-[#080d0f]/88 px-4 py-6 shadow-[0_30px_100px_rgba(0,0,0,.35)] backdrop-blur-sm sm:px-6 lg:px-8">
-      <div className="grid gap-4 rounded-xl border border-[#c89a44]/24 bg-[#100d08]/72 p-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
+      <div className="museum-card grid gap-4 rounded-xl p-4 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <label className="block">
-          <span className="mb-2 flex items-center gap-2 text-xs font-black uppercase tracking-[0.28em] text-[#f3c76a]/72">
+          <span className="archive-kicker mb-2 flex items-center gap-2 text-xs font-black text-[#f3c76a]/72">
             <Search size={15} />
             Search
           </span>
@@ -133,7 +135,7 @@ export default function ArchiveExplorer() {
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="搜索动画名、类型或回忆关键词"
-            className="w-full rounded-lg border border-[#d8ac55]/24 bg-black/30 px-4 py-3 text-sm text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+            className="retro-field w-full rounded-lg px-4 py-3 text-sm outline-none transition"
           />
         </label>
 
@@ -147,16 +149,16 @@ export default function ArchiveExplorer() {
 
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-wrap items-center gap-2 text-sm font-bold text-[#d9c39a]/82">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#ffd24d]/22 bg-[#ffd24d]/10 px-3 py-1.5 text-[#ffe4a3]">
+          <span className="cassette-label">
             <Library size={16} />
             {filteredItems.length} / {archiveItems.length} 条档案
           </span>
-          <span className="rounded-full border border-[#d8ac55]/20 bg-black/24 px-3 py-1.5">馆藏 {animationsData.animations.length}</span>
-          <span className="rounded-full border border-[#d8ac55]/20 bg-black/24 px-3 py-1.5">用户贡献 {userItems.length}</span>
+          <span className="cassette-label cassette-label-muted">馆藏 {animationsData.animations.length}</span>
+          <span className="cassette-label cassette-label-muted">用户贡献 {userItems.length}</span>
         </div>
         <button
           onClick={resetFilters}
-          className="inline-flex w-fit items-center gap-2 rounded-full border border-[#d8ac55]/35 px-4 py-2 text-xs font-black text-[#f4d57d] transition hover:-translate-y-0.5 hover:bg-[#f0c45d]/10"
+          className="retro-button retro-button-ghost w-fit text-xs"
         >
           <SlidersHorizontal size={15} />
           重置筛选
@@ -171,42 +173,50 @@ export default function ArchiveExplorer() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.22) }}
-              className="archive-poster group card-glow relative min-h-[330px] overflow-hidden rounded-xl border border-[#c89a44]/30 bg-[#100e0a]/78 shadow-[0_18px_52px_rgba(0,0,0,.28)]"
+              className="archive-poster archive-card museum-card group card-glow relative min-h-[330px] rounded-xl"
             >
-              <div className="absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.055]" style={{ backgroundImage: `url(${item.poster})` }} />
-              <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,6,.92)_0%,rgba(7,8,6,.58)_48%,rgba(7,8,6,.18)_100%),linear-gradient(180deg,rgba(7,8,6,.12)_0%,rgba(7,8,6,.94)_100%)]" />
+              <div className="archive-poster-image absolute inset-0 bg-cover bg-center transition duration-700 group-hover:scale-[1.055]" style={{ backgroundImage: `url(${item.poster})` }} />
+              <div className="archive-poster-overlay absolute inset-0" />
               <div className="archive-poster-shine absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
               <div className="relative z-10 flex min-h-[330px] flex-col justify-between p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="rounded-full border border-[#ffd24d]/24 bg-black/32 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-[#ffe4a3] backdrop-blur-md">
+                  <span className="cassette-label">
                     {item.source === "official" ? "馆藏收录" : "用户贡献"}
                   </span>
-                  <span className="rounded-full border border-[#ffd24d]/18 bg-[#ffd24d]/10 px-3 py-1 text-[10px] font-black text-[#f7d577]">
+                  <span className="cassette-label cassette-label-muted">
                     {item.year ?? "年份待补"}
                   </span>
                 </div>
 
                 <div>
-                  <h2 className="font-hand text-4xl leading-none text-[#fff6e8] drop-shadow-[0_4px_18px_rgba(0,0,0,.6)]">{item.name}</h2>
-                  <p className="mt-4 line-clamp-3 text-sm leading-6 text-[#f0ddba]/84">{item.description}</p>
+                  <h2 className="retro-title text-4xl leading-none text-[#fff6e8]">{item.name}</h2>
+                  <p className="memory-text mt-4 line-clamp-3 text-sm text-[#f0ddba]/84">{item.description}</p>
                   {item.contributor ? <p className="mt-2 text-xs font-bold text-[#e6bd70]/78">回忆提供者：{item.contributor}</p> : null}
 
                   <div className="mt-5 flex flex-wrap gap-2">
                     {item.genres.map((itemGenre) => (
-                      <span key={itemGenre} className="rounded-full border border-[#d4a54d]/36 bg-[#120d07]/60 px-2.5 py-1 text-[11px] font-bold text-[#f2c96a]">
+                      <span key={itemGenre} className="cassette-label cassette-label-muted">
                         {itemGenre}
                       </span>
                     ))}
                   </div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
+                    {item.slug ? (
+                      <Link
+                        href={`/archive/${item.slug}`}
+                        className="retro-button retro-button-primary text-xs"
+                      >
+                        查看详情
+                      </Link>
+                    ) : null}
                     {item.baikeUrl ? (
                       <a
                         href={item.baikeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-full border border-[#ffd24d]/34 bg-[#ffd24d]/12 px-4 py-2 text-xs font-black text-[#ffe4a3] transition hover:-translate-y-0.5 hover:border-[#ffd24d]/75 hover:bg-[#ffd24d]/22 hover:text-white"
+                        className="retro-button retro-button-secondary text-xs"
                       >
                         百度百科
                         <ExternalLink size={14} />
@@ -214,7 +224,7 @@ export default function ArchiveExplorer() {
                     ) : null}
                     <Link
                       href="/#contribute"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#d8ac55]/28 bg-black/24 px-4 py-2 text-xs font-black text-[#f4d57d] transition hover:-translate-y-0.5 hover:bg-[#f0c45d]/10"
+                      className="retro-button retro-button-ghost text-xs"
                     >
                       <PenLine size={14} />
                       补充回忆
@@ -226,13 +236,13 @@ export default function ArchiveExplorer() {
           ))}
         </div>
       ) : (
-        <div className="mt-6 rounded-xl border border-[#c89a44]/28 bg-[#100d08]/72 p-8 text-center">
+        <div className="museum-card mt-6 rounded-xl p-8 text-center">
           <Sparkles className="mx-auto text-[#ffd24d]" size={28} />
-          <h2 className="font-hand mt-4 text-4xl text-[#fff6e8]">这部动画还没被找到</h2>
-          <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#d9c39a]/82">也许它正等你来补全。换个关键词试试，或者先去贡献一段回忆。</p>
+          <h2 className="retro-title mt-4 text-4xl text-[#fff6e8]">这部动画还没被找到</h2>
+          <p className="memory-text mx-auto mt-3 max-w-xl text-sm text-[#d9c39a]/82">也许它正等你来补全。换个关键词试试，或者先去贡献一段回忆。</p>
           <Link
             href="/#contribute"
-            className="mt-5 inline-flex items-center gap-2 rounded-full bg-[#f5dfad] px-5 py-3 text-sm font-black text-[#21170d] transition hover:-translate-y-0.5 hover:bg-[#ffe9ba]"
+            className="retro-button retro-button-primary mt-5 text-sm"
           >
             <PenLine size={16} />
             贡献这部动画
@@ -256,14 +266,14 @@ function FilterSelect({
 }) {
   return (
     <label className="block">
-      <span className="mb-2 flex items-center gap-1.5 text-[10px] font-black uppercase tracking-[0.18em] text-[#f3c76a]/72">
+      <span className="archive-kicker mb-2 flex items-center gap-1.5 text-[10px] font-black text-[#f3c76a]/72">
         <ArrowUpDown size={12} />
         {label}
       </span>
       <select
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="w-full rounded-lg border border-[#d8ac55]/24 bg-black/30 px-3 py-3 text-xs font-bold text-[#fff6e8] outline-none transition focus:border-[#ffd24d]/70"
+        className="retro-field w-full rounded-lg px-3 py-3 text-xs font-bold outline-none transition"
       >
         {options.map((option) => (
           <option key={option} value={option} className="bg-[#100d08] text-[#fff6e8]">

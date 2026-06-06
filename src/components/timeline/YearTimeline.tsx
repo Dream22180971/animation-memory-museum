@@ -34,23 +34,23 @@ export default function YearTimeline() {
       className="museum-section min-h-[560px] border-b border-[#c99a45]/12 px-5 py-16 lg:px-14"
     >
       <motion.div variants={nodeVariants} className="mb-14">
-        <h2 className="font-hand flex items-center gap-3 text-5xl text-[#fff6e8]">
+        <h2 className="retro-title flex items-center gap-3 text-5xl text-[#fff6e8]">
           动画年代时间线 <Tv size={24} className="text-[#ffd24d]" />
         </h2>
-        <p className="mt-4 text-base text-[#d9c39a]/82">国产动画的黄金时代，从一个个放学后的傍晚串起来。</p>
+        <p className="memory-text mt-4 text-base text-[#d9c39a]/82">国产动画的黄金时代，从一个个放学后的傍晚串起来。</p>
       </motion.div>
 
       <div className="relative px-9">
         <motion.button
           whileHover={{ scale: 1.08, backgroundColor: "rgba(240,196,93,.1)" }}
-          className="absolute left-0 top-[84px] grid h-12 w-12 place-items-center rounded-full border border-[#c89a44]/45 text-[#f3c76a]"
+          className="retro-icon-button absolute left-0 top-[84px] h-12 w-12 text-[#f3c76a]"
           aria-label="向左浏览时间线"
         >
           <ChevronLeft size={20} />
         </motion.button>
         <motion.button
           whileHover={{ scale: 1.08, backgroundColor: "rgba(240,196,93,.1)" }}
-          className="absolute right-0 top-[84px] grid h-12 w-12 place-items-center rounded-full border border-[#c89a44]/45 text-[#f3c76a]"
+          className="retro-icon-button absolute right-0 top-[84px] h-12 w-12 text-[#f3c76a]"
           aria-label="向右浏览时间线"
         >
           <ChevronRight size={20} />
@@ -71,12 +71,12 @@ export default function YearTimeline() {
                 whileHover={{ y: -8 }}
                 className="relative z-10 flex w-[160px] flex-col items-center text-center"
               >
-                <div className="text-2xl font-black text-[#ffd24d]">{period.period}</div>
-                <div className="mt-2 text-xs text-[#d9a45b]">{period.label}</div>
+                <div className="retro-title text-2xl text-[#ffd24d]">{period.period}</div>
+                <div className="cassette-label cassette-label-muted mt-2">{period.label}</div>
                 <span className="mt-5 h-4 w-4 rounded-full bg-[#ffd24d] shadow-[0_0_18px_rgba(255,210,77,.55)]" />
                 <motion.div
                   whileHover={{ scale: 1.08, rotate: -1 }}
-                  className="mt-9 grid h-[112px] w-[112px] place-items-center overflow-hidden rounded-lg border border-[#d8ac55]/60 bg-[#140e09] p-1.5 shadow-[0_18px_42px_rgba(0,0,0,.35)]"
+                  className="archive-card mt-9 grid h-[112px] w-[112px] place-items-center overflow-hidden rounded-lg border border-[#d8ac55]/60 bg-[#140e09] p-1.5 shadow-[0_18px_42px_rgba(0,0,0,.35)]"
                 >
                   <Image
                     src={period.items[0].poster}

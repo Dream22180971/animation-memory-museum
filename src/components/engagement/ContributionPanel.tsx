@@ -72,26 +72,26 @@ export default function ContributionPanel() {
       <div className="grid gap-5 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
         <motion.div
           variants={itemVariants}
-          className="relative overflow-hidden rounded-xl border border-[#c89a44]/28 bg-[#120d08]/72 p-6 shadow-[0_18px_52px_rgba(0,0,0,.28)]"
+          className="museum-card rounded-xl p-6"
         >
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_10%,rgba(255,210,77,.18),transparent_32%),linear-gradient(135deg,rgba(255,210,77,.08),transparent_52%)]" />
           <div className="relative z-10">
-            <p className="mb-3 text-xs font-black uppercase tracking-[0.34em] text-[#f3c76a]/70">Join the Archive</p>
-            <h2 className="font-hand text-5xl leading-none text-[#fff6e8]">一起补全童年记忆</h2>
-            <p className="mt-5 text-base leading-8 text-[#d9c39a]/84">
+            <p className="archive-kicker mb-3 text-xs font-black text-[#f3c76a]/70">Join the Archive</p>
+            <h2 className="retro-title text-5xl leading-none text-[#fff6e8]">一起补全童年记忆</h2>
+            <p className="memory-text mt-5 text-base text-[#d9c39a]/84">
               先从一段文字开始。你可以写下某部动画、某句台词，或者放学后守在电视机前的一个瞬间。
             </p>
             <div className="mt-7 grid gap-3 text-sm font-bold text-[#ffe4a3] sm:grid-cols-3">
               {["写下动画", "留下回忆", "邀请朋友"].map((label, index) => (
-                <div key={label} className="rounded-lg border border-[#ffd24d]/18 bg-black/24 p-3">
-                  <span className="text-[#ffd24d]">0{index + 1}</span>
+                <div key={label} className="museum-card rounded-lg p-3">
+                  <span className="cassette-label">0{index + 1}</span>
                   <p className="mt-1">{label}</p>
                 </div>
               ))}
             </div>
             <button
               onClick={handleShare}
-              className="mt-7 inline-flex items-center gap-2 rounded-full border border-[#ffd24d]/34 bg-[#ffd24d]/12 px-5 py-3 text-sm font-black text-[#ffe4a3] transition hover:-translate-y-0.5 hover:border-[#ffd24d]/75 hover:bg-[#ffd24d]/22 hover:text-white"
+              className="retro-button retro-button-secondary mt-7 text-sm"
             >
               <Share2 size={17} />
               邀请朋友一起回忆
@@ -105,7 +105,7 @@ export default function ContributionPanel() {
         <motion.form
           variants={itemVariants}
           onSubmit={handleSubmit}
-          className="rounded-xl border border-[#c89a44]/30 bg-[#090806]/78 p-5 shadow-[0_18px_52px_rgba(0,0,0,.24)] sm:p-6"
+          className="museum-card rounded-xl p-5 sm:p-6"
         >
           <div className="mb-5 flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-xl border border-[#f0c45d]/30 bg-[#21160c] text-[#f0c45d]">
@@ -124,7 +124,7 @@ export default function ContributionPanel() {
               value={draft.animationName}
               onChange={(event) => updateDraft("animationName", event.target.value)}
               placeholder="例如：超兽武装"
-              className="mt-2 w-full rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+              className="retro-field mt-2 w-full rounded-lg px-4 py-3 text-sm outline-none transition"
             />
           </label>
 
@@ -136,7 +136,7 @@ export default function ContributionPanel() {
               onChange={(event) => updateDraft("memory", event.target.value)}
               placeholder="写一句最难忘的片段、台词或当时的心情。"
               rows={4}
-              className="mt-2 w-full resize-none rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm leading-6 text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+              className="retro-field mt-2 w-full resize-none rounded-lg px-4 py-3 text-sm leading-6 outline-none transition"
             />
           </label>
 
@@ -147,14 +147,14 @@ export default function ContributionPanel() {
               value={draft.nickname}
               onChange={(event) => updateDraft("nickname", event.target.value)}
               placeholder="例如：放学别跑"
-              className="mt-2 w-full rounded-lg border border-[#d8ac55]/24 bg-black/28 px-4 py-3 text-sm text-[#fff6e8] outline-none transition placeholder:text-[#d9c39a]/42 focus:border-[#ffd24d]/70"
+              className="retro-field mt-2 w-full rounded-lg px-4 py-3 text-sm outline-none transition"
             />
           </label>
 
           <div className="mt-5 flex flex-wrap items-center gap-3">
             <button
               type="submit"
-              className="inline-flex items-center gap-2 rounded-full bg-[#f5dfad] px-6 py-3 text-sm font-black text-[#21170d] transition hover:-translate-y-0.5 hover:bg-[#ffe9ba]"
+              className="retro-button retro-button-primary text-sm"
             >
               <PenLine size={17} />
               暂存这段回忆

@@ -20,9 +20,9 @@ export default function CRTFrame() {
             <div className="crt-screen-blue crt-scanlines relative grid aspect-[4/3] place-items-center overflow-hidden rounded-xl">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,transparent_35%,rgba(0,0,0,.48)_100%)]" />
               <div className="relative text-center text-[#f1d46f]">
-                <div className="font-hand text-4xl tracking-wider crt-glow">童年不散场</div>
-                <div className="font-hand mt-4 text-3xl tracking-[0.08em]">动画永远在播放...</div>
-                <div className="mx-auto mt-8 inline-flex items-center gap-3 text-xl font-black">
+                <div className="retro-title text-4xl crt-glow">童年不散场</div>
+                <div className="retro-title mt-4 text-3xl">动画永远在播放...</div>
+                <div className="archive-kicker mx-auto mt-8 inline-flex items-center gap-3 text-xl font-black">
                   <span>PLAY</span>
                   <Play size={20} fill="currentColor" />
                 </div>
