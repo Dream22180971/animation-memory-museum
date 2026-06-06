@@ -305,6 +305,66 @@ nextjs-portal {
   display: none !important;
 }
 
+/* ==================== Tag Cloud ==================== */
+
+.tag-cloud {
+  row-gap: 0.5rem;
+}
+
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.tag-pill:hover {
+  transform: translateY(-1px);
+}
+
+.tag-pill:active {
+  transform: translateY(0);
+}
+
+/* ==================== Latest Carousel (Swiper) ==================== */
+
+.latest-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.latest-swiper .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(201, 154, 69, 0.35);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.latest-swiper .swiper-pagination-bullet-active {
+  width: 24px;
+  border-radius: 4px;
+  background: #ffd24d;
+  box-shadow: 0 0 12px rgba(255, 210, 77, 0.4);
+}
+
+/* ==================== Search Input Fix ==================== */
+
+.retro-field {
+  outline: none;
+}
+
+.retro-field:focus {
+  box-shadow: inset 0 1px 10px rgba(0, 0, 0, 0.22), 0 0 0 2px rgba(255, 210, 77, 0.15);
+}
+
 .hero-room {
   background:
     linear-gradient(90deg, rgba(7, 6, 4, 0.3), rgba(7, 6, 4, 0.06) 42%, rgba(7, 6, 4, 0.34)),

@@ -1,6 +1,7 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import HeroSection from "@/components/hero/HeroSection";
+import LatestCarousel from "@/components/hero/LatestCarousel";
 import AnimationArchive from "@/components/archive/AnimationArchive";
 import ContributionPanel from "@/components/engagement/ContributionPanel";
 import YearTimeline from "@/components/timeline/YearTimeline";
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main>
         <HeroSection />
+        <LatestCarousel />
         <div className="site-shell immersive-shell -mt-1 border-y border-[#c99a45]/18 bg-[#080d0f]/88 shadow-[0_30px_100px_rgba(0,0,0,.35)] backdrop-blur-sm">
           <ContributionPanel />
           <AnimationArchive />
