@@ -2,6 +2,7 @@
   "animations": [
     {
       "id": 17,
+      "slug": "chaoshou-wuzhuang",
       "name": "超兽武装",
       "year": 2011,
       "genre": ["机甲", "热血", "科幻"],
@@ -19,11 +20,42 @@
           "line": "强者不会改变自己的信念。",
           "speaker": "超兽战士",
           "context": "热血信念"
+        },
+        {
+          "line": "爱是宇宙最强的能量。",
+          "speaker": "雪皇",
+          "context": "生命信念"
+        },
+        {
+          "line": "弱者没有资格要求公平。",
+          "speaker": "冥界阵营",
+          "context": "强弱法则"
+        },
+        {
+          "line": "喷泉的高度不会超过它的源头。",
+          "speaker": "玄易子",
+          "context": "信念上限"
+        },
+        {
+          "line": "天堂和地狱，没有我选择的权利。",
+          "speaker": "冥王",
+          "context": "命运独白"
+        },
+        {
+          "line": "这个世界本来就是强者的世界。",
+          "speaker": "冥王",
+          "context": "强者哲学"
+        },
+        {
+          "line": "当你经过七重的孤独，才能成为真正的强者。",
+          "speaker": "冥王",
+          "context": "孤独与强大"
         }
       ]
     },
     {
       "id": 5,
+      "slug": "zhuzhuxia",
       "name": "猪猪侠",
       "year": 2005,
       "genre": ["搞笑", "冒险", "童话"],
@@ -41,11 +73,42 @@
           "line": "勇敢一点，办法总会有的。",
           "speaker": "猪猪侠",
           "context": "童话冒险"
+        },
+        {
+          "line": "我是猪猪侠！",
+          "speaker": "猪猪侠",
+          "context": "主角登场"
+        },
+        {
+          "line": "人见人爱，花见花开。",
+          "speaker": "猪猪侠",
+          "context": "经典自我介绍"
+        },
+        {
+          "line": "怪兽见了就悲哀。",
+          "speaker": "猪猪侠",
+          "context": "经典口头禅"
+        },
+        {
+          "line": "不怕，我可以练习手语。",
+          "speaker": "猪猪侠",
+          "context": "搞笑对白"
+        },
+        {
+          "line": "虽然我长得帅。",
+          "speaker": "猪猪侠",
+          "context": "喜剧自恋"
+        },
+        {
+          "line": "菲菲，等着我。",
+          "speaker": "猪猪侠",
+          "context": "伙伴牵挂"
         }
       ]
     },
     {
       "id": 13,
+      "slug": "guobao-tegong",
       "name": "果宝特攻",
       "year": 2010,
       "genre": ["机甲", "搞笑", "战斗"],
@@ -63,11 +126,42 @@
           "line": "菠萝吹雪，参上！",
           "speaker": "菠萝吹雪",
           "context": "角色登场"
+        },
+        {
+          "line": "橙留香，来也！",
+          "speaker": "橙留香",
+          "context": "角色登场"
+        },
+        {
+          "line": "陆小果，来也！",
+          "speaker": "陆小果",
+          "context": "角色登场"
+        },
+        {
+          "line": "上官子怡，来也！",
+          "speaker": "上官子怡",
+          "context": "角色登场"
+        },
+        {
+          "line": "梨花诗，来也！",
+          "speaker": "梨花诗",
+          "context": "角色登场"
+        },
+        {
+          "line": "小果叮，来也！",
+          "speaker": "小果叮",
+          "context": "角色登场"
+        },
+        {
+          "line": "认贼作父，罪不容诛。",
+          "speaker": "果宝特攻",
+          "context": "戏仿名句"
         }
       ]
     },
     {
       "id": 14,
+      "slug": "luoluo-lixianji",
       "name": "洛洛历险记",
       "year": 2008,
       "genre": ["机甲", "热血", "冒险"],
@@ -85,11 +179,42 @@
           "line": "战争没有胜利者，只有幸存者。",
           "speaker": "机战王世界",
           "context": "战场感悟"
+        },
+        {
+          "line": "雷霆半月斩！",
+          "speaker": "霹雳火",
+          "context": "招式台词"
+        },
+        {
+          "line": "破空寒冰砍！",
+          "speaker": "急先锋",
+          "context": "招式台词"
+        },
+        {
+          "line": "泰山陨石坠！",
+          "speaker": "力霸天",
+          "context": "招式台词"
+        },
+        {
+          "line": "流影电光闪！",
+          "speaker": "龙卷风",
+          "context": "招式台词"
+        },
+        {
+          "line": "龙皇异次元！",
+          "speaker": "暴龙神",
+          "context": "招式台词"
+        },
+        {
+          "line": "机车族永不言败。",
+          "speaker": "机车族",
+          "context": "阵营信念"
         }
       ]
     },
     {
       "id": 6,
+      "slug": "hongmao-lantu-qixia",
       "name": "虹猫蓝兔七侠传",
       "year": 2006,
       "genre": ["武侠", "冒险", "励志"],
@@ -107,11 +232,42 @@
           "line": "长虹剑主，虹猫。",
           "speaker": "虹猫",
           "context": "侠义登场"
+        },
+        {
+          "line": "冰魄剑主，蓝兔。",
+          "speaker": "蓝兔",
+          "context": "七剑身份"
+        },
+        {
+          "line": "紫云剑主，莎丽。",
+          "speaker": "莎丽",
+          "context": "七剑身份"
+        },
+        {
+          "line": "奔雷剑主，大奔。",
+          "speaker": "大奔",
+          "context": "七剑身份"
+        },
+        {
+          "line": "雨花剑主，逗逗。",
+          "speaker": "逗逗",
+          "context": "七剑身份"
+        },
+        {
+          "line": "青光剑主，跳跳。",
+          "speaker": "跳跳",
+          "context": "七剑身份"
+        },
+        {
+          "line": "旋风剑主，达达。",
+          "speaker": "达达",
+          "context": "七剑身份"
         }
       ]
     },
     {
       "id": 15,
+      "slug": "shenbing-xiaojiang",
       "name": "神兵小将",
       "year": 2007,
       "genre": ["冒险", "奇幻", "战斗"],
@@ -129,6 +285,36 @@
           "line": "守护同伴，也守护这个世界。",
           "speaker": "小将们",
           "context": "冒险信念"
+        },
+        {
+          "line": "天晶兽，变身！",
+          "speaker": "南宫问天",
+          "context": "神兵唤醒"
+        },
+        {
+          "line": "玉灵龙，变身！",
+          "speaker": "北冥雪",
+          "context": "神兵唤醒"
+        },
+        {
+          "line": "神兵小将，出动！",
+          "speaker": "小将们",
+          "context": "队伍出发"
+        },
+        {
+          "line": "问天，出发！",
+          "speaker": "南宫问天",
+          "context": "冒险启程"
+        },
+        {
+          "line": "邪恶一定会被打败。",
+          "speaker": "小将们",
+          "context": "正义信念"
+        },
+        {
+          "line": "神兵天降。",
+          "speaker": "神兵小将",
+          "context": "主题记忆"
         }
       ]
     }
