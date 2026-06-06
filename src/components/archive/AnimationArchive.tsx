@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, ExternalLink, Star } from "lucide-react";
 import animations from "@/data/animations.json";
 
@@ -42,12 +43,14 @@ export default function AnimationArchive() {
             不做模糊截图堆叠，把每部动画整理成一张清晰、发光、适合停留的主题海报。
           </p>
         </div>
-        <motion.button
-          whileHover={{ x: 4, borderColor: "rgba(255,210,77,.75)" }}
+        <motion.div
+          whileHover={{ x: 4 }}
           className="flex w-fit items-center gap-2 rounded-full border border-[#d8ac55]/45 bg-[#ffd24d]/8 px-5 py-2 text-sm font-bold text-[#f4d57d]"
         >
-          查看全部 <ArrowRight size={16} />
-        </motion.button>
+          <Link href="/archive" className="inline-flex items-center gap-2">
+            查看全部 <ArrowRight size={16} />
+          </Link>
+        </motion.div>
       </motion.div>
 
       <div className="archive-wall grid gap-4 md:grid-cols-2 xl:grid-cols-3">
