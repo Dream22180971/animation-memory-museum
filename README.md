@@ -77,8 +77,7 @@
 > 待部署后补充截图
 
 | 首页 Hero | 动画档案 | 经典台词 |
-|-----------|----------|----------|
-| ![Hero](screenshots/hero.png) | ![Archive](screenshots/archive.png) | ![Quotes](screenshots/quotes.png) |
+
 
 ---
 
