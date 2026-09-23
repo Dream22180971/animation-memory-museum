@@ -147,6 +147,23 @@ data.animations.forEach((animation, index) => {
         fail(`${relationPath}.to`, `「${relation.to}」不在 characters 中`);
       }
     });
+
+    // 图谱里不该有孤岛：每位角色至少要有段可溯源的羁绊
+    if (Array.isArray(animation.characters)) {
+      const linked = new Set();
+      animation.relations.forEach((relation) => {
+        if (relation && typeof relation === "object") {
+          linked.add(relation.from);
+          linked.add(relation.to);
+        }
+      });
+      const orphans = animation.characters
+        .filter((character) => character && !linked.has(character.name))
+        .map((character) => character?.name);
+      if (orphans.length > 0) {
+        fail(`${path}.relations`, `以下角色没有任何羁绊：${orphans.join("、")}`);
+      }
+    }
   }
 });
 
