@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "validate:data": "node scripts/validate-data.mjs",
     "prebuild": "npm run validate:data",
     "start": "next start",

@@ -110,6 +110,8 @@ npm run validate:data # 校验 animations.json Schema
 npm run test:e2e     # Playwright 端到端测试（桌面 + 移动）
 ```
 
+> **`npm run build` 上的 `--webpack` 不要去掉。** Next 16 默认的 Turbopack 构建会把 framer-motion 逐路由复制 7 份（实测每条路由多加载约 950KB JS），首页因此变成约 5.4MB；改用 webpack 后共享 chunk 正常，framer-motion 只有一份。改之前请先用 `npx next build` 对比 `.next/static/chunks` 里 `MotionValue` 命中的文件数。
+
 ---
 
 ## 技术架构

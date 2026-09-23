@@ -58,7 +58,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`whitespace-nowrap text-sm font-medium transition-colors hover:text-[#f6d67e] ${
+                  className={`whitespace-nowrap text-sm font-normal transition-colors hover:text-[#f6d67e] ${
                     isActive ? "text-[#f6d67e]" : "text-[#f8efd8]/82"
                   }`}
                 >
