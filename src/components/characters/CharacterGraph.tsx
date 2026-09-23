@@ -9,8 +9,8 @@ import type {
 import Link from "next/link";
 import { animate, AnimatePresence, motion, useMotionValue, useReducedMotion } from "framer-motion";
 import { BookOpen, Hand, Link2, Maximize2, Minus, Network, Plus, RotateCcw, Sparkles, Tags, Users, X } from "lucide-react";
-import { animations } from "@/lib/animations";
-import type { AnimationRecord } from "@/lib/animations";
+import { animations, type AnimationRecord } from "@/lib/animations";
+import { FEEDBACK_URL } from "@/lib/constants";
 
 const W = 960;
 const H = 620;
@@ -1084,12 +1084,14 @@ function CharacterCard({
           {profile?.bio ? (
             <p className="memory-text mt-1.5 text-sm leading-6 text-[#e6cf9f]">{profile.bio}</p>
           ) : (
-            <Link
-              href="/#contribute"
+            <a
+              href={FEEDBACK_URL}
+              target="_blank"
+              rel="noreferrer noopener"
               className="mt-1.5 inline-block text-sm text-[#e6cf9f]/78 underline decoration-dotted underline-offset-4 transition hover:text-[#ffd24d]"
             >
-              这段人物小传待考证 · 来补资料源
-            </Link>
+              这段人物小传待考证 · 提 issue 补资料源
+            </a>
           )}
           {profile?.sourceUrl ? (
             <a

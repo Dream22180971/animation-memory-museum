@@ -8,7 +8,7 @@ import { SITE_NAME } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: `完整动画档案 | ${SITE_NAME}`,
-  description: "浏览 00 后国产动画完整档案，按年份、类型和来源筛选馆藏收录与用户贡献的童年动画记忆。",
+  description: "浏览 00 后国产动画完整档案，按年份与类型筛选已核对来源的馆藏收录。",
 };
 
 export default function ArchivePage() {
@@ -29,7 +29,7 @@ export default function ArchivePage() {
                 完整动画档案
               </h1>
               <p className="memory-text mt-6 max-w-3xl text-base text-[#d9c39a]/84">
-                这里承接首页的精选展柜，集中展示所有馆藏动画，并预留用户贡献内容。你可以按类型、年份和来源筛选，也可以搜索记忆里的关键词。
+                这里承接首页的精选展柜，集中展示所有馆藏动画。每一条都核对过公开来源；你自己的回忆写在回忆册里，不混进这份档案。你可以按类型、年份筛选，也可以搜索记忆里的关键词。
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -38,7 +38,7 @@ export default function ArchivePage() {
                 className="retro-button retro-button-primary text-sm"
               >
                 <PenLine size={17} />
-                贡献动画
+                写进我的回忆册
               </Link>
               <span className="cassette-label px-5 py-3 text-sm">
                 <Database size={17} />

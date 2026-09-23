@@ -19,6 +19,6 @@ export const NAV_LINKS = [
 export const SECTION_LINKS = [
   { label: "年代时间线", href: "/#timeline" },
   { label: "动画歌曲", href: "/#songs" },
-  { label: "贡献回忆", href: "/#contribute" },
+  { label: "我的回忆册", href: "/#contribute" },
   { label: "关于我们", href: "/about" },
 ] as const;

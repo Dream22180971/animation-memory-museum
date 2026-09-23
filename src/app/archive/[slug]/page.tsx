@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import animationsData from "@/data/animations.json";
 import { getAnimationBySlug } from "@/lib/animations";
-import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { FEEDBACK_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
 
 type ArchiveDetailProps = {
   params: Promise<{ slug: string }>;
@@ -135,7 +135,7 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                   className="retro-button retro-button-ghost text-sm"
                 >
                   <PenLine size={17} />
-                  贡献这部动画的回忆
+                  写进我的回忆册
                 </Link>
                 <ShareDetailButton name={animation.name} url={detailUrl} />
               </div>
@@ -170,19 +170,21 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                     </figcaption>
                   </figure>
                 ) : (
-                  <Link
+                  <a
                     key={`quote-placeholder-${index}`}
-                    href="/#contribute"
+                    href={FEEDBACK_URL}
+                    target="_blank"
+                    rel="noreferrer noopener"
                     className="museum-card group rounded-xl border-dashed p-5 transition hover:-translate-y-1 hover:border-[#ffd24d]/55"
                   >
                     <p className="archive-kicker text-[11px] font-black text-[#f2c96a]/68">
                       Quote {String(index + 1).padStart(2, "0")}
                     </p>
-                    <p className="mt-4 text-xl font-black leading-snug text-[#fff7e8]/78">待补充经典台词</p>
+                    <p className="mt-4 text-xl font-black leading-snug text-[#fff7e8]/78">这条台词待考证</p>
                     <p className="mt-4 text-sm font-bold leading-6 text-[#e6bd70]/72 group-hover:text-[#ffe4a3]">
-                      记得这部动画的名场面？来补一句。
+                      记得这部动画的名场面？提 issue 补一条，核对后入馆。
                     </p>
-                  </Link>
+                  </a>
                 ),
               )}
             </div>

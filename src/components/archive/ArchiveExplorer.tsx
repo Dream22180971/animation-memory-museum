@@ -1,34 +1,22 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpDown, ExternalLink, Library, PenLine, Search, SlidersHorizontal, Sparkles } from "lucide-react";
 import animationsData from "@/data/animations.json";
 
-const USER_CONTRIBUTIONS_KEY = "animation-memory-user-contributions";
-
 type OfficialAnimation = (typeof animationsData.animations)[number];
-
-type UserContribution = {
-  animationName: string;
-  memory: string;
-  nickname: string;
-  createdAt: string;
-};
 
 type ArchiveItem = {
   id: string;
-  slug?: string;
+  slug: string;
   name: string;
-  year: number | null;
+  year: number;
   genres: string[];
   description: string;
   poster: string;
-  source: "official" | "user";
-  baikeUrl?: string;
-  contributor?: string;
-  createdAt?: string;
+  baikeUrl: string;
 };
 
 const allGenres = Array.from(new Set(animationsData.animations.flatMap((item) => item.genre))).sort();
@@ -42,48 +30,17 @@ const toArchiveItem = (animation: OfficialAnimation): ArchiveItem => ({
   genres: animation.genre,
   description: animation.description,
   poster: animation.poster,
-  source: "official",
   baikeUrl: animation.baikeUrl,
-});
-
-const contributionToArchiveItem = (contribution: UserContribution, index: number): ArchiveItem => ({
-  id: `user-${contribution.createdAt}-${index}`,
-  name: contribution.animationName,
-  year: null,
-  genres: ["用户贡献"],
-  description: contribution.memory,
-  poster: "/images/memories/tv-room-hero-4k.jpg",
-  source: "user",
-  contributor: contribution.nickname,
-  createdAt: contribution.createdAt,
 });
 
 export default function ArchiveExplorer() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState("全部类型");
   const [year, setYear] = useState("全部年份");
-  const [source, setSource] = useState("全部来源");
   const [sort, setSort] = useState("最新收录");
-  const [userItems, setUserItems] = useState<UserContribution[]>([]);
 
-  useEffect(() => {
-    const frame = window.requestAnimationFrame(() => {
-      try {
-        const savedItems = JSON.parse(window.localStorage.getItem(USER_CONTRIBUTIONS_KEY) || "[]") as UserContribution[];
-        setUserItems(savedItems);
-      } catch {
-        setUserItems([]);
-      }
-    });
-
-    return () => window.cancelAnimationFrame(frame);
-  }, []);
-
-  const archiveItems = useMemo(() => {
-    const officialItems = animationsData.animations.map(toArchiveItem);
-    const contributionItems = userItems.map(contributionToArchiveItem);
-    return [...officialItems, ...contributionItems];
-  }, [userItems]);
+  // 本机回忆不再混进档案列表：那是私人册子，不是馆藏
+  const archiveItems = useMemo(() => animationsData.animations.map(toArchiveItem), []);
 
   const filteredItems = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -95,31 +52,24 @@ export default function ArchiveExplorer() {
           item.description.toLowerCase().includes(normalizedQuery) ||
           item.genres.some((itemGenre) => itemGenre.toLowerCase().includes(normalizedQuery));
         const matchesGenre = genre === "全部类型" || item.genres.includes(genre);
-        const matchesYear = year === "全部年份" || String(item.year ?? "待补充") === year;
-        const matchesSource =
-          source === "全部来源" ||
-          (source === "馆藏收录" && item.source === "official") ||
-          (source === "用户贡献" && item.source === "user");
+        const matchesYear = year === "全部年份" || String(item.year) === year;
 
-        return matchesQuery && matchesGenre && matchesYear && matchesSource;
+        return matchesQuery && matchesGenre && matchesYear;
       })
       .sort((a, b) => {
-        if (sort === "年份从早到晚") return (a.year ?? 9999) - (b.year ?? 9999);
-        if (sort === "年份从晚到早") return (b.year ?? 0) - (a.year ?? 0);
+        if (sort === "年份从早到晚") return a.year - b.year;
+        if (sort === "年份从晚到早") return b.year - a.year;
         if (sort === "名称排序") return a.name.localeCompare(b.name, "zh-CN");
-        if (sort === "最新收录" && a.source !== b.source) return a.source === "user" ? -1 : 1;
         return 0;
       });
-  }, [archiveItems, genre, query, sort, source, year]);
+  }, [archiveItems, genre, query, sort, year]);
 
-  const userYearOptions = userItems.length > 0 ? ["待补充"] : [];
-  const yearOptions = ["全部年份", ...allYears.map(String), ...userYearOptions];
+  const yearOptions = ["全部年份", ...allYears.map(String)];
 
   const resetFilters = () => {
     setQuery("");
     setGenre("全部类型");
     setYear("全部年份");
-    setSource("全部来源");
     setSort("最新收录");
   };
 
@@ -139,10 +89,9 @@ export default function ArchiveExplorer() {
           />
         </label>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
           <FilterSelect label="类型" value={genre} onChange={setGenre} options={["全部类型", ...allGenres]} />
           <FilterSelect label="年份" value={year} onChange={setYear} options={yearOptions} />
-          <FilterSelect label="来源" value={source} onChange={setSource} options={["全部来源", "馆藏收录", "用户贡献"]} />
           <FilterSelect label="排序" value={sort} onChange={setSort} options={["最新收录", "年份从晚到早", "年份从早到晚", "名称排序"]} />
         </div>
       </div>
@@ -154,7 +103,6 @@ export default function ArchiveExplorer() {
             {filteredItems.length} / {archiveItems.length} 条档案
           </span>
           <span className="cassette-label cassette-label-muted">馆藏 {animationsData.animations.length}</span>
-          <span className="cassette-label cassette-label-muted">用户贡献 {userItems.length}</span>
         </div>
         <button
           onClick={resetFilters}
@@ -181,18 +129,15 @@ export default function ArchiveExplorer() {
 
               <div className="relative z-10 flex min-h-[330px] flex-col justify-between p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="cassette-label">
-                    {item.source === "official" ? "馆藏收录" : "用户贡献"}
-                  </span>
+                  <span className="cassette-label">馆藏收录</span>
                   <span className="cassette-label cassette-label-muted">
-                    {item.year ?? "年份待补"}
+                    {item.year}
                   </span>
                 </div>
 
                 <div>
                   <h2 className="retro-title text-4xl leading-none text-[#fff6e8]">{item.name}</h2>
                   <p className="memory-text mt-4 line-clamp-3 text-sm text-[#f0ddba]/84">{item.description}</p>
-                  {item.contributor ? <p className="mt-2 text-xs font-bold text-[#e6bd70]/78">回忆提供者：{item.contributor}</p> : null}
 
                   <div className="mt-5 flex flex-wrap gap-2">
                     {item.genres.map((itemGenre) => (
@@ -203,31 +148,27 @@ export default function ArchiveExplorer() {
                   </div>
 
                   <div className="mt-5 flex flex-wrap gap-2">
-                    {item.slug ? (
-                      <Link
-                        href={`/archive/${item.slug}`}
-                        className="retro-button retro-button-primary text-xs"
-                      >
-                        查看详情
-                      </Link>
-                    ) : null}
-                    {item.baikeUrl ? (
-                      <a
-                        href={item.baikeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="retro-button retro-button-secondary text-xs"
-                      >
-                        百度百科
-                        <ExternalLink size={14} />
-                      </a>
-                    ) : null}
+                    <Link
+                      href={`/archive/${item.slug}`}
+                      className="retro-button retro-button-primary text-xs"
+                    >
+                      查看详情
+                    </Link>
+                    <a
+                      href={item.baikeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="retro-button retro-button-secondary text-xs"
+                    >
+                      百度百科
+                      <ExternalLink size={14} />
+                    </a>
                     <Link
                       href="/#contribute"
                       className="retro-button retro-button-ghost text-xs"
                     >
                       <PenLine size={14} />
-                      补充回忆
+                      写进我的回忆册
                     </Link>
                   </div>
                 </div>
@@ -239,13 +180,15 @@ export default function ArchiveExplorer() {
         <div className="museum-card mt-6 rounded-xl p-8 text-center">
           <Sparkles className="mx-auto text-[#ffd24d]" size={28} />
           <h2 className="retro-title mt-4 text-4xl text-[#fff6e8]">这部动画还没被找到</h2>
-          <p className="memory-text mx-auto mt-3 max-w-xl text-sm text-[#d9c39a]/82">也许它正等你来补全。换个关键词试试，或者先去贡献一段回忆。</p>
+          <p className="memory-text mx-auto mt-3 max-w-xl text-sm text-[#d9c39a]/82">
+            馆藏里还没有它。换个关键词试试，或者把它先写进你自己的回忆册。
+          </p>
           <Link
             href="/#contribute"
             className="retro-button retro-button-primary mt-5 text-sm"
           >
             <PenLine size={16} />
-            贡献这部动画
+            写进我的回忆册
           </Link>
         </div>
       )}

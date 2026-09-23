@@ -32,7 +32,7 @@ export default function HeroContent() {
         这里收藏着 00 后记忆里的国产动画。把热血、感动、晚饭前的电视光，整理成一间可以慢慢逛的数字展厅。
       </p>
       <div className="mt-7 max-w-[590px] rounded-xl border border-[#ffd24d]/24 bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-[#ffe2a0] shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-md">
-        {slogan} 目前已整理 {animationsData.animations.length} 部馆藏，一起补全我们的童年动画记忆库。
+        {slogan} 目前已整理 {animationsData.animations.length} 部馆藏，每条都核对过来源；你自己的那一份童年，写进属于你的回忆册。
       </div>
       <div className="mt-9 flex flex-wrap gap-3">
         <button
@@ -47,7 +47,7 @@ export default function HeroContent() {
           className="retro-button retro-button-secondary retro-button-lg"
         >
           <PenLine size={20} />
-          贡献我的回忆
+          写进我的回忆册
         </button>
       </div>
     </motion.div>
