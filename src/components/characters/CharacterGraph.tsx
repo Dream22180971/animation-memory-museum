@@ -8,7 +8,7 @@ import type {
 } from "react";
 import Link from "next/link";
 import { animate, AnimatePresence, motion, useMotionValue, useReducedMotion } from "framer-motion";
-import { BookOpen, Hand, Link2, Maximize2, Minus, Network, Plus, RotateCcw, Sparkles, Users, X } from "lucide-react";
+import { BookOpen, Hand, Link2, Maximize2, Minus, Network, Plus, RotateCcw, Sparkles, Tags, Users, X } from "lucide-react";
 import { animations } from "@/lib/animations";
 import type { AnimationRecord } from "@/lib/animations";
 
@@ -22,6 +22,19 @@ const MAX_K = 3.2;
 const CLICK_SLOP = 4;
 const MARGIN_X = 112;
 const MARGIN_Y = 104;
+
+/** 馆藏里有 45 种关系措辞，逐条上色读不过来，先收敛成语义族 */
+const RELATION_FAMILIES = [
+  { key: "kin", label: "亲缘与情感", color: "#ff8fa3", match: /兄妹|夫妻|恋人|暗恋|青梅竹马|暧昧|父子|兄弟|母女|姐妹/ },
+  { key: "lineage", label: "师承与统属", color: "#61c7bb", match: /师徒|师生|传人|传承|统帅|麾下|队长|队员/ },
+  { key: "bond", label: "同伴与战友", color: "#ffd24d", match: /同伴|伙伴|搭档|战友|小队|好友|结盟|同盟|协同|守护|并肩|护送/ },
+  { key: "rival", label: "对手与宿敌", color: "#ff7a5c", match: /对手|宿敌|敌对|先敌|争|同代/ },
+] as const;
+
+const OTHER_FAMILY = { key: "other", label: "其他羁绊", color: "#c9a25f" } as const;
+
+const familyOf = (label: string) =>
+  RELATION_FAMILIES.find((family) => family.match.test(label)) ?? OTHER_FAMILY;
 
 type Point = { x: number; y: number };
 
@@ -200,6 +213,7 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
   const [isPanning, setIsPanning] = useState(false);
   const [zoomLabel, setZoomLabel] = useState(100);
   const [gestureOn, setGestureOn] = useState(false);
+  const [showEdgeLabels, setShowEdgeLabels] = useState(false);
 
   const isCoarse = useSyncExternalStore(
     (onChange) => {
@@ -549,6 +563,7 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
           const ctrlY = midY + (CY - midY) * 0.17;
           return {
             ...relation,
+            family: familyOf(relation.label),
             x1: from.x,
             y1: from.y,
             x2: to.x,
@@ -574,6 +589,17 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
     });
     return names;
   }, [activeName, animation.relations]);
+
+  const legendRows = useMemo(() => {
+    const counts = new Map<string, { key: string; label: string; color: string; count: number }>();
+    animation.relations.forEach((relation) => {
+      const family = familyOf(relation.label);
+      const row = counts.get(family.key);
+      if (row) row.count += 1;
+      else counts.set(family.key, { key: family.key, label: family.label, color: family.color, count: 1 });
+    });
+    return [...counts.values()];
+  }, [animation.relations]);
 
   const flow = reduceMotion ? undefined : "constellation-flow";
   const drift = reduceMotion ? undefined : "constellation-drift";
@@ -611,6 +637,15 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
         >
           <RotateCcw size={14} />
           <span className="text-[11px] font-black">重新排布</span>
+        </button>
+        <button
+          type="button"
+          className="graph-tool gap-1.5 px-3"
+          aria-pressed={showEdgeLabels}
+          onClick={() => setShowEdgeLabels((prev) => !prev)}
+        >
+          <Tags size={14} />
+          <span className="text-[11px] font-black">关系标签</span>
         </button>
         {isCoarse ? (
           <button
@@ -707,61 +742,64 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
             {relationEdges.map((edge, index) => {
               const lit = !activeName || edge.from === activeName || edge.to === activeName;
               const width = labelWidth(edge.label);
+              const showLabel = showEdgeLabels || Boolean(activeName && lit);
               return (
                 <g
                   key={`rel-${index}`}
-                  opacity={lit ? 1 : 0.18}
+                  opacity={lit ? 1 : 0.2}
                   style={{ transition: "opacity .25s ease" }}
                 >
                   <path
                     d={edge.path}
                     fill="none"
-                    stroke={ink}
-                    strokeOpacity={lit ? 0.15 : 0.07}
+                    stroke={edge.family.color}
+                    strokeOpacity={lit ? 0.18 : 0.07}
                     strokeWidth={lit ? 12 : 7}
                     strokeLinecap="round"
                   />
                   <path
                     d={edge.path}
                     fill="none"
-                    stroke={lit ? "#ffe4a3" : "#d8ac55"}
-                    strokeOpacity={lit ? 0.95 : 0.6}
-                    strokeWidth={lit ? 3 : 2.2}
+                    stroke={edge.family.color}
+                    strokeOpacity={lit ? 0.95 : 0.55}
+                    strokeWidth={lit ? 3.2 : 2.2}
                     strokeLinecap="round"
                   />
                   <path
                     d={edge.path}
                     fill="none"
                     stroke="#fff6e8"
-                    strokeOpacity={lit ? 0.85 : 0}
+                    strokeOpacity={lit ? 0.8 : 0}
                     strokeWidth="2"
                     strokeLinecap="round"
                     strokeDasharray={`8 ${Math.max(edge.length - 8, 26)}`}
                     className={flow}
                   />
-                  <g transform={`translate(${edge.mx} ${edge.my})`}>
-                    <rect
-                      x={-width / 2}
-                      y={-12}
-                      width={width}
-                      height="24"
-                      rx="12"
-                      fill="#0a0805"
-                      stroke={ink}
-                      strokeOpacity={lit ? 0.5 : 0.2}
-                      strokeWidth="1"
-                    />
-                    <text
-                      textAnchor="middle"
-                      y="4.5"
-                      fontSize="12.5"
-                      fontWeight="800"
-                      letterSpacing="1"
-                      fill={lit ? "#ffd88a" : "#a98a52"}
-                    >
-                      {edge.label}
-                    </text>
-                  </g>
+                  {showLabel ? (
+                    <g transform={`translate(${edge.mx} ${edge.my})`}>
+                      <rect
+                        x={-width / 2}
+                        y={-12}
+                        width={width}
+                        height="24"
+                        rx="12"
+                        fill="#0a0805"
+                        stroke={edge.family.color}
+                        strokeOpacity={lit ? 0.75 : 0.25}
+                        strokeWidth="1"
+                      />
+                      <text
+                        textAnchor="middle"
+                        y="4.5"
+                        fontSize="12.5"
+                        fontWeight="800"
+                        letterSpacing="1"
+                        fill={lit ? edge.family.color : "#a98a52"}
+                      >
+                        {edge.label}
+                      </text>
+                    </g>
+                  ) : null}
                 </g>
               );
             })}
@@ -869,11 +907,9 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
           </p>
         </div>
 
-        {selected ? null : (
-          <p className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-mono text-[10px] font-black tracking-[0.22em] text-[#d9c39a]/62">
-            {animation.characters.length} 位角色 · {animation.relations.length} 段羁绊
-          </p>
-        )}
+        <p className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-mono text-[10px] font-black tracking-[0.2em] text-[#d9c39a]/62">
+          节点 {animation.characters.length} · 边 {animation.relations.length} · 选中 {selected ?? "无"}
+        </p>
 
         <AnimatePresence>
           {selected ? (
@@ -909,9 +945,20 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
             ))}
           </ul>
         </div>
-        <div className="text-sm leading-6 text-[#d9c39a]/70">
-          <p className="archive-kicker text-[11px] font-black text-[#d8ac55]/70">图例</p>
-          <p className="mt-2">金色弧线：已核实的角色关系；点选角色后，淡虚线标出同框伙伴。</p>
+        <div className="text-sm leading-6 text-[#d9c39a]/78">
+          <p className="archive-kicker text-[11px] font-black text-[#d8ac55]/70">关系图例</p>
+          <ul className="mt-2 flex flex-wrap gap-x-4 gap-y-1.5">
+            {legendRows.map((row) => (
+              <li key={row.key} className="flex items-center gap-1.5 text-[12px] font-bold">
+                <span className="h-[3px] w-6 rounded-full" style={{ background: row.color }} />
+                <span className="text-[#f0ddba]/90">{row.label}</span>
+                <span className="font-mono text-[10px] text-[#d9c39a]/60">{row.count}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-2 text-[12px] leading-5 text-[#d9c39a]/70">
+            默认只画线不画标签；鼠标移到角色上、或打开「关系标签」，才显出每一段的原文。
+          </p>
           <Link
             href={`/archive/${animation.slug}`}
             className="retro-button retro-button-ghost mt-3 inline-flex text-xs"

@@ -146,6 +146,12 @@ test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放",
   await expect(zoom).toHaveText("100%");
 
   const region = page.getByRole("region", { name: "超兽武装角色关系图" });
+  await expect(page.getByText("关系图例")).toBeVisible();
+  await expect(page.getByText("同伴与战友")).toBeVisible();
+  await expect(region.locator("svg").getByText("先敌后友")).toHaveCount(0);
+  await page.getByRole("button", { name: "关系标签" }).click();
+  await expect(region.locator("svg").getByText("先敌后友")).toBeVisible();
+
   const gestureToggle = page.getByRole("button", { name: /画布手势/ });
   if (test.info().project.name === "mobile-chromium") {
     await expect(gestureToggle).toBeVisible();
