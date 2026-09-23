@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Geist_Mono, Ma_Shan_Zheng, Noto_Sans_SC } from "next/font/google";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/constants";
 import "./globals.css";
@@ -49,8 +50,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className={`${notoSansSC.variable} ${geistMono.variable} ${maShanZheng.variable}`}>
-      <body className="min-h-screen bg-background text-foreground">{children}</body>
+    <html lang="zh-CN" data-scroll-behavior="smooth" className={`${notoSansSC.variable} ${geistMono.variable} ${maShanZheng.variable}`}>
+      <body className="min-h-screen bg-background text-foreground">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
