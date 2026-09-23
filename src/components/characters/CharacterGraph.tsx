@@ -800,6 +800,7 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
                     transition={{ delay: 0.08 + index * 0.05, type: "spring", stiffness: 260, damping: 18 }}
                   >
                     <motion.g
+                      initial={false}
                       animate={{
                         scale: dimmed ? 0.9 : isActive ? 1.14 : 1,
                         opacity: dimmed ? 0.3 : 1,
