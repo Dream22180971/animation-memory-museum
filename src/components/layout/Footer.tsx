@@ -1,4 +1,8 @@
-import { AUTHOR_GITHUB, COPYRIGHT_YEAR, FEEDBACK_URL, REPOSITORY_URL, SITE_NAME, SITE_NAME_EN } from "@/lib/constants";
+import Link from "next/link";
+import { AUTHOR_GITHUB, COPYRIGHT_YEAR, FEEDBACK_URL, NAV_LINKS, REPOSITORY_URL, SECTION_LINKS, SITE_NAME, SITE_NAME_EN } from "@/lib/constants";
+
+/** 移动端没有常驻导航，页脚是到达各展区的第二条路径 */
+const SITE_LINKS = [...NAV_LINKS.filter((link) => link.href !== "/"), ...SECTION_LINKS];
 
 export default function Footer() {
   return (
@@ -8,12 +12,16 @@ export default function Footer() {
           <div className="retro-title text-3xl text-[#fff3dc]">{SITE_NAME}</div>
           <div className="archive-kicker mt-1 text-xs">{SITE_NAME_EN}</div>
         </div>
-        <div className="flex flex-wrap gap-x-8 gap-y-3 text-[#fff0d6]">
-          <a className="transition hover:text-[#f6d67e]" href="/about">关于我们</a>
+        <nav aria-label="页脚导航" className="flex flex-wrap gap-x-8 gap-y-3 text-[#fff0d6]">
+          {SITE_LINKS.map((link) => (
+            <Link key={link.href} className="transition hover:text-[#f6d67e]" href={link.href}>
+              {link.label}
+            </Link>
+          ))}
           <a className="transition hover:text-[#f6d67e]" href={AUTHOR_GITHUB} target="_blank" rel="noreferrer">联系作者</a>
           <a className="transition hover:text-[#f6d67e]" href={FEEDBACK_URL} target="_blank" rel="noreferrer">GitHub 反馈</a>
           <a className="transition hover:text-[#f6d67e]" href={REPOSITORY_URL} target="_blank" rel="noreferrer">项目仓库</a>
-        </div>
+        </nav>
         <div className="text-xs">© {COPYRIGHT_YEAR} {SITE_NAME}. 我们仍然怀念过去的童年。</div>
       </div>
     </footer>

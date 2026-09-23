@@ -3,13 +3,14 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Search, Sun } from "lucide-react";
-import { NAV_LINKS, SITE_NAME, SITE_NAME_EN } from "@/lib/constants";
+import { Menu, Search, X } from "lucide-react";
+import { NAV_LINKS, SECTION_LINKS, SITE_NAME, SITE_NAME_EN } from "@/lib/constants";
 import GlobalSearch from "@/components/search/GlobalSearch";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   const closeSearch = useCallback(() => setSearchOpen(false), []);
@@ -75,11 +76,35 @@ export default function Navbar() {
             >
               <Search size={18} />
             </button>
-            <button className="retro-icon-button h-10 w-10" aria-label="切换主题">
-              <Sun size={20} />
-            </button>
+            <div className="md:hidden">
+              <button
+                className="retro-icon-button h-10 w-10"
+                aria-label={menuOpen ? "关闭菜单" : "打开菜单"}
+                aria-expanded={menuOpen}
+                onClick={() => setMenuOpen((prev) => !prev)}
+              >
+                {menuOpen ? <X size={18} /> : <Menu size={18} />}
+              </button>
+            </div>
           </div>
         </div>
+
+        {menuOpen ? (
+          <div className="border-t border-[#e0b85d]/15 bg-[#070705]/96 px-5 pb-4 pt-2 backdrop-blur-xl md:hidden">
+            <div className="grid grid-cols-2 gap-x-4">
+              {[...NAV_LINKS, ...SECTION_LINKS].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="whitespace-nowrap rounded-lg px-2 py-2.5 text-sm font-bold text-[#f8efd8]/85 transition hover:bg-[#ffd24d]/10 hover:text-[#f6d67e]"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </nav>
 
       <GlobalSearch open={searchOpen} onClose={closeSearch} />
