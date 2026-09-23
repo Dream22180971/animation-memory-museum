@@ -68,7 +68,7 @@ export default function AboutPage() {
               </div>
 
               <div className="about-crt archive-card relative overflow-hidden rounded-[1.2rem] border border-[#c99a45]/26 bg-[#080806]/74 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
-                <div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[url('/images/memories/tv-room-hero-4k.jpg')] bg-cover bg-center shadow-[inset_0_0_90px_rgba(0,0,0,.52)]">
+                <div className="relative aspect-[16/11] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[url('/images/memories/tv-room-hero.webp')] bg-cover bg-center shadow-[inset_0_0_90px_rgba(0,0,0,.52)]">
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_48%_43%,rgba(255,210,77,.12),transparent_30%),linear-gradient(180deg,transparent,rgba(0,0,0,.72))]" />
                   <div className="crt-scanlines absolute inset-0" />
                   <div className="absolute bottom-5 left-5 right-5">

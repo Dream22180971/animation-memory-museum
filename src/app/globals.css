@@ -368,7 +368,7 @@ nextjs-portal {
 .hero-room {
   background:
     linear-gradient(90deg, rgba(7, 6, 4, 0.3), rgba(7, 6, 4, 0.06) 42%, rgba(7, 6, 4, 0.34)),
-    url("/images/memories/tv-room-hero-4k.jpg");
+    url("/images/memories/tv-room-hero.webp");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -429,7 +429,7 @@ nextjs-portal {
   opacity: .34;
   background:
     linear-gradient(12deg, rgba(232, 183, 86, .28), rgba(40, 25, 18, .6)),
-    url("/images/posters/rainbow-rabbit-hd.png");
+    url("/images/posters/rainbow-rabbit.webp");
   background-size: cover;
   background-position: center;
   border: 1px solid rgba(216, 172, 85, .22);

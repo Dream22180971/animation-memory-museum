@@ -152,7 +152,7 @@ export const deriveTimeline = (): (TimelinePeriod & { placeholder?: boolean })[]
         {
           name: "记忆仍在继续",
           year: 2015,
-          poster: "/images/memories/tv-room-hero-4k.jpg",
+          poster: "/images/memories/tv-room-hero.webp",
           slug: "",
         },
       ],
