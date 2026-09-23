@@ -137,15 +137,33 @@ test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放",
 
   const node = page.getByRole("button", { name: /^角色 泰雷/ });
   await node.hover();
+  // 等 framer-motion 入场缩放落位：节点 <g> 的 transform 不随缩放变，但屏幕中心会变。
+  // 并发 / 冷编译下若动画未完就取坐标，按下点会偏离圆心、命中背景 —— CI flaky 的根因。
+  await expect
+    .poll(
+      async () => {
+        const a = await node.evaluate((el) => { const r = el.getBoundingClientRect(); return `${Math.round(r.x)} ${Math.round(r.y)}`; });
+        await page.waitForTimeout(80);
+        const b = await node.evaluate((el) => { const r = el.getBoundingClientRect(); return `${Math.round(r.x)} ${Math.round(r.y)}`; });
+        return a === b ? "stable" : "moving";
+      },
+      { timeout: 5000 },
+    )
+    .toBe("stable");
   const transformBefore = await node.getAttribute("transform");
-  const box = await node.boundingBox();
+  // 起点用节点自身 getBoundingClientRect（与组件 toViewBox 同一坐标系）。
+  // boundingBox() 走 hit-testing，会受 framer-motion 缩放动画影响而偏离圆心，
+  // 按下点一旦落在圆外就命中背景、拖拽失效——正是 CI 上偶发的原因。
+  const start = await node.evaluate((el) => {
+    const r = el.getBoundingClientRect();
+    return { x: r.x + r.width / 2, y: r.y + r.height / 2 };
+  });
   const canvas = await page.getByRole("region", { name: "超兽武装角色关系图" }).boundingBox();
-  expect(box).not.toBeNull();
   expect(canvas).not.toBeNull();
   // 沿「节点 → 画布中心」方向拖到半路：任何视口缩放下都会越过 keepInside 的钳制边界，
   // 且不会把节点拖进环心盲区（包围盒相交 ≠ 看得见节点）
-  const startX = box!.x + box!.width / 2;
-  const startY = box!.y + box!.height / 2;
+  const startX = start.x;
+  const startY = start.y;
   const midX = (startX + canvas!.x + canvas!.width / 2) / 2;
   const midY = (startY + canvas!.y + canvas!.height / 2) / 2;
   await page.mouse.move(startX, startY);
