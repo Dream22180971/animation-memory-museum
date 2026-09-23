@@ -7,13 +7,11 @@ import { Autoplay, Pagination } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import { Clock, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import Link from "next/link";
-import animations from "@/data/animations.json";
+import { latestAnimations } from "@/lib/animations";
 import "swiper/css";
 import "swiper/css/pagination";
 
-const latest = [...animations.animations]
-  .sort((a, b) => b.year - a.year)
-  .slice(0, 6);
+const latest = latestAnimations;
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 34 },
@@ -49,10 +47,10 @@ export default function LatestCarousel() {
         <div>
           <p className="archive-kicker text-xs font-black text-[#d8ac55]/75">Latest Additions</p>
           <h2 className="retro-title mt-1 flex items-center gap-3 text-5xl text-[#fff6e8]">
-            最新收录 <Sparkles size={24} className="text-[#ffd24d]" />
+            年代新近馆藏 <Sparkles size={24} className="text-[#ffd24d]" />
           </h2>
           <p className="memory-text mt-3 max-w-xl text-base text-[#d9c39a]/82">
-            按收录时间排列，每次打开都可能有新面孔。
+            按入馆先后排列，越靠前，越是刚刚归档的新鲜记忆。
           </p>
         </div>
         <div className="hidden shrink-0 gap-2 sm:flex">

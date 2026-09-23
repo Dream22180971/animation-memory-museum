@@ -1,25 +1,28 @@
 import { Volume2 } from "lucide-react";
+import { animations, quoteCount, recentAnimationsLabel, statsAvatars } from "@/lib/animations";
 
 export default function StatsBar() {
   return (
     <div className="mx-auto mt-7 flex max-w-[1180px] flex-col items-center justify-between gap-4 rounded-full border border-[#d8ac55]/28 bg-[#090b0b]/45 px-7 py-4 text-sm text-[#ead6ad]/86 shadow-[0_16px_50px_rgba(0,0,0,.35)] backdrop-blur-md sm:flex-row">
       <div className="flex items-center gap-3">
         <Volume2 size={18} className="text-[#f0c45d]" />
-        <span>最新收录：《围棋少年》《铁甲小宝》《天眼神虎》</span>
+        <span>最新入馆：{recentAnimationsLabel}</span>
       </div>
       <div className="flex items-center gap-4">
         <div className="flex -space-x-2">
-          {["超", "猪", "果", "侠", "神"].map((label, index) => (
+          {statsAvatars.map((avatar) => (
             <span
-              key={label}
+              key={avatar.slug}
               className="grid h-8 w-8 place-items-center rounded-full border-2 border-[#17110b] text-xs font-bold text-white"
-              style={{ background: ["#9b4a35", "#d45a48", "#b7892c", "#7067a7", "#5c8d62"][index] }}
+              style={{ background: avatar.color }}
             >
-              {label}
+              {avatar.label}
             </span>
           ))}
         </div>
-        <span>已有 <b className="text-[#ffd45a]">8,921</b> 位小伙伴一起回忆童年</span>
+        <span>
+          已整理 <b className="text-[#ffd45a]">{animations.length}</b> 部馆藏 · {quoteCount} 条台词
+        </span>
       </div>
     </div>
   );

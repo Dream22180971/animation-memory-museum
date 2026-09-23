@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Music, Clock, ExternalLink } from "lucide-react";
 import Link from "next/link";
@@ -28,6 +28,8 @@ interface GlobalSearchProps {
 export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
   const [query, setQuery] = useState("");
   const [activeGenre, setActiveGenre] = useState<string | null>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -54,14 +56,36 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
     []
   );
 
-  // ESC to close
   useEffect(() => {
     if (!open) return;
+    const previouslyFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const focusFrame = window.requestAnimationFrame(() => inputRef.current?.focus());
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
+      if (e.key !== "Tab" || !panelRef.current) return;
+
+      const focusableElements = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements.at(-1);
+
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement?.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement?.focus();
+      }
     };
     window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
+    return () => {
+      window.cancelAnimationFrame(focusFrame);
+      window.removeEventListener("keydown", handler);
+      previouslyFocused?.focus();
+    };
   }, [open, onClose]);
 
   // Lock body scroll when open
@@ -88,18 +112,23 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
           }}
         >
           <motion.div
+            ref={panelRef}
             variants={panelVariants}
             initial="hidden"
             animate="visible"
             exit="exit"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="global-search-title"
             className="museum-card relative mt-24 w-full max-w-3xl overflow-hidden rounded-2xl border border-[#c99a45]/20 bg-[#0c0b08]/95 shadow-[0_40px_120px_rgba(0,0,0,.6)]"
           >
+            <h2 id="global-search-title" className="sr-only">搜索动画馆藏</h2>
             {/* Search input */}
             <div className="flex items-center gap-3 border-b border-[#c99a45]/12 px-6 py-4">
               <Search size={20} className="shrink-0 text-[#d8ac55]/70" />
               <input
+                ref={inputRef}
                 type="text"
-                autoFocus
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="搜索动画、歌曲、歌手、题材..."

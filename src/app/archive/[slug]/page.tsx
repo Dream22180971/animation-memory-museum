@@ -7,15 +7,16 @@ import WatchedButton from "@/components/archive/WatchedButton";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import animationsData from "@/data/animations.json";
+import { getAnimationBySlug } from "@/lib/animations";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 type ArchiveDetailProps = {
   params: Promise<{ slug: string }>;
 };
 
-const getAnimationBySlug = (slug: string) => animationsData.animations.find((animation) => animation.slug === slug);
-const DEFAULT_QUOTE_COUNT = 8;
-const EXTRA_QUOTE_SLOT_COUNT = 4;
+const MAX_QUOTE_SLOTS = 12;
+/** 空展位是投稿邀请，但铺满 12 格会把「馆藏单薄」直接摆在展柜里 */
+const EMPTY_QUOTE_SLOTS = 2;
 
 export function generateStaticParams() {
   return animationsData.animations.map((animation) => ({ slug: animation.slug }));
@@ -50,9 +51,10 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
   const relatedAnimations = animationsData.animations
     .filter((item) => item.slug !== animation.slug && item.genre.some((genre) => animation.genre.includes(genre)))
     .slice(0, 3);
+  const realQuotes = animation.classicQuotes.slice(0, MAX_QUOTE_SLOTS);
   const quoteSlots = [
-    ...Array.from({ length: DEFAULT_QUOTE_COUNT }, (_, index) => animation.classicQuotes[index] ?? null),
-    ...Array.from({ length: EXTRA_QUOTE_SLOT_COUNT }, () => null),
+    ...realQuotes,
+    ...Array.from({ length: Math.min(EMPTY_QUOTE_SLOTS, MAX_QUOTE_SLOTS - realQuotes.length) }, () => null),
   ];
   const detailUrl = `${SITE_URL}archive/${animation.slug}`;
 
@@ -87,6 +89,24 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                 ))}
               </div>
 
+              <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-sm font-bold sm:grid-cols-3">
+                <div>
+                  <dt className="archive-kicker text-[11px] text-[#d8ac55]/70">制作方</dt>
+                  <dd className="mt-1 text-[#f7ebd4]/90">{animation.studio}</dd>
+                </div>
+                <div>
+                  <dt className="archive-kicker text-[11px] text-[#d8ac55]/70">首播平台</dt>
+                  <dd className="mt-1 text-[#f7ebd4]/90">{animation.broadcastPlatform ?? "待考证"}</dd>
+                </div>
+                <div>
+                  <dt className="archive-kicker text-[11px] text-[#d8ac55]/70">入馆日期</dt>
+                  <dd className="mt-1 text-[#f7ebd4]/90">{animation.addedAt}</dd>
+                </div>
+              </dl>
+              <p className="mt-4 text-sm font-bold text-[#e6bd70]/85">
+                角色：{animation.characters.map((character) => character.name).join("、")}
+              </p>
+
               <div className="mt-7 flex flex-wrap gap-3">
                 <WatchedButton slug={animation.slug} name={animation.name} />
                 <a
@@ -98,6 +118,18 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                   百度百科介绍
                   <ExternalLink size={17} />
                 </a>
+                {animation.watchLinks.map((link) => (
+                  <a
+                    key={link.url}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="retro-button retro-button-secondary text-sm"
+                  >
+                    {link.label} 正版观看
+                    <ExternalLink size={17} />
+                  </a>
+                ))}
                 <Link
                   href="/#contribute"
                   className="retro-button retro-button-ghost text-sm"

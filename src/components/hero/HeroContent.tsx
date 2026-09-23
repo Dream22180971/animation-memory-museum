@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { PenLine, Play } from "lucide-react";
+import animationsData from "@/data/animations.json";
 
 const sloganVariants = [
   "这里不是动画博物馆，是我们的青春放映厅。",
@@ -31,7 +32,7 @@ export default function HeroContent() {
         这里收藏着 00 后记忆里的国产动画。把热血、感动、晚饭前的电视光，整理成一间可以慢慢逛的数字展厅。
       </p>
       <div className="mt-7 max-w-[590px] rounded-xl border border-[#ffd24d]/24 bg-black/24 px-4 py-3 text-sm font-bold leading-6 text-[#ffe2a0] shadow-[0_12px_40px_rgba(0,0,0,.22)] backdrop-blur-md">
-        {slogan} 加入 8,921 位小伙伴，一起补全我们的童年动画记忆库。
+        {slogan} 目前已整理 {animationsData.animations.length} 部馆藏，一起补全我们的童年动画记忆库。
       </div>
       <div className="mt-9 flex flex-wrap gap-3">
         <button

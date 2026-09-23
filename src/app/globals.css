@@ -882,3 +882,77 @@ nextjs-portal {
     transition-duration: .001ms !important;
   }
 }
+
+/* ==================== Character Constellation Graph ==================== */
+
+.constellation-canvas {
+  display: block;
+  cursor: grab;
+  user-select: none;
+}
+
+.constellation-canvas[data-panning="true"] {
+  cursor: grabbing;
+}
+
+.constellation-node {
+  cursor: pointer;
+  outline: none;
+}
+
+.constellation-node:focus-visible {
+  outline: 2px solid rgba(255, 210, 77, .85);
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.constellation-drift {
+  animation: constellation-drift 16s linear infinite;
+}
+
+.constellation-flow {
+  animation: constellation-flow 3.6s linear infinite;
+}
+
+@keyframes constellation-drift {
+  to {
+    stroke-dashoffset: -280;
+  }
+}
+
+@keyframes constellation-flow {
+  to {
+    stroke-dashoffset: -68;
+  }
+}
+
+.graph-tool {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 5px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 154, 69, .3);
+  background: linear-gradient(180deg, rgba(255, 210, 77, .12), rgba(10, 7, 4, .38));
+  color: #f2c96a;
+  transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+}
+
+.graph-tool:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 210, 77, .62);
+  background: linear-gradient(180deg, rgba(255, 210, 77, .22), rgba(10, 7, 4, .38));
+  color: #ffe4a3;
+}
+
+.graph-tool:active {
+  transform: translateY(0);
+}
+
+.graph-tool:focus-visible {
+  outline: 2px solid rgba(97, 199, 187, .8);
+  outline-offset: 2px;
+}
+

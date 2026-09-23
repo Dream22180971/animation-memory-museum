@@ -33,8 +33,8 @@ type ContributionDraft = {
 
 export default function ContributionPanel() {
   const [draft, setDraft] = useState<ContributionDraft>({ animationName: "", memory: "", nickname: "" });
-  const [submitState, setSubmitState] = useState<"idle" | "saved">("idle");
-  const [shareState, setShareState] = useState<"idle" | "copied" | "shared">("idle");
+  const [submitState, setSubmitState] = useState<"idle" | "saved" | "error">("idle");
+  const [shareState, setShareState] = useState<"idle" | "copied" | "shared" | "error">("idle");
 
   const updateDraft = (field: keyof ContributionDraft, value: string) => {
     setSubmitState("idle");
@@ -43,22 +43,37 @@ export default function ContributionPanel() {
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const savedItems = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]") as Array<ContributionDraft & { createdAt: string }>;
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify([{ ...draft, createdAt: new Date().toISOString() }, ...savedItems].slice(0, 20)));
-    setDraft({ animationName: "", memory: "", nickname: "" });
-    setSubmitState("saved");
+    try {
+      let parsedItems: unknown = [];
+      try {
+        parsedItems = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]");
+      } catch {
+        // Replace malformed local drafts with the newly submitted entry.
+      }
+      const savedItems = Array.isArray(parsedItems) ? parsedItems : [];
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify([{ ...draft, createdAt: new Date().toISOString() }, ...savedItems].slice(0, 20)));
+      setDraft({ animationName: "", memory: "", nickname: "" });
+      setSubmitState("saved");
+    } catch {
+      setSubmitState("error");
+    }
   };
 
   const handleShare = async () => {
     const shareText = "我在 00 后动画记忆馆重温童年国产动画，一起补全我们的动画记忆库。";
-    if (navigator.share) {
-      await navigator.share({ title: "00后动画记忆馆", text: shareText, url: SITE_URL });
-      setShareState("shared");
-      return;
-    }
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: "00后动画记忆馆", text: shareText, url: SITE_URL });
+        setShareState("shared");
+        return;
+      }
 
-    await navigator.clipboard.writeText(`${shareText} ${SITE_URL}`);
-    setShareState("copied");
+      await navigator.clipboard.writeText(`${shareText} ${SITE_URL}`);
+      setShareState("copied");
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareState("error");
+    }
   };
 
   return (
@@ -97,7 +112,7 @@ export default function ContributionPanel() {
               邀请朋友一起回忆
             </button>
             <p className="mt-3 text-xs font-bold text-[#d9c39a]/64">
-              {shareState === "shared" ? "已打开分享面板。" : shareState === "copied" ? "分享文案和链接已复制。" : "分享链接会带上本站地址。"}
+              {shareState === "shared" ? "已打开分享面板。" : shareState === "copied" ? "分享文案和链接已复制。" : shareState === "error" ? "分享失败，请稍后重试。" : "分享链接会带上本站地址。"}
             </p>
           </div>
         </motion.div>
@@ -163,6 +178,10 @@ export default function ContributionPanel() {
               <span className="inline-flex items-center gap-2 text-sm font-bold text-[#9ee6a8]">
                 <CheckCircle2 size={16} />
                 已保存到本地草稿
+              </span>
+            ) : submitState === "error" ? (
+              <span role="alert" className="text-sm font-bold text-[#ff9a85]">
+                保存失败，请检查浏览器存储权限后重试
               </span>
             ) : (
               <span className="inline-flex items-center gap-2 text-xs font-bold text-[#d9c39a]/64">

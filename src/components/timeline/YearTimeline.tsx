@@ -5,7 +5,9 @@ import { motion, type Variants } from "framer-motion";
 import { ChevronLeft, ChevronRight, Tv } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import animations from "@/data/animations.json";
+import { deriveTimeline } from "@/lib/animations";
+
+const timeline = deriveTimeline();
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 34 },
@@ -69,14 +71,14 @@ export default function YearTimeline() {
         </motion.button>
 
         <div ref={scrollRef} className="timeline-scroll relative overflow-x-auto pb-8">
-          <div className="relative flex min-w-[900px] justify-between px-12">
+          <div className="relative flex min-w-[1200px] justify-between px-12">
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
               className="absolute left-16 right-16 top-[64px] h-[3px] origin-left bg-gradient-to-r from-[#b7832d] via-[#ff672f] to-[#dcb54b]"
             />
-            {animations.timeline.map((period) => (
+            {timeline.map((period) => (
               <motion.div
                 key={period.period}
                 variants={nodeVariants}
@@ -87,34 +89,31 @@ export default function YearTimeline() {
                 <div className="cassette-label cassette-label-muted mt-2">{period.label}</div>
                 <span className="mt-5 h-4 w-4 rounded-full bg-[#ffd24d] shadow-[0_0_18px_rgba(255,210,77,.55)]" />
                 <div className="mt-9 flex flex-col items-center gap-3">
-                  {period.items.map((item) => {
-                    const anim = animations.animations.find((a) => a.name === item.name);
-                    return (
-                      <Link
-                        key={item.name}
-                        href={anim ? `/archive/${anim.slug}` : "#"}
-                        className="group/card relative block"
+                  {period.items.map((item) => (
+                    <Link
+                      key={item.name}
+                      href={item.slug ? `/archive/${item.slug}` : "#"}
+                      className="group/card relative block"
+                    >
+                      <motion.div
+                        whileHover={{ scale: 1.08, rotate: -1 }}
+                        className="archive-card grid h-[112px] w-[112px] place-items-center overflow-hidden rounded-lg border border-[#d8ac55]/60 bg-[#140e09] p-1.5 shadow-[0_18px_42px_rgba(0,0,0,.35)] transition-shadow hover:shadow-[0_0_24px_rgba(255,210,77,.2)]"
                       >
-                        <motion.div
-                          whileHover={{ scale: 1.08, rotate: -1 }}
-                          className="archive-card grid h-[112px] w-[112px] place-items-center overflow-hidden rounded-lg border border-[#d8ac55]/60 bg-[#140e09] p-1.5 shadow-[0_18px_42px_rgba(0,0,0,.35)] transition-shadow hover:shadow-[0_0_24px_rgba(255,210,77,.2)]"
-                        >
-                          <Image
-                            src={item.poster}
-                            alt={item.name}
-                            width={220}
-                            height={220}
-                            className="h-full w-full rounded-md object-cover"
-                            sizes="112px"
-                          />
-                        </motion.div>
-                        <div className="pointer-events-none absolute -bottom-8 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0a0907]/90 px-2.5 py-1 text-xs text-[#ffd24d] opacity-0 shadow-lg transition-opacity group-hover/card:opacity-100">
-                          {item.name}
-                          <span className="ml-1 text-[#d9c39a]/60">{item.year}</span>
-                        </div>
-                      </Link>
-                    );
-                  })}
+                        <Image
+                          src={item.poster}
+                          alt={item.name}
+                          width={220}
+                          height={220}
+                          className="h-full w-full rounded-md object-cover"
+                          sizes="112px"
+                        />
+                      </motion.div>
+                      <div className="pointer-events-none absolute -bottom-8 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-md bg-[#0a0907]/90 px-2.5 py-1 text-xs text-[#ffd24d] opacity-0 shadow-lg transition-opacity group-hover/card:opacity-100">
+                        {item.name}
+                        <span className="ml-1 text-[#d9c39a]/60">{item.year}</span>
+                      </div>
+                    </Link>
+                  ))}
                 </div>
               </motion.div>
             ))}

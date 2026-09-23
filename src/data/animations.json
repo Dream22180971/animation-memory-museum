@@ -5,11 +5,70 @@
       "slug": "chaoshou-wuzhuang",
       "name": "超兽武装",
       "year": 2011,
-      "genre": ["机甲", "热血", "科幻"],
+      "genre": [
+        "机甲",
+        "热血",
+        "科幻"
+      ],
       "color": "#a94b35",
       "description": "信念、轮回与宇宙战场交织在一起，那份少年热血至今仍会被重新点亮。",
       "poster": "/images/posters/armor-hero-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/超兽武装",
+      "addedAt": "2026-06-06",
+      "studio": "广州蓝弧文化传播有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "火麟飞",
+          "role": "主角 · 超兽战队队长",
+          "bio": "《超兽武装》男主角，超兽战队的核心与队长，性格热血冲动、极重伙伴，驾驶火系超兽冲在最前线，是整支战队凝聚力的来源。",
+          "sourceUrl": "https://m.baike.so.com/doc/5409819.html"
+        },
+        {
+          "name": "天羽",
+          "role": "女主角 · 超兽战队成员",
+          "bio": "《超兽武装》女主角，战队中的女性主力战士，性格冷静坚韧，与火麟飞互为羁绊，多次在危局中稳住战局。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "苗条俊",
+          "role": "配角 · 战队气氛担当",
+          "bio": "《超兽武装》中火麟飞的伙伴，体型圆润、名字与形象反差十足，是剧中的喜剧担当，关键时刻依然会挺身而出。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "龙戬",
+          "role": "对手 · 龙族战士",
+          "bio": "《超兽武装》中的龙族战士，实力强劲、性格高傲，初期与火麟飞立场相对，后成为可以托付后背的对手兼同伴。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "泰雷",
+          "role": "配角 · 力量型战士",
+          "bio": "《超兽武装》战队成员，憨厚忠诚、力量惊人，是队伍里最可靠的正面输出。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "夜凌云",
+          "role": "反派 · 冥界强者",
+          "bio": "《超兽武装》中的高人气反派，出身冥界阵营，冷酷孤傲、实力深不可测，是主角团最难缠的对手之一。",
+          "sourceUrl": "https://baike.sogou.com/m/v49178580.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "已有的事，后必再有；已行的事，后必再行。",
@@ -53,8 +112,29 @@
         }
       ],
       "songs": [
-        { "name": "超兽武装", "type": "主题曲", "singer": "毛华锋" },
-        { "name": "刹那永恒", "type": "片尾曲", "singer": "黄英" }
+        {
+          "name": "超兽武装",
+          "type": "片头曲",
+          "singer": "刘罡、陈洁丽"
+        },
+        {
+          "name": "尘曦",
+          "type": "片尾曲",
+          "singer": "陈洁丽、李培斌"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.org.cn/zh-hans/超兽武装(歌曲)",
+      "relations": [
+        {
+          "from": "火麟飞",
+          "to": "天羽",
+          "label": "同伴"
+        },
+        {
+          "from": "火麟飞",
+          "to": "苗条俊",
+          "label": "伙伴"
+        }
       ]
     },
     {
@@ -62,11 +142,64 @@
       "slug": "zhuzhuxia",
       "name": "猪猪侠",
       "year": 2005,
-      "genre": ["搞笑", "冒险", "童话"],
+      "genre": [
+        "搞笑",
+        "冒险",
+        "童话"
+      ],
       "color": "#d95742",
       "description": "戴着红帽的小英雄把晚饭前的客厅变成冒险现场，快乐来得直接又明亮。",
       "poster": "/images/posters/pig-hero-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/猪猪侠",
+      "addedAt": "2026-06-06",
+      "studio": "广东咏声文化传播有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "猪猪侠",
+          "role": "主角 · 调皮乐观、爱吃零食的少年英雄",
+          "bio": "2005年开播的《猪猪侠》系列主人公，初代设定为出生于边境村镇、生活安逸的少年，个性调皮、乐观、富有好奇心，喜爱零食、爱打抱不平，以勇敢冒险、保卫家园为行动主线。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E7%8C%AA%E7%8C%AA%E4%BE%A0"
+        },
+        {
+          "name": "菲菲",
+          "role": "女主角 · 温柔勇敢、力气过人的小猪",
+          "bio": "《猪猪侠》系列女主角，美丽善良、温柔又勇敢，拥有远超常人的力气；初代设定中前世是猪猪部落的菲菲公主，武器为如意猪猪棒。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%8F%B2%E8%8F%B2/8639357"
+        },
+        {
+          "name": "小呆呆",
+          "role": "配角 · 大智若愚、爱流鼻涕的迷糊小猪",
+          "bio": "《猪猪侠》系列角色，从路人成长为固定团队成员，性格单纯天真、积极乐观，设定大智若愚，迷糊懵懂但纯真善良，标志特点是流鼻涕。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%B0%8F%E5%91%86%E5%91%86/9631492"
+        },
+        {
+          "name": "波比",
+          "role": "配角 · 超人强的胆小跟班",
+          "bio": "《猪猪侠》角色，拼装学院学生、超人强的小跟班，家境优越，初期胆小又爱拍马屁且总拍到马蹄上，中后期仍保有正义感，成长为可靠队员。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%B3%A2%E6%AF%94/17179774"
+        },
+        {
+          "name": "超人强",
+          "role": "对手 · 争强好胜的傲慢强者",
+          "bio": "《猪猪侠》核心角色，争强好胜，最初傲慢冲动、不善言辞常直接动手，后期变得沉稳可靠，近年作品中转为笨手笨脚的搞笑担当。",
+          "sourceUrl": "https://wapbaike.baidu.com/view/1289542.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%8C%AA%E7%8C%AA%E4%BE%A0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%8C%AA%E7%8C%AA%E4%BE%A0"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%8C%AA%E7%8C%AA%E4%BE%A0"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "超级棒棒糖！",
@@ -110,8 +243,29 @@
         }
       ],
       "songs": [
-        { "name": "猪猪侠", "type": "主题曲", "singer": "陈洁丽" },
-        { "name": "超级棒棒糖", "type": "片头曲", "singer": "陈洁丽" }
+        {
+          "name": "猪猪侠",
+          "type": "片头曲",
+          "singer": "陈洁丽"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.org.cn/猪猪侠(歌曲)",
+      "relations": [
+        {
+          "from": "猪猪侠",
+          "to": "菲菲",
+          "label": "同伴"
+        },
+        {
+          "from": "猪猪侠",
+          "to": "小呆呆",
+          "label": "同伴"
+        },
+        {
+          "from": "波比",
+          "to": "超人强",
+          "label": "同伴"
+        }
       ]
     },
     {
@@ -119,11 +273,70 @@
       "slug": "guobao-tegong",
       "name": "果宝特攻",
       "year": 2010,
-      "genre": ["机甲", "搞笑", "战斗"],
+      "genre": [
+        "机甲",
+        "搞笑",
+        "战斗"
+      ],
       "color": "#e7a825",
       "description": "水果机甲、爆笑对白和燃到起飞的战斗，是国产动画黄金期的高能回声。",
       "poster": "/images/posters/fruit-robots-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/果宝特攻",
+      "addedAt": "2026-06-06",
+      "studio": "广州蓝弧文化传播有限公司",
+      "broadcastPlatform": "广东广播电视台嘉佳卡通频道",
+      "characters": [
+        {
+          "name": "橙留香",
+          "role": "主角 · 果宝特攻队长",
+          "bio": "《果宝特攻》男主角，橙子原型的水果战士，正义感强、热血莽撞，带领果宝特攻对抗邪恶势力。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        },
+        {
+          "name": "陆小果",
+          "role": "主角 · 果宝特攻成员",
+          "bio": "苹果原型的水果战士，果宝特攻三人组之一，性格憨直，常在关键时刻派上用场。",
+          "sourceUrl": "https://m.baike.so.com/doc/3920877.html"
+        },
+        {
+          "name": "菠萝吹雪",
+          "role": "主角 · 自恋剑客",
+          "bio": "菠萝原型的水果战士，外表俊美、极度自恋，爱耍帅也使剑，实力却不容小觑，是队内的颜值与气氛担当。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=ec3a929039664c6fa7693a2c468e1517"
+        },
+        {
+          "name": "梨花诗",
+          "role": "女主角 · 果宝女特攻",
+          "bio": "梨原型的水果战士，果宝女特攻成员，与男特攻协同作战。",
+          "sourceUrl": "http://baike.soso.com/v831363.htm"
+        },
+        {
+          "name": "上官子怡",
+          "role": "女主角 · 果宝女特攻",
+          "bio": "果宝女特攻成员，与橙留香等男特攻并肩对抗邪恶势力。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        },
+        {
+          "name": "花如意",
+          "role": "配角 · 果宝女特攻",
+          "bio": "果宝女特攻成员之一。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "果宝机甲，归位！",
@@ -167,8 +380,29 @@
         }
       ],
       "songs": [
-        { "name": "果宝特攻", "type": "主题曲", "singer": "王巍" },
-        { "name": "果宝机甲之歌", "type": "片头曲", "singer": "陈洁丽" }
+        {
+          "name": "果宝特攻",
+          "type": "主题曲",
+          "singer": "陈洁丽"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.tw/果寶特攻(歌曲)",
+      "relations": [
+        {
+          "from": "橙留香",
+          "to": "菠萝吹雪",
+          "label": "三人小队"
+        },
+        {
+          "from": "橙留香",
+          "to": "陆小果",
+          "label": "三人小队"
+        },
+        {
+          "from": "菠萝吹雪",
+          "to": "梨花诗",
+          "label": "同伴"
+        }
       ]
     },
     {
@@ -176,11 +410,70 @@
       "slug": "luoluo-lixianji",
       "name": "洛洛历险记",
       "year": 2008,
-      "genre": ["机甲", "热血", "冒险"],
+      "genre": [
+        "机甲",
+        "热血",
+        "冒险"
+      ],
       "color": "#4f6f93",
       "description": "机车族与猛兽族的世界，藏着很多人的第一份机战记忆。",
       "poster": "/images/posters/robot-adventure-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/洛洛历险记",
+      "addedAt": "2026-06-06",
+      "studio": "广州蓝弧文化传播有限公司（联合星杰玩具）",
+      "broadcastPlatform": "央视网",
+      "characters": [
+        {
+          "name": "洛洛",
+          "role": "主角 · 误入游戏世界的少年",
+          "bio": "《百变机兽之洛洛历险记》男主角，普通少年意外进入机车族与猛兽族交战的世界，成为机车族统帅，带领众战士寻找回归之路。",
+          "sourceUrl": "https://baike.sogou.com/v61784478.htm"
+        },
+        {
+          "name": "晶晶",
+          "role": "女主角 · 猛兽族阵营",
+          "bio": "《百变机兽之洛洛历险记》女主角，出身猛兽族阵营，与统领机车族的洛洛立场相对，是贯穿全剧的对手。",
+          "sourceUrl": "https://m.baike.so.com/doc/10042042-24850811.html"
+        },
+        {
+          "name": "霹雳火",
+          "role": "主角 · 洛洛的主战机甲",
+          "bio": "机车族主力战士，可变形为跑车，性格勇敢、爆发力强，是洛洛最信赖的搭档机甲。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=ebbc4de76e7b4fd8b0c8b5306f2cd19d"
+        },
+        {
+          "name": "力霸天",
+          "role": "配角 · 力量型机甲",
+          "bio": "机车族中的力量担当，变形为工程车辆，憨厚忠诚，擅长正面硬撼。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "name": "急先锋",
+          "role": "配角 · 速度型机甲",
+          "bio": "机车族战士，变形为警车，行动迅捷、正义感强，常担任先锋突击。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "name": "龙卷风",
+          "role": "配角 · 飞行系机甲",
+          "bio": "机车族中的飞行战力，可变形为直升机，负责空中侦察与打击。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "霹雳火，准备战斗！",
@@ -224,8 +517,34 @@
         }
       ],
       "songs": [
-        { "name": "龙斗", "type": "主题曲", "singer": "张楚格" },
-        { "name": "机车族之歌", "type": "片头曲", "singer": "张楚格" }
+        {
+          "name": "机战王",
+          "type": "主题曲",
+          "singer": "韩承东"
+        },
+        {
+          "name": "诺言",
+          "type": "片尾曲",
+          "singer": "陈洁丽"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/机战王/20391131",
+      "relations": [
+        {
+          "from": "洛洛",
+          "to": "晶晶",
+          "label": "同代机战王"
+        },
+        {
+          "from": "霹雳火",
+          "to": "力霸天",
+          "label": "机车族同伴"
+        },
+        {
+          "from": "霹雳火",
+          "to": "龙卷风",
+          "label": "机车族同伴"
+        }
       ]
     },
     {
@@ -233,11 +552,76 @@
       "slug": "hongmao-lantu-qixia",
       "name": "虹猫蓝兔七侠传",
       "year": 2006,
-      "genre": ["武侠", "冒险", "励志"],
+      "genre": [
+        "武侠",
+        "冒险",
+        "励志"
+      ],
       "color": "#7067a7",
       "description": "七剑合璧的江湖传说，是一代人对侠义最早的想象。",
       "poster": "/images/posters/rainbow-rabbit-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/虹猫蓝兔七侠传",
+      "addedAt": "2026-06-06",
+      "studio": "湖南宏梦卡通集团",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "虹猫",
+          "role": "主角 · 七剑之首",
+          "bio": "长虹剑剑主，继承父亲白猫的绝学，擅长火舞旋风剑法，性格坚强勇敢、足智多谋。团结七剑传人对抗魔教教主黑心虎，为守护麒麟与武林和平历经磨难。",
+          "sourceUrl": "https://m.baike.so.com/doc/6063156-32345643.html"
+        },
+        {
+          "name": "蓝兔",
+          "role": "主角 · 冰魄剑剑主",
+          "bio": "玉蟾宫宫主，七剑传人之一，性格温柔善良、冰雪聪明、坚贞不屈。绝招有冰壶秋月、冰封千里等，与虹猫并肩对抗魔教。",
+          "sourceUrl": "https://m.baike.so.com/doc/6436282.html"
+        },
+        {
+          "name": "莎丽",
+          "role": "主角 · 紫云剑剑主",
+          "bio": "紫云剑剑主，原隐居金鞭溪，遭下毒后右手废残，凭坚强意志练成左手剑法。曾被马三娘冒名顶替，后夺回宝剑重归七剑，招式有紫气东来、杨柳拂风。",
+          "sourceUrl": "https://m.baike.so.com/doc/6814555.html"
+        },
+        {
+          "name": "逗逗",
+          "role": "主角 · 雨花剑剑主",
+          "bio": "出身刀口岭雨花殿，医术高超，性格胆小爱面子却重情重义。父母被冷一刀杀害后立志复仇并最终手刃仇人，其后以医术和雨花剑法协助七侠。",
+          "sourceUrl": "https://m.baike.so.com/doc/5725466-32347854.html"
+        },
+        {
+          "name": "大奔",
+          "role": "主角 · 奔雷剑剑主",
+          "bio": "出身奔雷山庄，外号混世魔王，性格豪爽直率却鲁莽嗜赌，绝招奔雷滚滚、双峰贯耳。曾护送莎丽、掩护虹猫，最终参与七剑合璧击败黑心虎。",
+          "sourceUrl": "https://m.baike.so.com/doc/4030381-4227984.html"
+        },
+        {
+          "name": "跳跳",
+          "role": "主角 · 青光剑剑主",
+          "bio": "原型为猴子，父母被害后潜入魔教卧底十年，性格机敏隐忍、幽默坚韧、擅长谋略。青光剑绝招青龙降魔，轻功梯云纵为七剑之首。",
+          "sourceUrl": "https://m.baike.so.com/doc/5905914.html"
+        },
+        {
+          "name": "达达",
+          "role": "主角 · 旋风剑剑主",
+          "bio": "原型为熊猫，百草谷主，性格细腻重情义、顾家爱妻。因妻子被魔教挟持一度被迫助敌，后暗中配合七侠，七剑合璧后重伤，得麒麟血治愈。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%BE%BE%E8%BE%BE/2384014"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "七剑合璧。",
@@ -281,9 +665,29 @@
         }
       ],
       "songs": [
-        { "name": "人生不过一百年", "type": "主题曲", "singer": "汤俊" },
-        { "name": "嘎嘎", "type": "片头曲", "singer": "汤俊" },
-        { "name": "心中想的就是他", "type": "片尾曲", "singer": "汤俊" }
+        {
+          "name": "人生不过一百年",
+          "type": "片头曲",
+          "singer": "袁接伟"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.tw/人生不過一百年",
+      "relations": [
+        {
+          "from": "虹猫",
+          "to": "蓝兔",
+          "label": "最佳搭档"
+        },
+        {
+          "from": "虹猫",
+          "to": "大奔",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "蓝兔",
+          "to": "莎丽",
+          "label": "七侠同伴"
+        }
       ]
     },
     {
@@ -291,11 +695,64 @@
       "slug": "shenbing-xiaojiang",
       "name": "神兵小将",
       "year": 2007,
-      "genre": ["冒险", "奇幻", "战斗"],
+      "genre": [
+        "冒险",
+        "奇幻",
+        "战斗"
+      ],
       "color": "#5f9f67",
       "description": "神兵天降的奇幻旅程，守护世界，也守护那个暑假的期待。",
       "poster": "/images/posters/magic-warrior-hd.png",
       "baikeUrl": "https://baike.baidu.com/item/神兵小将",
+      "addedAt": "2026-06-06",
+      "studio": "央视动画 · 玉皇朝集团",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "南宫问天",
+          "role": "主角 · 南宫城少城主",
+          "bio": "南宫城城主南宫逸之子，乐观自信、富有正义感和责任感，神兵兽天晶兽可化为主战神兵天晶。双亲遇袭后携妹南宫问雅踏上征途，沿途汇聚伙伴对抗邪恶势力。",
+          "sourceUrl": "http://baike.so.com/doc/409157-32386991.html"
+        },
+        {
+          "name": "南宫问雅",
+          "role": "主角 · 南宫城小姐",
+          "bio": "南宫问天之妹，活泼善良，拥有与动物沟通以及净化、进化的能力，搭档神兽为玉灵龙。随哥哥一同踏上对抗邪恶的冒险旅程。",
+          "sourceUrl": "https://m.baike.so.com/doc/6531688-32402259.html"
+        },
+        {
+          "name": "东方铁心",
+          "role": "女主角 · 东方海阁主之女",
+          "bio": "神兵兽为凤凰，武器凤皇斧，性格外刚内柔、坚强自信。曾被天地盟主蛊惑失忆并收为义女，后恢复记忆加入正道一方对抗敌人。",
+          "sourceUrl": "https://m.baike.so.com/doc/6819437-32391255.html"
+        },
+        {
+          "name": "西门孝",
+          "role": "主角 · 西门城少主",
+          "bio": "西门豪之子，性格直率憨厚、反应慢三拍却永不气馁，神兵兽小太虚可变身溜溜球。为救父亲加入冒险，与南宫问天等伙伴并肩作战。",
+          "sourceUrl": "https://m.baike.so.com/doc/6909056.html"
+        },
+        {
+          "name": "北冥雪",
+          "role": "主角 · 北冥雪庄二小姐",
+          "bio": "北冥雪庄庄主北冥正之女，温柔善良、勇敢聪慧，神兵兽神农兽可变身疗伤解毒的神兵神农尺。家园遭天地盟主侵犯、父亲遇难后逃亡，与南宫问天结盟并加入队伍。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%8C%97%E5%86%A5%E9%9B%AA/9473744"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86"
+        }
+      ],
       "classicQuotes": [
         {
           "line": "神兵兽，变身！",
@@ -339,47 +796,1084 @@
         }
       ],
       "songs": [
-        { "name": "神兵小将", "type": "主题曲", "singer": "陈洁丽" },
-        { "name": "天晶兽之歌", "type": "片头曲", "singer": "李殊" }
-      ]
-    }
-  ],
-  "timeline": [
-    {
-      "period": "2005",
-      "label": "萌芽期",
-      "items": [
-        { "name": "猪猪侠", "year": 2005, "poster": "/images/posters/pig-hero-hd.png" }
-      ]
-    },
-    {
-      "period": "2006-2007",
-      "label": "崛起期",
-      "items": [
-        { "name": "虹猫蓝兔七侠传", "year": 2006, "poster": "/images/posters/rainbow-rabbit-hd.png" },
-        { "name": "神兵小将", "year": 2007, "poster": "/images/posters/magic-warrior-hd.png" }
-      ]
-    },
-    {
-      "period": "2008-2009",
-      "label": "黄金期",
-      "items": [
-        { "name": "洛洛历险记", "year": 2008, "poster": "/images/posters/robot-adventure-hd.png" }
+        {
+          "name": "梦的光点",
+          "type": "主题曲",
+          "singer": "王心凌"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/梦的光点/222970",
+      "relations": [
+        {
+          "from": "南宫问天",
+          "to": "南宫问雅",
+          "label": "兄妹"
+        },
+        {
+          "from": "南宫问天",
+          "to": "东方铁心",
+          "label": "同伴"
+        }
       ]
     },
     {
-      "period": "2010-2012",
-      "label": "巅峰期",
-      "items": [
-        { "name": "果宝特攻", "year": 2010, "poster": "/images/posters/fruit-robots-hd.png" },
-        { "name": "超兽武装", "year": 2011, "poster": "/images/posters/armor-hero-hd.png" }
+      "id": 18,
+      "slug": "xiyangyang-huitailang",
+      "name": "喜羊羊与灰太狼",
+      "year": 2005,
+      "genre": [
+        "喜剧",
+        "冒险",
+        "童话"
+      ],
+      "color": "#6cbf5f",
+      "description": "羊村的大门永远敞开，狼堡的发明永远差一步——国民级的追逐战笑满了二十年。",
+      "poster": "/images/posters/xiyangyang-huitailang.svg",
+      "baikeUrl": "https://baike.baidu.com/item/喜羊羊与灰太狼",
+      "addedAt": "2026-09-23",
+      "studio": "广东原创动力文化传播有限公司",
+      "broadcastPlatform": "杭州电视台少儿频道",
+      "characters": [
+        {
+          "name": "喜羊羊",
+          "role": "主角 · 羊村主心骨",
+          "bio": "大肥羊学校学生，科学家智羊羊与歌星丽羊羊之子，羊村跑得最快的小羊，颈挂智羊羊留下的金色超能铃铛。性格活泼乐观、有勇有谋，羊村遇险时总是第一时间挺身而出。",
+          "sourceUrl": "https://m.baike.so.com/doc/4857677-32340932.html"
+        },
+        {
+          "name": "美羊羊",
+          "role": "主角 · 羊村爱美小羊",
+          "bio": "以粉色蝴蝶结和围巾为标志，爱美且心灵手巧，擅长化妆、缝衣、种花和烹调。常以公主气质登场，剧情中也多次展现勇敢与智慧。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E7%BE%8E%E7%BE%8A%E7%BE%8A/5533592"
+        },
+        {
+          "name": "懒羊羊",
+          "role": "主角 · 羊村最幸运的小羊",
+          "bio": "标志性冰淇淋发型配黄色口水垫，好吃懒做、整天想睡觉，实则心地善良、重情重义、大智若愚。常凭运气与潜能在遇险时化险为夷。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%87%92%E7%BE%8A%E7%BE%8A/5534132"
+        },
+        {
+          "name": "沸羊羊",
+          "role": "主角 · 羊村最健壮的小羊",
+          "bio": "古铜色皮肤、粗眉毛，草原三剑客之一，是羊村最健壮也最鲁莽的小羊，为人正直勇敢、重情重义，喜欢美羊羊，常为保护同伴冲锋在前。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%B2%B8%E7%BE%8A%E7%BE%8A/3844489"
+        },
+        {
+          "name": "慢羊羊",
+          "role": "师长 · 羊村村长",
+          "bio": "羊村村长兼大肥羊学校校长，行动缓慢但善良博学、热心负责，爱好搞发明，思考时头顶会长草。是小羊们的老师与守护者。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%85%A2%E7%BE%8A%E7%BE%8A/3844327"
+        },
+        {
+          "name": "灰太狼",
+          "role": "反派 · 狼堡主人",
+          "bio": "红太狼的丈夫、小灰灰的父亲，精通机械与药水发明，屡败屡战地设计捕羊装置却总是失败，口头禅为「我一定会回来的！」。后期剧情中多次在重大危机时与羊族联手，呈现亦正亦邪的特质。",
+          "sourceUrl": "https://m.baike.so.com/doc/4857773.html"
+        },
+        {
+          "name": "红太狼",
+          "role": "反派 · 灰太狼之妻",
+          "bio": "小灰灰的妈妈，出身富裕家族，性格刁蛮泼辣、虚荣爱美，标志性武器是随身平底锅。前期与羊村对立，后期立场转变并与羊村结盟。",
+          "sourceUrl": "https://www.baike.com/wiki/%E7%BA%A2%E5%A4%AA%E7%8B%BC/1531388"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "我一定会回来的！",
+          "speaker": "灰太狼",
+          "context": "永不言弃的败退"
+        },
+        {
+          "line": "羊村的伙伴，一个都不能少。",
+          "speaker": "喜羊羊",
+          "context": "守护宣言"
+        },
+        {
+          "line": "咩~让我再睡五分钟。",
+          "speaker": "懒羊羊",
+          "context": "起床名场面"
+        }
+      ],
+      "songs": [
+        {
+          "name": "别看我只是一只羊",
+          "type": "主题曲",
+          "singer": "古倩敏"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/别看我只是一只羊/5781488",
+      "relations": [
+        {
+          "from": "灰太狼",
+          "to": "红太狼",
+          "label": "夫妻"
+        },
+        {
+          "from": "灰太狼",
+          "to": "喜羊羊",
+          "label": "宿敌"
+        },
+        {
+          "from": "喜羊羊",
+          "to": "懒羊羊",
+          "label": "同伴"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
+        }
       ]
     },
     {
-      "period": "2013-2015",
-      "label": "延续期",
-      "items": [
-        { "name": "记忆仍在继续", "year": 2015, "poster": "/images/memories/tv-room-hero-4k.jpg" }
+      "id": 19,
+      "slug": "weiqi-shaonian",
+      "name": "围棋少年",
+      "year": 2005,
+      "genre": [
+        "励志",
+        "竞技",
+        "武侠"
+      ],
+      "color": "#3d5a80",
+      "description": "明朝末年的黑白棋盘上，一枚棋子丈量着成长、侠义与少年的心气。",
+      "poster": "/images/posters/weiqi-shaonian.svg",
+      "baikeUrl": "https://baike.baidu.com/item/围棋少年",
+      "addedAt": "2026-09-23",
+      "studio": "央视动画有限公司",
+      "broadcastPlatform": "中央电视台综合频道",
+      "characters": [
+        {
+          "name": "江流儿",
+          "role": "主角 · 围棋天才少年",
+          "bio": "《围棋少年》主人公，围棋奇才少年，幼年因父亲遭人毒手而家道中落，漂泊江湖间师从多位名门、融会贯通各派棋艺，历经被诬陷与连败等磨砺后迅速成长，最终携手盟友击败海外劲旅，登顶大明棋坛。",
+          "sourceUrl": "https://m.baike.so.com/doc/6099790-6312899.html"
+        },
+        {
+          "name": "方百花",
+          "role": "女主角 · 棋圣方胜之女",
+          "bio": "棋圣方胜之女，柔中带刚、无畏坚韧，曾女扮男装流浪江湖，后成为大明首位女棋待诏；与江流儿结拜并互生情愫，历经黑木来华、父亲离世等变故后守护大明棋坛。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%96%B9%E7%99%BE%E8%8A%B1/0?fromModule=lemma_inlink"
+        },
+        {
+          "name": "黑木",
+          "role": "对手 · 日本围棋名人",
+          "bio": "日本围棋界名人，早年师从丈和，自信从容且敬重强者；奉师命来华挑战大明棋坛，与江流儿两度弈成和局后与之结为好友，并定下五年再战之约。",
+          "sourceUrl": "https://m.baike.so.com/doc/1284978.html"
+        },
+        {
+          "name": "林心诚",
+          "role": "配角 · 创出「天地大同」的怪杰",
+          "bio": "年约六旬的天才棋手，诙谐幽默又愤世嫉俗，曾创出「天地大同」棋局击败日本高手丈和，后沦落为乞丐；晚年将毕生棋力传给江流儿，得其成为传人后安心离世。",
+          "sourceUrl": "https://m.baike.so.com/doc/6934559-7156912.html"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "天地大同！",
+          "speaker": "江流儿",
+          "context": "绝招定式"
+        },
+        {
+          "line": "约定好了，五年之后再决胜负。",
+          "speaker": "江流儿与黑木",
+          "context": "少年之约"
+        },
+        {
+          "line": "棋盘如江湖，落子无悔。",
+          "speaker": "林心诚",
+          "context": "棋道传承"
+        }
+      ],
+      "songs": [
+        {
+          "name": "围棋少年",
+          "type": "片头曲",
+          "singer": "姜必群"
+        },
+        {
+          "name": "人生如棋",
+          "type": "片尾曲",
+          "singer": "钟茵波"
+        }
+      ],
+      "themeSongSource": "https://zh.wikipedia.org/wiki/围棋少年",
+      "relations": [
+        {
+          "from": "江流儿",
+          "to": "林心诚",
+          "label": "师徒"
+        },
+        {
+          "from": "江流儿",
+          "to": "黑木",
+          "label": "对手成挚友"
+        },
+        {
+          "from": "江流儿",
+          "to": "方百花",
+          "label": "青梅竹马"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "slug": "wo-wei-ge-kuang",
+      "name": "我为歌狂",
+      "year": 2001,
+      "genre": [
+        "青春",
+        "音乐",
+        "校园"
+      ],
+      "color": "#c4457d",
+      "description": "中国第一部校园音乐动画——排练室的汗水和失真吉他，是青春最早的音量。",
+      "poster": "/images/posters/wo-wei-ge-kuang.svg",
+      "baikeUrl": "https://baike.baidu.com/item/我为歌狂",
+      "addedAt": "2026-09-23",
+      "studio": "上海美术电影制片厂",
+      "broadcastPlatform": "上海电视台",
+      "characters": [
+        {
+          "name": "叶峰",
+          "role": "主角 · Open 乐队吉他手兼主唱",
+          "bio": "性格独立孤傲的少年，因父母离异与父亲关系紧张；擅长吉他，从最初拒绝与人合作逐渐成长为 Open 乐队的核心，带领乐队参赛并领悟音乐的本质。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%8F%B6%E5%B3%B0/12518500"
+        },
+        {
+          "name": "楚天歌",
+          "role": "主角 · Open 乐队队长",
+          "bio": "高中生、Open 乐队队长，性格阳光，在校自信而在家中压抑，背负家庭期望，在友情与梦想之间挣扎；与叶峰既竞争又合作，最终领悟音乐的价值。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%A5%9A%E5%A4%A9%E6%AD%8C/4042136"
+        },
+        {
+          "name": "丛容",
+          "role": "女主角 · 觉醒的优等生",
+          "bio": "初登场是戴眼镜、扎马尾的优等生，内向且循规蹈矩；后剪短头发觉醒，从被动守规转为主动追求音乐理想，与叶峰的关系也由对立转向暧昧。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E4%B8%9B%E5%AE%B9/8742761?fromModule=lemma_inlink"
+        },
+        {
+          "name": "麦云洁",
+          "role": "配角 · Happy 女生乐队队长",
+          "bio": "开朗率真的「五星美女」，Happy 女生乐队队长，厌恶谎言；曾暗恋叶峰未果，后与楚天歌相恋。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E9%BA%A6%E4%BA%91%E6%B4%81/0?fromModule=lemma_inlink"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "我的舞台，轮不到别人来谢幕。",
+          "speaker": "叶峰",
+          "context": "乐队宣言"
+        },
+        {
+          "line": "青春那么短，现在不燃烧就来不及了。",
+          "speaker": "楚天歌",
+          "context": "排练室夜谈"
+        }
+      ],
+      "songs": [
+        {
+          "name": "我的舞台",
+          "type": "主题曲",
+          "singer": "胡彦斌、灵感乐队"
+        }
+      ],
+      "themeSongSource": "https://zh.wikipedia.org/wiki/我为歌狂_(动画)",
+      "relations": [
+        {
+          "from": "叶峰",
+          "to": "楚天歌",
+          "label": "乐队同伴"
+        },
+        {
+          "from": "丛容",
+          "to": "麦云洁",
+          "label": "校园好友"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%88%91%E4%B8%BA%E6%AD%8C%E7%8B%82"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%88%91%E4%B8%BA%E6%AD%8C%E7%8B%82"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E6%88%91%E4%B8%BA%E6%AD%8C%E7%8B%82"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "slug": "zhonghua-xiaozi",
+      "name": "中华小子",
+      "year": 2007,
+      "genre": [
+        "热血",
+        "武侠",
+        "冒险"
+      ],
+      "color": "#c23b22",
+      "description": "中法合拍的少林传奇，三个少年肩负千年宿命，功夫招式拳拳到肉。",
+      "poster": "/images/posters/zhonghua-xiaozi.svg",
+      "baikeUrl": "https://baike.baidu.com/item/中华小子",
+      "addedAt": "2026-09-23",
+      "studio": "上海今日动画影视制作有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "花小兰",
+          "role": "主角 · 少林俗家弟子",
+          "bio": "三位主角之一，少林英雄后代，性格勇敢直爽、有些冲动，兵器为特制软鞭。与唐小龙、陈小虎共同对抗黑狐王，曾在时间之轮事件中改变未来。",
+          "sourceUrl": "https://m.baike.so.com/doc/5803355-6016154.html"
+        },
+        {
+          "name": "唐小龙",
+          "role": "主角 · 开封府尹少公子",
+          "bio": "少林英雄后代，性格傲气自负但重情重义，使家传宝剑，绝招可召唤蓝色水龙「飞龙在天」。与花小兰、陈小虎并肩对抗黑狐王。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%94%90%E5%B0%8F%E9%BE%99/43702"
+        },
+        {
+          "name": "陈小虎",
+          "role": "主角 · 农家之子",
+          "bio": "少林英雄后代，性格憨厚老实、恋家重情、乐观孝顺，兵器为棍子。曾遭黑狐王陷害变成火鬼后复原，誓愿守护家人与和平。",
+          "sourceUrl": "https://m.baike.so.com/doc/6757217-10419532.html"
+        },
+        {
+          "name": "三藏方丈",
+          "role": "师长 · 少林寺方丈",
+          "bio": "性格成熟冷静、待人和蔼，肩负寻找三位少林英雄转世的重任，将花小兰、唐小龙、陈小虎收为记名弟子并指导修行，以应对黑狐王的威胁。",
+          "sourceUrl": "https://wapbaike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90/7315038"
+        },
+        {
+          "name": "黑狐王",
+          "role": "反派 · 复活的千年妖魔",
+          "bio": "全剧反派核心，被封印后复活的千年妖魔，图谋复仇并称霸天下，拥有火能力。与三藏方丈培养的三个少年主角多次激烈对抗。",
+          "sourceUrl": "https://wapbaike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90/7315038"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "黑狐王，别想踏进少林一步！",
+          "speaker": "花小兰",
+          "context": "守寺之战"
+        },
+        {
+          "line": "护法神功——召唤！",
+          "speaker": "唐小龙",
+          "context": "神功觉醒"
+        },
+        {
+          "line": "我们三个，就是三英雄的转世！",
+          "speaker": "陈小虎",
+          "context": "宿命集结"
+        }
+      ],
+      "songs": [
+        {
+          "name": "中华小子",
+          "type": "主题曲（重映版）",
+          "singer": "零一九零贰"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/中华小子/61784685",
+      "relations": [
+        {
+          "from": "花小兰",
+          "to": "唐小龙",
+          "label": "少林同伴"
+        },
+        {
+          "from": "花小兰",
+          "to": "陈小虎",
+          "label": "少林同伴"
+        },
+        {
+          "from": "唐小龙",
+          "to": "陈小虎",
+          "label": "少林同伴"
+        },
+        {
+          "from": "三藏方丈",
+          "to": "花小兰",
+          "label": "师徒"
+        },
+        {
+          "from": "黑狐王",
+          "to": "花小兰",
+          "label": "宿敌"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
+        }
+      ]
+    },
+    {
+      "id": 22,
+      "slug": "daerduo-tutu",
+      "name": "大耳朵图图",
+      "year": 2004,
+      "genre": [
+        "喜剧",
+        "日常",
+        "儿童"
+      ],
+      "color": "#f0a35e",
+      "description": "三岁图图的奇思妙想，把平凡小区过成了一场永远玩不累的探险。",
+      "poster": "/images/posters/daerduo-tutu.svg",
+      "baikeUrl": "https://baike.baidu.com/item/大耳朵图图",
+      "addedAt": "2026-09-23",
+      "studio": "上海美术电影制片厂",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "胡图图",
+          "role": "主角 · 长着招风耳的三岁男孩",
+          "bio": "《大耳朵图图》男主角，设定2000年6月21日出生、故事开始时三岁，心地善良、聪明伶俐、想象力丰富，标志特点是招风耳、一撮梳不好的小头毛和“动耳神功”。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%83%A1%E5%9B%BE%E5%9B%BE/7174038"
+        },
+        {
+          "name": "小美",
+          "role": "配角 · 比图图大三个月的漂亮女孩",
+          "bio": "《大耳朵图图》中的三岁女孩，比图图大三个月，善良单纯，同情图图也喜欢图图，口头禅是“人家不高兴了……”。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%B0%8F%E7%BE%8E/12633831"
+        },
+        {
+          "name": "刷子",
+          "role": "配角 · 胆大爱恶作剧的好朋友",
+          "bio": "本名张帅子、小名刷子，《大耳朵图图》中图图的好朋友，胆大、爱恶作剧，善于发现他人的优点，与糊涂的图图互相欣赏。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%BC%A0%E5%B8%85%E5%AD%90/794170"
+        },
+        {
+          "name": "胡英俊",
+          "role": "配角 · 图图开明随和的爸爸",
+          "bio": "《大耳朵图图》主要角色，胡图图的父亲、张小丽的丈夫，性格开朗活泼、大大咧咧，教育方式开明，善于讲道理并尊重孩子的想法。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%83%A1%E8%8B%B1%E4%BF%8A/15186409"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "图图的耳朵，会动哦！",
+          "speaker": "胡图图",
+          "context": "招牌动作"
+        },
+        {
+          "line": "妈妈，我今天又长大了一点点。",
+          "speaker": "胡图图",
+          "context": "童言日记"
+        }
+      ],
+      "songs": [
+        {
+          "name": "快乐小孩",
+          "type": "主题曲",
+          "singer": "潘延"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/快乐小孩/6812651",
+      "relations": [
+        {
+          "from": "胡图图",
+          "to": "小美",
+          "label": "同班伙伴"
+        },
+        {
+          "from": "胡图图",
+          "to": "刷子",
+          "label": "同班伙伴"
+        },
+        {
+          "from": "胡图图",
+          "to": "胡英俊",
+          "label": "父子"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%A4%A7%E8%80%B3%E6%9C%B5%E5%9B%BE%E5%9B%BE"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%A4%A7%E8%80%B3%E6%9C%B5%E5%9B%BE%E5%9B%BE"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%A4%A7%E8%80%B3%E6%9C%B5%E5%9B%BE%E5%9B%BE"
+        }
+      ]
+    },
+    {
+      "id": 23,
+      "slug": "lanmao-taoqi-sanqianwen",
+      "name": "蓝猫淘气三千问",
+      "year": 1999,
+      "genre": [
+        "科普",
+        "冒险",
+        "儿童"
+      ],
+      "color": "#2f6fb3",
+      "description": "每一集回答一个问题，是95后00后最早的一套会动的百科全书。",
+      "poster": "/images/posters/lanmao-taoqi-sanqianwen.svg",
+      "baikeUrl": "https://baike.baidu.com/item/蓝猫淘气三千问",
+      "addedAt": "2026-09-23",
+      "studio": "湖南三辰影库卡通节目发展有限责任公司",
+      "broadcastPlatform": "北京电视台青少频道",
+      "characters": [
+        {
+          "name": "蓝猫",
+          "role": "主角 · 冷静负责的科普探险队队长",
+          "bio": "《蓝猫淘气三千问》男主角、队伍的领导核心，活泼乐观开朗、有运动天赋，精明善良、头脑冷静、意志坚强且富有同情心，带领伙伴在各领域探险科普。",
+          "sourceUrl": "https://wapbaike.baidu.com/item/%E8%93%9D%E7%8C%AB/5731407"
+        },
+        {
+          "name": "淘气",
+          "role": "男二号 · 机灵自负的飞船驾驶员",
+          "bio": "《蓝猫淘气三千问》男二号，原型为鼠，聪明机灵、好奇心强、富有探险精神，驾驶技艺高超，曾在航空航天系列中担任飞船驾驶员，性格有些自负。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%B7%98%E6%B0%94/14813914"
+        },
+        {
+          "name": "咖喱",
+          "role": "女主角 · 娇气爱表现的小老鼠",
+          "bio": "《蓝猫淘气三千问》女主角，形象为白色小老鼠，活泼善良又任性娇气、爱表现，渴望得到大家的关注和宠爱。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%92%96%E5%96%B1/4435877"
+        },
+        {
+          "name": "肥仔",
+          "role": "配角 · 憨厚博学的绅士",
+          "bio": "《蓝猫淘气三千问》角色，憨厚稳重、学识渊博，讲究礼节、有绅士风度但比较古板，擅长电脑操作与科技发明，爱好智能游戏、读书和美食。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%82%A5%E4%BB%94/1230357"
+        },
+        {
+          "name": "菲菲",
+          "role": "男三号 · 聪明狡猾、爱抢功劳的狐狸",
+          "bio": "《蓝猫淘气三千问》男三号，狐狸，聪明敏捷又有些狡猾，爱和蓝猫抢功劳、爱面子，但本质善良、重感情，会为兄弟挺身而出，曾在剧中担任飞船医师。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%8F%B2%E8%8F%B2/8639343"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "淘气别急，我们一起去寻找答案。",
+          "speaker": "蓝猫",
+          "context": "科普出发"
+        },
+        {
+          "line": "知识的力量，地厚天高！",
+          "speaker": "蓝猫",
+          "context": "呼应主题曲"
+        }
+      ],
+      "songs": [
+        {
+          "name": "地厚天高",
+          "type": "主题曲",
+          "singer": "中央少年广播合唱团"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/地厚天高/21507889",
+      "relations": [
+        {
+          "from": "蓝猫",
+          "to": "淘气",
+          "label": "黄金搭档"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
+        }
+      ]
+    },
+    {
+      "id": 24,
+      "slug": "huoli-shaonianwang",
+      "name": "火力少年王",
+      "year": 2006,
+      "genre": [
+        "热血",
+        "竞技",
+        "励志"
+      ],
+      "color": "#e04a2f",
+      "description": "悠悠球甩出的弧线里，藏着一代人对炫技与翻盘的全部想象。",
+      "poster": "/images/posters/huoli-shaonianwang.svg",
+      "baikeUrl": "https://baike.baidu.com/item/火力少年王",
+      "addedAt": "2026-09-23",
+      "studio": "广东奥飞文化传播有限公司",
+      "broadcastPlatform": null,
+      "characters": [
+        {
+          "name": "李非",
+          "role": "主角 · 江海队队长（真人剧一、二部）",
+          "bio": "真人剧《火力少年王》第一、二部主人公，美籍华人转学生、江海队队长，性格收敛沉稳、谦虚冷静、带有王者气势，归国后入选校队并率众夺得悠悠球大赛冠军。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%9D%8E%E9%9D%9E/7777092"
+        },
+        {
+          "name": "姚杰",
+          "role": "配角 · 烈火队创始人（第三部）",
+          "bio": "《火力少年王3》（2010 年动画）角色，烈火队创始人，性格稳重、成熟、坚强；因腿伤转练悠悠球，后带领队伍获得悠悠球全国大赛总冠军。",
+          "sourceUrl": "https://m.baike.so.com/doc/6686507-6900410.html"
+        },
+        {
+          "name": "凌亮",
+          "role": "配角 · 烈火队核心（第三部）",
+          "bio": "《火力少年王3》中的 16 岁中学生，热情冲动，从把悠悠球当玩具到理解其竞技意义；经选拔入队、多次败于强敌后不断打磨技术，最终助烈火队夺得世界团体赛冠军。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%87%8C%E4%BA%AE/1625435"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "火力银电，全速进攻！",
+          "speaker": "李非",
+          "context": "配球绝招"
+        },
+        {
+          "line": "球可以输，气势不能输。",
+          "speaker": "姚杰",
+          "context": "竞技信念"
+        }
+      ],
+      "songs": [
+        {
+          "name": "青春之火",
+          "type": "主题曲",
+          "singer": "潘松和"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/青春之火/9400000",
+      "relations": [
+        {
+          "from": "李非",
+          "to": "姚杰",
+          "label": "对手成战友"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B"
+        }
+      ]
+    },
+    {
+      "id": 25,
+      "slug": "jingling-shiji",
+      "name": "精灵世纪",
+      "year": 2006,
+      "genre": [
+        "奇幻",
+        "冒险",
+        "热血"
+      ],
+      "color": "#7b4fa5",
+      "description": "1.5亿打造的国产3D里程碑，成龙、李咏献声的精灵大陆远征。",
+      "poster": "/images/posters/jingling-shiji.svg",
+      "baikeUrl": "https://baike.baidu.com/item/精灵世纪",
+      "addedAt": "2026-09-23",
+      "studio": "北京龙马世纪国际文化有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "查理",
+          "role": "配角 · 文具王国国王",
+          "bio": "《精灵世纪》中文具王国的国王，原型为文具盒，性格容易冲动；曾与玩具军团发生矛盾，后携手共同拯救地球。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E6%9F%A5%E7%90%86/22159820"
+        },
+        {
+          "name": "凯达",
+          "role": "配角 · 玩具军团领袖",
+          "bio": "玩具军团领袖，由小主人的父亲制造，性格敏感善良；守护小主人，并与卡卡成为好友、共同保卫和平。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%87%AF%E8%BE%BE/6976455"
+        },
+        {
+          "name": "诺亚公主",
+          "role": "女主角 · 守护卡卡王子的精灵使者",
+          "bio": "《精灵世纪》女主角，桀骜不驯、身手矫健，顽皮倔强但遇事冷静果敢；作为精灵使者奉命保护卡卡王子，与龙马军团并肩冒险。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%AF%BA%E5%A8%85/6025882"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "为了精灵大陆的荣光！",
+          "speaker": "查理",
+          "context": "远征誓言"
+        },
+        {
+          "line": "心火不熄，就不会输。",
+          "speaker": "凯达",
+          "context": "呼应插曲《心火》"
+        }
+      ],
+      "songs": [
+        {
+          "name": "精灵世纪",
+          "type": "片头曲",
+          "singer": "熊汝霖"
+        },
+        {
+          "name": "霞光",
+          "type": "片尾曲",
+          "singer": "曲锦楠"
+        }
+      ],
+      "themeSongSource": "https://zh.wikipedia.org/wiki/精灵世纪",
+      "relations": [
+        {
+          "from": "查理",
+          "to": "凯达",
+          "label": "战友"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%B2%BE%E7%81%B5%E4%B8%96%E7%BA%AA"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%B2%BE%E7%81%B5%E4%B8%96%E7%BA%AA"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%B2%BE%E7%81%B5%E4%B8%96%E7%BA%AA"
+        }
+      ]
+    },
+    {
+      "id": 26,
+      "slug": "xiong-chu-mo",
+      "name": "熊出没",
+      "year": 2012,
+      "genre": [
+        "喜剧",
+        "冒险"
+      ],
+      "color": "#4a6b2a",
+      "description": "狗熊岭的伐木季永不结束，光头强与熊兄弟的追逐战笑满了一个个寒假。",
+      "poster": "/images/posters/xiong-chu-mo.svg",
+      "baikeUrl": "https://baike.baidu.com/item/熊出没",
+      "addedAt": "2026-09-23",
+      "studio": "深圳华强数字动漫有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "熊大",
+          "role": "主角 · 狗熊岭的守护者大哥",
+          "bio": "《熊出没》主角之一，狗熊岭的狗熊、生态家园守护者，成熟稳重、足智多谋、坚持原则，重情重义，十分关心并包容弟弟熊二。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E7%86%8A%E5%A4%A7"
+        },
+        {
+          "name": "熊二",
+          "role": "主角 · 憨厚贪吃蜂蜜的弟弟熊",
+          "bio": "《熊出没》主角之一，憨厚老实的狗熊，心地善良、乐于助人、典型的直性子，力大无穷，最爱吃蜂蜜。",
+          "sourceUrl": "https://wapbaike.baidu.com/item/%E7%86%8A%E4%BA%8C"
+        },
+        {
+          "name": "光头强",
+          "role": "反派 · 总想砍树的伐木工",
+          "bio": "《熊出没》男主角，原为伐木工，长期与熊大熊二对抗，聪明、行动力强，本质善良孝顺并非坏人，后期转行当导游并与熊大熊二化敌为友，共同保护森林。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E5%85%89%E5%A4%B4%E5%BC%BA/9366515"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "臭狗熊！别跑！",
+          "speaker": "光头强",
+          "context": "追逃名场面"
+        },
+        {
+          "line": "保护森林，熊熊有责。",
+          "speaker": "熊大",
+          "context": "森林宣言"
+        },
+        {
+          "line": "光头强，不许砍树！",
+          "speaker": "熊二",
+          "context": "日常对峙"
+        }
+      ],
+      "songs": [
+        {
+          "name": "我还有点小糊涂",
+          "type": "片头曲",
+          "singer": "刘晨"
+        },
+        {
+          "name": "早安大森林",
+          "type": "片尾曲",
+          "singer": "李智平"
+        }
+      ],
+      "themeSongSource": null,
+      "relations": [
+        {
+          "from": "熊大",
+          "to": "熊二",
+          "label": "兄弟"
+        },
+        {
+          "from": "熊大",
+          "to": "光头强",
+          "label": "对手"
+        },
+        {
+          "from": "熊二",
+          "to": "光头强",
+          "label": "对手"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%86%8A%E5%87%BA%E6%B2%A1"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%86%8A%E5%87%BA%E6%B2%A1"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%86%8A%E5%87%BA%E6%B2%A1"
+        }
+      ]
+    },
+    {
+      "id": 27,
+      "slug": "kuiba",
+      "name": "魁拔",
+      "year": 2011,
+      "genre": [
+        "热血",
+        "奇幻",
+        "冒险"
+      ],
+      "color": "#8b1e1e",
+      "description": "蛮吉踏上寻找身份的征途，是国产动画电影最悲壮的一次冲锋。",
+      "poster": "/images/posters/kuiba.svg",
+      "baikeUrl": "https://baike.baidu.com/item/魁拔",
+      "addedAt": "2026-09-23",
+      "studio": "北京青青树动漫科技有限公司",
+      "broadcastPlatform": "全国院线",
+      "characters": [
+        {
+          "name": "蛮吉",
+          "role": "主角 · 梦想成为伟大妖侠的少年",
+          "bio": "动画电影《魁拔》系列男主角，8 岁热血少年，被兽族青年蛮小满收养、视其为父，梦想成为伟大的妖侠；他并不知晓自己的真实身份正是每 333 年复活一次的第六代魁拔。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%9B%AE%E5%90%89/4059055"
+        },
+        {
+          "name": "镜心",
+          "role": "配角 · 天界理性天神",
+          "bio": "《魁拔》中天界的天神，理性至上、惯于冷静分析，肩负消灭魁拔的使命降临地界；在遇到蛮吉后，其固有的价值观受到冲击。",
+          "sourceUrl": "https://m.baike.so.com/doc/5172390-5403123.html"
+        },
+        {
+          "name": "蛮小满",
+          "role": "配角 · 兽族青年，蛮吉的养父",
+          "bio": "出身卑微却心怀理想的兽族青年，性格憨厚浪漫，口头禅是「你今天很不走运」；收养孤儿蛮吉，两人虽无血缘却情同父子，他教导蛮吉坚守正义、共同对抗命运的不公。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%9B%AE%E5%B0%8F%E6%BB%A1/8345372"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "脉兽，觉醒！",
+          "speaker": "蛮吉",
+          "context": "召唤名场面"
+        },
+        {
+          "line": "就算全世界都说不行，我也要试试。",
+          "speaker": "蛮吉",
+          "context": "征途信念"
+        }
+      ],
+      "songs": [
+        {
+          "name": "魁拔军歌",
+          "type": "片尾曲",
+          "singer": "不明"
+        }
+      ],
+      "themeSongSource": "https://zh.wikipedia.org/wiki/魁拔",
+      "relations": [
+        {
+          "from": "蛮吉",
+          "to": "镜心",
+          "label": "同伴"
+        },
+        {
+          "from": "蛮吉",
+          "to": "蛮小满",
+          "label": "伙伴"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E9%AD%81%E6%8B%94"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E9%AD%81%E6%8B%94"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E9%AD%81%E6%8B%94"
+        }
+      ]
+    },
+    {
+      "id": 28,
+      "slug": "saierhao",
+      "name": "赛尔号",
+      "year": 2012,
+      "genre": [
+        "科幻",
+        "冒险",
+        "热血"
+      ],
+      "color": "#1f7a8c",
+      "description": "2009年从网页启航、2012年登上金鹰卡通——赛尔号舰队的星际远征。",
+      "poster": "/images/posters/saierhao.svg",
+      "baikeUrl": "https://baike.baidu.com/item/赛尔号",
+      "addedAt": "2026-09-23",
+      "studio": "上海淘米网络科技有限公司",
+      "broadcastPlatform": "金鹰卡通频道",
+      "characters": [
+        {
+          "name": "赛小息",
+          "role": "主角 · 赛尔机器人",
+          "bio": "《赛尔号》动画男主角，从笨拙冒失的新手一路成长为敢于担当的星际探险者。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%B5%9B%E5%B0%8F%E6%81%AF/7683475"
+        },
+        {
+          "name": "卡璐璐",
+          "role": "女主角 · 智能型赛尔机器人",
+          "bio": "赛尔小队中的女性机器人，头脑灵活、擅长分析与辅助，是队伍的智囊。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        },
+        {
+          "name": "阿铁打",
+          "role": "配角 · 战斗型赛尔机器人",
+          "bio": "赛尔小队里的战斗担当，性格莽撞好斗、直来直往，战斗力却不俗。",
+          "sourceUrl": "http://baike.baidu.com/view/7244405.htm"
+        },
+        {
+          "name": "雷伊",
+          "role": "神兽 · 电系精灵",
+          "bio": "《赛尔号》世界观中的人气电系精灵，战神联盟核心成员，多次在关键战役中登场。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "赛尔号，全员出发！",
+          "speaker": "赛小息",
+          "context": "启航口令"
+        },
+        {
+          "line": "心灵就是战场。",
+          "speaker": "赛尔号主题曲",
+          "context": "星际远征的口号"
+        }
+      ],
+      "songs": [
+        {
+          "name": "心灵就是战场",
+          "type": "主题曲",
+          "singer": "王国沣"
+        }
+      ],
+      "themeSongSource": null,
+      "relations": [
+        {
+          "from": "赛小息",
+          "to": "卡璐璐",
+          "label": "舰队伙伴"
+        },
+        {
+          "from": "赛小息",
+          "to": "阿铁打",
+          "label": "舰队伙伴"
+        },
+        {
+          "from": "卡璐璐",
+          "to": "阿铁打",
+          "label": "舰队伙伴"
+        },
+        {
+          "from": "赛小息",
+          "to": "雷伊",
+          "label": "精灵搭档"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        }
       ]
     }
   ],

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="熊出没 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16120c"/>
+      <stop offset="0.55" stop-color="#0d0b08"/>
+      <stop offset="1" stop-color="#070605"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.39" r="0.55">
+      <stop offset="0" stop-color="#4a6b2a" stop-opacity="0.34"/>
+      <stop offset="1" stop-color="#4a6b2a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4a6b2a"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="30" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="100" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="100" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="170" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="170" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="240" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="240" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="310" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="310" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="380" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="380" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="450" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="450" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="520" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="520" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="590" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="590" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="660" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="660" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="730" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="730" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="10" y="800" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="568" y="800" width="22" height="34" rx="6" fill="#0b0a08" stroke="#3a2f1e" stroke-width="1.5"/>
+  <rect x="44" y="26" width="512" height="798" rx="18" fill="none" stroke="#c99a45" stroke-opacity="0.4" stroke-width="2"/>
+  <rect x="54" y="36" width="492" height="778" rx="12" fill="none" stroke="#4a6b2a" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="10 8"/>
+  <text x="300" y="86" text-anchor="middle" font-family="Courier New, monospace" font-size="20" letter-spacing="6" fill="#d8ac55" fill-opacity="0.85">FILE 26 · ARCHIVE</text>
+  <line x1="170" y1="106" x2="430" y2="106" stroke="#c99a45" stroke-opacity="0.5" stroke-width="2"/>
+  <line x1="193" y1="150" x2="193" y2="510" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="140" y1="210" x2="460" y2="210" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="246" y1="150" x2="246" y2="510" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="140" y1="270" x2="460" y2="270" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="299" y1="150" x2="299" y2="510" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="140" y1="330" x2="460" y2="330" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="352" y1="150" x2="352" y2="510" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="140" y1="390" x2="460" y2="390" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="405" y1="150" x2="405" y2="510" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <line x1="140" y1="450" x2="460" y2="450" stroke="#4a6b2a" stroke-opacity="0.22" stroke-width="2"/>
+  <circle cx="306" cy="330" r="14" fill="#4a6b2a" fill-opacity="0.75"/>
+  <circle cx="200" cy="270" r="14" fill="#0b0a08"/>
+  <circle cx="200" cy="270" r="13" fill="none" stroke="#4a6b2a" stroke-opacity="0.8" stroke-width="3"/>
+  <rect x="70" y="560" width="460" height="3" fill="url(#bar)" opacity="0.9"/>
+  <text x="300" y="646" text-anchor="middle" font-family="Microsoft YaHei, Noto Sans SC, sans-serif" font-size="96" font-weight="900" fill="#fff6e8" letter-spacing="4">熊出没</text>
+  <text x="300" y="700" text-anchor="middle" font-family="Courier New, monospace" font-size="22" letter-spacing="8" fill="#4a6b2a">BOONIE BEARS</text>
+  <text x="300" y="768" text-anchor="middle" font-family="Courier New, monospace" font-size="46" font-weight="bold" fill="#ffd24d" letter-spacing="12">2012</text>
+  <rect x="70" y="790" width="460" height="3" fill="url(#bar)" opacity="0.7"/>
+</svg>
