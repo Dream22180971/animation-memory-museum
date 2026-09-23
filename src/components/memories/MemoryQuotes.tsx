@@ -3,6 +3,7 @@
 import { motion, type Variants } from "framer-motion";
 import { Clapperboard, Quote, Sparkles } from "lucide-react";
 import animations from "@/data/animations.json";
+import PosterImage from "@/components/ui/PosterImage";
 
 const quoteCards = animations.animations.flatMap((animation) =>
   animation.classicQuotes.map((quote) => ({
@@ -79,10 +80,9 @@ export default function MemoryQuotes() {
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,color-mix(in_srgb,var(--quote-accent)_32%,transparent),transparent_34%),linear-gradient(135deg,rgba(255,210,77,.08),transparent_46%)] opacity-75" />
                     <div className="absolute inset-y-3 left-0 w-1 rounded-r-full bg-[var(--quote-accent)] opacity-80" />
-                    <div
-                      className="absolute right-3 top-3 h-16 w-16 rounded-lg bg-cover bg-center opacity-30 saturate-[.85] transition duration-300 group-hover:opacity-55"
-                      style={{ backgroundImage: `url(${quote.poster})` }}
-                    />
+                    <div className="absolute right-3 top-3 h-16 w-16 overflow-hidden rounded-lg opacity-30 saturate-[.85] transition duration-300 group-hover:opacity-55">
+                      <PosterImage src={quote.poster} alt="" sizes="64px" />
+                    </div>
                     <div className="relative z-10">
                       <div className="mb-5 flex items-center justify-between gap-3">
                         <div className="min-w-0">

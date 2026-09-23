@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Search, X, Music, Clock, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import animations from "@/data/animations.json";
+import PosterImage from "@/components/ui/PosterImage";
 
 const allGenres = [...new Set(animations.animations.flatMap((a) => a.genre))].sort();
 
@@ -185,10 +186,9 @@ export default function GlobalSearch({ open, onClose }: GlobalSearchProps) {
                       className="group flex items-center gap-4 rounded-xl border border-[#c99a45]/10 bg-[#070806]/40 p-3 transition hover:border-[#ffd24d]/20 hover:bg-[#ffd24d]/[0.03]"
                     >
                       {/* Poster thumbnail */}
-                      <div
-                        className="h-16 w-16 shrink-0 rounded-lg bg-cover bg-center"
-                        style={{ backgroundImage: `url(${anim.poster})` }}
-                      />
+                      <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-[#141008]">
+                        <PosterImage src={anim.poster} alt={`${anim.name} 海报`} sizes="64px" />
+                      </div>
 
                       {/* Info */}
                       <div className="min-w-0 flex-1">

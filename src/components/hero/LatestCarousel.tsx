@@ -8,6 +8,7 @@ import type { Swiper as SwiperType } from "swiper";
 import { Clock, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { latestAnimations } from "@/lib/animations";
+import PosterImage from "@/components/ui/PosterImage";
 import "swiper/css";
 import "swiper/css/pagination";
 
@@ -94,10 +95,9 @@ export default function LatestCarousel() {
                   className="museum-card group relative overflow-hidden rounded-xl"
                 >
                   {/* Background poster */}
-                  <div
-                    className="absolute inset-0 bg-cover bg-center transition duration-500 group-hover:scale-110"
-                    style={{ backgroundImage: `url(${anim.poster})` }}
-                  />
+                  <div className="absolute inset-0 transition duration-500 group-hover:scale-110">
+                    <PosterImage src={anim.poster} alt={`${anim.name} 海报`} sizes="(max-width:640px) 92vw, (max-width:1024px) 46vw, 30vw" />
+                  </div>
                   <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,6,.25)_0%,rgba(7,8,6,.7)_50%,rgba(7,8,6,.94)_100%)]" />
 
                   {/* Content */}

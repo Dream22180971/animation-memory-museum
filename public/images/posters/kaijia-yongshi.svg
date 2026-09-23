@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="铠甲勇士 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a0d0a"/>
+      <stop offset="0.55" stop-color="#0f0706"/>
+      <stop offset="1" stop-color="#070403"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#b03a2e" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#b03a2e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b03a2e"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <path d="M300 150 L410 240 L380 430 L300 500 L220 430 L190 240 Z" fill="none" stroke="#e06a4a" stroke-width="7" opacity="0.85"/>
+  <path d="M300 200 L368 258 L348 400 L300 448 L252 400 L232 258 Z" fill="#b03a2e" opacity="0.35"/>
+  <path d="M300 250 L332 300 L300 400 L268 300 Z" fill="#ffd24d" opacity="0.85"/>
+  <path d="M150 320 L232 268 M450 320 L368 268" stroke="#e06a4a" stroke-width="6" opacity="0.6"/>
+  <circle cx="300" cy="300" r="14" fill="#fff6e8"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="bold" fill="#fff2d5" letter-spacing="14">铠甲勇士</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="8">2009 · 五行铠甲</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

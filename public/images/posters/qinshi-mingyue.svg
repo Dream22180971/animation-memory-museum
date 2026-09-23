@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="秦时明月 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17110a"/>
+      <stop offset="0.55" stop-color="#0e0a07"/>
+      <stop offset="1" stop-color="#070504"/>
+    </linearGradient>
+    <radialGradient id="moon" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#f5e6b8" stop-opacity="0.95"/>
+      <stop offset="0.7" stop-color="#e8cf8a" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#e8cf8a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8a5a2e"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <circle cx="300" cy="300" r="190" fill="url(#moon)"/>
+  <circle cx="300" cy="300" r="120" fill="#f7ecca" opacity="0.9"/>
+  <path d="M300 180 L312 300 L300 420 L288 300 Z" fill="#241a0e" opacity="0.55"/>
+  <path d="M120 560 Q300 480 480 560 L480 600 Q300 520 120 600 Z" fill="#8a5a2e" opacity="0.35"/>
+  <path d="M90 640 Q300 560 510 640 L510 690 Q300 610 90 690 Z" fill="#5c3a1c" opacity="0.4"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="serif" font-size="72" font-weight="bold" fill="#fff2d5" letter-spacing="14">秦时明月</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="8">2007 · 武侠史诗</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

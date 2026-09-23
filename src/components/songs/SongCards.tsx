@@ -1,5 +1,6 @@
-import { Music } from "lucide-react";
-import animationsData from "@/data/animations.json";
+import { ArrowUpRight, Music } from "lucide-react";
+import { animations as animationRecords, neteaseSongLink } from "@/lib/animations";
+import PosterImage from "@/components/ui/PosterImage";
 
 const typeColors: Record<string, string> = {
   "主题曲": "bg-[#ffd24d]/15 text-[#ffd24d] border-[#ffd24d]/30",
@@ -17,19 +18,18 @@ export default function SongCards() {
         </h2>
       </div>
       <p className="memory-text mb-8 max-w-2xl text-base text-[#d9c39a]/84">
-        那些年放学后响起的旋律，每一首都是打开记忆的钥匙。
+        那些年放学后响起的旋律，每一首都是打开记忆的钥匙。点一行去网易云音乐搜来听。
       </p>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {animationsData.animations.map((animation) => (
+        {animationRecords.map((animation) => (
           <div
             key={animation.slug}
             className="museum-card group relative overflow-hidden rounded-xl p-5 transition hover:-translate-y-1"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center opacity-20 transition group-hover:scale-105 group-hover:opacity-30"
-              style={{ backgroundImage: `url(${animation.poster})` }}
-            />
+            <div className="absolute inset-0 opacity-20 transition group-hover:scale-105 group-hover:opacity-30">
+              <PosterImage src={animation.poster} alt="" sizes="(max-width:640px) 92vw, (max-width:1024px) 46vw, 30vw" />
+            </div>
             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,6,.3),rgba(7,8,6,.92))]" />
 
             <div className="relative z-10">
@@ -40,9 +40,13 @@ export default function SongCards() {
 
               <div className="space-y-2.5">
                 {animation.songs?.map((song) => (
-                  <div
+                  <a
                     key={`${song.name}-${song.type}`}
-                    className="flex items-center gap-3 rounded-lg border border-[#c99a45]/12 bg-[#070806]/60 px-3 py-2.5"
+                    href={neteaseSongLink(song)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title={song.neteaseUrl ? `在网易云音乐播放《${song.name}》` : `在网易云音乐搜索《${song.name}》`}
+                    className="flex items-center gap-3 rounded-lg border border-[#c99a45]/12 bg-[#070806]/60 px-3 py-2.5 transition hover:border-[#e8505e]/45 hover:bg-[#e8505e]/[0.06]"
                   >
                     <Music size={14} className="shrink-0 text-[#d9c39a]/50" />
                     <div className="min-w-0 flex-1">
@@ -56,7 +60,8 @@ export default function SongCards() {
                     >
                       {song.type}
                     </span>
-                  </div>
+                    <ArrowUpRight size={14} className="shrink-0 text-[#d9c39a]/0 transition group-hover:text-[#d9c39a]/40" />
+                  </a>
                 ))}
               </div>
             </div>

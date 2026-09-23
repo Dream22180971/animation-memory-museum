@@ -61,6 +61,10 @@
           "url": "https://v.qq.com/x/search/?q=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
         },
@@ -212,6 +216,10 @@
           "url": "https://v.qq.com/x/search/?q=%E7%8C%AA%E7%8C%AA%E4%BE%A0"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%8C%AA%E7%8C%AA%E4%BE%A0"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E7%8C%AA%E7%8C%AA%E4%BE%A0"
         },
@@ -352,6 +360,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%9E%9C%E5%AE%9D%E7%89%B9%E6%94%BB"
         },
         {
           "label": "爱奇艺",
@@ -509,6 +521,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%B4%9B%E6%B4%9B%E5%8E%86%E9%99%A9%E8%AE%B0"
         },
         {
           "label": "爱奇艺",
@@ -679,6 +695,10 @@
           "url": "https://v.qq.com/x/search/?q=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
         },
@@ -828,6 +848,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%A5%9E%E5%85%B5%E5%B0%8F%E5%B0%86"
         },
         {
           "label": "爱奇艺",
@@ -1040,6 +1064,10 @@
           "url": "https://v.qq.com/x/search/?q=%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E5%96%9C%E7%BE%8A%E7%BE%8A%E4%B8%8E%E7%81%B0%E5%A4%AA%E7%8B%BC"
         },
@@ -1145,6 +1173,10 @@
           "url": "https://v.qq.com/x/search/?q=%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E5%9B%B4%E6%A3%8B%E5%B0%91%E5%B9%B4"
         },
@@ -1243,6 +1275,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E6%88%91%E4%B8%BA%E6%AD%8C%E7%8B%82"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%88%91%E4%B8%BA%E6%AD%8C%E7%8B%82"
         },
         {
           "label": "爱奇艺",
@@ -1381,6 +1417,10 @@
           "url": "https://v.qq.com/x/search/?q=%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E4%B8%AD%E5%8D%8E%E5%B0%8F%E5%AD%90"
         },
@@ -1479,6 +1519,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E5%A4%A7%E8%80%B3%E6%9C%B5%E5%9B%BE%E5%9B%BE"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%A4%A7%E8%80%B3%E6%9C%B5%E5%9B%BE%E5%9B%BE"
         },
         {
           "label": "爱奇艺",
@@ -1587,6 +1631,10 @@
           "url": "https://v.qq.com/x/search/?q=%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E8%93%9D%E7%8C%AB%E6%B7%98%E6%B0%94%E4%B8%89%E5%8D%83%E9%97%AE"
         },
@@ -1669,6 +1717,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%81%AB%E5%8A%9B%E5%B0%91%E5%B9%B4%E7%8E%8B"
         },
         {
           "label": "爱奇艺",
@@ -1763,6 +1815,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E7%B2%BE%E7%81%B5%E4%B8%96%E7%BA%AA"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%B2%BE%E7%81%B5%E4%B8%96%E7%BA%AA"
         },
         {
           "label": "爱奇艺",
@@ -1863,6 +1919,10 @@
           "url": "https://v.qq.com/x/search/?q=%E7%86%8A%E5%87%BA%E6%B2%A1"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%86%8A%E5%87%BA%E6%B2%A1"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E7%86%8A%E5%87%BA%E6%B2%A1"
         },
@@ -1945,6 +2005,10 @@
         {
           "label": "腾讯视频",
           "url": "https://v.qq.com/x/search/?q=%E9%AD%81%E6%8B%94"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E9%AD%81%E6%8B%94"
         },
         {
           "label": "爱奇艺",
@@ -2047,12 +2111,505 @@
           "url": "https://v.qq.com/x/search/?q=%E8%B5%9B%E5%B0%94%E5%8F%B7"
         },
         {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        },
+        {
           "label": "爱奇艺",
           "url": "https://so.iqiyi.com/so/q_%E8%B5%9B%E5%B0%94%E5%8F%B7"
         },
         {
           "label": "优酷",
           "url": "https://so.youku.com/search_video/q_%E8%B5%9B%E5%B0%94%E5%8F%B7"
+        }
+      ]
+    },
+    {
+      "id": 29,
+      "slug": "qin-shi-ming-yue",
+      "name": "秦时明月",
+      "year": 2007,
+      "genre": [
+        "武侠",
+        "历史",
+        "3D"
+      ],
+      "color": "#8a5a2e",
+      "description": "荆轲之子天明与剑圣盖聂并肩行走乱世，诸子百家与帝国铁骑在月色下交锋——那柄渊虹划过的弧线，是很多人第一次知道国漫可以这么美。",
+      "poster": "/images/posters/qinshi-mingyue.svg",
+      "baikeUrl": "https://baike.baidu.com/item/秦时明月之百步飞剑",
+      "addedAt": "2026-09-23",
+      "studio": "杭州玄机科技信息技术有限公司",
+      "broadcastPlatform": "北京电视台",
+      "characters": [
+        {
+          "name": "荆天明",
+          "role": "主角 · 墨家巨子",
+          "bio": "《秦时明月》男主角，刺客荆轲之子，被盖聂带出咸阳。天真顽劣却重情重义，身中阴阳咒印，一路成长为墨家巨子。",
+          "sourceUrl": "https://m.baike.so.com/doc/7155400-7379269.html"
+        },
+        {
+          "name": "盖聂",
+          "role": "剑圣 · 纵横家",
+          "bio": "原秦国第一剑客，佩剑渊虹，为兑现对故友荆轲的承诺背叛帝国、护送天明。冷峻寡言，是整部作品的定海神针。",
+          "sourceUrl": "https://m.baike.so.com/doc/7155400-7379269.html"
+        },
+        {
+          "name": "项少羽",
+          "role": "主角 · 楚国项氏少主",
+          "bio": "楚国将门之后，力能扛鼎、意气风发，与天明亦敌亦友、并肩长大，原型即未来的西楚霸王项羽。",
+          "sourceUrl": "https://m.baike.so.com/doc/7155400-7379269.html"
+        },
+        {
+          "name": "高月",
+          "role": "女主角 · 墨家弟子",
+          "bio": "燕国公主姬如千泷，化名高月藏身墨家机关城，温柔聪慧，是天明心底最柔软的那道月光。",
+          "sourceUrl": "https://m.baike.so.com/doc/7155400-7379269.html"
+        },
+        {
+          "name": "卫庄",
+          "role": "对手 · 流沙首领",
+          "bio": "鬼谷派横剑术传人，盖聂的同门师弟，率杀手组织「流沙」行走于帝国与江湖之间，信奉强者生存。",
+          "sourceUrl": "https://m.baike.so.com/doc/7155400-7379269.html"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%A7%A6%E6%97%B6%E6%98%8E%E6%9C%88"
+        },
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%A7%A6%E6%97%B6%E6%98%8E%E6%9C%88"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E7%A7%A6%E6%97%B6%E6%98%8E%E6%9C%88"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "有些梦虽然遥不可及，但并不是不可能实现。",
+          "speaker": "盖聂",
+          "context": "说给天明的信念"
+        },
+        {
+          "line": "失败的人只有一种，就是在抵达成功之前放弃的人。",
+          "speaker": "盖聂",
+          "context": "剑圣的处世之道"
+        },
+        {
+          "line": "这个字念「侠」。所谓侠，就是有力量的人帮助弱小的人。",
+          "speaker": "盖聂",
+          "context": "教天明认字"
+        },
+        {
+          "line": "手中的剑为什么而挥动，只有靠你自己去寻找答案。",
+          "speaker": "盖聂",
+          "context": "离别时的嘱托"
+        },
+        {
+          "line": "了解你的对手，才能选择获胜的方式。",
+          "speaker": "盖聂",
+          "context": "论剑之道"
+        },
+        {
+          "line": "勇敢，不是通过让别人为他担心来证明的。强者，是能让朋友亲人感到安全。",
+          "speaker": "盖聂",
+          "context": "重新定义勇敢"
+        }
+      ],
+      "songs": [
+        {
+          "name": "月光",
+          "type": "片尾曲",
+          "singer": "胡彦斌"
+        }
+      ],
+      "themeSongSource": "https://m.baike.so.com/doc/7155400-7379269.html",
+      "relations": [
+        {
+          "from": "盖聂",
+          "to": "荆天明",
+          "label": "守护"
+        },
+        {
+          "from": "盖聂",
+          "to": "卫庄",
+          "label": "同门宿敌"
+        },
+        {
+          "from": "荆天明",
+          "to": "项少羽",
+          "label": "挚友战友"
+        },
+        {
+          "from": "荆天明",
+          "to": "高月",
+          "label": "青梅竹马"
+        },
+        {
+          "from": "项少羽",
+          "to": "高月",
+          "label": "同伴"
+        },
+        {
+          "from": "卫庄",
+          "to": "荆天明",
+          "label": "敌对"
+        }
+      ]
+    },
+    {
+      "id": 30,
+      "slug": "kaijia-yongshi",
+      "name": "铠甲勇士",
+      "year": 2009,
+      "genre": [
+        "特摄",
+        "机甲",
+        "热血"
+      ],
+      "color": "#b03a2e",
+      "description": "五行铠甲光影合体，ERP 研究所的五位青年扛起守护城市的责任。炎龙侠的火剑一出手，男孩们的放学路都变成了战场。",
+      "poster": "/images/posters/kaijia-yongshi.svg",
+      "baikeUrl": "https://baike.baidu.com/item/铠甲勇士",
+      "addedAt": "2026-09-23",
+      "studio": "广东奥飞动漫文化股份有限公司",
+      "broadcastPlatform": null,
+      "characters": [
+        {
+          "name": "李炘南",
+          "role": "炎龙铠甲 · 光影战队队长",
+          "bio": "热爱钢琴的青年，召唤炎龙铠甲，性格沉稳包容，是光影小队的核心与精神支柱。",
+          "sourceUrl": "https://baike.baidu.com/item/%E6%9D%8E%E7%82%98%E5%8D%97/9735604"
+        },
+        {
+          "name": "北淼",
+          "role": "黑犀铠甲 · 光影战队成员",
+          "bio": "行事果决、要求严苛的黑犀侠，一度因身世与立场和队友产生裂痕，却始终站在抗暗前线。",
+          "sourceUrl": "https://www.baike.com/wikiid/6807350554497047804"
+        },
+        {
+          "name": "吴启修",
+          "role": "雪獒铠甲 · 光影战队成员",
+          "bio": "沉默寡言的雪獒侠，曾因失忆被影界利用，找回身份后重新与队友并肩。",
+          "sourceUrl": "https://www.baike.com/wikiid/6807350554497047804"
+        },
+        {
+          "name": "东杉",
+          "role": "风鹰铠甲 · 光影战队成员",
+          "bio": "头脑灵活的风鹰侠，擅长侦察与策应，是队里的润滑剂。",
+          "sourceUrl": "https://www.baike.com/wikiid/6807350554497047804"
+        },
+        {
+          "name": "坤中",
+          "role": "地虎铠甲 · 光影战队成员",
+          "bio": "年纪最小的地虎侠，活泼敢拼，用勇气弥补经验不足。",
+          "sourceUrl": "https://www.baike.com/wikiid/6807350554497047804"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E9%93%A0%E7%94%B2%E5%8B%87%E5%A3%AB"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E9%93%A0%E7%94%B2%E5%8B%87%E5%A3%AB"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E9%93%A0%E7%94%B2%E5%8B%87%E5%A3%AB"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "一切都是最好的安排。凡走过，必留下痕迹。",
+          "speaker": "李炘南",
+          "context": "炎龙的信条"
+        },
+        {
+          "line": "邪永远不能胜正，只要团结一心。",
+          "speaker": "李炘南",
+          "context": "合体宣言"
+        },
+        {
+          "line": "烂橘子就是烂橘子，影界的人绝对不能相信。",
+          "speaker": "北淼",
+          "context": "对卧底的警惕"
+        },
+        {
+          "line": "如果我说我不是卧底，你会相信吗？",
+          "speaker": "吴启修",
+          "context": "身份成谜"
+        }
+      ],
+      "songs": [
+        {
+          "name": "命运战士",
+          "type": "片头曲",
+          "singer": "陈致逸"
+        }
+      ],
+      "themeSongSource": "https://baike.quark.cn/baike?id=3717f4a1345a46e8bf8aec18b293f07c",
+      "relations": [
+        {
+          "from": "李炘南",
+          "to": "北淼",
+          "label": "战友分歧"
+        },
+        {
+          "from": "李炘南",
+          "to": "东杉",
+          "label": "小队同伴"
+        },
+        {
+          "from": "李炘南",
+          "to": "坤中",
+          "label": "队长队员"
+        },
+        {
+          "from": "北淼",
+          "to": "吴启修",
+          "label": "怀疑对峙"
+        },
+        {
+          "from": "东杉",
+          "to": "坤中",
+          "label": "同伴"
+        },
+        {
+          "from": "吴启修",
+          "to": "李炘南",
+          "label": "先敌后友"
+        }
+      ]
+    },
+    {
+      "id": 31,
+      "slug": "balala-xiao-moxian",
+      "name": "巴啦啦小魔仙",
+      "year": 2008,
+      "genre": [
+        "魔法",
+        "少女",
+        "真人"
+      ],
+      "color": "#d14f95",
+      "description": "魔仙堡的小蓝带着仙女棒来到人类世界，凌姐妹一句「巴啦啦能量」让无数女孩在课间集体变身。粉紫色的魔法阵，是一代人的审美启蒙。",
+      "poster": "/images/posters/balala-xiao-moxian.svg",
+      "baikeUrl": "https://baike.baidu.com/item/巴啦啦小魔仙",
+      "addedAt": "2026-09-23",
+      "studio": "广东奥飞动漫文化股份有限公司",
+      "broadcastPlatform": "广州南方少儿频道",
+      "characters": [
+        {
+          "name": "凌美琪",
+          "role": "主角 · 实习小魔仙",
+          "bio": "性格大大咧咧的姐姐，嘴硬心软，与妹妹一起跟着小蓝学习魔法、对抗黑魔仙。",
+          "sourceUrl": "https://m.baike.so.com/doc/507104.html"
+        },
+        {
+          "name": "凌美雪",
+          "role": "主角 · 实习小魔仙",
+          "bio": "聪明冷静的妹妹，成绩优异，是姐妹组合里的智囊。",
+          "sourceUrl": "https://m.baike.so.com/doc/507104.html"
+        },
+        {
+          "name": "小蓝",
+          "role": "魔仙堡侍女 · 导师",
+          "bio": "魔仙堡派往人类世界寻找遗失魔仙笔记的侍女，化身凌家姐妹的魔法老师。",
+          "sourceUrl": "https://m.baike.so.com/doc/507104.html"
+        },
+        {
+          "name": "严莉莉",
+          "role": "对手 · 黑魔仙",
+          "bio": "家境优渥却缺爱的学霸，被古娜拉黑暗之神诱惑成为黑魔仙，与凌姐妹从对立走向和解。",
+          "sourceUrl": "https://m.baike.so.com/doc/507104.html"
+        },
+        {
+          "name": "游乐",
+          "role": "魔仙堡王子",
+          "bio": "魔仙堡的王子，看似玩世不恭，关键时刻总为小蓝挺身而出。",
+          "sourceUrl": "https://m.baike.so.com/doc/507104.html"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%B7%B4%E5%95%A6%E5%95%A6%E5%B0%8F%E9%AD%94%E4%BB%99"
+        },
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%B7%B4%E5%95%A6%E5%95%A6%E5%B0%8F%E9%AD%94%E4%BB%99"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%B7%B4%E5%95%A6%E5%95%A6%E5%B0%8F%E9%AD%94%E4%BB%99"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "巴啦啦能量——沙罗沙罗——小魔仙全身变！",
+          "speaker": "凌美琪 / 凌美雪",
+          "context": "经典变身咒语"
+        },
+        {
+          "line": "古娜拉黑暗之神——乌呼啦呼——黑魔变身。",
+          "speaker": "严莉莉",
+          "context": "黑魔仙登场"
+        },
+        {
+          "line": "没有什么比利用别人感情更可恶。",
+          "speaker": "游乐",
+          "context": "警告假扮者"
+        }
+      ],
+      "songs": [
+        {
+          "name": "巴啦啦小魔仙",
+          "type": "片头曲",
+          "singer": "大小Ann"
+        }
+      ],
+      "themeSongSource": "https://m.baike.so.com/doc/507104.html",
+      "relations": [
+        {
+          "from": "凌美琪",
+          "to": "凌美雪",
+          "label": "姐妹"
+        },
+        {
+          "from": "小蓝",
+          "to": "凌美琪",
+          "label": "师徒"
+        },
+        {
+          "from": "小蓝",
+          "to": "凌美雪",
+          "label": "师徒"
+        },
+        {
+          "from": "严莉莉",
+          "to": "凌美琪",
+          "label": "对手"
+        },
+        {
+          "from": "游乐",
+          "to": "小蓝",
+          "label": "暧昧"
+        }
+      ]
+    },
+    {
+      "id": 32,
+      "slug": "doulong-zhanshi",
+      "name": "斗龙战士",
+      "year": 2011,
+      "genre": [
+        "冒险",
+        "科幻",
+        "恐龙"
+      ],
+      "color": "#3f7d4e",
+      "description": "斗龙机亮起，孩子们带着拍档恐龙闯入龙印之战。达力古的一声咆哮，让每个男孩都幻想过收到自己的那颗斗龙蛋。",
+      "poster": "/images/posters/doulong-zhanshi.svg",
+      "baikeUrl": "https://baike.baidu.com/item/%E6%96%97%E9%BE%99%E6%88%98%E5%A3%AB/1105249",
+      "addedAt": "2026-09-23",
+      "studio": "广州市百逸动漫制作有限公司",
+      "broadcastPlatform": "北京卡酷少儿频道",
+      "characters": [
+        {
+          "name": "天乐",
+          "role": "主角 · 火象斗龙战士",
+          "bio": "直爽好胜、极爱面子的少年，拍档是暴龙系斗龙达力古，天生的队伍核心。",
+          "sourceUrl": "https://baike.sogou.com/m/v188484162.htm"
+        },
+        {
+          "name": "欧阳零",
+          "role": "水象斗龙战士",
+          "bio": "外表冷酷、内心要强的天才少年，与拍档海纳斯一样追求力量，与天乐针锋相对。",
+          "sourceUrl": "https://baike.sogou.com/m/v188484162.htm"
+        },
+        {
+          "name": "汪美含",
+          "role": "木象斗龙战士",
+          "bio": "活泼开朗的富家千金，拍档卡布，是队里的气氛担当。",
+          "sourceUrl": "https://baike.sogou.com/m/v188484162.htm"
+        },
+        {
+          "name": "安小达",
+          "role": "土象斗龙战士",
+          "bio": "早熟稳重的技术宅，与拍档木拉多一起负责团队的军师工作。",
+          "sourceUrl": "https://baike.sogou.com/m/v188484162.htm"
+        },
+        {
+          "name": "达力古",
+          "role": "斗龙 · 天乐拍档",
+          "bio": "天乐的拍档斗龙，火爆忠诚，进化链贯穿整部龙印之战。",
+          "sourceUrl": "https://baike.sogou.com/v71901939.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%96%97%E9%BE%99%E6%88%98%E5%A3%AB"
+        },
+        {
+          "label": "央视频",
+          "url": "https://search.cctv.com/search.php?qtext=%E6%96%97%E9%BE%99%E6%88%98%E5%A3%AB"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%96%97%E9%BE%99%E6%88%98%E5%A3%AB"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "斗龙战士，出击！",
+          "speaker": "天乐",
+          "context": "召唤名场面"
+        },
+        {
+          "line": "想要赢我，先追上我的速度再说吧。",
+          "speaker": "欧阳零",
+          "context": "对天乐的挑衅"
+        }
+      ],
+      "songs": [
+        {
+          "name": "斗龙战士",
+          "type": "片头曲",
+          "singer": "萧全"
+        }
+      ],
+      "themeSongSource": "https://baike.so.com/doc/1384365-32311556.html",
+      "relations": [
+        {
+          "from": "天乐",
+          "to": "达力古",
+          "label": "人龙拍档"
+        },
+        {
+          "from": "天乐",
+          "to": "欧阳零",
+          "label": "竞争对手"
+        },
+        {
+          "from": "天乐",
+          "to": "汪美含",
+          "label": "同伴"
+        },
+        {
+          "from": "天乐",
+          "to": "安小达",
+          "label": "同伴"
+        },
+        {
+          "from": "欧阳零",
+          "to": "汪美含",
+          "label": "同伴"
         }
       ]
     }

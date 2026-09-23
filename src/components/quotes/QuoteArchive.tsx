@@ -5,6 +5,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Clapperboard, Quote } from "lucide-react";
 import { animations, quoteCount } from "@/lib/animations";
+import PosterImage from "@/components/ui/PosterImage";
+import { useUrlParam } from "@/lib/use-url-param";
 
 const allQuotes = animations.flatMap((animation) =>
   animation.classicQuotes.map((quote) => ({
@@ -18,7 +20,10 @@ const allQuotes = animations.flatMap((animation) =>
 );
 
 export default function QuoteArchive() {
-  const [slug, setSlug] = useState<string>("all");
+  const urlAnimation = useUrlParam("animation");
+  const [picked, setPicked] = useState<string>("all");
+  const slug =
+    picked !== "all" ? picked : animations.some((item) => item.slug === urlAnimation) ? urlAnimation : "all";
 
   const visibleQuotes = useMemo(
     () => (slug === "all" ? allQuotes : allQuotes.filter((quote) => quote.slug === slug)),
@@ -46,7 +51,7 @@ export default function QuoteArchive() {
       <div className="mb-4 flex flex-wrap gap-2">
         <button
           type="button"
-          onClick={() => setSlug("all")}
+          onClick={() => setPicked("all")}
           aria-pressed={slug === "all"}
           className={`tag-pill ${
             slug === "all"
@@ -63,7 +68,7 @@ export default function QuoteArchive() {
             <button
               key={item.slug}
               type="button"
-              onClick={() => setSlug(item.slug)}
+              onClick={() => setPicked(item.slug)}
               aria-pressed={active}
               className={`tag-pill ${
                 active
@@ -79,7 +84,7 @@ export default function QuoteArchive() {
       </div>
 
       <p className="mb-6 text-sm font-bold text-[#d9c39a]/70" role="status">
-        显示 {visibleQuotes.length} / {quoteCount} 条
+        当前显示 {visibleQuotes.length} / {quoteCount} 条
       </p>
 
       <motion.div
@@ -98,10 +103,9 @@ export default function QuoteArchive() {
           >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_12%_8%,color-mix(in_srgb,var(--quote-accent)_28%,transparent),transparent_34%),linear-gradient(135deg,rgba(255,210,77,.07),transparent_46%)] opacity-75" />
             <div className="absolute inset-y-3 left-0 w-1 rounded-r-full bg-[var(--quote-accent)] opacity-80" />
-            <div
-              className="absolute right-3 top-3 h-14 w-14 rounded-lg bg-cover bg-center opacity-30 saturate-[.85] transition duration-300 group-hover:opacity-55"
-              style={{ backgroundImage: `url(${quote.poster})` }}
-            />
+            <div className="absolute right-3 top-3 h-14 w-14 overflow-hidden rounded-lg opacity-30 saturate-[.85] transition duration-300 group-hover:opacity-55">
+              <PosterImage src={quote.poster} alt="" sizes="56px" />
+            </div>
             <div className="relative z-10">
               <div className="mb-4 flex items-center justify-between gap-3">
                 <div className="min-w-0">
@@ -120,12 +124,20 @@ export default function QuoteArchive() {
                 <span className="h-1 w-1 rounded-full bg-[#ffd24d]/55" />
                 <span>{quote.context}</span>
               </footer>
-              <Link
-                href={`/archive/${quote.slug}`}
-                className="mt-4 inline-flex items-center text-xs font-black text-[#ffd24d]/80 underline-offset-4 transition hover:text-[#ffd24d] hover:underline"
-              >
-                查看《{quote.animationName}》档案 →
-              </Link>
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1">
+                <Link
+                  href={`/archive/${quote.slug}`}
+                  className="inline-flex items-center text-xs font-black text-[#ffd24d]/80 underline-offset-4 transition hover:text-[#ffd24d] hover:underline"
+                >
+                  查看《{quote.animationName}》档案 →
+                </Link>
+                <Link
+                  href={`/characters?animation=${quote.slug}`}
+                  className="inline-flex items-center text-xs font-black text-[#8fd8cf]/80 underline-offset-4 transition hover:text-[#61c7bb] hover:underline"
+                >
+                  看角色关系 →
+                </Link>
+              </div>
             </div>
           </motion.article>
         ))}

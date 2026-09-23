@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="斗龙战士 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e160f"/>
+      <stop offset="0.55" stop-color="#0a0f0a"/>
+      <stop offset="1" stop-color="#050705"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#3f7d4e" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#3f7d4e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3f7d4e"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <path d="M300 170 L420 260 L400 420 L300 480 L200 420 L180 260 Z" fill="none" stroke="#6fae7d" stroke-width="6" opacity="0.8"/>
+  <path d="M300 220 C250 250 240 320 285 350 C250 370 260 420 300 430 C340 420 350 370 315 350 C360 320 350 250 300 220 Z" fill="#3f7d4e" opacity="0.5"/>
+  <circle cx="282" cy="300" r="8" fill="#ffd24d"/>
+  <circle cx="322" cy="300" r="8" fill="#ffd24d"/>
+  <path d="M230 250 L262 282 M370 250 L338 282" stroke="#6fae7d" stroke-width="5" opacity="0.7"/>
+  <path d="M150 540 Q300 490 450 540" stroke="#3f7d4e" stroke-width="6" fill="none" opacity="0.55"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="bold" fill="#fff2d5" letter-spacing="14">斗龙战士</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="8">2011 · 龙印之战</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

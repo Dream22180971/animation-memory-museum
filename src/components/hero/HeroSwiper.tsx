@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import animations from "@/data/animations.json";
+import PosterImage from "@/components/ui/PosterImage";
 
 export default function HeroSwiper() {
   const [current, setCurrent] = useState(0);
@@ -64,9 +65,11 @@ export default function HeroSwiper() {
                     zIndex: idx === current ? 1 : 0,
                   }}
                 >
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${anim.poster})` }}
+                  <PosterImage
+                    src={anim.poster}
+                    alt={`${anim.name} 海报`}
+                    preload={idx === 0}
+                    sizes="540px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-transparent" />
                   <div className="crt-scanlines absolute inset-0" />

@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ExternalLink, MessageSquareQuote, PenLine, Sparkles } from "lucide-react";
+import { ArrowLeft, ExternalLink, MessageSquareQuote, PenLine, Sparkles, Tv } from "lucide-react";
 import ShareDetailButton from "@/components/archive/ShareDetailButton";
 import WatchedButton from "@/components/archive/WatchedButton";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import animationsData from "@/data/animations.json";
-import { getAnimationBySlug } from "@/lib/animations";
+import { bilibiliDanmakuUrl, bilibiliNameSceneUrl, getAnimationBySlug } from "@/lib/animations";
 import { FEEDBACK_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
 
 type ArchiveDetailProps = {
@@ -142,13 +143,43 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
             </div>
 
             <div className="archive-card relative w-full max-w-[860px] justify-self-end overflow-hidden rounded-[1.35rem] border border-[#c99a45]/28 bg-[#080806]/78 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
-              <div className="relative aspect-[16/10] max-h-[min(62svh,620px)] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[#050403] bg-contain bg-center bg-no-repeat shadow-[inset_0_0_90px_rgba(0,0,0,.46)]" style={{ backgroundImage: `url(${animation.poster})` }}>
+              <div className="relative aspect-[16/10] max-h-[min(62svh,620px)] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[#050403] shadow-[inset_0_0_90px_rgba(0,0,0,.46)]">
+                <Image
+                  src={animation.poster}
+                  alt={`${animation.name} 海报`}
+                  fill
+                  unoptimized={animation.poster.endsWith(".svg")}
+                  preload
+                  sizes="(max-width:1024px) 92vw, 800px"
+                  className="object-contain object-center"
+                />
                 <div className="crt-scanlines absolute inset-0" />
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_38%,rgba(0,0,0,.72))]" />
                 <div className="absolute bottom-5 left-5 right-5">
                   <p className="archive-kicker text-xs text-[#ffd24d]/80">Now Viewing</p>
                   <p className="retro-title mt-2 text-4xl text-[#fff6e8]">{animation.year}</p>
                 </div>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <a
+                  href={bilibiliNameSceneUrl(animation.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="retro-button retro-button-secondary text-xs"
+                >
+                  <Tv size={14} />
+                  B站看名场面剪辑
+                  <ExternalLink size={13} />
+                </a>
+                <a
+                  href={bilibiliDanmakuUrl(animation.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="retro-button retro-button-ghost text-xs"
+                >
+                  弹幕打卡 · 在B站一起刷回忆
+                  <ExternalLink size={13} />
+                </a>
               </div>
             </div>
           </div>
@@ -159,15 +190,28 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
               <h2 className="retro-title text-5xl text-[#fff6e8]">经典台词</h2>
             </div>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              {quoteSlots.map((quote, index) =>
-                quote ? (
-                  <figure key={quote.line} className="museum-card rounded-xl p-5">
+              {quoteSlots.map((quote, index) => {
+                const danmakuUrl = bilibiliDanmakuUrl(
+                  quote ? `${animation.name} ${quote.line.slice(0, 10)}` : animation.name,
+                );
+                return quote ? (
+                  <figure key={quote.line} className="museum-card group relative rounded-xl p-5">
                     <blockquote className="break-words text-xl font-black leading-snug text-[#fff7e8] [overflow-wrap:anywhere]">“{quote.line}”</blockquote>
                     <figcaption className="mt-4 flex flex-wrap items-center gap-2 text-sm font-bold text-[#e6bd70]/85">
                       <span>{quote.speaker}</span>
                       <span className="h-1 w-1 rounded-full bg-[#ffd24d]/55" />
                       <span>{quote.context}</span>
                     </figcaption>
+                    <a
+                      href={danmakuUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`去B站搜索这句台词的弹幕`}
+                      className="mt-3 inline-flex items-center gap-1.5 rounded-full border border-[#c99a45]/25 bg-[#070806]/60 px-2.5 py-1 text-[11px] font-black text-[#d9c39a]/70 transition hover:border-[#ffd24d]/45 hover:text-[#ffd24d]"
+                    >
+                      <Tv size={12} />
+                      去B站刷这句弹幕
+                    </a>
                   </figure>
                 ) : (
                   <a
@@ -185,8 +229,8 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                       记得这部动画的名场面？提 issue 补一条，核对后入馆。
                     </p>
                   </a>
-                ),
-              )}
+                );
+              })}
             </div>
           </section>
 

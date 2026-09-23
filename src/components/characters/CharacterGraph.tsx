@@ -7,10 +7,11 @@ import type {
   PointerEvent as ReactPointerEvent,
 } from "react";
 import Link from "next/link";
-import { animate, AnimatePresence, motion, useMotionValue, useReducedMotion } from "framer-motion";
+import { animate, motion, useMotionValue, useReducedMotion } from "framer-motion";
 import { BookOpen, Hand, Link2, Maximize2, Minus, Network, Plus, RotateCcw, Sparkles, Tags, Users, X } from "lucide-react";
-import { animations, type AnimationRecord } from "@/lib/animations";
+import { animations, bilibiliNameSceneUrl, type AnimationRecord } from "@/lib/animations";
 import { FEEDBACK_URL } from "@/lib/constants";
+import { useUrlParam } from "@/lib/use-url-param";
 
 const W = 960;
 const H = 620;
@@ -124,6 +125,7 @@ const keepInside = (p: Point): Point => ({
 type Gesture = {
   mode: "none" | "pan" | "node" | "pinch";
   node: string | null;
+  originNode: Point;
   lastX: number;
   lastY: number;
   originX: number;
@@ -136,6 +138,7 @@ type Gesture = {
 const idleGesture = (): Gesture => ({
   mode: "none",
   node: null,
+  originNode: { x: 0, y: 0 },
   lastX: 0,
   lastY: 0,
   originX: 0,
@@ -146,7 +149,10 @@ const idleGesture = (): Gesture => ({
 });
 
 export default function CharacterGraph() {
-  const [slug, setSlug] = useState<string>(animations[0].slug);
+  const urlAnimation = useUrlParam("animation");
+  const [picked, setPicked] = useState<string | null>(null);
+  const slug =
+    picked ?? (animations.some((item) => item.slug === urlAnimation) ? urlAnimation : animations[0].slug);
   const animation = useMemo(
     () => animations.find((item) => item.slug === slug) ?? animations[0],
     [slug],
@@ -178,7 +184,7 @@ export default function CharacterGraph() {
             <button
               key={item.slug}
               type="button"
-              onClick={() => setSlug(item.slug)}
+              onClick={() => setPicked(item.slug)}
               aria-pressed={active}
               className={`tag-pill ${
                 active
@@ -207,6 +213,11 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
   );
   const ink = useMemo(() => liftColor(animation.color, 0.44), [animation.color]);
   const [positions, setPositions] = useState<Record<string, Point>>(layout);
+  /** 渲染帧里的最新节点坐标，pointerdown 时同步读取用 */
+  const positionsRef = useRef<Record<string, Point>>(positions);
+  useEffect(() => {
+    positionsRef.current = positions;
+  });
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [grabbed, setGrabbed] = useState<string | null>(null);
@@ -214,6 +225,15 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
   const [zoomLabel, setZoomLabel] = useState(100);
   const [gestureOn, setGestureOn] = useState(false);
   const [showEdgeLabels, setShowEdgeLabels] = useState(false);
+  /** 指针按下的瞬间就点亮节点，不等松手判定点击 */
+  const [pressedNode, setPressedNode] = useState<string | null>(null);
+  /** 节点 pointerdown 之后、pointerup 之前发生的 React 状态写入（如右栏羁绊跳转），
+      不应被这次 pointerup 的「空白取消选中」逻辑覆盖 */
+  const selectionBumpedRef = useRef(0);
+  const selectedVersionRef = useRef(0);
+  useEffect(() => {
+    selectedVersionRef.current += 1;
+  }, [selected]);
 
   const isCoarse = useSyncExternalStore(
     (onChange) => {
@@ -261,13 +281,38 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
     [vx, vy, k].forEach((value) => value.stop());
   }, [k, vx, vy]);
 
-  const clampTranslate = useCallback((tx: number, ty: number, scale: number) => {
-    const slack = 160;
+  const clusterBounds = useMemo(() => {
+    const points = Object.values(positions);
+    const pad = NODE_R + 34;
+    if (points.length === 0) return { minX: 0, maxX: W, minY: 0, maxY: H };
     return {
-      x: clamp(tx, -(scale * W) + slack, W - slack),
-      y: clamp(ty, -(scale * H) + slack, H - slack),
+      minX: Math.min(...points.map((p) => p.x)) - pad,
+      maxX: Math.max(...points.map((p) => p.x)) + pad,
+      minY: Math.min(...points.map((p) => p.y)) - pad,
+      maxY: Math.max(...points.map((p) => p.y)) + pad,
     };
-  }, []);
+  }, [positions]);
+
+  /**
+   * 可见窗口必须始终与角色簇相交：tx ∈ [need-high, W-need-low]（×scale），
+   * need 取「簇跨度 × 85%」，放大时等于强制留一截簇在屏内，拖不出去。
+   */
+  const clampTranslate = useCallback(
+    (tx: number, ty: number, scale: number) => {
+      const axis = (span: number, low: number, high: number, value: number) => {
+        const need = Math.min((high - low) * 0.85, span * 0.85);
+        const lo = scale * (need - high);
+        const hi = scale * (span - need - low);
+        if (lo > hi) return scale * (span - low - high) / 2;
+        return clamp(value, lo, hi);
+      };
+      return {
+        x: axis(W, clusterBounds.minX, clusterBounds.maxX, tx),
+        y: axis(H, clusterBounds.minY, clusterBounds.maxY, ty),
+      };
+    },
+    [clusterBounds],
+  );
 
   const animateView = useCallback(
     (targetK: number, tx: number, ty: number) => {
@@ -288,6 +333,62 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
     },
     [k, vx, vy],
   );
+
+  /**
+   * 环状布局的包围盒中间是空的，「窗口与包围盒相交」不保证看得见人。
+   * 最后一道保证：画面里没有任何角色时，把最近的角色弹回画面中心。
+   */
+  const ensureNodeInFrame = useCallback(() => {
+    const scale = k.get();
+    const tx = vx.get();
+    const ty = vy.get();
+    const points = Object.values(positions);
+    if (points.length === 0) return;
+
+    const screenOf = (p: Point) => ({ x: tx + p.x * scale, y: ty + p.y * scale });
+    if (points.some((p) => {
+      const s = screenOf(p);
+      return s.x > 0 && s.x < W && s.y > 0 && s.y < H;
+    })) return;
+
+    const nearest = points.reduce((best, p) => {
+      const b = screenOf(best);
+      const s = screenOf(p);
+      return Math.hypot(s.x - W / 2, s.y - H / 2) < Math.hypot(b.x - W / 2, b.y - H / 2) ? p : best;
+    }, points[0]);
+
+    stopViewAnimations();
+    const spring = { type: "spring", stiffness: 200, damping: 26, mass: 0.9 } as const;
+    animate(vx, W / 2 - nearest.x * scale, spring);
+    animate(vy, H / 2 - nearest.y * scale, spring);
+  }, [k, positions, stopViewAnimations, vx, vy]);
+
+  const settleTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  /** 松手/缩放后先兜底找回角色，再把视图回弹进合法边界（橡皮筋手感） */
+  const settleView = useCallback(() => {
+    ensureNodeInFrame();
+    const scale = k.get();
+    const target = clampTranslate(vx.get(), vy.get(), scale);
+    if (Math.abs(target.x - vx.get()) < 0.5 && Math.abs(target.y - vy.get()) < 0.5) return;
+    stopViewAnimations();
+    const spring = { type: "spring", stiffness: 320, damping: 30, mass: 0.7 } as const;
+    animate(vx, target.x, spring);
+    animate(vy, target.y, spring);
+  }, [clampTranslate, ensureNodeInFrame, k, stopViewAnimations, vx, vy]);
+
+  const scheduleFrameCheck = useCallback(() => {
+    if (reduceMotion) {
+      settleView();
+      return;
+    }
+    if (settleTimer.current) clearTimeout(settleTimer.current);
+    settleTimer.current = setTimeout(settleView, 420);
+  }, [reduceMotion, settleView]);
+
+  useEffect(() => () => {
+    if (settleTimer.current) clearTimeout(settleTimer.current);
+  }, []);
 
   const resetView = useCallback(() => {
     stopViewAnimations();
@@ -326,8 +427,9 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
       const { kk, tx, ty } = projectZoom(px, py, nextK);
       if (reduceMotion) setView(kk, tx, ty);
       else animateView(kk, tx, ty);
+      scheduleFrameCheck();
     },
-    [animateView, projectZoom, reduceMotion, setView],
+    [animateView, projectZoom, reduceMotion, scheduleFrameCheck, setView],
   );
 
   const zoomFromToolbar = useCallback(
@@ -380,7 +482,9 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
     }
     gesture.current.mode = "node";
     gesture.current.node = name;
+    gesture.current.originNode = positionsRef.current[name] ?? layout[name] ?? { x: CX, y: CY };
     setGrabbed(name);
+    setPressedNode(name);
     if (touchLocked) {
       const current = gesture.current;
       current.lastX = event.clientX;
@@ -402,6 +506,7 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
       return;
     }
     gesture.current.mode = "pan";
+    selectionBumpedRef.current = selectedVersionRef.current;
     setIsPanning(true);
     beginGesture(event);
   };
@@ -445,16 +550,28 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
 
     if (current.mode === "node" && current.node) {
       const name = current.node;
+      // 位移直接取事件坐标差（viewBox 单位），不经过 toViewBox：
+      // 后者读实时 CTM，React 提交延迟时 scale 分量会滞后，增量被双重缩放污染。
+      // 不用 lastX 逐步累加——高负载下 move 会被合并丢弃，改用「按下点 → 当前点」绝对位移。
+      const viewScale = toViewBox(event.clientX, event.clientY).scale || 1;
       const kk = k.get();
       setPositions((prev) => {
-        const point = prev[name];
-        if (!point) return prev;
-        return { ...prev, [name]: keepInside({ x: point.x + dx / kk, y: point.y + dy / kk }) };
+        const origin = prev[name] ?? current.originNode;
+        if (!origin) return prev;
+        return {
+          ...prev,
+          [name]: keepInside({
+            x: origin.x + (event.clientX - current.originX) / (viewScale * kk),
+            y: origin.y + (event.clientY - current.originY) / (viewScale * kk),
+          }),
+        };
       });
     }
   };
 
   const endGesture = (event: ReactPointerEvent<SVGSVGElement>, allowClick = true) => {
+    // 记录本次手势开始时已提交的选中版本（state + 1，与下方 bump 对称）
+    selectionBumpedRef.current = selectedVersionRef.current;
     const tracked = pointers.current;
     const wasThere = tracked.delete(event.pointerId);
     if (gesture.current.mode === "pinch" && tracked.size === 1) {
@@ -478,12 +595,18 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
         const name = current.node;
         setSelected((prev) => (prev === name ? null : name));
       } else if (current.mode === "pan") {
-        setSelected(null);
+        setSelected((prev) => {
+          // 跳转在按下之后发生（版本号变新）时，保留跳转结果而不是清空
+          if (selectedVersionRef.current > selectionBumpedRef.current) return prev;
+          return null;
+        });
       }
     }
     gesture.current = idleGesture();
     setGrabbed(null);
+    setPressedNode(null);
     setIsPanning(false);
+    scheduleFrameCheck();
   };
 
   const onDoubleClick = (event: ReactMouseEvent<SVGSVGElement>) => {
@@ -578,7 +701,7 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
     [animation.relations, nodeByName],
   );
 
-  const activeName = selected ?? hovered;
+  const activeName = selected ?? hovered ?? pressedNode;
 
   const spotlight = useMemo(() => {
     if (!activeName) return null;
@@ -667,6 +790,8 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
         </p>
       </div>
 
+      <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_21rem] xl:items-start">
+        <div className="min-w-0">
       <div
         className="relative overflow-hidden rounded-xl border border-[#c99a45]/22"
         role="region"
@@ -840,10 +965,10 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
                     <motion.g
                       initial={false}
                       animate={{
-                        scale: dimmed ? 0.9 : isActive ? 1.14 : 1,
+                        scale: dimmed ? 0.9 : isActive ? (pressedNode === node.name ? 1.05 : 1.14) : pressedNode === node.name ? 1.08 : 1,
                         opacity: dimmed ? 0.3 : 1,
                       }}
-                      transition={{ type: "spring", stiffness: 340, damping: 24 }}
+                      transition={{ type: "spring", stiffness: 480, damping: 26 }}
                     >
                       <circle
                         r={NODE_R + 17}
@@ -910,22 +1035,33 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
         <p className="pointer-events-none absolute inset-x-0 bottom-3 text-center font-mono text-[10px] font-black tracking-[0.2em] text-[#d9c39a]/62">
           节点 {animation.characters.length} · 边 {animation.relations.length} · 选中 {selected ?? "无"}
         </p>
-
-        <AnimatePresence>
-          {selected ? (
-            <CharacterCard
-              key={selected}
-              animation={animation}
-              name={selected}
-              onClose={() => setSelected(null)}
-              onPick={(next) => setSelected(next)}
-            />
-          ) : null}
-        </AnimatePresence>
+        </div>
       </div>
 
-      <div className="mt-4 grid gap-3 border-t border-[#c99a45]/12 pt-4 sm:grid-cols-2">
-        <div>
+        <aside className="grid gap-4 border-t border-[#c99a45]/12 pt-4 sm:grid-cols-2 xl:grid-cols-1 xl:border-t-0 xl:pt-0">
+          <div className="sm:col-span-2 xl:col-span-1">
+            <p className="archive-kicker text-[11px] font-black text-[#d8ac55]/70">角色档案</p>
+            {selected ? (
+              <motion.div
+                key={selected}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", stiffness: 320, damping: 28 }}
+              >
+                <CharacterCard
+                  animation={animation}
+                  name={selected}
+                  onPick={(next) => setSelected(next)}
+                  onClose={() => setSelected(null)}
+                />
+              </motion.div>
+            ) : (
+              <p className="mt-2 rounded-xl border border-dashed border-[#c99a45]/26 px-3 py-4 text-sm leading-6 text-[#d9c39a]/70">
+                点击画布里的任意角色，这里会展开 TA 的人物小传与羁绊。
+              </p>
+            )}
+          </div>
+          <div>
           <p className="archive-kicker text-[11px] font-black text-[#d8ac55]/70">已标注的关系</p>
           <ul className="mt-2 space-y-1.5">
             {animation.relations.map((relation) => (
@@ -959,13 +1095,22 @@ function Constellation({ animation }: { animation: AnimationRecord }) {
           <p className="mt-2 text-[12px] leading-5 text-[#d9c39a]/70">
             默认只画线不画标签；鼠标移到角色上、或打开「关系标签」，才显出每一段的原文。
           </p>
-          <Link
-            href={`/archive/${animation.slug}`}
-            className="retro-button retro-button-ghost mt-3 inline-flex text-xs"
-          >
-            查看《{animation.name}》完整档案 →
-          </Link>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Link
+              href={`/archive/${animation.slug}`}
+              className="retro-button retro-button-ghost text-xs"
+            >
+              完整档案 →
+            </Link>
+            <Link
+              href={`/quotes?animation=${animation.slug}`}
+              className="retro-button retro-button-ghost text-xs"
+            >
+              看这部作品的台词 →
+            </Link>
+          </div>
         </div>
+        </aside>
       </div>
     </motion.div>
   );
@@ -982,8 +1127,6 @@ function CharacterCard({
   onClose: () => void;
   onPick: (next: string) => void;
 }) {
-  const cardRef = useRef<HTMLDivElement>(null);
-
   const profile = useMemo(
     () => animation.characters.find((character) => character.name === name),
     [animation.characters, name],
@@ -1000,125 +1143,115 @@ function CharacterCard({
     [animation.relations, name],
   );
 
-  useEffect(() => {
-    cardRef.current?.focus();
-  }, []);
-
   return (
-    <div className="absolute inset-0 z-10">
-      <button
-        type="button"
-        aria-label="关闭人物档案"
-        className="absolute inset-0 cursor-zoom-out bg-[#040403]/62 backdrop-blur-[2px]"
-        onClick={onClose}
-      />
-      <motion.div
-        ref={cardRef}
-        role="dialog"
-        aria-label={`${name} 的人物档案`}
-        tabIndex={-1}
-        initial={{ opacity: 0, y: 18, scale: 0.96 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 12, scale: 0.97 }}
-        transition={{ type: "spring", stiffness: 320, damping: 28 }}
-        className="absolute inset-x-3 bottom-3 max-h-[calc(100%-1.5rem)] overflow-y-auto rounded-2xl border border-[#c99a45]/38 bg-[#0b0a07]/97 p-4 shadow-[0_26px_70px_rgba(0,0,0,.6)] outline-none sm:inset-x-auto sm:bottom-auto sm:right-4 sm:top-4 sm:w-[19.5rem]"
-        style={{ borderTopColor: animation.color }}
-      >
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <p className="archive-kicker text-[10px] font-black text-[#d8ac55]/70">Character Profile</p>
-            <h2 className="retro-title mt-1 text-3xl leading-tight text-[#fff6e8]">{name}</h2>
-          </div>
-          <button
-            type="button"
-            aria-label="关闭人物档案"
-            onClick={onClose}
-            className="graph-tool shrink-0 border-[#c99a45]/30"
-          >
-            <X size={14} />
-          </button>
+    <div
+      role="region"
+      aria-label={`${name} 的人物档案`}
+      className="mt-2 max-h-[36rem] overflow-y-auto rounded-2xl border border-[#c99a45]/38 bg-[#0b0a07]/92 p-4 shadow-[0_18px_50px_rgba(0,0,0,.45)]"
+      style={{ borderTopColor: animation.color }}
+    >
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="archive-kicker text-[10px] font-black text-[#d8ac55]/70">Character Profile</p>
+          <h2 className="retro-title mt-1 text-3xl leading-tight text-[#fff6e8]">{name}</h2>
         </div>
+        <button
+          type="button"
+          aria-label="关闭人物档案"
+          onClick={onClose}
+          className="graph-tool shrink-0 border-[#c99a45]/30"
+        >
+          <X size={14} />
+        </button>
+      </div>
 
-        {profile?.role ? <p className="mt-2 text-sm font-black text-[#ffe4a3]">{profile.role}</p> : null}
-        <p className="mt-1 font-mono text-[11px] font-black text-[#f2c96a]/85">
-          《{animation.name}》 · {animation.year} · {animation.genre.join(" / ")}
+      {profile?.role ? <p className="mt-2 text-sm font-black text-[#ffe4a3]">{profile.role}</p> : null}
+      <p className="mt-1 font-mono text-[11px] font-black text-[#f2c96a]/85">
+        《{animation.name}》 · {animation.year} · {animation.genre.join(" / ")}
+      </p>
+
+      <section className="mt-4">
+        <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
+          <Link2 size={12} /> 羁绊
         </p>
+        {bonds.length > 0 ? (
+          <ul className="mt-2 space-y-1.5">
+            {bonds.map((bond) => (
+              <li key={`${bond.label}-${bond.other}`}>
+                <button
+                  type="button"
+                  onClick={() => onPick(bond.other)}
+                  className="flex w-full items-center gap-2 rounded-lg border border-[#c99a45]/16 bg-[#070806]/60 px-2.5 py-1.5 text-left text-sm font-bold text-[#f0ddba]/90 transition hover:border-[#ffd24d]/45 hover:text-[#fff6e8]"
+                >
+                  <span className="rounded border border-[#ffd24d]/40 bg-[#ffd24d]/10 px-1.5 py-0.5 text-[11px] text-[#ffd24d]">
+                    {bond.label}
+                  </span>
+                  {bond.other}
+                </button>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-2 text-sm text-[#d9c39a]/65">这位角色还没有被标注羁绊，欢迎来补一笔。</p>
+        )}
+      </section>
 
-        <section className="mt-4">
-          <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
-            <Link2 size={12} /> 羁绊
-          </p>
-          {bonds.length > 0 ? (
-            <ul className="mt-2 space-y-1.5">
-              {bonds.map((bond) => (
-                <li key={`${bond.label}-${bond.other}`}>
-                  <button
-                    type="button"
-                    onClick={() => onPick(bond.other)}
-                    className="flex w-full items-center gap-2 rounded-lg border border-[#c99a45]/16 bg-[#070806]/60 px-2.5 py-1.5 text-left text-sm font-bold text-[#f0ddba]/90 transition hover:border-[#ffd24d]/45 hover:text-[#fff6e8]"
-                  >
-                    <span className="rounded border border-[#ffd24d]/40 bg-[#ffd24d]/10 px-1.5 py-0.5 text-[11px] text-[#ffd24d]">
-                      {bond.label}
-                    </span>
-                    {bond.other}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <p className="mt-2 text-sm text-[#d9c39a]/65">这位角色还没有被标注羁绊，欢迎来补一笔。</p>
-          )}
-        </section>
+      <section className="mt-4">
+        <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
+          <BookOpen size={12} /> 作品简介
+        </p>
+        <p className="memory-text mt-2 text-sm leading-6 text-[#d9c39a]/82">{animation.description}</p>
+      </section>
 
-        <section className="mt-4">
-          <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
-            <BookOpen size={12} /> 作品简介
-          </p>
-          <p className="memory-text mt-2 text-sm leading-6 text-[#d9c39a]/82">{animation.description}</p>
-        </section>
-
-        <section className="mt-4 rounded-xl border border-dashed border-[#c99a45]/26 px-3 py-2.5">
-          <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
-            <Sparkles size={12} /> 人物小传
-          </p>
-          {profile?.bio ? (
-            <p className="memory-text mt-1.5 text-sm leading-6 text-[#e6cf9f]">{profile.bio}</p>
-          ) : (
-            <a
-              href={FEEDBACK_URL}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="mt-1.5 inline-block text-sm text-[#e6cf9f]/78 underline decoration-dotted underline-offset-4 transition hover:text-[#ffd24d]"
-            >
-              这段人物小传待考证 · 提 issue 补资料源
-            </a>
-          )}
-          {profile?.sourceUrl ? (
-            <a
-              href={profile.sourceUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="mt-2 inline-block font-mono text-[10px] font-black text-[#f2c96a]/60 underline decoration-dotted underline-offset-4 transition hover:text-[#ffd24d]"
-            >
-              资料源
-            </a>
-          ) : null}
-        </section>
-
-        <div className="mt-4 flex flex-wrap gap-2">
-          <Link href={`/archive/${animation.slug}`} className="retro-button retro-button-secondary text-xs">
-            完整档案
-          </Link>
-          <Link
-            href={animation.baikeUrl}
+      <section className="mt-4 rounded-xl border border-dashed border-[#c99a45]/26 px-3 py-2.5">
+        <p className="archive-kicker flex items-center gap-1.5 text-[10px] font-black text-[#d8ac55]/70">
+          <Sparkles size={12} /> 人物小传
+        </p>
+        {profile?.bio ? (
+          <p className="memory-text mt-1.5 text-sm leading-6 text-[#e6cf9f]">{profile.bio}</p>
+        ) : (
+          <a
+            href={FEEDBACK_URL}
             target="_blank"
             rel="noreferrer noopener"
-            className="retro-button retro-button-ghost text-xs"
+            className="mt-1.5 inline-block text-sm text-[#e6cf9f]/78 underline decoration-dotted underline-offset-4 transition hover:text-[#ffd24d]"
           >
-            百度百科
-          </Link>
-        </div>
-      </motion.div>
+            这段人物小传待考证 · 提 issue 补资料源
+          </a>
+        )}
+        {profile?.sourceUrl ? (
+          <a
+            href={profile.sourceUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            className="mt-2 inline-block font-mono text-[10px] font-black text-[#f2c96a]/60 underline decoration-dotted underline-offset-4 transition hover:text-[#ffd24d]"
+          >
+            资料源
+          </a>
+        ) : null}
+      </section>
+
+      <div className="mt-4 flex flex-wrap gap-2">
+        <Link href={`/archive/${animation.slug}`} className="retro-button retro-button-secondary text-xs">
+          完整档案
+        </Link>
+        <a
+          href={bilibiliNameSceneUrl(`${animation.name} ${name}`)}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="retro-button retro-button-ghost text-xs"
+        >
+          B站看 TA 的片段
+        </a>
+        <Link
+          href={animation.baikeUrl}
+          target="_blank"
+          rel="noreferrer noopener"
+          className="retro-button retro-button-ghost text-xs"
+        >
+          百度百科
+        </Link>
+      </div>
     </div>
   );
 }

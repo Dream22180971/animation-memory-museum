@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("首页展示真实馆藏统计，并可使用全局搜索", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  await expect(page.getByText("已整理 17 部馆藏 · 74 条台词")).toBeVisible();
+  await expect(page.getByText("已整理 21 部馆藏 · 89 条台词")).toBeVisible();
   await expect(page.getByText("8,921")).toHaveCount(0);
 
   const searchButton = page.getByRole("button", { name: "搜索" });
@@ -24,10 +24,10 @@ test("档案筛选可以找到馆藏并恢复全部结果", async ({ page }) => 
 
   const archiveSearch = page.getByPlaceholder("搜索动画名、类型或回忆关键词");
   await archiveSearch.fill("机甲");
-  await expect(page.getByText("3 / 17 条档案")).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /4 \/ 21/ })).toBeVisible();
 
   await page.getByRole("button", { name: "重置筛选" }).click();
-  await expect(page.getByText("17 / 17 条档案")).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /21 \/ 21/ })).toBeVisible();
 });
 
 test("本机回忆册可保存、导出入口与删除，且不混进公开档案", async ({ page }) => {
@@ -45,7 +45,7 @@ test("本机回忆册可保存、导出入口与删除，且不混进公开档�
 
   await page.goto("/archive", { waitUntil: "networkidle" });
   await expect(page.getByRole("heading", { name: "神厨小福贵" })).toHaveCount(0);
-  await expect(page.getByText("馆藏 17")).toBeVisible();
+  await expect(page.getByText("馆藏 21")).toBeVisible();
 
   await page.goto("/", { waitUntil: "networkidle" });
   await page.getByRole("button", { name: "删除《神厨小福贵》的回忆" }).click();
@@ -119,7 +119,7 @@ test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放",
 
   await page.getByRole("button", { name: /^角色 天羽/ }).click();
 
-  const card = page.getByRole("dialog", { name: "天羽 的人物档案" });
+  const card = page.getByRole("region", { name: "天羽 的人物档案" });
   await expect(card).toBeVisible();
   await expect(card.getByText(/《超兽武装》 · 2011/)).toBeVisible();
   await expect(card.getByText("女主角 · 超兽战队成员")).toBeVisible();
@@ -127,11 +127,12 @@ test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放",
   await expect(card.getByRole("link", { name: "资料源" })).toBeVisible();
 
   await card.getByRole("button", { name: /火麟飞/ }).click();
-  const jumped = page.getByRole("dialog", { name: "火麟飞 的人物档案" });
+  const jumped = page.getByRole("region", { name: "火麟飞 的人物档案" });
   await expect(jumped).toBeVisible();
-  await expect(card).toBeHidden();
+  // 同名角色在「已标注的关系」列表里也有按钮，断言限定在档案卡片内
+  await expect(card.getByText("女主角 · 超兽战队成员")).toBeHidden();
 
-  await page.keyboard.press("Escape");
+  await page.getByRole("button", { name: "关闭人物档案" }).click();
   await expect(jumped).toBeHidden();
 
   const node = page.getByRole("button", { name: /^角色 泰雷/ });
@@ -141,9 +142,31 @@ test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放",
   const canvas = await page.getByRole("region", { name: "超兽武装角色关系图" }).boundingBox();
   expect(box).not.toBeNull();
   expect(canvas).not.toBeNull();
-  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  // 沿「节点 → 画布中心」方向拖到半路：任何视口缩放下都会越过 keepInside 的钳制边界，
+  // 且不会把节点拖进环心盲区（包围盒相交 ≠ 看得见节点）
+  const startX = box!.x + box!.width / 2;
+  const startY = box!.y + box!.height / 2;
+  const midX = (startX + canvas!.x + canvas!.width / 2) / 2;
+  const midY = (startY + canvas!.y + canvas!.height / 2) / 2;
+  await page.mouse.move(startX, startY);
   await page.mouse.down();
-  await page.mouse.move(canvas!.x + canvas!.width / 2, canvas!.y + canvas!.height * 0.8, { steps: 12 });
+  // 分步拖到半路；每步验证节点是否跟上。CDP 注入的 move 在重负载下会被合并丢弃，
+  // 未生效时直接在 SVG 上派发一次 pointermove 兜底（React 合成事件照常处理）。
+  const svg = page.locator("svg.constellation-canvas");
+  let moved = false;
+  for (let i = 1; i <= 12 && !moved; i += 1) {
+    const x = startX + ((midX - startX) * i) / 12;
+    const y = startY + ((midY - startY) * i) / 12;
+    await page.mouse.move(x, y);
+    await page.waitForTimeout(30);
+    if ((await node.getAttribute("transform")) !== transformBefore) {
+      moved = true;
+      break;
+    }
+    await svg.dispatchEvent("pointermove", { bubbles: true, clientX: x, clientY: y });
+    await page.waitForTimeout(30);
+    if ((await node.getAttribute("transform")) !== transformBefore) moved = true;
+  }
   await page.mouse.up();
   await expect(node).not.toHaveAttribute("transform", transformBefore!);
 
@@ -176,12 +199,16 @@ test("名台词档案馆可以按动画筛选台词", async ({ page }) => {
   await page.goto("/quotes", { waitUntil: "networkidle" });
 
   await expect(page.getByRole("heading", { name: "名台词档案馆" })).toBeVisible();
-  await expect(page.getByText("显示 74 / 74 条")).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /89 \/ 89/ })).toBeVisible();
 
   await page.getByRole("button", { name: /熊出没/ }).click();
-  await expect(page.getByText("显示 3 / 74 条")).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /3 \/ 89/ })).toBeVisible();
   await expect(page.getByText("臭狗熊！别跑！")).toBeVisible();
   await expect(page.getByText("已有的事，后必再有；已行的事，后必再行。")).toBeHidden();
+
+  await page.getByRole("button", { name: /秦时明月/ }).click();
+  await expect(page.locator("p[role=status]").filter({ hasText: /6 \/ 89/ })).toBeVisible();
+  await expect(page.getByText("有些梦虽然遥不可及，但并不是不可能实现。")).toBeVisible();
 });
 
 test("移动端菜单可以打开并到达各展区", async ({ page }) => {
@@ -198,6 +225,17 @@ test("移动端菜单可以打开并到达各展区", async ({ page }) => {
   await expect(menu.getByRole("link", { name: "角色图谱" })).toBeVisible();
   await expect(menu.getByRole("link", { name: "童年浓度测试" })).toBeVisible();
   await expect(menu.getByRole("button", { name: "关闭菜单" })).toBeVisible();
+});
+
+test("台词馆与角色图谱可以按作品互相深链跳转", async ({ page }) => {
+  await page.goto("/quotes?animation=kuiba", { waitUntil: "networkidle" });
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 89/ })).toBeVisible();
+
+  await page.getByRole("link", { name: "看角色关系" }).first().click();
+  await expect(page.getByRole("region", { name: "魁拔角色关系图" })).toBeVisible();
+
+  await page.getByRole("link", { name: "看这部作品的台词 →" }).click();
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 89/ })).toBeVisible();
 });
 
 test("损坏的本地存储不会阻止用户继续操作", async ({ page }) => {

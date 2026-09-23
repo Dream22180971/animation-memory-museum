@@ -238,6 +238,8 @@ body {
 }
 
 .archive-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 330px;
   border-color: rgba(255, 210, 77, .28);
   box-shadow:
     inset 0 0 0 1px rgba(255, 243, 212, .05),
@@ -282,6 +284,30 @@ body {
 }
 
 .archive-poster:hover .archive-poster-image {
+  opacity: 1;
+}
+
+/* 视口外展区跳过渲染与截图，滚动到位时再即时恢复 */
+.defer-offscreen {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
+}
+
+.poster-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.image-fade {
+  opacity: 0;
+  transition: opacity .5s ease;
+}
+
+.image-fade.is-loaded {
   opacity: 1;
 }
 
@@ -747,6 +773,9 @@ nextjs-portal {
 .quote-card {
   transform-style: preserve-3d;
   isolation: isolate;
+  /* 屏外卡片不渲染，浏览器因此不会预取它的封面背景图（74 张卡 = 74 次请求） */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 260px;
 }
 
 .quote-card::after {

@@ -14,6 +14,8 @@ export type AnimationSong = {
   name: string;
   type: string;
   singer: string;
+  /** 网易云音乐歌曲链接（music.163.com/#/song?id=），未核实时省略 */
+  neteaseUrl?: string;
 };
 
 export type WatchLink = {
@@ -78,6 +80,19 @@ export const animations: AnimationRecord[] = raw.map((animation) => ({
 
 export const getAnimationBySlug = (slug: string): AnimationRecord | undefined =>
   animations.find((animation) => animation.slug === slug);
+
+/** 站内统一用搜索跳转，不维护会过期的具体 BV 号 */
+export const bilibiliSearchUrl = (keyword: string) =>
+  `https://search.bilibili.com/all?keyword=${encodeURIComponent(keyword)}`;
+
+export const bilibiliNameSceneUrl = (name: string) => bilibiliSearchUrl(`${name} 名场面`);
+
+export const bilibiliDanmakuUrl = (name: string) => bilibiliSearchUrl(`${name} 弹幕`);
+
+/** 网易云：优先用核实过的歌曲链接，否则走关键词搜索 */
+export const neteaseSongLink = (song: { name: string; singer?: string; neteaseUrl?: string }) =>
+  song.neteaseUrl ??
+  `https://music.163.com/#/search/m/?s=${encodeURIComponent(song.singer ? `${song.name} ${song.singer}` : song.name)}`;
 
 export const quoteCount = animations.reduce(
   (total, animation) => total + animation.classicQuotes.length,

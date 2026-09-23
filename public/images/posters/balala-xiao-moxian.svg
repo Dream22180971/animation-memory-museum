@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="巴啦啦小魔仙 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c0f1a"/>
+      <stop offset="0.55" stop-color="#120a12"/>
+      <stop offset="1" stop-color="#080507"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#d14f95" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#d14f95" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d14f95"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <circle cx="300" cy="320" r="150" fill="none" stroke="#e88ac0" stroke-width="5" opacity="0.7"/>
+  <circle cx="300" cy="320" r="112" fill="none" stroke="#ffd24d" stroke-width="2.5" stroke-dasharray="10 14" opacity="0.75"/>
+  <path d="M300 218 L322 292 L398 292 L336 336 L360 410 L300 364 L240 410 L264 336 L202 292 L278 292 Z" fill="#ffd9ea" opacity="0.92"/>
+  <path d="M150 520 Q300 470 450 520" stroke="#d14f95" stroke-width="6" fill="none" opacity="0.55"/>
+  <circle cx="170" cy="230" r="6" fill="#ffd24d" opacity="0.8"/>
+  <circle cx="440" cy="200" r="5" fill="#ffd24d" opacity="0.6"/>
+  <circle cx="470" cy="430" r="7" fill="#e88ac0" opacity="0.7"/>
+  <circle cx="130" cy="420" r="4" fill="#e88ac0" opacity="0.6"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="sans-serif" font-size="62" font-weight="bold" fill="#fff2d5" letter-spacing="8">巴啦啦小魔仙</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="8">2008 · 魔法少女</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>
