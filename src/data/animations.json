@@ -2612,6 +2612,133 @@
           "label": "同伴"
         }
       ]
+    },
+    {
+      "id": 33,
+      "slug": "kuaile-kubao",
+      "name": "快乐酷宝",
+      "year": 2012,
+      "genre": [
+        "机甲",
+        "科幻",
+        "真人"
+      ],
+      "color": "#2f9e8f",
+      "description": "蓝弧把真人小演员和 CG 机甲拼在同一帧里，乐乐一句「酷宝变身」让放学后的客厅秒成异世界战场。那些会说话、会变形的机器人伙伴，是很多人对「国产变形金刚」的最初想象。",
+      "poster": "/images/posters/kuaile-kubao.svg",
+      "baikeUrl": "https://www.baike.com/wikiid/1603632493222610601",
+      "addedAt": "2026-09-24",
+      "studio": "广州蓝弧文化传播有限公司",
+      "broadcastPlatform": "福建电视台少儿频道",
+      "characters": [
+        {
+          "name": "乐乐",
+          "role": "主角 · 小宝的拍档",
+          "bio": "《快乐酷宝》男主角，与来自异世界的酷宝小宝结为拍档，带领伙伴们收集人类的正面情感能量，对抗阿酷波斯。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        },
+        {
+          "name": "小宝",
+          "role": "酷宝 · 乐乐的机器人伙伴",
+          "bio": "陪伴乐乐变身的核心酷宝，能变形合体，是整支队伍的战力与笑点担当。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        },
+        {
+          "name": "欢欢",
+          "role": "主角团 · 鸭小白的拍档",
+          "bio": "乐乐的伙伴之一，与酷宝鸭小白搭档，性格活泼。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        },
+        {
+          "name": "陆路",
+          "role": "主角团 · 大眼豆豆的拍档",
+          "bio": "主角团成员，与酷宝大眼豆豆结为拍档，遇事沉稳。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        },
+        {
+          "name": "杰飞",
+          "role": "主角团 · 洛奇的拍档",
+          "bio": "主角团成员，与酷宝洛奇搭档，好胜心强。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        },
+        {
+          "name": "婷婷",
+          "role": "主角团 · 海希斯的拍档",
+          "bio": "主角团里的女孩，与酷宝海希斯搭档，细心果敢。",
+          "sourceUrl": "https://www.baike.com/wikiid/1603632493222610601"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%BF%AB%E4%B9%90%E9%85%B7%E5%AE%9D"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%BF%AB%E4%B9%90%E9%85%B7%E5%AE%9D"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%BF%AB%E4%B9%90%E9%85%B7%E5%AE%9D"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "酷变，蛙王酷宝！我是森林之夜的歌手，蛙王酷宝。",
+          "speaker": "小宝",
+          "context": "乐乐的酷宝变身"
+        },
+        {
+          "line": "酷变，白天鹅酷宝！我是天空的优雅之王，白天鹅酷宝。",
+          "speaker": "鸭小白",
+          "context": "欢欢的酷宝变身"
+        },
+        {
+          "line": "酷变，熊猫酷宝！我是可爱的国民偶像，熊猫酷宝。",
+          "speaker": "大眼豆豆",
+          "context": "陆路的酷宝变身"
+        }
+      ],
+      "songs": [
+        {
+          "name": "快乐酷宝",
+          "type": "主题曲",
+          "singer": "陈洁丽、南方少儿艺术团"
+        }
+      ],
+      "themeSongSource": "https://www.kugou.com/song/12rriw32.html",
+      "relations": [
+        {
+          "from": "乐乐",
+          "to": "小宝",
+          "label": "人机拍档"
+        },
+        {
+          "from": "乐乐",
+          "to": "欢欢",
+          "label": "同伴"
+        },
+        {
+          "from": "乐乐",
+          "to": "陆路",
+          "label": "同伴"
+        },
+        {
+          "from": "乐乐",
+          "to": "杰飞",
+          "label": "同伴"
+        },
+        {
+          "from": "乐乐",
+          "to": "婷婷",
+          "label": "同伴"
+        },
+        {
+          "from": "欢欢",
+          "to": "婷婷",
+          "label": "同伴"
+        }
+      ]
     }
   ],
   "memories": [
