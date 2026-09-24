@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&weight=700&size=30&duration=2400&pause=900&color=D4A854&center=true&vCenter=true&width=900&lines=AFTER+SCHOOL%2C+17%3A30;A+DIGITAL+MUSEUM+FOR+CHILDHOOD+ANIMATION" alt="Typing SVG" />
 
 # 00 后动画记忆馆
 
@@ -17,7 +16,7 @@
 
 ---
 
-## 它是什么
+## 🎯 它是什么
 
 一个围绕国产动画童年记忆做的沉浸式网站。
 
@@ -36,7 +35,7 @@
 
 ---
 
-## 5 分钟快速开始
+## ⚡ 5 分钟快速开始
 
 ```bash
 git clone https://github.com/Dream22180971/animation-memory-museum.git
@@ -60,7 +59,7 @@ npm run build
 
 ---
 
-## 体验地图
+## 🧭 体验地图
 
 ```mermaid
 flowchart LR
@@ -76,7 +75,7 @@ flowchart LR
 
 ---
 
-## 核心亮点
+## ✨ 核心亮点
 
 | 区域 | 体验 |
 |---|---|
@@ -91,7 +90,7 @@ flowchart LR
 
 ---
 
-## 数据与内容边界
+## 📚 数据与内容边界
 
 项目不托管动画视频资源。
 
@@ -99,7 +98,7 @@ flowchart LR
 
 ---
 
-## 构建说明
+## 🛠 构建说明
 
 生产构建使用：
 
@@ -111,7 +110,7 @@ npm run build
 
 ---
 
-## 路线图
+## 🗺 路线图
 
 - [x] CRT 首页体验
 - [x] 档案与搜索
@@ -126,7 +125,7 @@ npm run build
 
 ---
 
-## License
+## 📄 License
 
 [MIT](./LICENSE)
 
