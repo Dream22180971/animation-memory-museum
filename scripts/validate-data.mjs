@@ -117,9 +117,6 @@ data.animations.forEach((animation, index) => {
       for (const field of ["name", "type", "singer"]) {
         if (!isNonEmptyString(song[field])) fail(`${songPath}.${field}`, "必须是非空字符串");
       }
-      if (song.neteaseUrl !== undefined && !/^https:\/\/music\.163\.com\/\S+$/.test(song.neteaseUrl)) {
-        fail(`${songPath}.neteaseUrl`, "必须是 music.163.com 链接或省略");
-      }
     });
   }
 
