@@ -1,6 +1,5 @@
 <div align="center">
 
-<img src="https://readme-typing-svg.herokuapp.com?font=Space+Grotesk&weight=700&size=30&duration=2400&pause=900&color=D4A854&center=true&vCenter=true&width=900&lines=AFTER+SCHOOL%2C+17%3A30;A+DIGITAL+MUSEUM+FOR+CHILDHOOD+ANIMATION" alt="Typing SVG" />
 
 # Digital Childhood Museum
 
@@ -17,7 +16,7 @@
 
 ---
 
-## What it is
+## 🎯 What it is
 
 A nostalgic web experience built around classic Chinese animation.
 
@@ -36,7 +35,7 @@ It is **not a video streaming site**. The project focuses on memory, discovery a
 
 ---
 
-## Quick Start
+## ⚡ Quick Start
 
 ```bash
 git clone https://github.com/Dream22180971/animation-memory-museum.git
@@ -60,7 +59,7 @@ npm run build
 
 ---
 
-## Experience Map
+## 🧭 Experience Map
 
 ```mermaid
 flowchart LR
@@ -76,7 +75,7 @@ flowchart LR
 
 ---
 
-## Highlights
+## ✨ Highlights
 
 | Area | Experience |
 |---|---|
@@ -91,7 +90,7 @@ flowchart LR
 
 ---
 
-## Data & Copyright Position
+## 📚 Data & Copyright Position
 
 The project does not host animation video files.
 
@@ -99,7 +98,7 @@ Archive metadata is curated from public information, while personal memory entri
 
 ---
 
-## Build Note
+## 🛠 Build Note
 
 The production build intentionally uses:
 
@@ -111,7 +110,7 @@ The script currently runs Next.js with webpack after data validation. Keep this 
 
 ---
 
-## Roadmap
+## 🗺 Roadmap
 
 - [x] CRT home experience
 - [x] archive and search
@@ -126,7 +125,7 @@ The script currently runs Next.js with webpack after data validation. Keep this 
 
 ---
 
-## License
+## 📄 License
 
 [MIT](./LICENSE)
 
