@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="神厨小福贵 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c0f0a"/>
+      <stop offset="0.55" stop-color="#120a07"/>
+      <stop offset="1" stop-color="#080403"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#c9552f" stop-opacity="0.4"/>
+      <stop offset="1" stop-color="#c9552f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c9552f"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <!-- wok + spatula -->
+  <path d="M180 340 A120 120 0 0 0 420 340 Z" fill="#5a2f1e" opacity="0.7"/>
+  <ellipse cx="300" cy="340" rx="120" ry="24" fill="#7a4326" opacity="0.7"/>
+  <path d="M420 340 L480 300" stroke="#c9552f" stroke-width="12" stroke-linecap="round"/>
+  <!-- steam swirls -->
+  <path d="M250 300 q-14 -26 0 -50 q14 -24 0 -48" stroke="#e8bd6c" stroke-width="5" fill="none" opacity="0.5"/>
+  <path d="M330 300 q14 -26 0 -50 q-14 -24 0 -48" stroke="#e8bd6c" stroke-width="5" fill="none" opacity="0.5"/>
+  <circle cx="170" cy="230" r="6" fill="#ffd24d" opacity="0.6"/>
+  <circle cx="440" cy="240" r="5" fill="#ffd24d" opacity="0.6"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="serif" font-size="66" font-weight="bold" fill="#fff2d5" letter-spacing="8">神厨小福贵</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="8">2007 · 天下第一</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

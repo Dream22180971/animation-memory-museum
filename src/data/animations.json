@@ -2739,6 +2739,427 @@
           "label": "同伴"
         }
       ]
+    },
+    {
+      "id": 34,
+      "slug": "xiyou-1999",
+      "name": "西游记",
+      "year": 1999,
+      "genre": [
+        "神话",
+        "冒险",
+        "经典"
+      ],
+      "color": "#c9862f",
+      "description": "央视动画版《西游记》，片尾一句「白龙马，蹄朝西」把师徒五人的九九八十一难唱进了每个 00 后的DNA。它不是原著的复刻，而是一代人关于「取经」这件事的最初想象。",
+      "poster": "/images/posters/xiyou-1999.svg",
+      "baikeUrl": "https://baike.baidu.com/item/西游记/4812230",
+      "addedAt": "2026-09-24",
+      "studio": "中央电视台动画部、中国国际电视总公司、火炬动画分公司",
+      "broadcastPlatform": "中央电视台综合频道《大风车》",
+      "characters": [
+        {
+          "name": "孙悟空",
+          "role": "主角 · 齐天大圣",
+          "bio": "唐僧大徒弟，神通广大、嫉恶如仇，一路降妖伏魔护送师父西行，是整部《西游记》的灵魂。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3"
+        },
+        {
+          "name": "唐僧",
+          "role": "主角 · 取经团队首领",
+          "bio": "观世音指点下西行求取真经的高僧，慈悲坚定，却常因不辨妖魔而与悟空产生误会。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3"
+        },
+        {
+          "name": "猪八戒",
+          "role": "二师兄 · 团队的喜剧担当",
+          "bio": "原天蓬元帅错投猪胎，贪吃好色又憨态可掬，是艰苦取经路上的开心果。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3"
+        },
+        {
+          "name": "沙僧",
+          "role": "三师弟 · 任劳任怨",
+          "bio": "原卷帘大将，忠厚老实、默默挑担，是团队里最稳的粘合剂。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3"
+        },
+        {
+          "name": "白龙马",
+          "role": "脚力 · 西海龙王三太子",
+          "bio": "误食白马后化身为唐僧坐骑，驮着师徒踏遍千山万水，是那首同名片尾曲的主角。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%A5%BF%E6%B8%B8%E8%AE%B0%201999%E5%8A%A8%E7%94%BB"
+        },
+        {
+          "label": "央视频",
+          "url": "https://search.cctv.com/search.php?qtext=%E8%A5%BF%E6%B8%B8%E8%AE%B0"
+        },
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%A5%BF%E6%B8%B8%E8%AE%B0%20%E5%8A%A8%E7%94%BB"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "白龙马，蹄朝西，驮着唐三藏跟着仨徒弟。",
+          "speaker": "片尾曲《白龙马》",
+          "context": "刻进DNA的旋律"
+        },
+        {
+          "line": "西天路上鬼怪多，降妖除魔靠悟空。",
+          "speaker": "片头曲《猴哥》",
+          "context": "英雄主义启蒙"
+        }
+      ],
+      "songs": [
+        {
+          "name": "猴哥",
+          "type": "片头曲",
+          "singer": "张伟进"
+        },
+        {
+          "name": "一个师傅仨徒弟",
+          "type": "片尾曲",
+          "singer": "吸引力合唱组"
+        }
+      ],
+      "themeSongSource": "https://baike.quark.cn/baike?id=a2797259b48d4f8d8c8c8a0eaa8db1c3",
+      "relations": [
+        {
+          "from": "唐僧",
+          "to": "孙悟空",
+          "label": "师徒"
+        },
+        {
+          "from": "唐僧",
+          "to": "猪八戒",
+          "label": "师徒"
+        },
+        {
+          "from": "唐僧",
+          "to": "沙僧",
+          "label": "师徒"
+        },
+        {
+          "from": "孙悟空",
+          "to": "猪八戒",
+          "label": "师兄弟"
+        },
+        {
+          "from": "孙悟空",
+          "to": "沙僧",
+          "label": "师兄弟"
+        },
+        {
+          "from": "唐僧",
+          "to": "白龙马",
+          "label": "坐骑"
+        }
+      ]
+    },
+    {
+      "id": 35,
+      "slug": "dongfang-shenwa",
+      "name": "东方神娃",
+      "year": 2005,
+      "genre": [
+        "神话",
+        "冒险",
+        "寻亲"
+      ],
+      "color": "#7a5cc4",
+      "description": "女娲以光明之土造出的龙凤双娃，为救被黑暗吞噬的母亲沿母亲河踏上寻亲路。太阳般的龙娃、月亮般的凤娃，是很多孩子最早的神话启蒙。",
+      "poster": "/images/posters/dongfang-shenwa.svg",
+      "baikeUrl": "https://baike.baidu.com/item/东方神娃/1339416",
+      "addedAt": "2026-09-24",
+      "studio": "江苏省广电总台、无锡电视台、江苏省盛世影视文化有限公司、无锡天龙动画",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "龙娃",
+          "role": "主角 · 象征太阳",
+          "bio": "女娲以光明之土孕育的男娃，习得神通、手持圣剑，为救母与剿灭黑暗势力重返人间。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=0365883463c94b55a69bddac03be6e93"
+        },
+        {
+          "name": "凤娃",
+          "role": "主角 · 象征月亮",
+          "bio": "与龙娃并肩的妹妹，聪慧坚韧，兄妹二人在寻母途中相互扶持。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=0365883463c94b55a69bddac03be6e93"
+        },
+        {
+          "name": "女娲",
+          "role": "造物之母",
+          "bio": "抟土造娃、炼石补天的上古正神，因补天与儿女天地永隔，是双娃寻亲的执念所在。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=0365883463c94b55a69bddac03be6e93"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E4%B8%9C%E6%96%B9%E7%A5%9E%E5%A8%83"
+        },
+        {
+          "label": "央视频",
+          "url": "https://search.cctv.com/search.php?qtext=%E4%B8%9C%E6%96%B9%E7%A5%9E%E5%A8%83"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E4%B8%9C%E6%96%B9%E7%A5%9E%E5%A8%83"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "这段剧情台词待考证 · 欢迎提 issue 补资料源",
+          "speaker": "待考证",
+          "context": "寻母与抗暗的主线"
+        }
+      ],
+      "songs": [
+        {
+          "name": "龙凤双娃",
+          "type": "主题曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://baike.quark.cn/baike?id=0365883463c94b55a69bddac03be6e93",
+      "relations": [
+        {
+          "from": "女娲",
+          "to": "龙娃",
+          "label": "母子"
+        },
+        {
+          "from": "女娲",
+          "to": "凤娃",
+          "label": "母女"
+        },
+        {
+          "from": "龙娃",
+          "to": "凤娃",
+          "label": "兄妹"
+        }
+      ]
+    },
+    {
+      "id": 36,
+      "slug": "xiaoliyu-luxianji",
+      "name": "小鲤鱼历险记",
+      "year": 2006,
+      "genre": [
+        "童话",
+        "冒险",
+        "成长"
+      ],
+      "color": "#2f9ec4",
+      "description": "为了跃过龙门、拯救家园，泡泡带着阿酷、双面龟和小美美逆流而上。「勇敢的心」加上龙鳞，是很多人第一次懂得：渺小也能对抗癞皮蛇那样的庞然邪恶。",
+      "poster": "/images/posters/xiaoliyu.svg",
+      "baikeUrl": "https://baike.sogou.com/v1275808.htm",
+      "addedAt": "2026-09-24",
+      "studio": "中央电视台动画部",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "泡泡",
+          "role": "主角 · 天真勇敢的小鲤鱼",
+          "bio": "善良坚定的主人公，为拯救鲤鱼湖踏上寻找龙门的旅程，是队伍的勇气核心。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=aaeebb2d68d44eb8a3f1373bd2e15429"
+        },
+        {
+          "name": "阿酷",
+          "role": "伙伴 · 会魔术的冷酷少年",
+          "bio": "外表冷酷、擅长魔术，在与泡泡并肩中结下生死之交。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=85d76ea1131b470ea299dddb3b4c7728"
+        },
+        {
+          "name": "双面龟",
+          "role": "伙伴 · 胆小却忠诚",
+          "bio": "平时胆小怕事，危急时刻却总挺身而出，最终成为泡泡的生死之交。",
+          "sourceUrl": "https://baike.baidu.com/item/双面龟/3110770"
+        },
+        {
+          "name": "小美美",
+          "role": "伙伴 · 团队的气氛与调和者",
+          "bio": "善良可爱、爱依赖别人，常在泡泡和阿酷的矛盾之间做调解。",
+          "sourceUrl": "https://baike.quark.cn/baike?id=43e8141a77124103a205b34f6aa921e6"
+        },
+        {
+          "name": "癞皮蛇",
+          "role": "反派 · 贪婪狠毒",
+          "bio": "狡猾邪恶、贪婪狠毒的一方霸主，是四小只成长路上必须翻越的险阻。",
+          "sourceUrl": "https://baike.baidu.com/item/癞皮蛇/5477181"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%B0%8F%E9%B2%A4%E9%B1%BC%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "央视频",
+          "url": "https://search.cctv.com/search.php?qtext=%E5%B0%8F%E9%B2%A4%E9%B1%BC%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%B0%8F%E9%B2%A4%E9%B1%BC%E5%8E%86%E9%99%A9%E8%AE%B0"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "要有勇敢的心，去追寻我的梦。",
+          "speaker": "主题曲《小鲤鱼历险记》",
+          "context": "一代人的勇气启蒙"
+        }
+      ],
+      "songs": [
+        {
+          "name": "小鲤鱼历险记",
+          "type": "主题曲",
+          "singer": "韩磊"
+        }
+      ],
+      "themeSongSource": "https://baike.quark.cn/baike?id=43e8141a77124103a205b34f6aa921e6",
+      "relations": [
+        {
+          "from": "泡泡",
+          "to": "阿酷",
+          "label": "生死之交"
+        },
+        {
+          "from": "泡泡",
+          "to": "双面龟",
+          "label": "生死之交"
+        },
+        {
+          "from": "泡泡",
+          "to": "小美美",
+          "label": "同伴"
+        },
+        {
+          "from": "泡泡",
+          "to": "癞皮蛇",
+          "label": "敌对"
+        },
+        {
+          "from": "阿酷",
+          "to": "小美美",
+          "label": "同伴"
+        }
+      ]
+    },
+    {
+      "id": 37,
+      "slug": "shenchu-xiaofugui",
+      "name": "神厨小福贵",
+      "year": 2007,
+      "genre": [
+        "美食",
+        "励志",
+        "古装"
+      ],
+      "color": "#c9552f",
+      "description": "为救蒙冤入狱的祖父，少年小福贵凭一口锅铲闯进清宫御膳房。宏梦卡通把厨艺比做人生意气，一首《天下第一》让无数人第一次尝到什么叫「笑中带泪」。",
+      "poster": "/images/posters/shenchu-xiaofugui.svg",
+      "baikeUrl": "https://baike.baidu.com/item/神厨小福贵/1123611",
+      "addedAt": "2026-09-24",
+      "studio": "湖南宏梦卡通传播有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "小福贵",
+          "role": "主角 · 天才少年厨师",
+          "bio": "聪慧善良、意志坚定的少年，为救祖父苦练厨艺入宫，最终获封御膳大厨。",
+          "sourceUrl": "https://www.baike.com/wikiid/7216284669892263996"
+        },
+        {
+          "name": "老洪头",
+          "role": "祖父 · 顶尖厨艺传人",
+          "bio": "小福贵的祖父，遭人构陷入狱，见孙儿成才后欣慰离世，是全剧最大的泪点。",
+          "sourceUrl": "https://baike.baidu.com/item/老洪头/53273801"
+        },
+        {
+          "name": "小飞蝶",
+          "role": "女主 · 清宫格格",
+          "bio": "活泼好奇、热衷美食的格格，担任小福贵的助手并与他一同追寻真相。",
+          "sourceUrl": "https://www.baike.com/wikiid/7216284669892263996"
+        },
+        {
+          "name": "K大人",
+          "role": "反派 · 把持朝政的重臣",
+          "bio": "阴险跋扈的守旧派权臣，构陷忠良，是阻碍小福贵进宫查案的核心对手。",
+          "sourceUrl": "https://www.baike.com/wikiid/7216284669892263996"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%A5%9E%E5%8E%A8%E5%B0%8F%E7%A6%8F%E8%B4%B5"
+        },
+        {
+          "label": "央视频",
+          "url": "https://search.cctv.com/search.php?qtext=%E7%A5%9E%E5%8E%A8%E5%B0%8F%E7%A6%8F%E8%B4%B5"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%A5%9E%E5%8E%A8%E5%B0%8F%E7%A6%8F%E8%B4%B5"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "做人好比小葱拌豆腐，清清白白走四方。",
+          "speaker": "主题曲《天下第一》",
+          "context": "为人处世的准则"
+        },
+        {
+          "line": "满汉全席不过是小菜一碟，三山五岳烩做人生百味。",
+          "speaker": "主题曲《天下第一》",
+          "context": "以厨喻人的豪气"
+        },
+        {
+          "line": "其实真情在民间，智慧在民间哪！",
+          "speaker": "小福贵",
+          "context": "顿悟名场面"
+        }
+      ],
+      "songs": [
+        {
+          "name": "天下第一",
+          "type": "片头曲",
+          "singer": "周星灿、周逸群、晏婷"
+        },
+        {
+          "name": "我为厨艺狂",
+          "type": "片尾曲",
+          "singer": "周星灿、周逸群、晏婷"
+        }
+      ],
+      "themeSongSource": "https://m.bilibili.com/video/BV1rTFxePEon/",
+      "relations": [
+        {
+          "from": "小福贵",
+          "to": "老洪头",
+          "label": "祖孙"
+        },
+        {
+          "from": "小福贵",
+          "to": "小飞蝶",
+          "label": "搭档"
+        },
+        {
+          "from": "小福贵",
+          "to": "K大人",
+          "label": "敌对"
+        },
+        {
+          "from": "小飞蝶",
+          "to": "K大人",
+          "label": "对立"
+        }
+      ]
     }
   ],
   "memories": [

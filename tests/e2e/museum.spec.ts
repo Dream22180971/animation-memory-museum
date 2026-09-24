@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("首页展示真实馆藏统计，并可使用全局搜索", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  await expect(page.getByText("已整理 22 部馆藏 · 92 条台词")).toBeVisible();
+  await expect(page.getByText("已整理 26 部馆藏 · 99 条台词")).toBeVisible();
   await expect(page.getByText("8,921")).toHaveCount(0);
 
   const searchButton = page.getByRole("button", { name: "搜索" });
@@ -24,32 +24,32 @@ test("档案筛选可以找到馆藏并恢复全部结果", async ({ page }) => 
 
   const archiveSearch = page.getByPlaceholder("搜索动画名、类型或回忆关键词");
   await archiveSearch.fill("机甲");
-  await expect(page.locator("span.cassette-label").filter({ hasText: /5 \/ 22/ })).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /5 \/ 26/ })).toBeVisible();
 
   await page.getByRole("button", { name: "重置筛选" }).click();
-  await expect(page.locator("span.cassette-label").filter({ hasText: /22 \/ 22/ })).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /26 \/ 26/ })).toBeVisible();
 });
 
 test("本机回忆册可保存、导出入口与删除，且不混进公开档案", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  await page.getByLabel("动画名称").fill("神厨小福贵");
+  await page.getByLabel("动画名称").fill("某部没入馆的动画");
   await page.getByLabel("你的回忆").fill("放学后和同学一起讨论当天的剧情。");
   await page.getByLabel("昵称").fill("测试观众");
   await page.getByRole("button", { name: "存进我的回忆册" }).click();
   await expect(page.getByText("已写进册子，往下翻就能看到")).toBeVisible();
 
-  await expect(page.getByRole("heading", { name: "《神厨小福贵》" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "《某部没入馆的动画》" })).toBeVisible();
   await expect(page.getByText("放学后和同学一起讨论当天的剧情。")).toBeVisible();
   await expect(page.getByText(/^测试观众 · \d{4}\.\d{2}\.\d{2}$/)).toBeVisible();
 
   await page.goto("/archive", { waitUntil: "networkidle" });
-  await expect(page.getByRole("heading", { name: "神厨小福贵" })).toHaveCount(0);
-  await expect(page.getByText("馆藏 22")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "某部没入馆的动画" })).toHaveCount(0);
+  await expect(page.getByText("馆藏 26")).toBeVisible();
 
   await page.goto("/", { waitUntil: "networkidle" });
-  await page.getByRole("button", { name: "删除《神厨小福贵》的回忆" }).click();
-  await expect(page.getByRole("heading", { name: "《神厨小福贵》" })).toHaveCount(0);
+  await page.getByRole("button", { name: "删除《某部没入馆的动画》的回忆" }).click();
+  await expect(page.getByRole("heading", { name: "《某部没入馆的动画》" })).toHaveCount(0);
 
   await page.goto("/archive/chaoshou-wuzhuang", { waitUntil: "networkidle" });
   const watchedButton = page.getByRole("button", { name: "标记我也看过超兽武装" });
@@ -217,15 +217,15 @@ test("名台词档案馆可以按动画筛选台词", async ({ page }) => {
   await page.goto("/quotes", { waitUntil: "networkidle" });
 
   await expect(page.getByRole("heading", { name: "名台词档案馆" })).toBeVisible();
-  await expect(page.locator("p[role=status]").filter({ hasText: /92 \/ 92/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /99 \/ 99/ })).toBeVisible();
 
   await page.getByRole("button", { name: /熊出没/ }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /3 \/ 92/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /3 \/ 99/ })).toBeVisible();
   await expect(page.getByText("臭狗熊！别跑！")).toBeVisible();
   await expect(page.getByText("已有的事，后必再有；已行的事，后必再行。")).toBeHidden();
 
   await page.getByRole("button", { name: /秦时明月/ }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /6 \/ 92/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /6 \/ 99/ })).toBeVisible();
   await expect(page.getByText("有些梦虽然遥不可及，但并不是不可能实现。")).toBeVisible();
 });
 
@@ -247,13 +247,13 @@ test("移动端菜单可以打开并到达各展区", async ({ page }) => {
 
 test("台词馆与角色图谱可以按作品互相深链跳转", async ({ page }) => {
   await page.goto("/quotes?animation=kuiba", { waitUntil: "networkidle" });
-  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 92/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 99/ })).toBeVisible();
 
   await page.getByRole("link", { name: "看角色关系" }).first().click();
   await expect(page.getByRole("region", { name: "魁拔角色关系图" })).toBeVisible();
 
   await page.getByRole("link", { name: "看这部作品的台词 →" }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 92/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 99/ })).toBeVisible();
 });
 
 test("损坏的本地存储不会阻止用户继续操作", async ({ page }) => {
