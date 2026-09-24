@@ -1,3 +1,36 @@
+A digital childhood museum for the Chinese animation memories of the 90s and 00s generation. / 为 90/00 后保存国产动画童年记忆的数字博物馆。
+
+<!-- README-V2-BILINGUAL -->
+
+# animation-memory-museum
+
+> **EN:** A digital childhood museum for the Chinese animation memories of the 90s and 00s generation.  
+> **中文：** 为 90/00 后保存国产动画童年记忆的数字博物馆。
+
+## Demo / 演示
+
+[Live Demo / 在线体验](https://museum.seanwalter.top) · Visual screenshots and interaction details are kept below. / 视觉截图与交互说明保留在下方。
+
+## Quick Start / 5 分钟快速开始
+
+```bash
+git clone https://github.com/Dream22180971/animation-memory-museum.git
+cd animation-memory-museum
+npm install
+npm run dev
+```
+
+> **EN:** Clone, install, run. Advanced configuration and project-specific details are documented below.  
+> **中文：** 克隆、安装、运行即可开始。高级配置和项目特定说明继续保留在下方。
+
+## Why this project / 为什么做这个项目
+
+**EN:** This project starts from one concrete problem and prioritizes being understandable, runnable and useful before becoming complex.
+
+**中文：** 这个项目从一个明确问题出发，优先做到易理解、能运行、真正有用，再逐步增加复杂能力。
+
+---
+
 # 00后动画记忆馆 | Digital Childhood Museum
 
 > 放学后的 17:30，是我们等了很久的动画时间。
