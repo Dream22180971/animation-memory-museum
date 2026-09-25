@@ -67,14 +67,14 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
           <div className="absolute inset-0 bg-cover bg-center opacity-22 blur-[1px]" style={{ backgroundImage: `url(${animation.poster})` }} />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,8,6,.96)_0%,rgba(7,8,6,.82)_48%,rgba(7,8,6,.48)_100%),linear-gradient(180deg,rgba(255,210,77,.04),rgba(7,8,6,.96)_72%)]" />
 
-          <div className="relative grid gap-8 px-5 py-8 sm:px-10 lg:min-h-[calc(100svh-112px)] lg:grid-cols-[0.86fr_1.14fr] lg:items-center lg:px-14 lg:py-8">
+          <div className="relative grid gap-8 px-5 py-8 sm:px-10 lg:min-h-[calc(100svh-112px)] lg:grid-cols-[minmax(0,0.88fr)_minmax(0,1.12fr)] lg:items-center lg:gap-10 lg:px-14 lg:py-8">
             <div className="max-w-[620px]">
               <Link href="/archive" className="retro-button retro-button-ghost text-sm">
                 <ArrowLeft size={17} />
                 返回完整档案
               </Link>
               <p className="archive-kicker mt-6 text-xs font-black text-[#d8ac55]/78">Archive Detail</p>
-              <h1 className="hero-title retro-title mt-4 text-6xl leading-[1.02] text-[#fff6e6] sm:text-7xl lg:text-[5.4rem]">
+              <h1 className="hero-title retro-title mt-4 text-balance text-6xl leading-[1.02] text-[#fff6e6] sm:text-7xl lg:text-[5.4rem]">
                 {animation.name}
               </h1>
               <p className="memory-text mt-5 max-w-xl text-base text-[#f7ebd4]/88 lg:text-lg">{animation.description}</p>
@@ -142,8 +142,19 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
               </div>
             </div>
 
-            <div className="archive-card relative w-full max-w-[860px] justify-self-end overflow-hidden rounded-[1.35rem] border border-[#c99a45]/28 bg-[#080806]/78 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
+            <div className="archive-card relative w-full justify-self-stretch overflow-hidden rounded-[1.35rem] border border-[#c99a45]/28 bg-[#080806]/78 p-3 shadow-[0_24px_70px_rgba(0,0,0,.42)]">
               <div className="relative aspect-[16/10] max-h-[min(62svh,620px)] overflow-hidden rounded-xl border border-[#c99a45]/24 bg-[#050403] shadow-[inset_0_0_90px_rgba(0,0,0,.46)]">
+                {/* 竖版海报 contain 后两侧留黑：同图模糊垫底当环境光 */}
+                <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+                  <Image
+                    src={animation.poster}
+                    alt=""
+                    fill
+                    unoptimized={animation.poster.endsWith(".svg")}
+                    sizes="800px"
+                    className="scale-110 object-cover opacity-30 blur-xl"
+                  />
+                </div>
                 <Image
                   src={animation.poster}
                   alt={`${animation.name} 海报`}
@@ -249,8 +260,14 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                   href={`/archive/${item.slug}`}
                   className="archive-card museum-card group relative min-h-[190px] rounded-xl p-5 transition hover:-translate-y-1"
                 >
-                  <div className="absolute inset-0 bg-cover bg-center opacity-32 transition group-hover:scale-105 group-hover:opacity-45" style={{ backgroundImage: `url(${item.poster})` }} />
-                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,6,.36),rgba(7,8,6,.94))]" />
+                  {/* 横卡 cover 竖版海报只露中间窄条——改用模糊放大的海报铺满卡片做氛围底 */}
+                  <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+                    <div
+                      className="absolute inset-[-16px] bg-cover bg-center opacity-75 saturate-[1.15] blur-md transition group-hover:scale-[1.06] group-hover:opacity-90"
+                      style={{ backgroundImage: `url(${item.poster})` }}
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,6,.3),rgba(7,8,6,.93))]" />
                   <div className="relative z-10 flex h-full flex-col justify-end">
                     <p className="cassette-label cassette-label-muted">{item.year}</p>
                     <h3 className="retro-title mt-2 text-4xl text-[#fff6e8]">{item.name}</h3>

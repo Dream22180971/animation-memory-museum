@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowUpDown, ExternalLink, Library, PenLine, Search, SlidersHorizontal, Sparkles } from "lucide-react";
 import animationsData from "@/data/animations.json";
 import PosterImage from "@/components/ui/PosterImage";
+import PosterTilt from "@/components/motion/PosterTilt";
 
 type OfficialAnimation = (typeof animationsData.animations)[number];
 
@@ -117,16 +118,16 @@ export default function ArchiveExplorer() {
       {filteredItems.length > 0 ? (
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {filteredItems.map((item, index) => (
-            <motion.article
-              key={item.id}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.22) }}
-              className="archive-poster archive-card museum-card group card-glow defer-offscreen relative min-h-[330px] rounded-xl"
-            >
-              <div className="archive-poster-image absolute inset-0 transition duration-700 group-hover:scale-[1.055]">
-                <PosterImage src={item.poster} alt={`${item.name} 海报`} sizes="(max-width:768px) 92vw, (max-width:1280px) 46vw, 30vw" />
-              </div>
+            <PosterTilt key={item.id} className="rounded-xl">
+              <motion.article
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, delay: Math.min(index * 0.035, 0.22) }}
+                className="archive-poster archive-card museum-card group card-glow relative min-h-[330px] h-full rounded-xl"
+              >
+                <div className="archive-poster-image absolute inset-0 transition duration-[420ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]">
+                  <PosterImage src={item.poster} alt={`${item.name} 海报`} sizes="(max-width:768px) 92vw, (max-width:1280px) 46vw, 30vw" />
+                </div>
               <div className="archive-poster-overlay absolute inset-0" />
               <div className="archive-poster-shine absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -176,7 +177,8 @@ export default function ArchiveExplorer() {
                   </div>
                 </div>
               </div>
-            </motion.article>
+              </motion.article>
+            </PosterTilt>
           ))}
         </div>
       ) : (

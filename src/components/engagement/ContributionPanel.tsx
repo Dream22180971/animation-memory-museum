@@ -334,10 +334,18 @@ export default function ContributionPanel() {
               存进我的回忆册
             </button>
             {submitState === "saved" ? (
-              <span className="inline-flex items-center gap-2 text-sm font-bold text-[#9ee6a8]">
-                <CheckCircle2 size={16} />
-                已写进册子，往下翻就能看到
-              </span>
+              <>
+                <span className="inline-flex items-center gap-2 text-sm font-bold text-[#9ee6a8]">
+                  <CheckCircle2 size={16} />
+                  已写进册子，往下翻就能看到
+                </span>
+                <span aria-hidden="true">
+                  <span className="stamp-seal">
+                    <span className="text-[10px] font-black tracking-[.28em]">MEMORY SAVED</span>
+                    <span className="text-base font-black leading-none">已收藏</span>
+                  </span>
+                </span>
+              </>
             ) : submitState === "error" ? (
               <span role="alert" className="text-sm font-bold text-[#ff9a85]">
                 保存失败，请检查浏览器存储权限后重试
