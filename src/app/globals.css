@@ -212,6 +212,154 @@ body {
   transform: rotate(.45deg);
 }
 
+/* ===== 磁带卡带：动画歌曲展区 ===== */
+.cassette-shell {
+  position: relative;
+  border-radius: .9rem .9rem 1.4rem 1.4rem;
+  border: 1px solid rgba(200, 154, 68, .34);
+  background:
+    linear-gradient(180deg, rgba(30, 22, 12, .94), rgba(10, 8, 6, .96)),
+    radial-gradient(circle at 50% 120%, rgba(255, 210, 77, .08), transparent 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 235, 190, .14),
+    inset 0 -14px 26px rgba(0, 0, 0, .5),
+    var(--museum-shadow);
+}
+
+/* 壳体内嵌的贴纸区：只包标题+窗口，曲目列表落在下方裸壳体上 */
+.cassette-face {
+  position: relative;
+  border-radius: .55rem;
+  padding: .8rem .9rem .7rem;
+  background:
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, .028) 0 1px, transparent 1px 5px),
+    linear-gradient(180deg, rgba(245, 223, 173, .11), rgba(0, 0, 0, .3));
+  border: 1px solid rgba(216, 172, 85, .2);
+}
+
+/* 底部收边条：模拟卡带下缘的梯形齿口 */
+.cassette-grip {
+  margin: .75rem auto 0;
+  width: 46%;
+  height: 10px;
+  border-radius: 0 0 .5rem .5rem;
+  background:
+    repeating-linear-gradient(90deg, rgba(255, 235, 190, .1) 0 3px, transparent 3px 9px),
+    linear-gradient(180deg, rgba(12, 10, 7, .9), rgba(20, 15, 9, .8));
+  border: 1px solid rgba(216, 172, 85, .14);
+  border-top: none;
+}
+
+/* 底部四颗螺丝 */
+.cassette-screw {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 235, 190, .5), transparent 55%),
+    linear-gradient(180deg, #4a3c24, #241a0e);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .6);
+}
+
+/* 透明窗口：双卷轴 + 穿行的磁带条 */
+.cassette-window {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin: 0 auto;
+  width: 72%;
+  padding: .5rem 1.15rem;
+  border-radius: .5rem;
+  background:
+    linear-gradient(180deg, rgba(6, 6, 5, .92), rgba(14, 11, 7, .85));
+  border: 1px solid rgba(216, 172, 85, .26);
+  box-shadow:
+    inset 0 3px 10px rgba(0, 0, 0, .72),
+    inset 0 -1px 0 rgba(255, 235, 190, .08);
+}
+
+/* 窗口里两卷之间那段棕色磁带 */
+.cassette-window::before {
+  content: "";
+  position: absolute;
+  left: 1.55rem;
+  right: 1.55rem;
+  top: 50%;
+  height: 7px;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background: linear-gradient(180deg, #6b4526, #3c2513);
+  box-shadow: inset 0 1px 1px rgba(255, 220, 160, .18);
+}
+
+.cassette-reel {
+  position: relative;
+  z-index: 1;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 0deg, #efe0c0 0 12%, #241a0e 12% 100%);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 235, 190, .22),
+    0 0 0 5px rgba(6, 6, 5, .9);
+}
+
+.cassette-reel::after {
+  content: "";
+  position: absolute;
+  inset: 38%;
+  border-radius: 50%;
+  background: #0a0806;
+  box-shadow: inset 0 0 0 1px rgba(255, 235, 190, .3);
+}
+
+.group\/cassette:hover .cassette-reel {
+  animation: reel-spin 1.6s linear infinite;
+}
+
+@keyframes reel-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .group\/cassette:hover .cassette-reel { animation: none; }
+}
+
+/* 曲目行：A/B 面编号 + 歌名 + 类型 */
+.cassette-track {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  border-radius: .45rem;
+  border: 1px solid transparent;
+  padding: .42rem .6rem;
+  transition:
+    border-color .22s ease,
+    background .22s ease,
+    transform .22s ease;
+}
+
+.cassette-track:hover {
+  border-color: rgba(251, 114, 153, .4);
+  background: rgba(251, 114, 153, .06);
+  transform: translateX(2px);
+}
+
+.cassette-side {
+  font-family: var(--font-mono);
+  font-size: .62rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: #f2c96a;
+  opacity: .8;
+  min-width: 1.9rem;
+}
+
 .museum-card {
   position: relative;
   overflow: hidden;

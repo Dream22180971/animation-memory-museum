@@ -130,44 +130,43 @@ export type TimelinePeriod = {
   items: { name: string; year: number; poster: string; slug: string }[];
 };
 
-const PERIODS: { period: string; label: string; min: number; max: number }[] = [
-  { period: "1999-2001", label: "启蒙期", min: 1999, max: 2001 },
-  { period: "2003-2005", label: "萌芽期", min: 2003, max: 2005 },
-  { period: "2006-2007", label: "崛起期", min: 2006, max: 2007 },
-  { period: "2008-2009", label: "黄金期", min: 2008, max: 2009 },
-  { period: "2010-2012", label: "巅峰期", min: 2010, max: 2012 },
-];
+/** 每 4 年一个年代桶，起止随馆藏实际年份自动伸缩——加作品零维护 */
+const BUCKET_YEARS = 4;
 
-/** 年代时间线：完全由 animations[] 推导，末尾保留「记忆仍在继续」占位 */
-export const deriveTimeline = (): (TimelinePeriod & { placeholder?: boolean })[] => {
-  const periods = PERIODS.map((bucket) => ({
-    period: bucket.period,
-    label: bucket.label,
-    items: animations
-      .filter((animation) => animation.year >= bucket.min && animation.year <= bucket.max)
+/** 有把握的历史命名沿用，其余桶用「N0后」这类中性说法，避免硬编朝代词露怯 */
+const ERA_LABELS: Record<number, string> = {
+  1999: "启蒙期",
+  2003: "萌芽期",
+  2007: "崛起期",
+  2011: "黄金期",
+  2015: "破圈期",
+};
+
+/** 年代时间线：完全由 animations[] 推导，按 BUCKET_YEARS 分桶 */
+export const deriveTimeline = (): TimelinePeriod[] => {
+  if (animations.length === 0) return [];
+  const minYear = Math.min(...animations.map((animation) => animation.year));
+  const maxYear = Math.max(...animations.map((animation) => animation.year));
+  const firstBucket = Math.floor(minYear / BUCKET_YEARS) * BUCKET_YEARS;
+
+  const periods: TimelinePeriod[] = [];
+  for (let start = firstBucket; start <= maxYear; start += BUCKET_YEARS) {
+    const end = start + BUCKET_YEARS - 1;
+    const items = animations
+      .filter((animation) => animation.year >= start && animation.year <= end)
       .sort((a, b) => a.year - b.year)
       .map((animation) => ({
         name: animation.name,
         year: animation.year,
         poster: animation.poster,
         slug: animation.slug,
-      })),
-  })).filter((bucket) => bucket.items.length > 0);
-
-  return [
-    ...periods,
-    {
-      period: "2013-2015",
-      label: "延续期",
-      placeholder: true,
-      items: [
-        {
-          name: "记忆仍在继续",
-          year: 2015,
-          poster: "/images/memories/tv-room-hero.webp",
-          slug: "",
-        },
-      ],
-    },
-  ];
+      }));
+    if (items.length === 0) continue;
+    periods.push({
+      period: `${start}-${end}`,
+      label: ERA_LABELS[start] ?? `${String(start).slice(0, 3)}0后`,
+      items,
+    });
+  }
+  return periods;
 };
