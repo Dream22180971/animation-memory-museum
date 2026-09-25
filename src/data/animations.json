@@ -1,167 +1,6 @@
 {
   "animations": [
     {
-      "id": 17,
-      "slug": "chaoshou-wuzhuang",
-      "name": "超兽武装",
-      "year": 2011,
-      "genre": [
-        "机甲",
-        "热血",
-        "科幻"
-      ],
-      "color": "#a94b35",
-      "description": "信念、轮回与宇宙战场交织在一起，那份少年热血至今仍会被重新点亮。",
-      "poster": "/images/posters/armor-hero.webp",
-      "baikeUrl": "https://baike.baidu.com/item/超兽武装",
-      "addedAt": "2026-06-06",
-      "studio": "广州蓝弧文化传播有限公司",
-      "broadcastPlatform": "中央电视台少儿频道",
-      "characters": [
-        {
-          "name": "火麟飞",
-          "role": "主角 · 超兽战队队长",
-          "bio": "《超兽武装》男主角，超兽战队的核心与队长，性格热血冲动、极重伙伴，驾驶火系超兽冲在最前线，是整支战队凝聚力的来源。",
-          "sourceUrl": "https://m.baike.so.com/doc/5409819.html"
-        },
-        {
-          "name": "天羽",
-          "role": "女主角 · 超兽战队成员",
-          "bio": "《超兽武装》女主角，战队中的女性主力战士，性格冷静坚韧，与火麟飞互为羁绊，多次在危局中稳住战局。",
-          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "name": "苗条俊",
-          "role": "配角 · 战队气氛担当",
-          "bio": "《超兽武装》中火麟飞的伙伴，体型圆润、名字与形象反差十足，是剧中的喜剧担当，关键时刻依然会挺身而出。",
-          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "name": "龙戬",
-          "role": "对手 · 龙族战士",
-          "bio": "《超兽武装》中的龙族战士，实力强劲、性格高傲，初期与火麟飞立场相对，后成为可以托付后背的对手兼同伴。",
-          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "name": "泰雷",
-          "role": "配角 · 力量型战士",
-          "bio": "《超兽武装》战队成员，憨厚忠诚、力量惊人，是队伍里最可靠的正面输出。",
-          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "name": "夜凌云",
-          "role": "反派 · 冥界强者",
-          "bio": "《超兽武装》中的高人气反派，出身冥界阵营，冷酷孤傲、实力深不可测，是主角团最难缠的对手之一。",
-          "sourceUrl": "https://baike.sogou.com/m/v49178580.htm"
-        }
-      ],
-      "watchLinks": [
-        {
-          "label": "腾讯视频",
-          "url": "https://v.qq.com/x/search/?q=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "label": "哔哩哔哩",
-          "url": "https://search.bilibili.com/all?keyword=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "label": "爱奇艺",
-          "url": "https://so.iqiyi.com/so/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        },
-        {
-          "label": "优酷",
-          "url": "https://so.youku.com/search_video/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
-        }
-      ],
-      "classicQuotes": [
-        {
-          "line": "已有的事，后必再有；已行的事，后必再行。",
-          "speaker": "玄易子",
-          "context": "轮回宿命"
-        },
-        {
-          "line": "强者不会改变自己的信念。",
-          "speaker": "超兽战士",
-          "context": "热血信念"
-        },
-        {
-          "line": "爱是宇宙最强的能量。",
-          "speaker": "雪皇",
-          "context": "生命信念"
-        },
-        {
-          "line": "弱者没有资格要求公平。",
-          "speaker": "冥界阵营",
-          "context": "强弱法则"
-        },
-        {
-          "line": "喷泉的高度不会超过它的源头。",
-          "speaker": "玄易子",
-          "context": "信念上限"
-        },
-        {
-          "line": "天堂和地狱，没有我选择的权利。",
-          "speaker": "冥王",
-          "context": "命运独白"
-        },
-        {
-          "line": "这个世界本来就是强者的世界。",
-          "speaker": "冥王",
-          "context": "强者哲学"
-        },
-        {
-          "line": "当你经过七重的孤独，才能成为真正的强者。",
-          "speaker": "冥王",
-          "context": "孤独与强大"
-        }
-      ],
-      "songs": [
-        {
-          "name": "超兽武装",
-          "type": "片头曲",
-          "singer": "刘罡、陈洁丽"
-        },
-        {
-          "name": "尘曦",
-          "type": "片尾曲",
-          "singer": "陈洁丽、李培斌"
-        }
-      ],
-      "themeSongSource": "https://zh.moegirl.org.cn/zh-hans/超兽武装(歌曲)",
-      "relations": [
-        {
-          "from": "火麟飞",
-          "to": "天羽",
-          "label": "同伴"
-        },
-        {
-          "from": "火麟飞",
-          "to": "苗条俊",
-          "label": "伙伴"
-        },
-        {
-          "from": "火麟飞",
-          "to": "龙戬",
-          "label": "先敌后友"
-        },
-        {
-          "from": "火麟飞",
-          "to": "泰雷",
-          "label": "战队同伴"
-        },
-        {
-          "from": "天羽",
-          "to": "苗条俊",
-          "label": "战队同伴"
-        },
-        {
-          "from": "火麟飞",
-          "to": "夜凌云",
-          "label": "宿敌"
-        }
-      ]
-    },
-    {
       "id": 5,
       "slug": "zhuzhuxia",
       "name": "猪猪侠",
@@ -173,7 +12,7 @@
       ],
       "color": "#d95742",
       "description": "戴着红帽的小英雄把晚饭前的客厅变成冒险现场，快乐来得直接又明亮。",
-      "poster": "/images/posters/pig-hero.webp",
+      "poster": "/images/posters/real/zhuzhuxia.webp",
       "baikeUrl": "https://baike.baidu.com/item/猪猪侠",
       "addedAt": "2026-06-06",
       "studio": "广东咏声文化传播有限公司",
@@ -302,6 +141,173 @@
       ]
     },
     {
+      "id": 6,
+      "slug": "hongmao-lantu-qixia",
+      "name": "虹猫蓝兔七侠传",
+      "year": 2006,
+      "genre": [
+        "武侠",
+        "冒险",
+        "励志"
+      ],
+      "color": "#7067a7",
+      "description": "七剑合璧的江湖传说，是一代人对侠义最早的想象。",
+      "poster": "/images/posters/real/hongmao-lantu-qixia.webp",
+      "baikeUrl": "https://baike.baidu.com/item/虹猫蓝兔七侠传",
+      "addedAt": "2026-06-06",
+      "studio": "湖南宏梦卡通集团",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "虹猫",
+          "role": "主角 · 七剑之首",
+          "bio": "长虹剑剑主，继承父亲白猫的绝学，擅长火舞旋风剑法，性格坚强勇敢、足智多谋。团结七剑传人对抗魔教教主黑心虎，为守护麒麟与武林和平历经磨难。",
+          "sourceUrl": "https://m.baike.so.com/doc/6063156-32345643.html"
+        },
+        {
+          "name": "蓝兔",
+          "role": "主角 · 冰魄剑剑主",
+          "bio": "玉蟾宫宫主，七剑传人之一，性格温柔善良、冰雪聪明、坚贞不屈。绝招有冰壶秋月、冰封千里等，与虹猫并肩对抗魔教。",
+          "sourceUrl": "https://m.baike.so.com/doc/6436282.html"
+        },
+        {
+          "name": "莎丽",
+          "role": "主角 · 紫云剑剑主",
+          "bio": "紫云剑剑主，原隐居金鞭溪，遭下毒后右手废残，凭坚强意志练成左手剑法。曾被马三娘冒名顶替，后夺回宝剑重归七剑，招式有紫气东来、杨柳拂风。",
+          "sourceUrl": "https://m.baike.so.com/doc/6814555.html"
+        },
+        {
+          "name": "逗逗",
+          "role": "主角 · 雨花剑剑主",
+          "bio": "出身刀口岭雨花殿，医术高超，性格胆小爱面子却重情重义。父母被冷一刀杀害后立志复仇并最终手刃仇人，其后以医术和雨花剑法协助七侠。",
+          "sourceUrl": "https://m.baike.so.com/doc/5725466-32347854.html"
+        },
+        {
+          "name": "大奔",
+          "role": "主角 · 奔雷剑剑主",
+          "bio": "出身奔雷山庄，外号混世魔王，性格豪爽直率却鲁莽嗜赌，绝招奔雷滚滚、双峰贯耳。曾护送莎丽、掩护虹猫，最终参与七剑合璧击败黑心虎。",
+          "sourceUrl": "https://m.baike.so.com/doc/4030381-4227984.html"
+        },
+        {
+          "name": "跳跳",
+          "role": "主角 · 青光剑剑主",
+          "bio": "原型为猴子，父母被害后潜入魔教卧底十年，性格机敏隐忍、幽默坚韧、擅长谋略。青光剑绝招青龙降魔，轻功梯云纵为七剑之首。",
+          "sourceUrl": "https://m.baike.so.com/doc/5905914.html"
+        },
+        {
+          "name": "达达",
+          "role": "主角 · 旋风剑剑主",
+          "bio": "原型为熊猫，百草谷主，性格细腻重情义、顾家爱妻。因妻子被魔教挟持一度被迫助敌，后暗中配合七侠，七剑合璧后重伤，得麒麟血治愈。",
+          "sourceUrl": "https://bkso.baidu.com/item/%E8%BE%BE%E8%BE%BE/2384014"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "七剑合璧。",
+          "speaker": "七侠",
+          "context": "江湖名场面"
+        },
+        {
+          "line": "长虹剑主，虹猫。",
+          "speaker": "虹猫",
+          "context": "侠义登场"
+        },
+        {
+          "line": "冰魄剑主，蓝兔。",
+          "speaker": "蓝兔",
+          "context": "七剑身份"
+        },
+        {
+          "line": "紫云剑主，莎丽。",
+          "speaker": "莎丽",
+          "context": "七剑身份"
+        },
+        {
+          "line": "奔雷剑主，大奔。",
+          "speaker": "大奔",
+          "context": "七剑身份"
+        },
+        {
+          "line": "雨花剑主，逗逗。",
+          "speaker": "逗逗",
+          "context": "七剑身份"
+        },
+        {
+          "line": "青光剑主，跳跳。",
+          "speaker": "跳跳",
+          "context": "七剑身份"
+        },
+        {
+          "line": "旋风剑主，达达。",
+          "speaker": "达达",
+          "context": "七剑身份"
+        }
+      ],
+      "songs": [
+        {
+          "name": "人生不过一百年",
+          "type": "片头曲",
+          "singer": "袁接伟"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.tw/人生不過一百年",
+      "relations": [
+        {
+          "from": "虹猫",
+          "to": "蓝兔",
+          "label": "最佳搭档"
+        },
+        {
+          "from": "虹猫",
+          "to": "大奔",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "蓝兔",
+          "to": "莎丽",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "虹猫",
+          "to": "逗逗",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "虹猫",
+          "to": "跳跳",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "虹猫",
+          "to": "达达",
+          "label": "七侠同伴"
+        },
+        {
+          "from": "大奔",
+          "to": "莎丽",
+          "label": "护送之情"
+        }
+      ]
+    },
+    {
       "id": 13,
       "slug": "guobao-tegong",
       "name": "果宝特攻",
@@ -313,7 +319,7 @@
       ],
       "color": "#e7a825",
       "description": "水果机甲、爆笑对白和燃到起飞的战斗，是国产动画黄金期的高能回声。",
-      "poster": "/images/posters/fruit-robots.webp",
+      "poster": "/images/posters/real/guobao-tegong.webp",
       "baikeUrl": "https://baike.baidu.com/item/果宝特攻",
       "addedAt": "2026-06-06",
       "studio": "广州蓝弧文化传播有限公司",
@@ -474,7 +480,7 @@
       ],
       "color": "#4f6f93",
       "description": "机车族与猛兽族的世界，藏着很多人的第一份机战记忆。",
-      "poster": "/images/posters/robot-adventure.webp",
+      "poster": "/images/posters/real/luoluo-lixianji.webp",
       "baikeUrl": "https://baike.baidu.com/item/洛洛历险记",
       "addedAt": "2026-06-06",
       "studio": "广州蓝弧文化传播有限公司（联合星杰玩具）",
@@ -629,173 +635,6 @@
       ]
     },
     {
-      "id": 6,
-      "slug": "hongmao-lantu-qixia",
-      "name": "虹猫蓝兔七侠传",
-      "year": 2006,
-      "genre": [
-        "武侠",
-        "冒险",
-        "励志"
-      ],
-      "color": "#7067a7",
-      "description": "七剑合璧的江湖传说，是一代人对侠义最早的想象。",
-      "poster": "/images/posters/rainbow-rabbit.webp",
-      "baikeUrl": "https://baike.baidu.com/item/虹猫蓝兔七侠传",
-      "addedAt": "2026-06-06",
-      "studio": "湖南宏梦卡通集团",
-      "broadcastPlatform": "中央电视台少儿频道",
-      "characters": [
-        {
-          "name": "虹猫",
-          "role": "主角 · 七剑之首",
-          "bio": "长虹剑剑主，继承父亲白猫的绝学，擅长火舞旋风剑法，性格坚强勇敢、足智多谋。团结七剑传人对抗魔教教主黑心虎，为守护麒麟与武林和平历经磨难。",
-          "sourceUrl": "https://m.baike.so.com/doc/6063156-32345643.html"
-        },
-        {
-          "name": "蓝兔",
-          "role": "主角 · 冰魄剑剑主",
-          "bio": "玉蟾宫宫主，七剑传人之一，性格温柔善良、冰雪聪明、坚贞不屈。绝招有冰壶秋月、冰封千里等，与虹猫并肩对抗魔教。",
-          "sourceUrl": "https://m.baike.so.com/doc/6436282.html"
-        },
-        {
-          "name": "莎丽",
-          "role": "主角 · 紫云剑剑主",
-          "bio": "紫云剑剑主，原隐居金鞭溪，遭下毒后右手废残，凭坚强意志练成左手剑法。曾被马三娘冒名顶替，后夺回宝剑重归七剑，招式有紫气东来、杨柳拂风。",
-          "sourceUrl": "https://m.baike.so.com/doc/6814555.html"
-        },
-        {
-          "name": "逗逗",
-          "role": "主角 · 雨花剑剑主",
-          "bio": "出身刀口岭雨花殿，医术高超，性格胆小爱面子却重情重义。父母被冷一刀杀害后立志复仇并最终手刃仇人，其后以医术和雨花剑法协助七侠。",
-          "sourceUrl": "https://m.baike.so.com/doc/5725466-32347854.html"
-        },
-        {
-          "name": "大奔",
-          "role": "主角 · 奔雷剑剑主",
-          "bio": "出身奔雷山庄，外号混世魔王，性格豪爽直率却鲁莽嗜赌，绝招奔雷滚滚、双峰贯耳。曾护送莎丽、掩护虹猫，最终参与七剑合璧击败黑心虎。",
-          "sourceUrl": "https://m.baike.so.com/doc/4030381-4227984.html"
-        },
-        {
-          "name": "跳跳",
-          "role": "主角 · 青光剑剑主",
-          "bio": "原型为猴子，父母被害后潜入魔教卧底十年，性格机敏隐忍、幽默坚韧、擅长谋略。青光剑绝招青龙降魔，轻功梯云纵为七剑之首。",
-          "sourceUrl": "https://m.baike.so.com/doc/5905914.html"
-        },
-        {
-          "name": "达达",
-          "role": "主角 · 旋风剑剑主",
-          "bio": "原型为熊猫，百草谷主，性格细腻重情义、顾家爱妻。因妻子被魔教挟持一度被迫助敌，后暗中配合七侠，七剑合璧后重伤，得麒麟血治愈。",
-          "sourceUrl": "https://bkso.baidu.com/item/%E8%BE%BE%E8%BE%BE/2384014"
-        }
-      ],
-      "watchLinks": [
-        {
-          "label": "腾讯视频",
-          "url": "https://v.qq.com/x/search/?q=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
-        },
-        {
-          "label": "哔哩哔哩",
-          "url": "https://search.bilibili.com/all?keyword=%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
-        },
-        {
-          "label": "爱奇艺",
-          "url": "https://so.iqiyi.com/so/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
-        },
-        {
-          "label": "优酷",
-          "url": "https://so.youku.com/search_video/q_%E8%99%B9%E7%8C%AB%E8%93%9D%E5%85%94%E4%B8%83%E4%BE%A0%E4%BC%A0"
-        }
-      ],
-      "classicQuotes": [
-        {
-          "line": "七剑合璧。",
-          "speaker": "七侠",
-          "context": "江湖名场面"
-        },
-        {
-          "line": "长虹剑主，虹猫。",
-          "speaker": "虹猫",
-          "context": "侠义登场"
-        },
-        {
-          "line": "冰魄剑主，蓝兔。",
-          "speaker": "蓝兔",
-          "context": "七剑身份"
-        },
-        {
-          "line": "紫云剑主，莎丽。",
-          "speaker": "莎丽",
-          "context": "七剑身份"
-        },
-        {
-          "line": "奔雷剑主，大奔。",
-          "speaker": "大奔",
-          "context": "七剑身份"
-        },
-        {
-          "line": "雨花剑主，逗逗。",
-          "speaker": "逗逗",
-          "context": "七剑身份"
-        },
-        {
-          "line": "青光剑主，跳跳。",
-          "speaker": "跳跳",
-          "context": "七剑身份"
-        },
-        {
-          "line": "旋风剑主，达达。",
-          "speaker": "达达",
-          "context": "七剑身份"
-        }
-      ],
-      "songs": [
-        {
-          "name": "人生不过一百年",
-          "type": "片头曲",
-          "singer": "袁接伟"
-        }
-      ],
-      "themeSongSource": "https://zh.moegirl.tw/人生不過一百年",
-      "relations": [
-        {
-          "from": "虹猫",
-          "to": "蓝兔",
-          "label": "最佳搭档"
-        },
-        {
-          "from": "虹猫",
-          "to": "大奔",
-          "label": "七侠同伴"
-        },
-        {
-          "from": "蓝兔",
-          "to": "莎丽",
-          "label": "七侠同伴"
-        },
-        {
-          "from": "虹猫",
-          "to": "逗逗",
-          "label": "七侠同伴"
-        },
-        {
-          "from": "虹猫",
-          "to": "跳跳",
-          "label": "七侠同伴"
-        },
-        {
-          "from": "虹猫",
-          "to": "达达",
-          "label": "七侠同伴"
-        },
-        {
-          "from": "大奔",
-          "to": "莎丽",
-          "label": "护送之情"
-        }
-      ]
-    },
-    {
       "id": 15,
       "slug": "shenbing-xiaojiang",
       "name": "神兵小将",
@@ -807,7 +646,7 @@
       ],
       "color": "#5f9f67",
       "description": "神兵天降的奇幻旅程，守护世界，也守护那个暑假的期待。",
-      "poster": "/images/posters/magic-warrior.webp",
+      "poster": "/images/posters/real/shenbing-xiaojiang.webp",
       "baikeUrl": "https://baike.baidu.com/item/神兵小将",
       "addedAt": "2026-06-06",
       "studio": "央视动画 · 玉皇朝集团",
@@ -936,6 +775,167 @@
       ]
     },
     {
+      "id": 17,
+      "slug": "chaoshou-wuzhuang",
+      "name": "超兽武装",
+      "year": 2011,
+      "genre": [
+        "机甲",
+        "热血",
+        "科幻"
+      ],
+      "color": "#a94b35",
+      "description": "信念、轮回与宇宙战场交织在一起，那份少年热血至今仍会被重新点亮。",
+      "poster": "/images/posters/real/chaoshou-wuzhuang.webp",
+      "baikeUrl": "https://baike.baidu.com/item/超兽武装",
+      "addedAt": "2026-06-06",
+      "studio": "广州蓝弧文化传播有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "火麟飞",
+          "role": "主角 · 超兽战队队长",
+          "bio": "《超兽武装》男主角，超兽战队的核心与队长，性格热血冲动、极重伙伴，驾驶火系超兽冲在最前线，是整支战队凝聚力的来源。",
+          "sourceUrl": "https://m.baike.so.com/doc/5409819.html"
+        },
+        {
+          "name": "天羽",
+          "role": "女主角 · 超兽战队成员",
+          "bio": "《超兽武装》女主角，战队中的女性主力战士，性格冷静坚韧，与火麟飞互为羁绊，多次在危局中稳住战局。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "苗条俊",
+          "role": "配角 · 战队气氛担当",
+          "bio": "《超兽武装》中火麟飞的伙伴，体型圆润、名字与形象反差十足，是剧中的喜剧担当，关键时刻依然会挺身而出。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "龙戬",
+          "role": "对手 · 龙族战士",
+          "bio": "《超兽武装》中的龙族战士，实力强劲、性格高傲，初期与火麟飞立场相对，后成为可以托付后背的对手兼同伴。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "泰雷",
+          "role": "配角 · 力量型战士",
+          "bio": "《超兽武装》战队成员，憨厚忠诚、力量惊人，是队伍里最可靠的正面输出。",
+          "sourceUrl": "https://baike.baidu.com/item/%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "name": "夜凌云",
+          "role": "反派 · 冥界强者",
+          "bio": "《超兽武装》中的高人气反派，出身冥界阵营，冷酷孤傲、实力深不可测，是主角团最难缠的对手之一。",
+          "sourceUrl": "https://baike.sogou.com/m/v49178580.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E8%B6%85%E5%85%BD%E6%AD%A6%E8%A3%85"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "已有的事，后必再有；已行的事，后必再行。",
+          "speaker": "玄易子",
+          "context": "轮回宿命"
+        },
+        {
+          "line": "强者不会改变自己的信念。",
+          "speaker": "超兽战士",
+          "context": "热血信念"
+        },
+        {
+          "line": "爱是宇宙最强的能量。",
+          "speaker": "雪皇",
+          "context": "生命信念"
+        },
+        {
+          "line": "弱者没有资格要求公平。",
+          "speaker": "冥界阵营",
+          "context": "强弱法则"
+        },
+        {
+          "line": "喷泉的高度不会超过它的源头。",
+          "speaker": "玄易子",
+          "context": "信念上限"
+        },
+        {
+          "line": "天堂和地狱，没有我选择的权利。",
+          "speaker": "冥王",
+          "context": "命运独白"
+        },
+        {
+          "line": "这个世界本来就是强者的世界。",
+          "speaker": "冥王",
+          "context": "强者哲学"
+        },
+        {
+          "line": "当你经过七重的孤独，才能成为真正的强者。",
+          "speaker": "冥王",
+          "context": "孤独与强大"
+        }
+      ],
+      "songs": [
+        {
+          "name": "超兽武装",
+          "type": "片头曲",
+          "singer": "刘罡、陈洁丽"
+        },
+        {
+          "name": "尘曦",
+          "type": "片尾曲",
+          "singer": "陈洁丽、李培斌"
+        }
+      ],
+      "themeSongSource": "https://zh.moegirl.org.cn/zh-hans/超兽武装(歌曲)",
+      "relations": [
+        {
+          "from": "火麟飞",
+          "to": "天羽",
+          "label": "同伴"
+        },
+        {
+          "from": "火麟飞",
+          "to": "苗条俊",
+          "label": "伙伴"
+        },
+        {
+          "from": "火麟飞",
+          "to": "龙戬",
+          "label": "先敌后友"
+        },
+        {
+          "from": "火麟飞",
+          "to": "泰雷",
+          "label": "战队同伴"
+        },
+        {
+          "from": "天羽",
+          "to": "苗条俊",
+          "label": "战队同伴"
+        },
+        {
+          "from": "火麟飞",
+          "to": "夜凌云",
+          "label": "宿敌"
+        }
+      ]
+    },
+    {
       "id": 18,
       "slug": "xiyangyang-huitailang",
       "name": "喜羊羊与灰太狼",
@@ -947,7 +947,7 @@
       ],
       "color": "#6cbf5f",
       "description": "羊村的大门永远敞开，狼堡的发明永远差一步——国民级的追逐战笑满了二十年。",
-      "poster": "/images/posters/xiyangyang-huitailang.svg",
+      "poster": "/images/posters/real/xiyangyang-huitailang.webp",
       "baikeUrl": "https://baike.baidu.com/item/喜羊羊与灰太狼",
       "addedAt": "2026-09-23",
       "studio": "广东原创动力文化传播有限公司",
@@ -1089,7 +1089,7 @@
       ],
       "color": "#3d5a80",
       "description": "明朝末年的黑白棋盘上，一枚棋子丈量着成长、侠义与少年的心气。",
-      "poster": "/images/posters/weiqi-shaonian.svg",
+      "poster": "/images/posters/real/weiqi-shaonian.webp",
       "baikeUrl": "https://baike.baidu.com/item/围棋少年",
       "addedAt": "2026-09-23",
       "studio": "央视动画有限公司",
@@ -1198,7 +1198,7 @@
       ],
       "color": "#c4457d",
       "description": "中国第一部校园音乐动画——排练室的汗水和失真吉他，是青春最早的音量。",
-      "poster": "/images/posters/wo-wei-ge-kuang.svg",
+      "poster": "/images/posters/real/wo-wei-ge-kuang.webp",
       "baikeUrl": "https://baike.baidu.com/item/我为歌狂",
       "addedAt": "2026-09-23",
       "studio": "上海美术电影制片厂",
@@ -1302,7 +1302,7 @@
       ],
       "color": "#c23b22",
       "description": "中法合拍的少林传奇，三个少年肩负千年宿命，功夫招式拳拳到肉。",
-      "poster": "/images/posters/zhonghua-xiaozi.svg",
+      "poster": "/images/posters/real/zhonghua-xiaozi.webp",
       "baikeUrl": "https://baike.baidu.com/item/中华小子",
       "addedAt": "2026-09-23",
       "studio": "上海今日动画影视制作有限公司",
@@ -1442,7 +1442,7 @@
       ],
       "color": "#f0a35e",
       "description": "三岁图图的奇思妙想，把平凡小区过成了一场永远玩不累的探险。",
-      "poster": "/images/posters/daerduo-tutu.svg",
+      "poster": "/images/posters/real/daerduo-tutu.webp",
       "baikeUrl": "https://baike.baidu.com/item/大耳朵图图",
       "addedAt": "2026-09-23",
       "studio": "上海美术电影制片厂",
@@ -1546,7 +1546,7 @@
       ],
       "color": "#2f6fb3",
       "description": "每一集回答一个问题，是95后00后最早的一套会动的百科全书。",
-      "poster": "/images/posters/lanmao-taoqi-sanqianwen.svg",
+      "poster": "/images/posters/real/lanmao-taoqi-sanqianwen.webp",
       "baikeUrl": "https://baike.baidu.com/item/蓝猫淘气三千问",
       "addedAt": "2026-09-23",
       "studio": "湖南三辰影库卡通节目发展有限责任公司",
@@ -1656,7 +1656,7 @@
       ],
       "color": "#e04a2f",
       "description": "悠悠球甩出的弧线里，藏着一代人对炫技与翻盘的全部想象。",
-      "poster": "/images/posters/huoli-shaonianwang.svg",
+      "poster": "/images/posters/real/huoli-shaonianwang.webp",
       "baikeUrl": "https://baike.baidu.com/item/火力少年王",
       "addedAt": "2026-09-23",
       "studio": "广东奥飞文化传播有限公司",
@@ -1744,7 +1744,7 @@
       ],
       "color": "#7b4fa5",
       "description": "1.5亿打造的国产3D里程碑，成龙、李咏献声的精灵大陆远征。",
-      "poster": "/images/posters/jingling-shiji.svg",
+      "poster": "/images/posters/real/jingling-shiji.webp",
       "baikeUrl": "https://baike.baidu.com/item/精灵世纪",
       "addedAt": "2026-09-23",
       "studio": "北京龙马世纪国际文化有限公司",
@@ -1841,7 +1841,7 @@
       ],
       "color": "#4a6b2a",
       "description": "狗熊岭的伐木季永不结束，光头强与熊兄弟的追逐战笑满了一个个寒假。",
-      "poster": "/images/posters/xiong-chu-mo.svg",
+      "poster": "/images/posters/real/xiong-chu-mo.webp",
       "baikeUrl": "https://baike.baidu.com/item/熊出没",
       "addedAt": "2026-09-23",
       "studio": "深圳华强数字动漫有限公司",
@@ -1944,7 +1944,7 @@
       ],
       "color": "#8b1e1e",
       "description": "蛮吉踏上寻找身份的征途，是国产动画电影最悲壮的一次冲锋。",
-      "poster": "/images/posters/kuiba.svg",
+      "poster": "/images/posters/real/kuiba.webp",
       "baikeUrl": "https://baike.baidu.com/item/魁拔",
       "addedAt": "2026-09-23",
       "studio": "北京青青树动漫科技有限公司",
@@ -2032,7 +2032,7 @@
       ],
       "color": "#1f7a8c",
       "description": "2009年从网页启航、2012年登上金鹰卡通——赛尔号舰队的星际远征。",
-      "poster": "/images/posters/saierhao.svg",
+      "poster": "/images/posters/real/saierhao.webp",
       "baikeUrl": "https://baike.baidu.com/item/赛尔号",
       "addedAt": "2026-09-23",
       "studio": "上海淘米网络科技有限公司",
@@ -2136,7 +2136,7 @@
       ],
       "color": "#8a5a2e",
       "description": "荆轲之子天明与剑圣盖聂并肩行走乱世，诸子百家与帝国铁骑在月色下交锋——那柄渊虹划过的弧线，是很多人第一次知道国漫可以这么美。",
-      "poster": "/images/posters/qinshi-mingyue.svg",
+      "poster": "/images/posters/real/qin-shi-ming-yue.webp",
       "baikeUrl": "https://baike.baidu.com/item/秦时明月之百步飞剑",
       "addedAt": "2026-09-23",
       "studio": "杭州玄机科技信息技术有限公司",
@@ -2272,7 +2272,7 @@
       ],
       "color": "#b03a2e",
       "description": "五行铠甲光影合体，ERP 研究所的五位青年扛起守护城市的责任。炎龙侠的火剑一出手，男孩们的放学路都变成了战场。",
-      "poster": "/images/posters/kaijia-yongshi.svg",
+      "poster": "/images/posters/real/kaijia-yongshi.webp",
       "baikeUrl": "https://baike.baidu.com/item/铠甲勇士",
       "addedAt": "2026-09-23",
       "studio": "广东奥飞动漫文化股份有限公司",
@@ -2398,7 +2398,7 @@
       ],
       "color": "#d14f95",
       "description": "魔仙堡的小蓝带着仙女棒来到人类世界，凌姐妹一句「巴啦啦能量」让无数女孩在课间集体变身。粉紫色的魔法阵，是一代人的审美启蒙。",
-      "poster": "/images/posters/balala-xiao-moxian.svg",
+      "poster": "/images/posters/real/balala-xiao-moxian.webp",
       "baikeUrl": "https://baike.baidu.com/item/巴啦啦小魔仙",
       "addedAt": "2026-09-23",
       "studio": "广东奥飞动漫文化股份有限公司",
@@ -2514,7 +2514,7 @@
       ],
       "color": "#3f7d4e",
       "description": "斗龙机亮起，孩子们带着拍档恐龙闯入龙印之战。达力古的一声咆哮，让每个男孩都幻想过收到自己的那颗斗龙蛋。",
-      "poster": "/images/posters/doulong-zhanshi.svg",
+      "poster": "/images/posters/real/doulong-zhanshi.webp",
       "baikeUrl": "https://baike.baidu.com/item/%E6%96%97%E9%BE%99%E6%88%98%E5%A3%AB/1105249",
       "addedAt": "2026-09-23",
       "studio": "广州市百逸动漫制作有限公司",
@@ -2625,7 +2625,7 @@
       ],
       "color": "#2f9e8f",
       "description": "蓝弧把真人小演员和 CG 机甲拼在同一帧里，乐乐一句「酷宝变身」让放学后的客厅秒成异世界战场。那些会说话、会变形的机器人伙伴，是很多人对「国产变形金刚」的最初想象。",
-      "poster": "/images/posters/kuaile-kubao.svg",
+      "poster": "/images/posters/real/kuaile-kubao.webp",
       "baikeUrl": "https://www.baike.com/wikiid/1603632493222610601",
       "addedAt": "2026-09-24",
       "studio": "广州蓝弧文化传播有限公司",
@@ -2752,7 +2752,7 @@
       ],
       "color": "#c9862f",
       "description": "央视动画版《西游记》，片尾一句「白龙马，蹄朝西」把师徒五人的九九八十一难唱进了每个 00 后的DNA。它不是原著的复刻，而是一代人关于「取经」这件事的最初想象。",
-      "poster": "/images/posters/xiyou-1999.svg",
+      "poster": "/images/posters/real/xiyou-1999.webp",
       "baikeUrl": "https://baike.baidu.com/item/西游记/4812230",
       "addedAt": "2026-09-24",
       "studio": "中央电视台动画部、中国国际电视总公司、火炬动画分公司",
@@ -2873,7 +2873,7 @@
       ],
       "color": "#7a5cc4",
       "description": "女娲以光明之土造出的龙凤双娃，为救被黑暗吞噬的母亲沿母亲河踏上寻亲路。太阳般的龙娃、月亮般的凤娃，是很多孩子最早的神话启蒙。",
-      "poster": "/images/posters/dongfang-shenwa.svg",
+      "poster": "/images/posters/real/dongfang-shenwa.webp",
       "baikeUrl": "https://baike.baidu.com/item/东方神娃/1339416",
       "addedAt": "2026-09-24",
       "studio": "江苏省广电总台、无锡电视台、江苏省盛世影视文化有限公司、无锡天龙动画",
@@ -2957,7 +2957,7 @@
       ],
       "color": "#2f9ec4",
       "description": "为了跃过龙门、拯救家园，泡泡带着阿酷、双面龟和小美美逆流而上。「勇敢的心」加上龙鳞，是很多人第一次懂得：渺小也能对抗癞皮蛇那样的庞然邪恶。",
-      "poster": "/images/posters/xiaoliyu.svg",
+      "poster": "/images/posters/real/xiaoliyu-luxianji.webp",
       "baikeUrl": "https://baike.sogou.com/v1275808.htm",
       "addedAt": "2026-09-24",
       "studio": "中央电视台动画部",
@@ -3063,7 +3063,7 @@
       ],
       "color": "#c9552f",
       "description": "为救蒙冤入狱的祖父，少年小福贵凭一口锅铲闯进清宫御膳房。宏梦卡通把厨艺比做人生意气，一首《天下第一》让无数人第一次尝到什么叫「笑中带泪」。",
-      "poster": "/images/posters/shenchu-xiaofugui.svg",
+      "poster": "/images/posters/real/shenchu-xiaofugui.webp",
       "baikeUrl": "https://baike.baidu.com/item/神厨小福贵/1123611",
       "addedAt": "2026-09-24",
       "studio": "湖南宏梦卡通传播有限公司",
@@ -3173,7 +3173,7 @@
       ],
       "color": "#c86bd6",
       "description": "普通女孩与来自仙境的叶罗丽仙子缔结契约，一句咒语就能变身华服。它接过了《巴啦啦小魔仙》的魔法棒，成为又一整代女孩的审美与友情启蒙。",
-      "poster": "/images/posters/yeluoli.svg",
+      "poster": "/images/posters/real/jinglingmeng-yeluoli.webp",
       "baikeUrl": "https://baike.baidu.com/item/精灵梦叶罗丽/12740112",
       "addedAt": "2026-09-25",
       "studio": "河北精英影视文化传播有限责任公司",
@@ -3285,7 +3285,7 @@
       ],
       "color": "#3fb0a0",
       "description": "失忆的最强刺客在小鸡岛当起理发师，一边剪头一边接单。何小疯用一把剪刀和满嘴广普，把无厘头笑点底下藏着的温柔与宿命，剪成了国创的一股清流。",
-      "poster": "/images/posters/wu-liuqi.svg",
+      "poster": "/images/posters/real/cikeyang-wu-liuqi.webp",
       "baikeUrl": "https://baike.baidu.com/item/伍六七/24253002",
       "addedAt": "2026-09-25",
       "studio": "小疯映画",
@@ -3364,7 +3364,7 @@
       ],
       "color": "#3a6fc4",
       "description": "玄机科技出品的国产首部网文改编年番，唐三带着前世记忆在武魂世界重活一世。史莱克七怪的羁绊与「没有废物的武魂，只有废物的魂师」，是一代人追更到大的热血。",
-      "poster": "/images/posters/douluo-dalu.svg",
+      "poster": "/images/posters/real/douluo-dalu.webp",
       "baikeUrl": "https://baike.sogou.com/v166735770.htm",
       "addedAt": "2026-09-25",
       "studio": "杭州玄机科技信息技术有限公司、企鹅影视",
@@ -3473,6 +3473,557 @@
           "from": "戴沐白",
           "to": "朱竹清",
           "label": "婚约"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "slug": "jackie-chan",
+      "name": "成龙历险记",
+      "year": 2000,
+      "genre": [
+        "动作",
+        "冒险",
+        "搞笑"
+      ],
+      "color": "#b3382e",
+      "description": "考古学家成龙带着 11 岁的侄女小玉满世界追十二符咒，老爹的古董店就是据点。「还有一件事」和「乌鸦坐飞机」承包了一代人的放学档。",
+      "poster": "/images/posters/real/jackie-chan.webp",
+      "baikeUrl": "https://baike.baidu.com/item/成龙历险记",
+      "addedAt": "2026-09-25",
+      "studio": "美国哥伦比亚三星电视公司（Adelaide Productions）",
+      "broadcastPlatform": null,
+      "characters": [
+        {
+          "name": "成龙",
+          "role": "主角 · 考古学家兼功夫高手",
+          "bio": "动画男主角，以成龙本人形象改编：白天是考古专家，暗地里协助 13 区警方追查十二符咒，一身好功夫，片中还穿插真人片段。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        },
+        {
+          "name": "小玉",
+          "role": "主角 · 胆大包天的堂侄女",
+          "bio": "从香港被送到旧金山的 11 岁小姑娘，成龙的堂侄女；鬼点子比反派还多，总能在关键时刻立功，是龙组的编外王牌。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        },
+        {
+          "name": "老爹",
+          "role": "主角 · 古董店老板兼正气法师",
+          "bio": "成龙在旧金山唐人街的叔叔，古董店老板，法力强劲的巫师；抓妖除魔之外，最爱说的就是「还有一件事」。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        },
+        {
+          "name": "特鲁",
+          "role": "配角 · 力大无穷的相扑大汉",
+          "bio": "体型庞大的日本相扑手，早期站在瓦龙阵营做事，力气大到连阿福都忌惮三分。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        },
+        {
+          "name": "阿福",
+          "role": "对手 · 招式喊得震天响的猛将",
+          "bio": "瓦龙手下武艺精湛的打手，实力足以与成龙抗衡，每次出招都要大喝招式名——「乌鸦坐飞机」因此成为一代人的梗。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        },
+        {
+          "name": "瓦龙",
+          "role": "反派 · 黑手党老大",
+          "bio": "黑手党首领，为夺取金鸡王宝藏与圣主合作，带领手下与成龙、13 区争夺十二符咒。",
+          "sourceUrl": "https://bgm.tv/subject/39024"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%88%90%E9%BE%99%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%88%90%E9%BE%99%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%88%90%E9%BE%99%E5%8E%86%E9%99%A9%E8%AE%B0"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E6%88%90%E9%BE%99%E5%8E%86%E9%99%A9%E8%AE%B0"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "还有一件事！",
+          "speaker": "老爹",
+          "context": "每集必现的口头禅"
+        },
+        {
+          "line": "乌鸦坐飞机！",
+          "speaker": "阿福",
+          "context": "出招名场面"
+        },
+        {
+          "line": "妖魔鬼怪，快快离开！",
+          "speaker": "老爹",
+          "context": "施法定场白"
+        }
+      ],
+      "songs": [
+        {
+          "name": "成龙历险记",
+          "type": "片头曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/39024",
+      "relations": [
+        {
+          "from": "成龙",
+          "to": "小玉",
+          "label": "叔侄搭档"
+        },
+        {
+          "from": "成龙",
+          "to": "老爹",
+          "label": "叔侄搭档"
+        },
+        {
+          "from": "成龙",
+          "to": "阿福",
+          "label": "宿敌"
+        },
+        {
+          "from": "瓦龙",
+          "to": "阿福",
+          "label": "主仆"
+        },
+        {
+          "from": "瓦龙",
+          "to": "特鲁",
+          "label": "主仆"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "slug": "nezha-chuanqi",
+      "name": "哪吒传奇",
+      "year": 2003,
+      "genre": [
+        "神话",
+        "冒险",
+        "成长"
+      ],
+      "color": "#c9553d",
+      "description": "大魔头石矶潜伏千年伺机反扑，指使申公豹处处陷害尚未出生的哪吒——小英雄在父母身边奇迹成长，央视动画把神话与童话揉成了 52 集。",
+      "poster": "/images/posters/real/nezha-chuanqi.webp",
+      "baikeUrl": "https://baike.baidu.com/item/哪吒传奇",
+      "addedAt": "2026-09-25",
+      "studio": "央视动画有限公司",
+      "broadcastPlatform": "中央电视台",
+      "characters": [
+        {
+          "name": "哪吒",
+          "role": "主角 · 灵珠转世的小英雄",
+          "bio": "本片主人公，出生即遭遇重重危险，在父母身边快乐成长的少年英雄，肩扛对抗石矶、守护陈塘关的使命。",
+          "sourceUrl": "https://bgm.tv/subject/37418"
+        },
+        {
+          "name": "小龙女",
+          "role": "主角 · 冒险路上的伙伴",
+          "bio": "哪吒冒险路上的重要伙伴，与他并肩面对石矶势力的一次次陷害。",
+          "sourceUrl": "https://bgm.tv/subject/37418"
+        },
+        {
+          "name": "石矶娘娘",
+          "role": "反派 · 潜伏千年的大魔头",
+          "bio": "本片最大反派，帮纣王镇压民众，一直指使爪牙申公豹除掉哪吒，是所有危险的幕后黑手。",
+          "sourceUrl": "https://bgm.tv/subject/37418"
+        },
+        {
+          "name": "申公豹",
+          "role": "反派 · 石矶的爪牙",
+          "bio": "受石矶指使不断设计陷害哪吒的反派爪牙，坏水一肚子却回回失手。",
+          "sourceUrl": "https://bgm.tv/subject/37418"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%93%AA%E5%90%92%E4%BC%A0%E5%A5%87"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%93%AA%E5%90%92%E4%BC%A0%E5%A5%87"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%93%AA%E5%90%92%E4%BC%A0%E5%A5%87"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%93%AA%E5%90%92%E4%BC%A0%E5%A5%87"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "是他是他就是他，我们的英雄小哪吒",
+          "speaker": "片尾曲《少年英雄小哪吒》",
+          "context": "全民传唱的旋律"
+        }
+      ],
+      "songs": [
+        {
+          "name": "少年英雄小哪吒",
+          "type": "片尾曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/37418",
+      "relations": [
+        {
+          "from": "哪吒",
+          "to": "小龙女",
+          "label": "并肩伙伴"
+        },
+        {
+          "from": "哪吒",
+          "to": "石矶娘娘",
+          "label": "宿敌"
+        },
+        {
+          "from": "申公豹",
+          "to": "石矶娘娘",
+          "label": "主仆"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "slug": "zhubajie-2005",
+      "name": "天上掉下个猪八戒",
+      "year": 2005,
+      "genre": [
+        "神话",
+        "搞笑",
+        "童话"
+      ],
+      "color": "#d98f4e",
+      "description": "追求嫦娥被贬下凡的天蓬元帅错投猪胎，从此在森林里过上惊险又爆笑的逃亡生活——江通动画的无厘头神话喜剧，104 集管饱。",
+      "poster": "/images/posters/real/zhubajie-2005.webp",
+      "baikeUrl": "https://baike.baidu.com/item/天上掉下个猪八戒",
+      "addedAt": "2026-09-25",
+      "studio": "武汉江通动画传媒有限公司",
+      "broadcastPlatform": "中央电视台",
+      "characters": [
+        {
+          "name": "八戒",
+          "role": "主角 · 猪头人身的倒霉天蓬",
+          "bio": "天蓬元帅被押送下凡途中企图逃跑，错投猪胎成了猪头人身；一瓶灵芝露被打翻，从此开启森林逃亡与爆笑日常。",
+          "sourceUrl": "https://bgm.tv/subject/78494"
+        },
+        {
+          "name": "嫦娥",
+          "role": "配角 · 八戒心心念念的月亮",
+          "bio": "八戒当年正是因为追求嫦娥才被玉帝贬下凡间，是整场闹剧的起点。",
+          "sourceUrl": "https://bgm.tv/subject/78494"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%A4%A9%E4%B8%8A%E6%8E%89%E4%B8%8B%E4%B8%AA%E7%8C%AA%E5%85%AB%E6%88%92"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%A4%A9%E4%B8%8A%E6%8E%89%E4%B8%8B%E4%B8%AA%E7%8C%AA%E5%85%AB%E6%88%92"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%A4%A9%E4%B8%8A%E6%8E%89%E4%B8%8B%E4%B8%AA%E7%8C%AA%E5%85%AB%E6%88%92"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%A4%A9%E4%B8%8A%E6%8E%89%E4%B8%8B%E4%B8%AA%E7%8C%AA%E5%85%AB%E6%88%92"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "八戒八戒，心肠不坏；八戒八戒，傻得可爱",
+          "speaker": "片头曲",
+          "context": "全民传唱的旋律"
+        }
+      ],
+      "songs": [
+        {
+          "name": "天上掉下个猪八戒",
+          "type": "片头曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/78494",
+      "relations": [
+        {
+          "from": "八戒",
+          "to": "嫦娥",
+          "label": "暗恋"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "slug": "hapi-fuzi",
+      "name": "哈皮父子",
+      "year": 2007,
+      "genre": [
+        "搞笑",
+        "家庭",
+        "科幻"
+      ],
+      "color": "#e3b83a",
+      "description": "一对黄色易拉罐父子：哈爸爸风趣爱出风头，皮儿子聪明鬼点子多。从超市公寓到垃圾海岛、冰箱城堡，父子俩的日常既爆笑又温馨。",
+      "poster": "/images/posters/real/hapi-fuzi.webp",
+      "baikeUrl": "https://baike.baidu.com/item/哈皮父子",
+      "addedAt": "2026-09-25",
+      "studio": "央视动画有限公司",
+      "broadcastPlatform": "中央电视台少儿频道",
+      "characters": [
+        {
+          "name": "皮儿子",
+          "role": "主角 · 鬼点子不断的小号易拉罐",
+          "bio": "6 岁的黄色小易拉罐，泡泡小学一年级学生，无比崇拜屏幕英雄维维超人，总爱模仿超人的招牌动作，也因此闯祸不断。",
+          "sourceUrl": "https://bgm.tv/subject/116145"
+        },
+        {
+          "name": "哈爸爸",
+          "role": "主角 · 糊涂又热心的大号易拉罐",
+          "bio": "35 岁的黄色大易拉罐，在超市城饮料能源公司研究各种奇特的「超能饮料」；为儿子做小发明，也常被儿子的怪招弄得满头冒气泡。",
+          "sourceUrl": "https://bgm.tv/subject/116145"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%93%88%E7%9A%AE%E7%88%B6%E5%AD%90"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%93%88%E7%9A%AE%E7%88%B6%E5%AD%90"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%93%88%E7%9A%AE%E7%88%B6%E5%AD%90"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%93%88%E7%9A%AE%E7%88%B6%E5%AD%90"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "老爸，看我的！",
+          "speaker": "皮儿子",
+          "context": "父子日常"
+        },
+        {
+          "line": "儿子，别乱来——哎呀！",
+          "speaker": "哈爸爸",
+          "context": "满头冒气泡名场面"
+        }
+      ],
+      "songs": [
+        {
+          "name": "哈皮父子",
+          "type": "片头曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/116145",
+      "relations": [
+        {
+          "from": "哈爸爸",
+          "to": "皮儿子",
+          "label": "父子"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "slug": "kaixin-chaoren",
+      "name": "开心超人",
+      "year": 2010,
+      "genre": [
+        "机甲",
+        "搞笑",
+        "热血"
+      ],
+      "color": "#e0433f",
+      "description": "五色神奇宝石散落星星球，天才机械师宅博士无意间激活五台旧机车——开心超人带着伙伴们，和灰心星球的大大怪将军、小小怪下士斗智斗勇。",
+      "poster": "/images/posters/real/kaixin-chaoren.webp",
+      "baikeUrl": "https://baike.baidu.com/item/开心超人",
+      "addedAt": "2026-09-25",
+      "studio": "广东明星创意动画有限公司",
+      "broadcastPlatform": null,
+      "characters": [
+        {
+          "name": "开心超人",
+          "role": "主角 · 代表勇气的红色机车侠",
+          "bio": "系列第一主角，对应红色机械石，变身后为开心机车侠，机车原型是一辆拖车，永远冲在保护星星球的第一位。",
+          "sourceUrl": "https://bgm.tv/subject/10997"
+        },
+        {
+          "name": "甜心超人",
+          "role": "主角 · 代表善良的粉色机车侠",
+          "bio": "系列主要女性角色，对应粉色机械石，变身后为甜心机车侠，细心又勇敢。",
+          "sourceUrl": "https://bgm.tv/subject/10997"
+        },
+        {
+          "name": "宅博士",
+          "role": "主角 · 星星球天才机械师",
+          "bio": "在维修垃圾电器时让四台旧机车遇上四颗宝石，无意间唤醒了五位超人，是超人团队的「家长」。",
+          "sourceUrl": "https://bgm.tv/subject/10997"
+        },
+        {
+          "name": "大大怪将军",
+          "role": "反派 · 灰心星球王牌",
+          "bio": "灰心星球宇宙开发公司派出的两大王牌之一，带着终极武器五色神奇宝石入侵星星球，计划回回失败回回再想。",
+          "sourceUrl": "https://bgm.tv/subject/10997"
+        },
+        {
+          "name": "小小怪下士",
+          "role": "反派 · 大大怪的跟班",
+          "bio": "大大怪将军的固定搭档，入侵星星球的行动里负责打下手的下士。",
+          "sourceUrl": "https://bgm.tv/subject/10997"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%BC%80%E5%BF%83%E8%B6%85%E4%BA%BA"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%BC%80%E5%BF%83%E8%B6%85%E4%BA%BA"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E5%BC%80%E5%BF%83%E8%B6%85%E4%BA%BA"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E5%BC%80%E5%BF%83%E8%B6%85%E4%BA%BA"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "我们是灰心星球的大大怪将军和小小怪下士！",
+          "speaker": "大大怪将军",
+          "context": "反派自报家门"
+        },
+        {
+          "line": "为了星星球！",
+          "speaker": "开心超人",
+          "context": "冒险宣言"
+        }
+      ],
+      "songs": [
+        {
+          "name": "开心往前飞",
+          "type": "片头曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/10997",
+      "relations": [
+        {
+          "from": "开心超人",
+          "to": "甜心超人",
+          "label": "同伴"
+        },
+        {
+          "from": "开心超人",
+          "to": "宅博士",
+          "label": "伙伴"
+        },
+        {
+          "from": "开心超人",
+          "to": "大大怪将军",
+          "label": "宿敌"
+        },
+        {
+          "from": "大大怪将军",
+          "to": "小小怪下士",
+          "label": "主仆"
+        }
+      ]
+    },
+    {
+      "id": 46,
+      "slug": "mole-manor",
+      "name": "摩尔庄园",
+      "year": 2011,
+      "genre": [
+        "童话",
+        "冒险",
+        "成长"
+      ],
+      "color": "#3f9e6e",
+      "description": "摩尔和小精灵拉姆的家园被邪恶魔法师库拉盯上——网页游戏起家的国民 IP 走上荧幕，一场守护摩尔庄园的正义较量就此开始。",
+      "poster": "/images/posters/real/mole-manor.webp",
+      "baikeUrl": "https://baike.baidu.com/item/摩尔庄园",
+      "addedAt": "2026-09-25",
+      "studio": "上海淘米网络科技有限公司",
+      "broadcastPlatform": null,
+      "characters": [
+        {
+          "name": "摩乐乐",
+          "role": "主角 · 牛仔风的小摩尔",
+          "bio": "淘米《摩尔庄园》的看板角色，正太外表配西部牛仔穿搭，是庄园冒险的核心。",
+          "sourceUrl": "https://bgm.tv/subject/337456"
+        },
+        {
+          "name": "库拉",
+          "role": "反派 · 骷髅蘑菇帽魔法师",
+          "bio": "摩尔庄园系列的反派人物，戴着印骷髅头与骰子图案的蘑菇头套，帽顶冒着蓝色火焰，一心破坏庄园。",
+          "sourceUrl": "https://bgm.tv/subject/337456"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD"
+        },
+        {
+          "label": "优酷",
+          "url": "https://so.youku.com/search_video/q_%E6%91%A9%E5%B0%94%E5%BA%84%E5%9B%AD"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "为了摩尔庄园！",
+          "speaker": "摩乐乐",
+          "context": "冒险宣言"
+        }
+      ],
+      "songs": [
+        {
+          "name": "摩尔庄园",
+          "type": "片头曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://bgm.tv/subject/337456",
+      "relations": [
+        {
+          "from": "摩乐乐",
+          "to": "库拉",
+          "label": "宿敌"
         }
       ]
     }

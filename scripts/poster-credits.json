@@ -1,0 +1,282 @@
+{
+  "chaoshou-wuzhuang": {
+    "name": "超兽武装",
+    "bangumiId": 33695,
+    "subject": "https://bgm.tv/subject/33695",
+    "matchedName": "超兽武装之勇者无惧",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "zhuzhuxia": {
+    "name": "猪猪侠",
+    "bangumiId": 66260,
+    "subject": "https://bgm.tv/subject/66260",
+    "matchedName": "猪猪侠之魔幻猪猡纪",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "guobao-tegong": {
+    "name": "果宝特攻",
+    "bangumiId": 81179,
+    "subject": "https://bgm.tv/subject/81179",
+    "matchedName": "果宝特攻",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "luoluo-lixianji": {
+    "name": "洛洛历险记",
+    "bangumiId": 136249,
+    "subject": "https://bgm.tv/subject/136249",
+    "matchedName": "百变机兽之洛洛历险记",
+    "date": "2009-02-03",
+    "fetchedAt": "2026-09-25"
+  },
+  "hongmao-lantu-qixia": {
+    "name": "虹猫蓝兔七侠传",
+    "bangumiId": 61339,
+    "subject": "https://bgm.tv/subject/61339",
+    "matchedName": "虹猫蓝兔七侠传",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "shenbing-xiaojiang": {
+    "name": "神兵小将",
+    "bangumiId": 25630,
+    "subject": "https://bgm.tv/subject/25630",
+    "matchedName": "神兵小将",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "xiyangyang-huitailang": {
+    "name": "喜羊羊与灰太狼",
+    "bangumiId": 13131,
+    "subject": "https://bgm.tv/subject/13131",
+    "matchedName": "喜羊羊与灰太狼",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "weiqi-shaonian": {
+    "name": "围棋少年",
+    "bangumiId": 29399,
+    "subject": "https://bgm.tv/subject/29399",
+    "matchedName": "围棋少年",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "wo-wei-ge-kuang": {
+    "name": "我为歌狂",
+    "bangumiId": 10745,
+    "subject": "https://bgm.tv/subject/10745",
+    "matchedName": "我为歌狂",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "zhonghua-xiaozi": {
+    "name": "中华小子",
+    "bangumiId": 33820,
+    "subject": "https://bgm.tv/subject/33820",
+    "matchedName": "中华小子",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "daerduo-tutu": {
+    "name": "大耳朵图图",
+    "bangumiId": 44676,
+    "subject": "https://bgm.tv/subject/44676",
+    "matchedName": "大耳朵图图",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "huoli-shaonianwang": {
+    "name": "火力少年王",
+    "bangumiId": 148702,
+    "subject": "https://bgm.tv/subject/148702",
+    "matchedName": "火力少年王3 动画版",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "jingling-shiji": {
+    "name": "精灵世纪",
+    "bangumiId": 28357,
+    "subject": "https://bgm.tv/subject/28357",
+    "matchedName": "精灵世纪",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "xiong-chu-mo": {
+    "name": "熊出没",
+    "bangumiId": 81109,
+    "subject": "https://bgm.tv/subject/81109",
+    "matchedName": "熊出没",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "kuiba": {
+    "name": "魁拔",
+    "bangumiId": 9840,
+    "subject": "https://bgm.tv/subject/9840",
+    "matchedName": "魁拔之十万火急",
+    "date": "2011-07-08",
+    "fetchedAt": "2026-09-25"
+  },
+  "saierhao": {
+    "name": "赛尔号",
+    "bangumiId": 337454,
+    "subject": "https://bgm.tv/subject/337454",
+    "matchedName": "赛尔号第1季：雷伊传说",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "qin-shi-ming-yue": {
+    "name": "秦时明月",
+    "bangumiId": 2473,
+    "subject": "https://bgm.tv/subject/2473",
+    "matchedName": "秦时明月之百步飞剑",
+    "date": "2007-02-14",
+    "fetchedAt": "2026-09-25"
+  },
+  "balala-xiao-moxian": {
+    "name": "巴啦啦小魔仙",
+    "bangumiId": 121596,
+    "subject": "https://bgm.tv/subject/121596",
+    "matchedName": "巴啦啦小魔仙之梦幻旋律",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "doulong-zhanshi": {
+    "name": "斗龙战士",
+    "bangumiId": 537580,
+    "subject": "https://bgm.tv/subject/537580",
+    "matchedName": "斗龙战士6",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "xiyou-1999": {
+    "name": "西游记",
+    "bangumiId": 37396,
+    "subject": "https://bgm.tv/subject/37396",
+    "matchedName": "西游记",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "dongfang-shenwa": {
+    "name": "东方神娃",
+    "bangumiId": 103161,
+    "subject": "https://bgm.tv/subject/103161",
+    "matchedName": "东方神娃",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "xiaoliyu-luxianji": {
+    "name": "小鲤鱼历险记",
+    "bangumiId": 74541,
+    "subject": "https://bgm.tv/subject/74541",
+    "matchedName": "小鲤鱼历险记",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "shenchu-xiaofugui": {
+    "name": "神厨小福贵",
+    "bangumiId": 96759,
+    "subject": "https://bgm.tv/subject/96759",
+    "matchedName": "神厨小福贵",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "jinglingmeng-yeluoli": {
+    "name": "精灵梦叶罗丽",
+    "bangumiId": 240622,
+    "subject": "https://bgm.tv/subject/240622",
+    "matchedName": "精灵梦叶罗丽",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "cikeyang-wu-liuqi": {
+    "name": "刺客伍六七",
+    "bangumiId": 244008,
+    "subject": "https://bgm.tv/subject/244008",
+    "matchedName": "刺客伍六七",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "douluo-dalu": {
+    "name": "斗罗大陆",
+    "bangumiId": 199425,
+    "subject": "https://bgm.tv/subject/199425",
+    "matchedName": "斗罗大陆",
+    "date": "",
+    "fetchedAt": "2026-09-25"
+  },
+  "lanmao-taoqi-sanqianwen": {
+    "name": "蓝猫淘气三千问",
+    "bangumiId": 10220,
+    "subject": "https://bgm.tv/subject/10220",
+    "matchedName": "蓝猫淘气3000问",
+    "date": "1999-10-08",
+    "fetchedAt": "2026-09-25"
+  },
+  "kaijia-yongshi": {
+    "name": "铠甲勇士",
+    "bangumiId": 64056,
+    "subject": "https://bgm.tv/subject/64056",
+    "matchedName": "铠甲勇士光影传奇",
+    "date": "2009-03-28",
+    "fetchedAt": "2026-09-25"
+  },
+  "kuaile-kubao": {
+    "name": "快乐酷宝",
+    "bangumiId": 550295,
+    "subject": "https://bgm.tv/subject/550295",
+    "matchedName": "快乐酷宝",
+    "date": "2012-12-29",
+    "fetchedAt": "2026-09-25"
+  },
+  "jackie-chan": {
+    "name": "成龙历险记",
+    "bangumiId": 39024,
+    "subject": "https://bgm.tv/subject/39024",
+    "matchedName": "成龙历险记 第一季",
+    "date": "2000-09-09",
+    "fetchedAt": "2026-09-25"
+  },
+  "nezha-chuanqi": {
+    "name": "哪吒传奇",
+    "bangumiId": 37418,
+    "subject": "https://bgm.tv/subject/37418",
+    "matchedName": "哪吒传奇",
+    "date": "2003-06-01",
+    "fetchedAt": "2026-09-25"
+  },
+  "zhubajie-2005": {
+    "name": "天上掉下个猪八戒",
+    "bangumiId": 78494,
+    "subject": "https://bgm.tv/subject/78494",
+    "matchedName": "天上掉下个猪八戒",
+    "date": "2005-03-01",
+    "fetchedAt": "2026-09-25"
+  },
+  "hapi-fuzi": {
+    "name": "哈皮父子",
+    "bangumiId": 116145,
+    "subject": "https://bgm.tv/subject/116145",
+    "matchedName": "哈皮父子",
+    "date": "2007-08-01",
+    "fetchedAt": "2026-09-25"
+  },
+  "kaixin-chaoren": {
+    "name": "开心超人",
+    "bangumiId": 10997,
+    "subject": "https://bgm.tv/subject/10997",
+    "matchedName": "开心宝贝",
+    "date": "2010-07-02",
+    "fetchedAt": "2026-09-25"
+  },
+  "mole-manor": {
+    "name": "摩尔庄园",
+    "bangumiId": 337456,
+    "subject": "https://bgm.tv/subject/337456",
+    "matchedName": "摩尔庄园",
+    "date": "2011-06-20",
+    "fetchedAt": "2026-09-25"
+  }
+}
