@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="精灵梦叶罗丽 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a1024"/>
+      <stop offset="0.55" stop-color="#120a1a"/>
+      <stop offset="1" stop-color="#080510"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#c86bd6" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#c86bd6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#c86bd6"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <!-- fairy wand with star -->
+  <path d="M300 200 L322 274 L398 274 L336 318 L360 392 L300 348 L240 392 L264 318 L202 274 L278 274 Z" fill="#ffe0f0" opacity="0.92"/>
+  <rect x="294" y="348" width="12" height="150" rx="6" fill="#e8a0d0" opacity="0.85"/>
+  <!-- petals / sparkles -->
+  <circle cx="160" cy="250" r="6" fill="#ffd24d" opacity="0.8"/>
+  <circle cx="450" cy="230" r="5" fill="#ff9ad6" opacity="0.7"/>
+  <circle cx="460" cy="440" r="7" fill="#ffd24d" opacity="0.6"/>
+  <circle cx="140" cy="430" r="4" fill="#ff9ad6" opacity="0.6"/>
+  <path d="M150 540 Q300 490 450 540" stroke="#c86bd6" stroke-width="6" fill="none" opacity="0.5"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="740" text-anchor="middle" font-family="sans-serif" font-size="52" font-weight="bold" fill="#fff2d5" letter-spacing="4">精灵梦叶罗丽</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="6">2013 · 仙境契约</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

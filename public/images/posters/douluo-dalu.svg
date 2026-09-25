@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 850" role="img" aria-label="斗罗大陆 海报">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1420"/>
+      <stop offset="0.55" stop-color="#0a0f18"/>
+      <stop offset="1" stop-color="#050709"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#3a6fc4" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#3a6fc4" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3a6fc4"/>
+      <stop offset="1" stop-color="#ffd24d"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="850" fill="url(#bg)"/>
+  <rect width="600" height="850" fill="url(#glow)"/>
+  <!-- eight trigrams / spirit ring circle -->
+  <circle cx="300" cy="320" r="130" fill="none" stroke="#7fb0e8" stroke-width="4" opacity="0.6"/>
+  <circle cx="300" cy="320" r="96" fill="none" stroke="#ffd24d" stroke-width="3" stroke-dasharray="10 12" opacity="0.75"/>
+  <!-- blue silver grass spiral -->
+  <path d="M300 250 C250 270 250 340 300 360 C350 380 350 300 300 300 C270 300 270 340 300 340" fill="none" stroke="#7fd0c4" stroke-width="7" stroke-linecap="round" opacity="0.9"/>
+  <circle cx="300" cy="250" r="10" fill="#ffd24d"/>
+  <circle cx="150" cy="230" r="6" fill="#7fb0e8" opacity="0.7"/>
+  <circle cx="452" cy="250" r="5" fill="#ffd24d" opacity="0.7"/>
+  <path d="M150 540 Q300 490 450 540" stroke="#3a6fc4" stroke-width="6" fill="none" opacity="0.5"/>
+  <rect x="10" y="30" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <rect x="568" y="786" width="22" height="34" rx="6" fill="#ffd24d" opacity="0.5"/>
+  <text x="300" y="742" text-anchor="middle" font-family="serif" font-size="70" font-weight="bold" fill="#fff2d5" letter-spacing="10">斗罗大陆</text>
+  <text x="300" y="786" text-anchor="middle" font-family="monospace" font-size="22" fill="#e8bd6c" letter-spacing="6">2018 · 史莱克七怪</text>
+  <rect x="150" y="806" width="300" height="6" rx="3" fill="url(#bar)"/>
+</svg>

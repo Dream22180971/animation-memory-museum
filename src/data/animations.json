@@ -3160,6 +3160,321 @@
           "label": "对立"
         }
       ]
+    },
+    {
+      "id": 38,
+      "slug": "jinglingmeng-yeluoli",
+      "name": "精灵梦叶罗丽",
+      "year": 2013,
+      "genre": [
+        "魔法",
+        "少女",
+        "3D"
+      ],
+      "color": "#c86bd6",
+      "description": "普通女孩与来自仙境的叶罗丽仙子缔结契约，一句咒语就能变身华服。它接过了《巴啦啦小魔仙》的魔法棒，成为又一整代女孩的审美与友情启蒙。",
+      "poster": "/images/posters/yeluoli.svg",
+      "baikeUrl": "https://baike.baidu.com/item/精灵梦叶罗丽/12740112",
+      "addedAt": "2026-09-25",
+      "studio": "河北精英影视文化传播有限责任公司",
+      "broadcastPlatform": "金鹰卡通",
+      "characters": [
+        {
+          "name": "王默",
+          "role": "主角 · 罗丽的契约主人",
+          "bio": "平凡善良的女孩，与叶罗丽仙子罗丽缔结契约，在守护人类世界与仙境中成长。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        },
+        {
+          "name": "罗丽",
+          "role": "叶罗丽仙子 · 王默的伙伴",
+          "bio": "温柔坚定的叶罗丽仙子，与王默互为契约伙伴，是故事的核心搭档。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        },
+        {
+          "name": "陈思思",
+          "role": "主角团 · 孔雀的契约主人",
+          "bio": "家境优渥的女孩，与仙子孔雀缔结契约，追求完美却逐渐懂得真我。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        },
+        {
+          "name": "舒言",
+          "role": "主角团 · 茉莉的契约主人",
+          "bio": "聪慧沉稳的男孩，与仙子茉莉缔结契约。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        },
+        {
+          "name": "建鹏",
+          "role": "主角团 · 亮彩的契约主人",
+          "bio": "阳光好动的男孩，与仙子亮彩缔结契约。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        },
+        {
+          "name": "曼多拉",
+          "role": "反派 · 仙境女王",
+          "bio": "企图奴役人类世界的仙境女王，是主角团对立的黑暗一方；辛灵则守护仙子与人类的和平。",
+          "sourceUrl": "https://baike.sogou.com/m/v73020887.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E7%B2%BE%E7%81%B5%E6%A2%A6%E5%8F%B6%E7%BD%97%E4%B8%BD"
+        },
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E7%B2%BE%E7%81%B5%E6%A2%A6%E5%8F%B6%E7%BD%97%E4%B8%BD"
+        },
+        {
+          "label": "爱奇艺",
+          "url": "https://so.iqiyi.com/so/q_%E7%B2%BE%E7%81%B5%E6%A2%A6%E5%8F%B6%E7%BD%97%E4%B8%BD"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "这段咒语台词待考证 · 欢迎提 issue 补资料源",
+          "speaker": "待考证",
+          "context": "经典变身咒语"
+        }
+      ],
+      "songs": [
+        {
+          "name": "心中的另一个自己",
+          "type": "主题曲",
+          "singer": "待考证"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/%E7%B2%BE%E7%81%B5%E6%A2%A6%E5%8F%B6%E7%BD%97%E4%B8%BD/12740112",
+      "relations": [
+        {
+          "from": "王默",
+          "to": "罗丽",
+          "label": "契约伙伴"
+        },
+        {
+          "from": "陈思思",
+          "to": "王默",
+          "label": "同伴"
+        },
+        {
+          "from": "舒言",
+          "to": "王默",
+          "label": "同伴"
+        },
+        {
+          "from": "建鹏",
+          "to": "王默",
+          "label": "同伴"
+        },
+        {
+          "from": "王默",
+          "to": "曼多拉",
+          "label": "敌对"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "slug": "cikeyang-wu-liuqi",
+      "name": "刺客伍六七",
+      "year": 2018,
+      "genre": [
+        "搞笑",
+        "热血",
+        "国创"
+      ],
+      "color": "#3fb0a0",
+      "description": "失忆的最强刺客在小鸡岛当起理发师，一边剪头一边接单。何小疯用一把剪刀和满嘴广普，把无厘头笑点底下藏着的温柔与宿命，剪成了国创的一股清流。",
+      "poster": "/images/posters/wu-liuqi.svg",
+      "baikeUrl": "https://baike.baidu.com/item/伍六七/24253002",
+      "addedAt": "2026-09-25",
+      "studio": "小疯映画",
+      "broadcastPlatform": "哔哩哔哩",
+      "characters": [
+        {
+          "name": "伍六七",
+          "role": "主角 · 失忆的理发师刺客",
+          "bio": "代号柒的暗影刺客首领失忆后流落小鸡岛，以理发师身份谋生，为赚钱接下各种刺杀订单，本性善良。",
+          "sourceUrl": "https://zh.wikipedia.org/zh-cn/%E4%BC%8D%E5%85%AD%E4%B8%83"
+        },
+        {
+          "name": "鸡大保",
+          "role": "搭档 · 经纪人兼损友",
+          "bio": "养大伍六七的鸡，是他的经纪人与死党，贪财却重情义，负责牵线各类刺杀委托。",
+          "sourceUrl": "https://zh.wikipedia.org/zh-cn/%E4%BC%8D%E5%85%AD%E4%B8%83"
+        },
+        {
+          "name": "梅花十三",
+          "role": "对手 · 玄武国刺客",
+          "bio": "身手不凡的女刺客，与伍六七亦敌亦友，是推动主线身世之谜的关键人物。",
+          "sourceUrl": "https://zh.wikipedia.org/zh-cn/%E4%BC%8D%E5%85%AD%E4%B8%83"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E5%88%BA%E5%AE%A2%E4%BC%8D%E5%85%AD%E4%B8%83"
+        },
+        {
+          "label": "西瓜视频",
+          "url": "https://www.ixigua.com/search/%E5%88%BA%E5%AE%A2%E4%BC%8D%E5%85%AD%E4%B8%83/"
+        },
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E5%88%BA%E5%AE%A2%E4%BC%8D%E5%85%AD%E4%B8%83"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "这段名台词待考证 · 欢迎提 issue 补资料源",
+          "speaker": "待考证",
+          "context": "广普名场面"
+        }
+      ],
+      "songs": [
+        {
+          "name": "剪刀刺客",
+          "type": "片头曲",
+          "singer": "大主宰乐团"
+        }
+      ],
+      "themeSongSource": "https://zh.wikipedia.org/zh-cn/%E4%BC%8D%E5%85%AD%E4%B8%83",
+      "relations": [
+        {
+          "from": "伍六七",
+          "to": "鸡大保",
+          "label": "搭档"
+        },
+        {
+          "from": "伍六七",
+          "to": "梅花十三",
+          "label": "先敌后友"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "slug": "douluo-dalu",
+      "name": "斗罗大陆",
+      "year": 2018,
+      "genre": [
+        "玄幻",
+        "热血",
+        "年番"
+      ],
+      "color": "#3a6fc4",
+      "description": "玄机科技出品的国产首部网文改编年番，唐三带着前世记忆在武魂世界重活一世。史莱克七怪的羁绊与「没有废物的武魂，只有废物的魂师」，是一代人追更到大的热血。",
+      "poster": "/images/posters/douluo-dalu.svg",
+      "baikeUrl": "https://baike.sogou.com/v166735770.htm",
+      "addedAt": "2026-09-25",
+      "studio": "杭州玄机科技信息技术有限公司、企鹅影视",
+      "broadcastPlatform": "腾讯视频",
+      "characters": [
+        {
+          "name": "唐三",
+          "role": "主角 · 史莱克七怪核心",
+          "bio": "携前世唐门记忆重生于武魂世界，双生武魂蓝银草与昊天锤，是天生的团队灵魂。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "小舞",
+          "role": "女主角 · 十万年柔骨兔",
+          "bio": "唐三的挚爱与生死搭档，真实身份是化形的十万年魂兽柔骨兔。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "戴沐白",
+          "role": "史莱克七怪 · 队长",
+          "bio": "邪眸白虎武魂，七怪中的老大与精神领袖之一，出身星罗皇室。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "奥斯卡",
+          "role": "史莱克七怪 · 食物系魂师",
+          "bio": "香肠武魂的食物系辅助魂师，与宁荣明感情线动人。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "马红俊",
+          "role": "史莱克七怪 · 胖子",
+          "bio": "邪火凤凰武魂，性格憨直好色却是团队开心果。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "宁荣荣",
+          "role": "史莱克七怪 · 辅助",
+          "bio": "七宝琉璃塔武魂的顶级辅助，从娇纵大小姐成长为可靠队友。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        },
+        {
+          "name": "朱竹清",
+          "role": "史莱克七怪 · 敏攻",
+          "bio": "幽冥灵猫武魂的身法型魂师，与戴沐白有婚约羁绊。",
+          "sourceUrl": "https://baike.sogou.com/m/v166735770.htm"
+        }
+      ],
+      "watchLinks": [
+        {
+          "label": "腾讯视频",
+          "url": "https://v.qq.com/x/search/?q=%E6%96%97%E7%BD%97%E5%A4%A7%E9%99%86"
+        },
+        {
+          "label": "哔哩哔哩",
+          "url": "https://search.bilibili.com/all?keyword=%E6%96%97%E7%BD%97%E5%A4%A7%E9%99%86"
+        }
+      ],
+      "classicQuotes": [
+        {
+          "line": "没有废物的武魂，只有废物的魂师。",
+          "speaker": "玉小刚（大师）",
+          "context": "全剧信条"
+        }
+      ],
+      "songs": [
+        {
+          "name": "破茧",
+          "type": "主题曲",
+          "singer": "张韶涵"
+        }
+      ],
+      "themeSongSource": "https://baike.baidu.com/item/%E7%A0%B4%E8%8C%A7/50203510",
+      "relations": [
+        {
+          "from": "唐三",
+          "to": "小舞",
+          "label": "挚爱搭档"
+        },
+        {
+          "from": "唐三",
+          "to": "戴沐白",
+          "label": "结义兄妹"
+        },
+        {
+          "from": "唐三",
+          "to": "奥斯卡",
+          "label": "结义兄妹"
+        },
+        {
+          "from": "唐三",
+          "to": "马红俊",
+          "label": "结义兄妹"
+        },
+        {
+          "from": "唐三",
+          "to": "宁荣荣",
+          "label": "结义兄妹"
+        },
+        {
+          "from": "唐三",
+          "to": "朱竹清",
+          "label": "结义兄妹"
+        },
+        {
+          "from": "戴沐白",
+          "to": "朱竹清",
+          "label": "婚约"
+        }
+      ]
     }
   ],
   "memories": [
