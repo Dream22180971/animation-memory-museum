@@ -16,9 +16,9 @@ const overlayVariants = {
 };
 
 const panelVariants = {
-  hidden: { opacity: 0, y: -30, scale: 0.97 },
+  hidden: { opacity: 0, y: -16, scale: 0.97 },
   visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const } },
-  exit: { opacity: 0, y: -20, scale: 0.97, transition: { duration: 0.2 } },
+  exit: { opacity: 0, y: -10, scale: 0.97, transition: { duration: 0.2 } },
 };
 
 interface GlobalSearchProps {

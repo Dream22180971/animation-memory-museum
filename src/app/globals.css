@@ -27,6 +27,19 @@
   --museum-ink: #21170d;
   --museum-shadow: 0 18px 52px rgba(0, 0, 0, .28);
   --museum-glow: 0 18px 48px rgba(255, 210, 77, .14);
+
+  /* ===== Museum Motion tokens（Museum-Motion-Design-System-v1.0 §4/§5）===== */
+  --motion-instant: 120ms;
+  --motion-fast: 180ms;
+  --motion-normal: 280ms;
+  --motion-slow: 420ms;
+  --motion-section: 600ms;
+  --motion-story: 900ms;
+  --motion-cinematic: 1200ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0.2, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-nostalgia: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -98,15 +111,15 @@ body {
     inset 0 -8px 16px rgba(80, 39, 10, .22),
     0 14px 36px rgba(0, 0, 0, .28);
   transition:
-    transform .24s ease,
-    border-color .24s ease,
-    background .24s ease,
-    color .24s ease,
-    box-shadow .24s ease;
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    background var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard);
 }
 
 .retro-button:hover {
-  transform: translateY(-3px);
+  transform: translateY(-1px);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, .4),
     inset 0 -8px 16px rgba(80, 39, 10, .25),
@@ -114,7 +127,7 @@ body {
 }
 
 .retro-button:active {
-  transform: translateY(-1px);
+  transform: translateY(1px) scale(.98);
   box-shadow:
     inset 0 3px 9px rgba(50, 24, 8, .28),
     0 10px 26px rgba(0, 0, 0, .24);
@@ -169,13 +182,13 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, .18),
     0 10px 28px rgba(0, 0, 0, .22);
   transition:
-    transform .24s ease,
-    border-color .24s ease,
-    color .24s ease;
+    transform var(--motion-fast) var(--ease-standard),
+    border-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
 }
 
 .retro-icon-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
   border-color: rgba(246, 214, 126, .72);
   color: #f6d67e;
 }
@@ -339,9 +352,9 @@ body {
   border: 1px solid transparent;
   padding: .42rem .6rem;
   transition:
-    border-color .22s ease,
-    background .22s ease,
-    transform .22s ease;
+    border-color var(--motion-fast) var(--ease-standard),
+    background var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
 }
 
 .cassette-track:hover {
@@ -380,7 +393,7 @@ body {
   opacity: .62;
 }
 
-.museum-card > * {
+.museum-card > *:not([class*="absolute"]) {
   position: relative;
   z-index: 1;
 }
@@ -393,12 +406,13 @@ body {
     inset 0 0 0 1px rgba(255, 243, 212, .05),
     0 18px 52px rgba(0, 0, 0, .3);
   transition:
-    transform .32s ease,
-    border-color .32s ease,
-    box-shadow .32s ease;
+    transform var(--motion-normal) var(--ease-standard),
+    border-color var(--motion-normal) var(--ease-standard),
+    box-shadow var(--motion-normal) var(--ease-standard);
 }
 
 .archive-card:hover {
+  transform: translateY(-4px);
   border-color: rgba(255, 210, 77, .68);
   box-shadow:
     inset 0 0 0 1px rgba(255, 243, 212, .08),
@@ -452,7 +466,7 @@ body {
 
 .image-fade {
   opacity: 0;
-  transition: opacity .5s ease;
+  transition: opacity var(--motion-normal) var(--ease-standard);
 }
 
 .image-fade.is-loaded {
@@ -496,7 +510,7 @@ nextjs-portal {
   font-family: "JetBrains Mono", ui-monospace, monospace;
   letter-spacing: 0.04em;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: all var(--motion-fast) var(--ease-standard);
   white-space: nowrap;
 }
 
@@ -519,7 +533,7 @@ nextjs-portal {
   height: 8px;
   background: rgba(201, 154, 69, 0.35);
   opacity: 1;
-  transition: all 0.3s ease;
+  transition: all var(--motion-normal) var(--ease-standard);
 }
 
 .latest-swiper .swiper-pagination-bullet-active {
@@ -806,6 +820,35 @@ nextjs-portal {
   background: linear-gradient(90deg, transparent, #3a3020, transparent);
 }
 
+/* ==================== Navigation Motion（规范 §24）==================== */
+
+/* 桌面导航：下划线 0 → 100% 展开，180ms；激活态用静态高亮不加下划线 */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 1px;
+  background: linear-gradient(90deg, rgba(255, 210, 77, .85), rgba(255, 210, 77, .3));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-link::after { transition: none; }
+}
+
 /* ==================== Card Glow ==================== */
 
 .card-glow {
@@ -825,7 +868,7 @@ nextjs-portal {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   opacity: 0;
-  transition: opacity 0.4s ease;
+  transition: opacity var(--motion-slow) var(--ease-standard);
   pointer-events: none;
   z-index: 10;
 }
@@ -859,6 +902,12 @@ nextjs-portal {
   mix-blend-mode: screen;
   transform: translateX(-24%);
   animation: memory-shine 5.2s ease-in-out infinite;
+  /* 扫光只在 hover 时运行，未交互不占连续动画预算（规范 §31） */
+  animation-play-state: paused;
+}
+
+.group:hover .archive-poster-shine {
+  animation-play-state: running;
 }
 
 .memory-collage {
@@ -889,6 +938,11 @@ nextjs-portal {
     radial-gradient(circle at 78% 18%, rgba(255, 210, 77, .22), transparent 26%);
   transform: translateX(-22%);
   animation: memory-shine 4.8s ease-in-out infinite;
+  animation-play-state: paused;
+}
+
+.group:hover .memory-card-shine {
+  animation-play-state: running;
 }
 
 .quote-marquee-space {
@@ -986,13 +1040,21 @@ nextjs-portal {
   background: #5a4a30;
 }
 
-.timeline-scroll::-webkit-scrollbar {
-  height: 4px;
+/* 年代时间线背景巨年（规范 §17）：换代时 blur 4px → 0，300ms，低对比不与内容争读 */
+.timeline-year-backdrop {
+  font-size: clamp(3.6rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: .06em;
+  line-height: 1;
+  color: rgba(255, 210, 77, .09);
+  text-shadow: 0 0 60px rgba(255, 210, 77, .12);
+  white-space: nowrap;
+  animation: year-focus 300ms var(--ease-standard) both;
 }
 
-.timeline-scroll::-webkit-scrollbar-thumb {
-  background: #d4a854;
-  border-radius: 2px;
+@keyframes year-focus {
+  from { filter: blur(4px); opacity: .25; }
+  to { filter: blur(0); opacity: 1; }
 }
 
 /* ==================== Animations ==================== */
@@ -1114,7 +1176,7 @@ nextjs-portal {
   border: 1px solid rgba(201, 154, 69, .3);
   background: linear-gradient(180deg, rgba(255, 210, 77, .12), rgba(10, 7, 4, .38));
   color: #f2c96a;
-  transition: transform .2s ease, border-color .2s ease, color .2s ease, background .2s ease;
+  transition: transform var(--motion-fast) var(--ease-standard), border-color var(--motion-fast) var(--ease-standard), color var(--motion-fast) var(--ease-standard), background var(--motion-fast) var(--ease-standard);
 }
 
 .graph-tool:hover {
@@ -1133,3 +1195,373 @@ nextjs-portal {
   outline-offset: 2px;
 }
 
+
+/* ==================== Museum Motion System ====================
+   依据 Museum-Motion-Design-System-v1.0.md 实现：
+   §4/§5 令牌 · §9 CRT 开机 · §10 颗粒氛围 · §11 Spotlight ·
+   §12 Poster Tilt · §14 换台 · §21 盖章 · §29 Reduced Motion · §30 移动端降级 */
+
+/* —— §9 CRT 开机 ——
+   时序：17:29 → 17:30 → 白线展开 → 亮屏闪光 → 弱噪点 → Hero，总长 ~1160ms（规范 900–1400ms）。
+   首页限定 + 每会话一次 + reduced-motion 跳过，由 layout 内联脚本在 paint 前判定并挂
+   html[data-crt-boot]；CSS 同步压黑并隐藏全部内容，保证遮罩前没有首屏闪现。
+   双重兜底：门控脚本 4s 后自行摘除属性；CSS failsafe 4.2s 强制可见，
+   即使 hydration 失败也不会永久黑屏。 */
+html[data-crt-boot="on"] body {
+  background: #050403;
+  visibility: hidden;
+  animation: crt-body-failsafe 0ms linear 4200ms forwards;
+}
+
+@keyframes crt-body-failsafe {
+  to { visibility: visible; }
+}
+
+.crt-boot-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483000;
+  pointer-events: none;
+  background: #050403;
+  display: grid;
+  place-items: center;
+  visibility: visible; /* body 在开机期间隐藏，遮罩自身必须保持可见 */
+  animation: crt-overlay-out 200ms var(--ease-exit) 960ms forwards;
+}
+
+.crt-boot-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #fff6e8 18%, #fff6e8 82%, transparent);
+  box-shadow: 0 0 22px rgba(255, 246, 232, .9), 0 0 60px rgba(255, 210, 77, .55);
+  transform: scaleX(0);
+  animation: crt-line-open 320ms var(--ease-enter) 520ms forwards;
+}
+
+/* 双层叠放实现 17:29 → 17:30 翻牌 */
+.crt-boot-clock {
+  position: absolute;
+  bottom: 18%;
+  left: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  letter-spacing: .5em;
+  text-indent: .5em;
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  color: #ffd24d;
+  text-shadow: 0 0 14px rgba(255, 210, 77, .8);
+}
+
+.crt-boot-clock span {
+  grid-area: 1 / 1;
+  opacity: 0;
+}
+
+.crt-boot-clock-a {
+  animation:
+    crt-clock-in 180ms var(--ease-enter) 40ms forwards,
+    crt-clock-out 120ms var(--ease-exit) 300ms forwards;
+}
+
+.crt-boot-clock-b {
+  animation: crt-clock-in 140ms var(--ease-enter) 320ms forwards;
+}
+
+/* 亮屏瞬间的一道暖光闪 */
+.crt-boot-flash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 52%, rgba(255, 246, 232, .85), rgba(255, 210, 77, .3) 58%, transparent 78%);
+  opacity: 0;
+  animation: crt-flash 140ms var(--ease-exit) 820ms forwards;
+}
+
+/* 弱噪点：峰值 opacity .07，持续 160ms（规范 §9 上限 0.08 / 100–180ms） */
+.crt-boot-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+  opacity: 0;
+  animation: crt-noise 160ms steps(4) 840ms forwards;
+}
+
+@keyframes crt-line-open {
+  0% { transform: scaleX(0); opacity: 1; }
+  78% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: .92; }
+}
+
+@keyframes crt-clock-in {
+  to { opacity: .92; }
+}
+
+@keyframes crt-clock-out {
+  to { opacity: 0; }
+}
+
+@keyframes crt-flash {
+  0% { opacity: 0; }
+  35% { opacity: .85; }
+  100% { opacity: 0; }
+}
+
+@keyframes crt-noise {
+  0% { opacity: 0; }
+  40% { opacity: .07; }
+  100% { opacity: 0; }
+}
+
+@keyframes crt-overlay-out {
+  from { opacity: 1; visibility: visible; }
+  to { opacity: 0; visibility: hidden; }
+}
+
+/* §9 移动端简化：Black → CRT Line → Hero，去掉翻牌时钟 */
+@media (max-width: 640px), (pointer: coarse) {
+  .crt-boot-clock { display: none; }
+}
+
+/* 换台雪花（规范 §14：噪点 50–100ms） */
+.tv-static {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  mix-blend-mode: screen;
+}
+
+.tv-static.is-channeling {
+  animation: tv-static-flicker 90ms steps(3) 1;
+}
+
+@keyframes tv-static-flicker {
+  0% { opacity: 0; }
+  30% { opacity: .5; }
+  100% { opacity: 0; }
+}
+
+/* 换台瞬间的 RGB 分离（规范 §14：错位 ≤2px，<100ms） */
+.channel-rgb {
+  animation: channel-rgb 90ms linear 1;
+}
+
+@keyframes channel-rgb {
+  0% { filter: none; transform: translateX(0); }
+  30% { filter: drop-shadow(2px 0 rgba(255, 60, 90, .5)) drop-shadow(-2px 0 rgba(80, 200, 255, .5)); transform: translateX(1px); }
+  70% { filter: drop-shadow(-1px 0 rgba(255, 60, 90, .35)) drop-shadow(1px 0 rgba(80, 200, 255, .35)); transform: translateX(-1px); }
+  100% { filter: none; transform: translateX(0); }
+}
+
+/* 频道角标 CH xx */
+.tv-channel-badge {
+  position: absolute;
+  top: .9rem;
+  right: 1rem;
+  z-index: 5;
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 900;
+  letter-spacing: .22em;
+  color: #eafff5;
+  text-shadow: 0 0 10px rgba(97, 199, 187, .9);
+  opacity: 0;
+  transition: opacity var(--motion-fast) var(--ease-standard);
+}
+
+.tv-channel-badge.is-visible {
+  opacity: 1;
+}
+
+/* 全局氛围：胶片颗粒 + 尘埃（规范 §10，替代科技粒子）
+   颗粒 opacity .028（0.015–0.035），闪烁 ~9fps（8–12fps），漂移 ~5px/s（2–8px/s） */
+.dust-layer {
+  position: fixed;
+  inset: -50%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .028;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='1'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23g)'/%3E%3C/svg%3E");
+  animation:
+    dust-drift 46s linear infinite,
+    dust-flicker 110ms steps(1) infinite alternate;
+}
+
+@keyframes dust-drift {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-180px, -140px, 0); }
+}
+
+@keyframes dust-flicker {
+  from { opacity: .028; }
+  to { opacity: .018; }
+}
+
+/* §30 移动端关闭全屏颗粒，保住连续动画预算 */
+@media (max-width: 640px), (pointer: coarse) {
+  .dust-layer { display: none; }
+}
+
+/* 档案卡 3D tilt（规范 §12）：JS 写 --tilt-x/--tilt-y/--spot-* 变量；
+   归位 420ms + nostalgia，禁止瞬间弹回 */
+.tilt-card {
+  transform: perspective(1000px) rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg)) translateZ(0);
+  transition:
+    transform var(--motion-slow) var(--ease-nostalgia),
+    box-shadow var(--motion-slow) var(--ease-nostalgia);
+}
+
+/* 手电筒光斑（规范 §11）：暖黄电视光，尺寸 280px、峰值 alpha .12，第二眼才看得见 */
+.tilt-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity var(--motion-normal) var(--ease-standard);
+  background: radial-gradient(280px circle at var(--spot-x, 50%) var(--spot-y, 50%), rgba(255, 214, 130, .12), transparent 62%);
+  mix-blend-mode: soft-light;
+}
+
+.tilt-card:hover::after {
+  opacity: 1;
+}
+
+/* §11/§12 移动端：无 Pointer Follow，按压改为 scale(0.98) */
+@media (hover: none), (pointer: coarse) {
+  .tilt-card::after { display: none; }
+  .tilt-card:active { transform: scale(.98); }
+}
+
+/* —— §15 Film Strip：最新入馆胶片带 ——
+   匀速缓卷 15–30px/s（按 6 帧宽度约 24px/s）；悬停暂停；
+   齿孔带随内容一起滚动；移动端改 snap scroll、不自动播放 */
+.film-strip {
+  position: relative;
+  overflow-x: auto;
+  scrollbar-width: none;
+  cursor: grab;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+}
+
+.film-strip:active {
+  cursor: grabbing;
+}
+
+.film-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.film-strip-track {
+  display: flex;
+  width: max-content;
+  padding-block: 26px;
+  border-block: 1px solid rgba(200, 154, 68, .28);
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9px, rgba(245, 223, 173, .14) 9px 21px, transparent 21px 32px) left top / 100% 12px no-repeat,
+    repeating-linear-gradient(90deg, transparent 0 9px, rgba(245, 223, 173, .14) 9px 21px, transparent 21px 32px) left bottom / 100% 12px no-repeat,
+    linear-gradient(180deg, rgba(22, 17, 10, .92), rgba(9, 8, 6, .96));
+  animation: film-marquee 64s linear infinite;
+}
+
+.film-strip:hover .film-strip-track {
+  animation-play-state: paused;
+}
+
+.film-strip.is-dragged .film-strip-track {
+  animation-play-state: paused;
+}
+
+@keyframes film-marquee {
+  to { transform: translateX(-50%); }
+}
+
+.film-frame {
+  width: 240px;
+  margin-inline: 10px;
+}
+
+/* 悬停揭示主题曲：空间常驻，只动 opacity/transform（§31 不做布局动画） */
+.film-frame-song {
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--motion-normal) var(--ease-standard),
+    transform var(--motion-normal) var(--ease-standard);
+}
+
+.film-frame:hover .film-frame-song,
+.film-frame:focus-visible .film-frame-song {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 640px), (pointer: coarse) {
+  .film-strip {
+    cursor: default;
+    scroll-snap-type: x mandatory;
+  }
+
+  .film-strip-track {
+    animation: none;
+  }
+
+  .film-frame {
+    scroll-snap-align: center;
+  }
+
+  /* 触屏没有 hover，主题曲直接常显 */
+  .film-frame-song {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* 盖章动画（规范 §21）：1.25 → 0.92 → 1，300ms，微旋 -2° */
+.stamp-seal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: .5rem .9rem;
+  border: 3px double rgba(216, 84, 60, .85);
+  border-radius: .5rem;
+  color: #e88a7a;
+  font-family: var(--font-display);
+  line-height: 1.15;
+  text-align: center;
+  transform: rotate(-2deg);
+  animation: stamp-thud 300ms var(--ease-nostalgia) both;
+  box-shadow: inset 0 0 0 1px rgba(216, 84, 60, .3);
+}
+
+@keyframes stamp-thud {
+  0% { transform: rotate(-2deg) scale(1.25); opacity: 0; }
+  60% { transform: rotate(-2deg) scale(.92); opacity: 1; }
+  100% { transform: rotate(-2deg) scale(1); opacity: 1; }
+}
+
+/* 回忆册翻页容器（规范 §20） */
+.memory-page {
+  transform-style: preserve-3d;
+  perspective: 1200px;
+}
+
+/* §29 reduced-motion：仪式性动画直接跳过/落位，只保留简单淡入 */
+@media (prefers-reduced-motion: reduce) {
+  .crt-boot-overlay { display: none; }
+  .tv-static.is-channeling,
+  .channel-rgb { animation: none !important; }
+  .dust-layer { animation: none; opacity: .02; }
+  .tilt-card { transform: none !important; }
+  .tilt-card::after { display: none; }
+  .stamp-seal { animation: none; opacity: 1; }
+}
