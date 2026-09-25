@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 test("首页展示真实馆藏统计，并可使用全局搜索", async ({ page }) => {
   await page.goto("/", { waitUntil: "networkidle" });
 
-  await expect(page.getByText("已整理 29 部馆藏 · 102 条台词")).toBeVisible();
+  await expect(page.getByText("已整理 35 部馆藏 · 112 条台词")).toBeVisible();
   await expect(page.getByText("8,921")).toHaveCount(0);
 
   const searchButton = page.getByRole("button", { name: "搜索" });
@@ -24,10 +24,10 @@ test("档案筛选可以找到馆藏并恢复全部结果", async ({ page }) => 
 
   const archiveSearch = page.getByPlaceholder("搜索动画名、类型或回忆关键词");
   await archiveSearch.fill("机甲");
-  await expect(page.locator("span.cassette-label").filter({ hasText: /5 \/ 29/ })).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /6 \/ 35/ })).toBeVisible();
 
   await page.getByRole("button", { name: "重置筛选" }).click();
-  await expect(page.locator("span.cassette-label").filter({ hasText: /29 \/ 29/ })).toBeVisible();
+  await expect(page.locator("span.cassette-label").filter({ hasText: /35 \/ 35/ })).toBeVisible();
 });
 
 test("本机回忆册可保存、导出入口与删除，且不混进公开档案", async ({ page }) => {
@@ -45,7 +45,7 @@ test("本机回忆册可保存、导出入口与删除，且不混进公开档�
 
   await page.goto("/archive", { waitUntil: "networkidle" });
   await expect(page.getByRole("heading", { name: "某部没入馆的动画" })).toHaveCount(0);
-  await expect(page.getByText("馆藏 29")).toBeVisible();
+  await expect(page.getByText("馆藏 35")).toBeVisible();
 
   await page.goto("/", { waitUntil: "networkidle" });
   await page.getByRole("button", { name: "删除《某部没入馆的动画》的回忆" }).click();
@@ -117,6 +117,7 @@ test("角色关系图谱可以切换动画并展示关系", async ({ page }) => 
 test("角色图谱点击角色弹出人物档案，支持拖拽移位与缩放", async ({ page }) => {
   await page.goto("/characters", { waitUntil: "networkidle" });
 
+  await page.getByRole("button", { name: /超兽武装/ }).click();
   await page.getByRole("button", { name: /^角色 天羽/ }).click();
 
   const card = page.getByRole("region", { name: "天羽 的人物档案" });
@@ -217,15 +218,15 @@ test("名台词档案馆可以按动画筛选台词", async ({ page }) => {
   await page.goto("/quotes", { waitUntil: "networkidle" });
 
   await expect(page.getByRole("heading", { name: "名台词档案馆" })).toBeVisible();
-  await expect(page.locator("p[role=status]").filter({ hasText: /102 \/ 102/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /112 \/ 112/ })).toBeVisible();
 
   await page.getByRole("button", { name: /熊出没/ }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /3 \/ 102/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /3 \/ 112/ })).toBeVisible();
   await expect(page.getByText("臭狗熊！别跑！")).toBeVisible();
   await expect(page.getByText("已有的事，后必再有；已行的事，后必再行。")).toBeHidden();
 
   await page.getByRole("button", { name: /秦时明月/ }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /6 \/ 102/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /6 \/ 112/ })).toBeVisible();
   await expect(page.getByText("有些梦虽然遥不可及，但并不是不可能实现。")).toBeVisible();
 });
 
@@ -247,13 +248,13 @@ test("移动端菜单可以打开并到达各展区", async ({ page }) => {
 
 test("台词馆与角色图谱可以按作品互相深链跳转", async ({ page }) => {
   await page.goto("/quotes?animation=kuiba", { waitUntil: "networkidle" });
-  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 102/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 112/ })).toBeVisible();
 
   await page.getByRole("link", { name: "看角色关系" }).first().click();
   await expect(page.getByRole("region", { name: "魁拔角色关系图" })).toBeVisible();
 
   await page.getByRole("link", { name: "看这部作品的台词 →" }).click();
-  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 102/ })).toBeVisible();
+  await expect(page.locator("p[role=status]").filter({ hasText: /2 \/ 112/ })).toBeVisible();
 });
 
 test("损坏的本地存储不会阻止用户继续操作", async ({ page }) => {
@@ -273,3 +274,33 @@ test("损坏的本地存储不会阻止用户继续操作", async ({ page }) => 
   await page.getByRole("button", { name: "标记我也看过猪猪侠" }).click();
   await expect(page.getByRole("button", { name: "取消标记看过猪猪侠" })).toBeVisible();
 });
+
+test("CRT 开机仪式：首页首次访问播放一次，回访与内页不再播放", async ({ page }) => {
+  await page.goto("/", { waitUntil: "commit" });
+
+  const overlay = page.locator(".crt-boot-overlay");
+  await expect(overlay).toBeAttached();
+  await expect(overlay).not.toBeAttached({ timeout: 5_000 });
+  await expect.poll(() => page.evaluate(() => sessionStorage.getItem("museum-crt-booted"))).toBe("1");
+
+  // 同一会话回到首页：不再播放
+  await page.reload({ waitUntil: "commit" });
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".crt-boot-overlay")).toHaveCount(0);
+  await expect(page.locator("html[data-crt-boot]")).toHaveCount(0);
+
+  // 规范 §9：内页不播开机仪式
+  await page.goto("/about", { waitUntil: "commit" });
+  await page.waitForLoadState("networkidle");
+  await expect(page.locator(".crt-boot-overlay")).toHaveCount(0);
+});
+
+test("reduced-motion 用户直接跳过开机仪式", async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  await expect(page.locator(".crt-boot-overlay")).toHaveCount(0);
+  await expect(page.locator("html[data-crt-boot]")).toHaveCount(0);
+  await expect(page.getByText("已整理 35 部馆藏 · 112 条台词")).toBeVisible();
+});
+
