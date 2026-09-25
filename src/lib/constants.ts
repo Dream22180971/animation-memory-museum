@@ -15,10 +15,23 @@ export const NAV_LINKS = [
   { label: "童年浓度测试", href: "/quiz" },
 ] as const;
 
-/** 首页锚点展区与次要入口：桌面端不占导航位，由移动端菜单和页脚兜底 */
+/** 首页锚点展区与次要入口：深展区已路由化，正片独立成页 */
 export const SECTION_LINKS = [
-  { label: "年代时间线", href: "/#timeline" },
-  { label: "动画歌曲", href: "/#songs" },
+  { label: "年代时间线", href: "/timeline" },
+  { label: "动画歌曲", href: "/songs" },
   { label: "我的回忆册", href: "/#contribute" },
   { label: "关于我们", href: "/about" },
+] as const;
+
+/**
+ * 首页电视机的核心频道：只轮播最有共鸣的代表作，不放全量馆藏。
+ * 顺序即频道号（CH 01 起）；新增馆藏不自动进电视，需手动加到这里。
+ */
+export const HERO_FEATURED_SLUGS = [
+  "qin-shi-ming-yue", // 秦时明月
+  "kaijia-yongshi", // 铠甲勇士
+  "balala-xiao-moxian", // 巴啦啦小魔仙
+  "doulong-zhanshi", // 斗龙战士
+  "chaoshou-wuzhuang", // 超兽武装
+  "zhuzhuxia", // 猪猪侠
 ] as const;

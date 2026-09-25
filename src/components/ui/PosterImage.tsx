@@ -10,10 +10,12 @@ type PosterImageProps = {
   preload?: boolean;
   className?: string;
   sizes?: string;
+  /** fill 模式的裁切方式；默认 cover 防竖版海报被拉伸变形 */
+  fit?: "cover" | "contain";
 };
 
 /** SVG 海报 Next 会自动跳过优化；webp 走优化管线 + 视口外懒加载 */
-export default function PosterImage({ src, alt, preload, className, sizes }: PosterImageProps) {
+export default function PosterImage({ src, alt, preload, className, sizes, fit = "cover" }: PosterImageProps) {
   const [loaded, setLoaded] = useState(false);
   return (
     <Image
@@ -26,7 +28,7 @@ export default function PosterImage({ src, alt, preload, className, sizes }: Pos
       decoding={preload ? "sync" : "async"}
       sizes={sizes ?? "min(92vw, 480px)"}
       onLoad={() => setLoaded(true)}
-      className={`image-fade ${loaded ? "is-loaded" : ""} ${className ?? ""}`}
+      className={`${fit === "contain" ? "object-contain" : "object-cover"} image-fade ${loaded ? "is-loaded" : ""} ${className ?? ""}`}
     />
   );
 }

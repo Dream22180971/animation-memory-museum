@@ -4,23 +4,51 @@ import { useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import animations from "@/data/animations.json";
+import { HERO_FEATURED_SLUGS } from "@/lib/constants";
 import PosterImage from "@/components/ui/PosterImage";
+
+/** 电视里只播核心频道（顺序即 CH 号），不轮全量馆藏 */
+const items = HERO_FEATURED_SLUGS.map(
+  (slug) => animations.animations.find((anim) => anim.slug === slug)!,
+).filter(Boolean);
 
 export default function HeroSwiper() {
   const [current, setCurrent] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [channeling, setChanneling] = useState(false);
+  const [badgeVisible, setBadgeVisible] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const items = animations.animations;
+  const noiseTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const badgeTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const mountedRef = useRef(false);
 
   useEffect(() => {
     if (!isAutoPlaying) return;
     timerRef.current = setInterval(() => {
       setCurrent((prev) => (prev + 1) % items.length);
-    }, 4200);
+    }, 6000);
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying, items.length]);
+  }, [isAutoPlaying]);
+
+  /* 规范 §14 换台：Poster → 90ms 雪花 → CH 角标 → 下一张；角标停留 1.4s 后淡出 */
+  useEffect(() => {
+    if (!mountedRef.current) {
+      mountedRef.current = true;
+      return;
+    }
+    setChanneling(true);
+    setBadgeVisible(true);
+    if (noiseTimerRef.current) clearTimeout(noiseTimerRef.current);
+    if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
+    noiseTimerRef.current = setTimeout(() => setChanneling(false), 380);
+    badgeTimerRef.current = setTimeout(() => setBadgeVisible(false), 1400);
+    return () => {
+      if (noiseTimerRef.current) clearTimeout(noiseTimerRef.current);
+      if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
+    };
+  }, [current]);
 
   const goTo = (idx: number) => {
     setCurrent(idx);
@@ -40,10 +68,10 @@ export default function HeroSwiper() {
     <motion.div
       initial={{ opacity: 0, x: 34 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.75, delay: 0.15, ease: "easeOut" }}
+      transition={{ duration: 0.75, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
       className="hidden justify-end lg:flex"
     >
-      <div className="relative w-[540px]">
+      <div className="relative w-[560px]">
         <div className="relative rounded-[24px] border border-[#74512a]/65 bg-gradient-to-b from-[#211912] to-[#0b0907] p-5 shadow-[0_30px_80px_rgba(0,0,0,.65)]">
           <div className="absolute -top-8 left-1/2 h-8 w-56 -translate-x-1/2 rounded-t-xl border border-b-0 border-[#4b3820]/70 bg-gradient-to-b from-[#19130e] to-[#0b0907]" />
           <div className="rounded-[18px] border-[8px] border-[#11100d] bg-[#07090a] p-2 shadow-[inset_0_0_42px_rgba(0,0,0,.95)]">
@@ -53,41 +81,64 @@ export default function HeroSwiper() {
               dragElastic={0.12}
               dragMomentum={false}
               onDragEnd={onDragEnd}
-              className="relative aspect-[16/10] cursor-grab overflow-hidden rounded-xl active:cursor-grabbing"
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+              className="relative aspect-[4/3] cursor-grab overflow-hidden rounded-xl active:cursor-grabbing"
             >
-              {items.map((anim, idx) => (
-                <div
-                  key={anim.id}
-                  className="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-                  style={{
-                    opacity: idx === current ? 1 : 0,
-                    transform: idx === current ? "scale(1)" : "scale(1.04)",
-                    zIndex: idx === current ? 1 : 0,
-                  }}
-                >
+              {/* 海报层：换台瞬间整体做 RGB 分离，按钮/角标不受影响 */}
+              <div className={`absolute inset-0 ${channeling ? "channel-rgb" : ""}`}>
+                {items.map((anim, idx) => (
+                  <div
+                    key={anim.id}
+                    className="absolute inset-0 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+                    style={{
+                      opacity: idx === current ? 1 : 0,
+                      transform: idx === current ? "scale(1)" : "scale(1.04)",
+                      zIndex: idx === current ? 1 : 0,
+                    }}
+                  >
+                  {/* 竖版海报 contain 后两侧留边：同图模糊放大垫底，像屏幕发光而不是死黑 */}
+                  <div className="absolute inset-0 overflow-hidden" aria-hidden="true">
+                    <PosterImage
+                      src={anim.poster}
+                      alt=""
+                      sizes="560px"
+                      className="scale-110 opacity-35 blur-xl"
+                    />
+                  </div>
                   <PosterImage
                     src={anim.poster}
                     alt={`${anim.name} 海报`}
                     preload={idx === 0}
-                    sizes="540px"
+                    sizes="560px"
+                    fit="contain"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-transparent" />
-                  <div className="crt-scanlines absolute inset-0" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/82 via-black/18 to-transparent" />
+                    <div className="crt-scanlines absolute inset-0" />
 
-                  <div className="absolute inset-x-0 bottom-0 p-5">
-                    <div className="mb-2 flex items-center gap-2">
-                      {anim.genre.slice(0, 2).map((g) => (
-                        <span key={g} className="cassette-label cassette-label-muted">
-                          {g}
-                        </span>
-                      ))}
-                      <span className="cassette-label cassette-label-muted">{anim.year}</span>
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <div className="mb-2 flex items-center gap-2">
+                        {anim.genre.slice(0, 2).map((g) => (
+                          <span key={g} className="cassette-label cassette-label-muted">
+                            {g}
+                          </span>
+                        ))}
+                        <span className="cassette-label cassette-label-muted">{anim.year}</span>
+                      </div>
+                      <h3 className="retro-title text-3xl text-white">{anim.name}</h3>
+                      <p className="memory-text mt-1 line-clamp-2 max-w-[420px] text-xs text-white/76">{anim.description}</p>
                     </div>
-                    <h3 className="retro-title text-3xl text-white">{anim.name}</h3>
-                    <p className="memory-text mt-1 line-clamp-2 max-w-[420px] text-xs text-white/76">{anim.description}</p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
+
+              <div className={`tv-static ${channeling ? "is-channeling" : ""}`} aria-hidden="true" />
+              <div
+                className={`tv-channel-badge ${badgeVisible ? "is-visible" : ""}`}
+                aria-hidden="true"
+              >
+                CH {String(current + 1).padStart(2, "0")}
+              </div>
 
               <button
                 onClick={prev}

@@ -11,7 +11,7 @@ export default function HeroSection() {
       <div className="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-[#080806] to-transparent" />
 
       <div className="hero-shell relative z-10 flex min-h-[calc(100vh-132px)] items-center pt-24">
-        <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_540px]">
+        <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_560px]">
           <HeroContent />
           <HeroSwiper />
         </div>
