@@ -22,7 +22,18 @@ export default function Footer() {
           <a className="transition hover:text-[#f6d67e]" href={FEEDBACK_URL} target="_blank" rel="noreferrer">GitHub 反馈</a>
           <a className="transition hover:text-[#f6d67e]" href={REPOSITORY_URL} target="_blank" rel="noreferrer">项目仓库</a>
         </nav>
-        <div className="text-xs">© {COPYRIGHT_YEAR} {SITE_NAME}. 我们仍然怀念过去的童年。</div>
+        <div className="text-xs">
+          <div>© {COPYRIGHT_YEAR} {SITE_NAME}. 我们仍然怀念过去的童年。</div>
+          <div className="mt-2 text-[#d9c39a]/55">
+            动画名称、海报与台词等素材版权归原作者所有，本站仅作非商业展示 ·{" "}
+            <Link
+              className="underline decoration-[#c99a45]/40 underline-offset-4 transition hover:text-[#f6d67e]"
+              href="/about#copyright"
+            >
+              版权与致谢
+            </Link>
+          </div>
+        </div>
       </div>
     </footer>
   );

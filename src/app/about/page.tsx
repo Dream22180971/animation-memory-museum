@@ -132,6 +132,38 @@ export default function AboutPage() {
             </div>
           </section>
 
+          <section id="copyright" className="relative border-t border-[#c99a45]/12 px-5 py-14 sm:px-10 lg:px-16">
+            <div className="grid gap-8 lg:grid-cols-[0.82fr_1.18fr]">
+              <div>
+                <p className="archive-kicker text-xs font-black text-[#d8ac55]/75">Copyright &amp; Credits</p>
+                <h2 className="retro-title mt-4 text-5xl leading-tight text-[#fff6e8]">版权与致谢</h2>
+                <p className="memory-text mt-4 text-sm text-[#d9c39a]/72">
+                  本站为非商业的个人怀旧项目，不提供任何影片或音频资源的在线播放与下载。
+                </p>
+              </div>
+              <div className="memory-text space-y-4 text-base text-[#d9c39a]/84">
+                <p>
+                  所有动画名称、海报、角色、台词与歌曲等素材的版权归原作者及出品方所有。
+                  海报图片收集自 Bangumi（bgm.tv）等公开社区数据库，仅用于本站非商业的展示与介绍；
+                  数据考据参考了百度百科等公开资料，来源均在各条目中注明。
+                </p>
+                <p>
+                  若你是相关权利人，不希望自己的作品素材在本站展示，请通过 GitHub Issue 联系我们，
+                  说明对应条目即可，核实后会在 24 小时内下架或替换。
+                </p>
+                <a
+                  href={FEEDBACK_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="retro-button retro-button-ghost text-sm"
+                >
+                  <Mail size={16} />
+                  联系作者 · 提交下架申请
+                </a>
+              </div>
+            </div>
+          </section>
+
           <section className="relative border-t border-[#c99a45]/12 px-5 py-10 sm:px-10 lg:px-16">
             <div className="museum-card flex flex-col gap-4 rounded-2xl p-5 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-4">
