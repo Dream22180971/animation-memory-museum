@@ -1,7 +1,8 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { Clapperboard, Quote, Sparkles } from "lucide-react";
+import { ArrowRight, Clapperboard, Quote, Sparkles } from "lucide-react";
+import Link from "next/link";
 import animations from "@/data/animations.json";
 import PosterImage from "@/components/ui/PosterImage";
 
@@ -37,7 +38,15 @@ const cardVariants: Variants = {
   },
 };
 
-export default function MemoryQuotes() {
+type MemoryQuotesProps = {
+  /** 预览模式：首页只精选 12 条循环，正片（可筛选/深链）在 /quotes */
+  preview?: boolean;
+};
+
+export default function MemoryQuotes({ preview = false }: MemoryQuotesProps) {
+  const rows = preview
+    ? [quoteCards.slice(0, 6), quoteCards.slice(6, 12)]
+    : quoteRows;
   return (
     <motion.section
       id="memories"
@@ -56,14 +65,21 @@ export default function MemoryQuotes() {
             每部动画都有自己的口头禅、登场句和燃点台词。这里按作品收录，方便继续补充和考据。
           </p>
         </div>
-        <div className="cassette-label">
-          <Sparkles size={15} />
-          Hover 一下，台词开播
-        </div>
+        {preview ? (
+          <Link href="/quotes" className="retro-button retro-button-ghost w-fit text-xs">
+            全部 {quoteCards.length} 条台词 · 可按作品筛选
+            <ArrowRight size={14} />
+          </Link>
+        ) : (
+          <div className="cassette-label">
+            <Sparkles size={15} />
+            Hover 一下，台词开播
+          </div>
+        )}
       </motion.div>
 
       <div className="quote-marquee-space space-y-5">
-        {quoteRows.map((row, rowIndex) => {
+        {rows.map((row, rowIndex) => {
           const loopedQuotes = [...row, ...row];
           return (
             <motion.div

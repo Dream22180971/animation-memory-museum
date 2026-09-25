@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import ChildhoodQuiz from "@/components/quiz/ChildhoodQuiz";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import ParticleBackground from "@/components/hero/ParticleBackground";
 import { SITE_NAME, SITE_URL } from "@/lib/constants";
 
 export const metadata: Metadata = {
@@ -16,7 +15,8 @@ export const metadata: Metadata = {
 export default function QuizPage() {
   return (
     <div className="relative min-h-screen bg-[#070806] text-[#fff3df] vignette">
-      <ParticleBackground />
+      {/* 规范 §10：胶片颗粒 + 尘埃氛围，替代科技粒子背景 */}
+      <div className="dust-layer" aria-hidden="true" />
       <Navbar />
       <main className="pb-16 pt-[110px]">
         <section className="site-shell mx-auto max-w-[860px] px-5">
