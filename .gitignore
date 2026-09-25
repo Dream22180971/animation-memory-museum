@@ -43,3 +43,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# 本地产品文档（不入库）
+00后数字记忆博物馆-PRD-v2.0.md
+00后数字记忆博物馆-PRD-v2_1-补充建议.md
