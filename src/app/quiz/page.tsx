@@ -2,15 +2,13 @@ import type { Metadata } from "next";
 import ChildhoodQuiz from "@/components/quiz/ChildhoodQuiz";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: `童年浓度测试 | ${SITE_NAME}`,
+export const metadata: Metadata = pageMetadata({
+  title: "童年浓度测试",
   description: "六道题，测出你的童年浓度：守电视的频率、追更的记忆，还有那些台词、主题曲和角色。",
-  alternates: {
-    canonical: `${SITE_URL}quiz`,
-  },
-};
+  path: "quiz",
+});
 
 export default function QuizPage() {
   return (

@@ -24,6 +24,17 @@ const maShanZheng = Ma_Shan_Zheng({
   display: "swap",
 });
 
+/**
+ * 搜索引擎站长平台的所有权验证：在部署环境里设置对应变量即可，没设就不输出标签。
+ * Bing 用 msvalidate.01，百度用 baidu-site-verification。
+ */
+function siteVerificationTags() {
+  const tags: Record<string, string> = {};
+  if (process.env.BING_SITE_VERIFICATION) tags["msvalidate.01"] = process.env.BING_SITE_VERIFICATION;
+  if (process.env.BAIDU_SITE_VERIFICATION) tags["baidu-site-verification"] = process.env.BAIDU_SITE_VERIFICATION;
+  return tags;
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: SITE_NAME,
@@ -42,6 +53,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: siteVerificationTags(),
   },
 };
 

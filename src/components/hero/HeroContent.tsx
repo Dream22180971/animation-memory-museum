@@ -26,7 +26,10 @@ export default function HeroContent() {
         <span className="block text-[50px] sm:text-[70px] lg:text-[78px]">
           放学后的 <span className="text-[#ffd450]">17:30</span>
         </span>
-        <span className="mt-3 block text-[32px] sm:text-[46px] lg:text-[54px]">是我们等了很久的动画时间</span>
+        <span className="mt-3 block text-[32px] sm:text-[46px] lg:text-[54px]">
+          {/* 窄屏折行时整体落到「动画时间」，不让「时间」两个字单独掉下去 */}
+          是我们等了很久的<span className="inline-block whitespace-nowrap">动画时间</span>
+        </span>
       </h1>
       <p className="memory-text mt-8 max-w-[540px] text-base text-[#f7ebd4]/88">
         这里收藏着 00 后记忆里的国产动画。把热血、感动、晚饭前的电视光，整理成一间可以慢慢逛的数字展厅。

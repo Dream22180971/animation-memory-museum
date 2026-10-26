@@ -38,12 +38,12 @@
 | **CH 04** · 角色图谱 | `/characters` | 可交互的角色关系图：拖拽、平移、缩放，点击角色看人物档案 |
 | **CH 05** · 名台词 | `/quotes` | 口头禅、登场句和燃点台词，按作品筛选 |
 | **CH 06** · 动画歌曲 | `/songs` | 磁带样式的片头曲 / 片尾曲，点一首去 B 站搜来听 |
-| **CH 07** · 年代时间线 | `/timeline` | 按数据自动划分年代，把作品串成一条时间线 |
-| **CH 08** · 童年浓度测试 | `/quiz` | 六道题测出你的童年浓度，结果可以晒出来 |
-| **CH 09** · 我的回忆册 | `/#contribute` | 只存在本机浏览器里的回忆册，可导出成 PNG 卡片 |
+| **CH 07** · 年代时间线 | `/timeline` | 从最早的馆藏年份起每 4 年一段，把作品串成一条时间线 |
+| **CH 08** · 童年浓度测试 | `/quiz` | 六道题测出你的童年浓度，结果可以存成图片卡 |
+| **CH 09** · 我的回忆册 | `/#contribute` | 只存在本机浏览器里的回忆册，可导出 PNG 卡片，也能备份和恢复 |
 | **CH 10** · 关于我们 | `/about` | 项目故事、版权声明与致谢 |
 
-任意页面按 <kbd>/</kbd> 都能打开全局搜索，可以搜动画、歌曲、歌手和题材。
+桌面端导航里的「更多展厅」可以直达时间线、歌曲、回忆册和关于页。任意页面按 <kbd>/</kbd> 都能打开全局搜索，可以搜动画、歌曲、歌手和题材。
 
 ## 🎬 页面截图
 
@@ -76,8 +76,10 @@
 | 馆藏规模 | 35 部作品（1999–2018）、160 位角色、155 条角色关系、112 句台词、42 首歌曲 |
 | 正版观看入口 | 127 个外链，直接打开作品在腾讯视频、哔哩哔哩、爱奇艺、优酷、央视频、西瓜视频上的搜索页，站内不播放任何内容 |
 | 角色图谱 | 每部作品一张关系图，支持拖拽、平移、缩放、关系标签和人物档案 |
-| 我的回忆册 | 回忆写在自己的浏览器里（保留最新 20 条），任意一条都能用 canvas 画成 PNG 卡片导出 |
+| 我的回忆册 | 回忆写在自己的浏览器里（保留最新 20 条），任意一条都能用 canvas 画成 PNG 卡片导出；整本册子可以备份成 JSON，换设备后再恢复（自动去重） |
+| 测试结果卡片 | 童年浓度测试的结果可以生成 1200×630 的图片卡，手机上直接调起分享，桌面端下载 |
 | 我也看过 | 每个展品一键标记，记在本机 |
+| 分享预览 | 每个展厅都有自己的分享标题和预览图（截自真实页面），展品详情页用该作品的海报 |
 | 分享 | 支持系统分享面板的设备直接调起，其他情况复制到剪贴板 |
 | 动效系统 | 动效 token 与仪式规范见 [`Museum-Motion-Design-System-v1.0.md`](./Museum-Motion-Design-System-v1.0.md) |
 
@@ -101,10 +103,34 @@ flowchart LR
 
 ## 🔐 隐私与内容边界
 
-- **回忆只留在你的设备上。** 回忆册和"我也看过"的标记都存在浏览器 `localStorage` 里，不会上传。想让某段回忆进入公开馆藏，可以[提 Issue](https://github.com/Dream22180971/animation-memory-museum/issues)。
+- **回忆只留在你的设备上。** 回忆册和"我也看过"的标记都存在浏览器 `localStorage` 里，不会上传；备份文件也只下载到你自己的设备。想让某段回忆进入公开馆藏，可以[提 Issue](https://github.com/Dream22180971/animation-memory-museum/issues)。
 - **线上站点接入了 Vercel Web Analytics**（`@vercel/analytics`），用于统计页面访问。
 - **不托管任何视频或音频。** 观看按钮和歌曲链接都会离开本站，跳到正版平台或 B 站搜索。
 - **来源可查。** 资料考据参考百度百科等公开来源（每部作品都附链接）；海报收集自 [Bangumi](https://bgm.tv) 等社区数据库，记录在 [`scripts/poster-credits.json`](./scripts/poster-credits.json)。所有素材版权归原作者及出品方所有，权利人可通过 GitHub Issue 申请下架，详见 `/about` 页。
+
+## 🔎 搜索与 AI 收录
+
+网站为搜索引擎和 AI 搜索准备了这些入口，全部由 `animations.json` 自动生成，新增馆藏无需手动维护：
+
+| 入口 | 内容 |
+|---|---|
+| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | 首页、7 个展厅和全部展品详情页 |
+| [`/robots.txt`](https://museum.seanwalter.top/robots.txt) | 放行所有爬虫，并单独列出 GPTBot、ClaudeBot、PerplexityBot 等 AI 爬虫 |
+| [`/llms.txt`](https://museum.seanwalter.top/llms.txt) | 给 AI 读的站点导读：展厅说明和每部作品的年份、制作方、首播平台、类型与角色 |
+| JSON-LD 结构化数据 | 首页 `WebSite`、档案页 `ItemList`、每部作品 `TVSeries`（含角色、制作方、百科链接）和面包屑 |
+| 页面元数据 | 每个页面独立的标题、描述、canonical 和分享预览图 |
+
+所有页面都在构建时预渲染，台词、角色、歌曲等文字直接写在 HTML 里，不执行 JavaScript 的爬虫也能读到。
+
+**需要站长自己完成的一步：** 在各平台验证网站所有权并提交站点地图。网站已预留验证标签，在部署环境（如 Vercel）里设置对应变量后重新部署即可：
+
+| 平台 | 环境变量 | 生成的标签 |
+|---|---|---|
+| Google Search Console | `GOOGLE_SITE_VERIFICATION` | `google-site-verification` |
+| Bing Webmaster Tools | `BING_SITE_VERIFICATION` | `msvalidate.01` |
+| 百度搜索资源平台 | `BAIDU_SITE_VERIFICATION` | `baidu-site-verification` |
+
+没设置的变量不会输出任何标签。
 
 ## ⚡ 快速开始
 
@@ -132,12 +158,13 @@ npm run dev
 | `npm start` | 启动生产构建 |
 | `npm run test:e2e` | Playwright 端到端测试 |
 | `node scripts/capture-screenshots.mjs` | 对运行中的站点重新生成 `docs/screenshots/`（可用 `BASE_URL` 指定地址，默认 `http://localhost:3000`） |
+| `node scripts/capture-og-images.mjs` | 对运行中的站点重新截取各展厅的分享预览图 `src/app/**/opengraph-image.jpg`，之后需要重新构建 |
 
 生产构建刻意使用 webpack（`next build --webpack`）。除非重新验证过 Bundle 行为，否则请保持不变。
 
 ## 🧪 测试
 
-`tests/e2e/museum.spec.ts` 覆盖：首页统计与全局搜索、档案筛选、回忆册（保存、导出入口、删除，且不会混进公开档案）、"我也看过"、童年浓度测试、展品元数据与正版入口，以及角色图谱（切换作品、打开人物档案、拖拽与缩放）。
+`tests/e2e/museum.spec.ts` 覆盖：首页统计与全局搜索、档案筛选、回忆册（保存、导出入口、删除、备份与恢复，且不会混进公开档案）、"我也看过"、童年浓度测试与结果卡片、展品元数据与正版入口、角色图谱（切换作品、打开人物档案、拖拽与缩放），以及站点地图、robots、`llms.txt`、结构化数据和分享元数据。
 
 - Playwright 会自己在 `127.0.0.1:3100` 启动开发服务器，分别跑 **桌面 Chrome** 和 **Pixel 5** 两个项目。
 - 本地默认使用你已安装的 Google Chrome（`channel: "chrome"`）；设置了 `CI` 环境变量时改用 Playwright 自带的 Chromium（需先 `npx playwright install chromium`）。
@@ -147,11 +174,13 @@ npm run dev
 
 ```text
 src/
-├── app/                 # 路由：/、archive、archive/[slug]、characters、quotes、songs、timeline、quiz、about
+├── app/                 # 路由：/、archive、archive/[slug]、characters、quotes、songs、timeline、quiz、about，
+│                        # 以及 sitemap.ts、robots.ts、llms.txt/ 和各展厅的 opengraph-image.jpg
 ├── components/          # hero（CRT、开机动画、胶片条）、archive、characters、quotes、songs、timeline、
 │                        # quiz、search、engagement（回忆册）、motion、layout、ui
 ├── data/animations.json # 全部馆藏，唯一数据源
-└── lib/                 # 数据工具、测试逻辑、站点常量（HERO_FEATURED_SLUGS 等）
+└── lib/                 # 数据工具、测试逻辑、站点常量（HERO_FEATURED_SLUGS 等）、页面元数据、结构化数据、
+                         # 分享卡片绘制、回忆册备份
 scripts/                 # 数据校验、海报抓取与压缩、截图
 tests/e2e/               # Playwright 用例
 public/images/           # 海报、场景与回忆插图
@@ -167,7 +196,7 @@ public/images/           # 海报、场景与回忆插图
 
 - 界面只有中文。
 - 馆藏为人工整理：目前 35 部，年份跨度 1999–2018，只收录国产电视动画。
-- 回忆册按浏览器保存：没有账号、不能同步，只保留最新 20 条，清除站点数据就会丢失。
+- 回忆册按浏览器保存：没有账号、不会自动同步，只保留最新 20 条；清除站点数据前请先用「备份回忆册」导出。
 - 不提供播放，这是刻意的设计：记忆馆只负责把你指向正版平台。
 
 ## 🗺 路线图

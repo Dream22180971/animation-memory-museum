@@ -4,16 +4,21 @@ import { ArrowLeft, Database, PenLine } from "lucide-react";
 import ArchiveExplorer from "@/components/archive/ArchiveExplorer";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { SITE_NAME } from "@/lib/constants";
+import JsonLd from "@/components/seo/JsonLd";
+import { animations } from "@/lib/animations";
+import { pageMetadata } from "@/lib/metadata";
+import { archiveJsonLd } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: `完整动画档案 | ${SITE_NAME}`,
+export const metadata: Metadata = pageMetadata({
+  title: "完整动画档案",
   description: "浏览 00 后国产动画完整档案，按年份与类型筛选已核对来源的馆藏收录。",
-};
+  path: "archive",
+});
 
 export default function ArchivePage() {
   return (
     <div className="relative min-h-screen bg-[#070806] text-[#fff3df] vignette">
+      <JsonLd data={archiveJsonLd(animations)} />
       <Navbar />
       <main className="pb-16 pt-24">
         <section className="museum-card site-shell relative mb-6 rounded-2xl px-5 py-10 backdrop-blur-sm sm:px-10 lg:px-14">

@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, Search, X } from "lucide-react";
+import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { NAV_LINKS, SECTION_LINKS, SITE_NAME, SITE_NAME_EN } from "@/lib/constants";
 import GlobalSearch from "@/components/search/GlobalSearch";
 
@@ -11,7 +11,13 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+  const moreActive = SECTION_LINKS.some((link) => {
+    const linkPath = link.href.split("#")[0];
+    return linkPath !== "/" && pathname.startsWith(linkPath);
+  });
 
   const closeSearch = useCallback(() => setSearchOpen(false), []);
 
@@ -20,6 +26,23 @@ export default function Navbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // 「更多展厅」下拉：点外面或按 Esc 收起
+  useEffect(() => {
+    if (!moreOpen) return;
+    const onPointer = (e: PointerEvent) => {
+      if (!moreRef.current?.contains(e.target as Node)) setMoreOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMoreOpen(false);
+    };
+    window.addEventListener("pointerdown", onPointer);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("pointerdown", onPointer);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [moreOpen]);
 
   // "/" keyboard shortcut to open search
   useEffect(() => {
@@ -66,6 +89,35 @@ export default function Navbar() {
                 </Link>
               );
             })}
+            {/* 时间线、歌曲、回忆册原本只在页脚能找到，桌面导航补一个下拉入口 */}
+            <div ref={moreRef} className="relative">
+              <button
+                type="button"
+                aria-expanded={moreOpen}
+                aria-haspopup="true"
+                onClick={() => setMoreOpen((prev) => !prev)}
+                className={`nav-link inline-flex items-center gap-1 whitespace-nowrap text-sm font-normal transition-colors hover:text-[#f6d67e] ${
+                  moreOpen || moreActive ? "text-[#f6d67e]" : "text-[#f8efd8]/82"
+                }`}
+              >
+                更多展厅
+                <ChevronDown size={14} className={`transition-transform ${moreOpen ? "rotate-180" : ""}`} />
+              </button>
+              {moreOpen ? (
+                <div className="absolute right-0 top-full mt-3 w-40 rounded-xl border border-[#e0b85d]/20 bg-[#070705]/96 p-1.5 shadow-[0_18px_50px_rgba(0,0,0,.5)] backdrop-blur-xl">
+                  {SECTION_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setMoreOpen(false)}
+                      className="block whitespace-nowrap rounded-lg px-3 py-2 text-sm text-[#f8efd8]/85 transition hover:bg-[#ffd24d]/10 hover:text-[#f6d67e]"
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           </div>
 
           <div className="flex shrink-0 items-center gap-2 text-[#f8efd8]/80">

@@ -3,17 +3,54 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle2, RotateCcw, Share2, Sparkles, XCircle } from "lucide-react";
+import { ArrowRight, CheckCircle2, Download, RotateCcw, Share2, Sparkles, XCircle } from "lucide-react";
 import { MAX_POINTS, QUIZ_QUESTIONS, getResultTier, type QuizOption } from "@/lib/quiz";
-import { SITE_URL } from "@/lib/constants";
+import { SITE_NAME, SITE_URL } from "@/lib/constants";
+import { CARD_PADDING, CARD_WIDTH, renderShareCard, shareOrDownloadCard, wrapLines } from "@/lib/share-card";
 
 type ShareState = "idle" | "copied" | "shared" | "error";
+type CardState = "idle" | "busy" | "done" | "error";
+
+type QuizResult = { percent: number; tier: { title: string; description: string }; correctCount: number; gradedCount: number };
+
+/** 结果卡片：左边大号百分比，右边称号、描述和答对题数 */
+function drawResultCard(result: QuizResult) {
+  return renderShareCard((ctx) => {
+    ctx.fillStyle = "rgba(255,210,77,.78)";
+    ctx.font = "700 22px 'Noto Sans SC', sans-serif";
+    ctx.fillText("童年浓度测试 · DIGITAL CHILDHOOD MUSEUM", CARD_PADDING, 130);
+
+    ctx.fillStyle = "#d9c39a";
+    ctx.font = "700 26px 'Noto Sans SC', sans-serif";
+    ctx.fillText("我的童年浓度", CARD_PADDING, 220);
+
+    const percentText = `${result.percent}%`;
+    ctx.fillStyle = "#ffd24d";
+    ctx.font = "900 150px 'Noto Sans SC', serif";
+    ctx.fillText(percentText, CARD_PADDING - 6, 380);
+    const textX = CARD_PADDING + ctx.measureText(percentText).width + 56;
+    const textWidth = CARD_WIDTH - textX - CARD_PADDING;
+
+    ctx.fillStyle = "#fff6e8";
+    ctx.font = "900 54px 'Noto Sans SC', serif";
+    ctx.fillText(result.tier.title, textX, 262);
+
+    ctx.fillStyle = "#f6ead2";
+    ctx.font = "400 28px 'Noto Sans SC', serif";
+    wrapLines(ctx, result.tier.description, textWidth, 3).forEach((line, index) => ctx.fillText(line, textX, 322 + index * 42));
+
+    ctx.fillStyle = "#f2c96a";
+    ctx.font = "700 24px 'Noto Sans SC', sans-serif";
+    ctx.fillText(`记忆题答对 ${result.correctCount} / ${result.gradedCount} 道 · 来测测你的`, textX, 470);
+  });
+}
 
 export default function ChildhoodQuiz() {
   const [step, setStep] = useState(0);
   const [answers, setAnswers] = useState<Array<QuizOption | null>>(() => QUIZ_QUESTIONS.map(() => null));
   const [finished, setFinished] = useState(false);
   const [shareState, setShareState] = useState<ShareState>("idle");
+  const [cardState, setCardState] = useState<CardState>("idle");
 
   const question = QUIZ_QUESTIONS[step];
   const selected = answers[step];
@@ -45,6 +82,24 @@ export default function ChildhoodQuiz() {
     setStep(0);
     setFinished(false);
     setShareState("idle");
+    setCardState("idle");
+  };
+
+  const handleCard = async () => {
+    setCardState("busy");
+    try {
+      const blob = await drawResultCard(result);
+      if (!blob) throw new Error("canvas unavailable");
+      const outcome = await shareOrDownloadCard(
+        blob,
+        `童年浓度-${result.percent}.png`,
+        `${SITE_NAME} · 童年浓度测试`,
+        `我的童年浓度是 ${result.percent}%，称号「${result.tier.title}」。`,
+      );
+      setCardState(outcome === "cancelled" ? "idle" : "done");
+    } catch {
+      setCardState("error");
+    }
   };
 
   const handleShare = async () => {
@@ -83,6 +138,10 @@ export default function ChildhoodQuiz() {
           <button onClick={handleShare} className="retro-button retro-button-secondary text-sm">
             {shareState === "idle" || shareState === "error" ? <Share2 size={17} /> : <CheckCircle2 size={17} />}
             {shareState === "shared" ? "已打开分享" : shareState === "copied" ? "结果已复制" : shareState === "error" ? "分享失败，重试" : "晒出我的童年浓度"}
+          </button>
+          <button onClick={handleCard} disabled={cardState === "busy"} className="retro-button retro-button-secondary text-sm">
+            {cardState === "done" ? <CheckCircle2 size={17} /> : <Download size={17} />}
+            {cardState === "busy" ? "卡片生成中…" : cardState === "done" ? "卡片已生成" : cardState === "error" ? "生成失败，重试" : "保存结果卡片"}
           </button>
           <button onClick={handleRestart} className="retro-button retro-button-ghost text-sm">
             <RotateCcw size={17} />

@@ -8,8 +8,8 @@ export default function Footer() {
   return (
     <footer id="about" className="museum-card site-shell mb-10 mt-10 rounded-2xl px-8 py-8">
       <div className="flex flex-col justify-between gap-6 text-sm text-[#d9c39a]/78 md:flex-row md:items-center">
-        <div>
-          <div className="retro-title text-3xl text-[#fff3dc]">{SITE_NAME}</div>
+        <div className="shrink-0">
+          <div className="retro-title whitespace-nowrap text-3xl text-[#fff3dc]">{SITE_NAME}</div>
           <div className="archive-kicker mt-1 text-xs">{SITE_NAME_EN}</div>
         </div>
         <nav aria-label="页脚导航" className="flex flex-wrap gap-x-8 gap-y-3 text-[#fff0d6]">

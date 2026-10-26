@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import QuoteArchive from "@/components/quotes/QuoteArchive";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { SITE_NAME } from "@/lib/constants";
+import { pageMetadata } from "@/lib/metadata";
 import { animations, quoteCount } from "@/lib/animations";
 
-export const metadata: Metadata = {
-  title: `名台词档案馆 | ${SITE_NAME}`,
+export const metadata: Metadata = pageMetadata({
+  title: "名台词档案馆",
   description: `${quoteCount} 条国产动画名台词按作品归档——口头禅、登场句与燃点台词的数字档案。`,
-  alternates: { canonical: "https://museum.seanwalter.top/quotes" },
-};
+  path: "quotes",
+});
 
 export default function QuotesPage() {
   return (

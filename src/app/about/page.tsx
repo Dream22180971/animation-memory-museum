@@ -1,7 +1,15 @@
+import type { Metadata } from "next";
 import { Code2, Heart, Mail, MonitorPlay, Music, Sparkles, Tv } from "lucide-react";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
 import { AUTHOR_GITHUB, FEEDBACK_URL, REPOSITORY_URL, SITE_DESCRIPTION, SITE_NAME } from "@/lib/constants";
+import { pageMetadata } from "@/lib/metadata";
+
+export const metadata: Metadata = pageMetadata({
+  title: "关于我们",
+  description: "一个非商业的国产动画怀旧项目：不存视频，只收藏放学后 17:30 的那段时间感。版权声明与致谢也在这里。",
+  path: "about",
+});
 
 const principles = [
   {
