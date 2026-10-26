@@ -17,7 +17,7 @@ Before modifying documentation:
 
 1. Inspect the current implementation first.
 2. Verify every install/run command against real repository files.
-3. Keep `README.md` English-first and `README.zh-CN.md` as the full Chinese version.
+3. This repository is Chinese-first (`"readmePrimaryLanguage": "zh-CN"` in the metadata registry): keep `README.md` as the full Chinese version, `README.en.md` as the full English version, and `README.zh-CN.md` as a redirect to `README.md`.
 4. Preserve the language switch in both files.
 5. Use project-specific visuals; do not copy the same visual gimmick across repositories.
 6. Do not add typing animations to project READMEs.
