@@ -18,6 +18,7 @@ export const NAV_LINKS = [
 /** 首页锚点展区与次要入口：深展区已路由化，正片独立成页 */
 export const SECTION_LINKS = [
   { label: "年代时间线", href: "/timeline" },
+  { label: "台词猜出处", href: "/guess" },
   { label: "动画歌曲", href: "/songs" },
   { label: "我的回忆册", href: "/#contribute" },
   { label: "关于我们", href: "/about" },

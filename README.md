@@ -32,18 +32,19 @@
 
 | 频道 | 路由 | 正在播出 |
 |---|---|---|
-| **CH 01** · 首页 | `/` | CRT 电视轮播 6 部核心作品、胶片条、各展厅预览 |
+| **CH 01** · 首页 | `/` | CRT 电视轮播 6 部核心作品（桌面端按数字键 1–6 或拧面板旋钮就能换台）、胶片条、各展厅预览 |
 | **CH 02** · 动画档案 | `/archive` | 全部馆藏，支持关键词搜索、类型 / 年份筛选与排序 |
 | **CH 03** · 展品详情 | `/archive/[slug]` | 海报、制作方、首播平台、角色、正版观看入口、分享与"我也看过" |
 | **CH 04** · 角色图谱 | `/characters` | 可交互的角色关系图：拖拽、平移、缩放，点击角色看人物档案 |
 | **CH 05** · 名台词 | `/quotes` | 口头禅、登场句和燃点台词，按作品筛选 |
 | **CH 06** · 动画歌曲 | `/songs` | 磁带样式的片头曲 / 片尾曲，点一首去 B 站搜来听 |
-| **CH 07** · 年代时间线 | `/timeline` | 从最早的馆藏年份起每 4 年一段，把作品串成一条时间线 |
+| **CH 07** · 年代时间线 | `/timeline` | 选出你哪年上小学，列出小学六年里首播的作品；下面是从最早馆藏年份起每 4 年一段的时间线 |
 | **CH 08** · 童年浓度测试 | `/quiz` | 六道题测出你的童年浓度，结果可以存成图片卡 |
-| **CH 09** · 我的回忆册 | `/#contribute` | 只存在本机浏览器里的回忆册，可导出 PNG 卡片，也能备份和恢复 |
-| **CH 10** · 关于我们 | `/about` | 项目故事、版权声明与致谢 |
+| **CH 09** · 台词猜出处 | `/guess` | 随机 10 句名台词，四选一猜出自哪部，答完揭晓说话人和场景 |
+| **CH 10** · 我的回忆册 | `/#contribute` | 只存在本机浏览器里的回忆册，可导出 PNG 卡片，也能备份和恢复 |
+| **CH 11** · 关于我们 | `/about` | 项目故事、版权声明与致谢 |
 
-桌面端导航里的「更多展厅」可以直达时间线、歌曲、回忆册和关于页。任意页面按 <kbd>/</kbd> 都能打开全局搜索，可以搜动画、歌曲、歌手和题材。
+桌面端导航里的「更多展厅」可以直达时间线、台词猜出处、歌曲、回忆册和关于页。任意页面按 <kbd>/</kbd> 都能打开全局搜索，可以搜动画、歌曲、歌手和题材。
 
 ## 🎬 页面截图
 
@@ -63,6 +64,10 @@
     <td><img src="./docs/screenshots/memory-book.webp" alt="保存在本机浏览器的回忆册表单" /><br /><sub><b>我的回忆册</b>：只存本机，可导出卡片</sub></td>
   </tr>
   <tr>
+    <td><img src="./docs/screenshots/guess.webp" alt="台词猜出处：答完一题后揭晓出处、说话人和场景" /><br /><sub><b>台词猜出处</b>：一句台词，四选一</sub></td>
+    <td><img src="./docs/screenshots/timeline.webp" alt="选择 2006 年入学后列出的 18 部童年动画" /><br /><sub><b>你哪年上小学</b>：小学六年的童年片单</sub></td>
+  </tr>
+  <tr>
     <td><img src="./docs/screenshots/quiz.webp" alt="童年浓度测试第 1 题" /><br /><sub><b>童年浓度测试</b>：六道题，一个可以晒的结果</sub></td>
     <td align="center"><img src="./docs/screenshots/mobile-home.webp" alt="手机尺寸下的首页" width="45%" /><br /><sub><b>移动端</b>：同一个傍晚，搬到手机上</sub></td>
   </tr>
@@ -77,7 +82,10 @@
 | 正版观看入口 | 127 个外链，直接打开作品在腾讯视频、哔哩哔哩、爱奇艺、优酷、央视频、西瓜视频上的搜索页，站内不播放任何内容 |
 | 角色图谱 | 每部作品一张关系图，支持拖拽、平移、缩放、关系标签和人物档案 |
 | 我的回忆册 | 回忆写在自己的浏览器里（保留最新 20 条），任意一条都能用 canvas 画成 PNG 卡片导出；整本册子可以备份成 JSON，换设备后再恢复（自动去重） |
-| 测试结果卡片 | 童年浓度测试的结果可以生成 1200×630 的图片卡，手机上直接调起分享，桌面端下载 |
+| 真的能换台 | 首页电视在视口里时按数字键 1–6 直接换台；面板三个旋钮依次是上一台、随机换台、下一台；焦点在电视里时方向键也能换台；换台会播报给读屏软件 |
+| 台词猜出处 | 每局从馆藏台词里随机抽 10 句、每句来自不同作品，台词里直接带出片名的不出题；答完一题就揭晓出处、说话人和场景 |
+| 童年片单 | 时间线页选出入学年份，列出小学六年首播的作品；链接带 `?entry=` 参数，可以直接发给同届同学 |
+| 结果卡片 | 童年浓度测试、台词猜出处的成绩和童年片单都可以生成 1200×630 的图片卡，手机上直接调起分享，桌面端下载 |
 | 我也看过 | 每个展品一键标记，记在本机 |
 | 分享预览 | 每个展厅都有自己的分享标题和预览图（截自真实页面），展品详情页用该作品的海报 |
 | 分享 | 支持系统分享面板的设备直接调起，其他情况复制到剪贴板 |
@@ -96,6 +104,7 @@ flowchart LR
     Home --> Songs[动画歌曲]
     Home --> Timeline[年代时间线]
     Home --> Quiz[童年浓度测试]
+    Quotes --> Guess[台词猜出处]
     Home --> Memory[我的回忆册]
     Memory -->|导出| Card[/PNG 卡片/]
     Search{{全局搜索  /}} -.-> Exhibit
@@ -114,7 +123,7 @@ flowchart LR
 
 | 入口 | 内容 |
 |---|---|
-| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | 首页、7 个展厅和全部展品详情页 |
+| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | 首页、8 个展厅和全部展品详情页 |
 | [`/robots.txt`](https://museum.seanwalter.top/robots.txt) | 放行所有爬虫，并单独列出 GPTBot、ClaudeBot、PerplexityBot 等 AI 爬虫 |
 | [`/llms.txt`](https://museum.seanwalter.top/llms.txt) | 给 AI 读的站点导读：展厅说明和每部作品的年份、制作方、首播平台、类型与角色 |
 | JSON-LD 结构化数据 | 首页 `WebSite`、档案页 `ItemList`、每部作品 `TVSeries`（含角色、制作方、百科链接）和面包屑 |
@@ -158,13 +167,13 @@ npm run dev
 | `npm start` | 启动生产构建 |
 | `npm run test:e2e` | Playwright 端到端测试 |
 | `node scripts/capture-screenshots.mjs` | 对运行中的站点重新生成 `docs/screenshots/`（可用 `BASE_URL` 指定地址，默认 `http://localhost:3000`） |
-| `node scripts/capture-og-images.mjs` | 对运行中的站点重新截取各展厅的分享预览图 `src/app/**/opengraph-image.jpg`，之后需要重新构建 |
+| `node scripts/capture-og-images.mjs` | 对运行中的站点重新截取各展厅的分享预览图 `src/app/**/opengraph-image.jpg`，之后需要重新构建；两个截图脚本都可以用 `ONLY=guess,timeline` 只重拍指定页面 |
 
 生产构建刻意使用 webpack（`next build --webpack`）。除非重新验证过 Bundle 行为，否则请保持不变。
 
 ## 🧪 测试
 
-`tests/e2e/museum.spec.ts` 覆盖：首页统计与全局搜索、档案筛选、回忆册（保存、导出入口、删除、备份与恢复，且不会混进公开档案）、"我也看过"、童年浓度测试与结果卡片、展品元数据与正版入口、角色图谱（切换作品、打开人物档案、拖拽与缩放），以及站点地图、robots、`llms.txt`、结构化数据和分享元数据。
+`tests/e2e/museum.spec.ts` 覆盖：首页统计与全局搜索、档案筛选、回忆册（保存、导出入口、删除、备份与恢复，且不会混进公开档案）、"我也看过"、童年浓度测试与结果卡片、台词猜出处（十题流程、揭晓出处、成绩卡片）、入学年份童年片单、首页电视换台（数字键、旋钮、方向键，打字时不抢键）、展品元数据与正版入口、角色图谱（切换作品、打开人物档案、拖拽与缩放），以及站点地图、robots、`llms.txt`、结构化数据和分享元数据。
 
 - Playwright 会自己在 `127.0.0.1:3100` 启动开发服务器，分别跑 **桌面 Chrome** 和 **Pixel 5** 两个项目。
 - 本地默认使用你已安装的 Google Chrome（`channel: "chrome"`）；设置了 `CI` 环境变量时改用 Playwright 自带的 Chromium（需先 `npx playwright install chromium`）。
@@ -174,7 +183,7 @@ npm run dev
 
 ```text
 src/
-├── app/                 # 路由：/、archive、archive/[slug]、characters、quotes、songs、timeline、quiz、about，
+├── app/                 # 路由：/、archive、archive/[slug]、characters、quotes、songs、timeline、quiz、guess、about，
 │                        # 以及 sitemap.ts、robots.ts、llms.txt/ 和各展厅的 opengraph-image.jpg
 ├── components/          # hero（CRT、开机动画、胶片条）、archive、characters、quotes、songs、timeline、
 │                        # quiz、search、engagement（回忆册）、motion、layout、ui
@@ -206,6 +215,7 @@ public/images/           # 海报、场景与回忆插图
 - [x] 角色关系图谱
 - [x] 名台词、动画歌曲与年代时间线
 - [x] 童年浓度测试
+- [x] 台词猜出处、入学年份童年片单与能换台的首页电视
 - [x] 本地回忆册与卡片导出
 - [ ] 更多作品与动画类别
 - [ ] 童年电视剧、Flash 游戏与老互联网记忆专题

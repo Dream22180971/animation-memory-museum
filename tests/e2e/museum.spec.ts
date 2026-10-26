@@ -346,8 +346,9 @@ test("站点地图与 robots 覆盖全部展厅和馆藏", async ({ request }) =
   expect(robots).toContain("Sitemap: https://museum.seanwalter.top/sitemap.xml");
 
   const sitemap = await (await request.get("/sitemap.xml")).text();
-  // 首页 + 7 个展厅 + 35 部馆藏详情
-  expect(sitemap.match(/<url>/g)).toHaveLength(43);
+  // 首页 + 8 个展厅 + 35 部馆藏详情
+  expect(sitemap.match(/<url>/g)).toHaveLength(44);
+  expect(sitemap).toContain("<loc>https://museum.seanwalter.top/guess</loc>");
   expect(sitemap).toContain("<loc>https://museum.seanwalter.top/archive/chaoshou-wuzhuang</loc>");
 });
 
@@ -375,4 +376,87 @@ test("各展厅分享时带自己的标题和预览图", async ({ page }) => {
   await page.goto("/archive/chaoshou-wuzhuang", { waitUntil: "networkidle" });
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "超兽武装 | 00后动画记忆馆");
   await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /chaoshou-wuzhuang\.webp$/);
+});
+
+test("台词猜出处：十句台词答完给出成绩，每题揭晓出处", async ({ page }) => {
+  await page.goto("/guess", { waitUntil: "networkidle" });
+  await expect(page.getByRole("heading", { name: "台词猜出处", level: 1 })).toBeVisible();
+  await page.getByRole("button", { name: "开始猜台词" }).click();
+
+  let score = 0;
+  for (let round = 1; round <= 10; round += 1) {
+    await expect(page.getByText(`第 ${round} / 10 句`)).toBeVisible();
+    const options = page.locator("main button[aria-pressed]");
+    await expect(options).toHaveCount(4);
+    const names = await options.allTextContents();
+    expect(new Set(names).size).toBe(4);
+
+    await options.first().click();
+    const reveal = page.getByText(/出自《.+?》/);
+    await expect(reveal).toBeVisible();
+    const answer = (await reveal.textContent())?.match(/出自《(.+?)》/)?.[1] ?? "";
+    expect(names).toContain(answer);
+    if (names[0] === answer) score += 1;
+    await expect(page.getByRole("link", { name: `查看《${answer}》档案 →` })).toBeVisible();
+
+    await page.getByRole("button", { name: round === 10 ? "查看成绩" : "下一句" }).click();
+  }
+
+  await expect(page.getByText(`${score} / 10`)).toBeVisible();
+  await page.getByRole("button", { name: "保存成绩卡片" }).click();
+  await expect(page.getByRole("button", { name: "卡片已生成" })).toBeVisible();
+  await page.getByRole("button", { name: "再来一局" }).click();
+  await expect(page.getByText("第 1 / 10 句")).toBeVisible();
+});
+
+test("时间线：选出入学年份就列出小学六年首播的动画，链接可分享", async ({ page }) => {
+  await page.goto("/timeline", { waitUntil: "networkidle" });
+  await page.getByLabel("入学年份").selectOption("2006");
+  await expect(page.getByRole("status").filter({ hasText: "2006–2011 年，馆里有 18 部动画首播" })).toBeVisible();
+  const lineup = page.locator("#lineup");
+  await expect(lineup.getByRole("link", { name: "秦时明月" })).toHaveAttribute("href", "/archive/qin-shi-ming-yue");
+  await expect(lineup.getByText("2007 · 2 年级").first()).toBeVisible();
+  await expect(page).toHaveURL(/\?entry=2006$/);
+
+  // 带 ?entry= 打开就是同届同学的片单
+  await page.goto("/timeline?entry=1994", { waitUntil: "networkidle" });
+  await expect(page.getByLabel("入学年份")).toHaveValue("1994");
+  await expect(page.getByRole("status").filter({ hasText: "1994–1999 年，馆里有 2 部动画首播" })).toBeVisible();
+  await page.getByRole("button", { name: "保存我的童年片单" }).click();
+  await expect(page.getByRole("button", { name: "卡片已生成" })).toBeVisible();
+});
+
+test("首页电视真的能换台：数字键、面板旋钮和方向键", async ({ page, isMobile }) => {
+  test.skip(isMobile, "电视只在桌面宽度渲染");
+  await page.addInitScript(() => sessionStorage.setItem("museum-crt-booted", "1"));
+  await page.goto("/", { waitUntil: "networkidle" });
+
+  const tv = page.getByRole("group", { name: /馆藏电视/ });
+  const onAir = tv.locator('[aria-live="polite"]');
+
+  await page.keyboard.press("3");
+  await expect(onAir).toHaveText("CH 03 · 巴啦啦小魔仙");
+  await expect(tv.locator(".tv-channel-badge")).toHaveText("CH 03");
+
+  await tv.getByRole("button", { name: "下一个频道" }).click();
+  await expect(onAir).toHaveText("CH 04 · 斗龙战士");
+  await tv.getByRole("button", { name: "上一个频道" }).click();
+  await tv.getByRole("button", { name: "上一个频道" }).click();
+  await expect(onAir).toHaveText("CH 02 · 铠甲勇士");
+
+  // 焦点在电视里时，方向键也是换台
+  await page.keyboard.press("ArrowDown");
+  await expect(onAir).toHaveText("CH 01 · 秦时明月");
+  await page.keyboard.press("ArrowUp");
+  await expect(onAir).toHaveText("CH 02 · 铠甲勇士");
+
+  await tv.getByRole("button", { name: "随机换台" }).click();
+  await expect(onAir).not.toHaveText("CH 02 · 铠甲勇士");
+
+  // 在搜索框里打数字不会换台
+  const before = await onAir.textContent();
+  await page.getByRole("button", { name: "搜索" }).click();
+  await page.getByRole("dialog", { name: "搜索动画馆藏" }).getByRole("textbox").focus();
+  await page.keyboard.type("5");
+  await expect(onAir).toHaveText(before ?? "");
 });

@@ -1,4 +1,5 @@
 // README 截图：先 npm run build && npm start，再 node scripts/capture-screenshots.mjs
+// 只重拍部分截图：ONLY=guess,timeline node scripts/capture-screenshots.mjs
 // 输出 docs/screenshots/*.webp（2x 截图后用 sharp 缩到 1600 宽压缩，避免仓库膨胀）
 import { chromium } from "@playwright/test";
 import { mkdirSync } from "node:fs";
@@ -18,6 +19,16 @@ const shots = [
   { name: "quotes", url: "/quotes" },
   { name: "songs", url: "/songs" },
   { name: "quiz", url: "/quiz" },
+  {
+    name: "guess",
+    url: "/guess",
+    // 开局并答一题，截到揭晓出处的那一刻
+    prepare: async (page) => {
+      await page.getByRole("button", { name: "开始猜台词" }).click();
+      await page.locator("main button[aria-pressed]").first().click();
+    },
+  },
+  { name: "timeline", url: "/timeline?entry=2006", anchor: "#lineup" },
   { name: "memory-book", url: "/", anchor: "#contribute" },
 ];
 
@@ -33,11 +44,14 @@ async function open(context) {
   return context.newPage();
 }
 
+const only = process.env.ONLY?.split(",");
+const wanted = (name) => !only || only.includes(name);
+
 const browser = await chromium.launch();
 
 const desktop = await browser.newContext({ viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 });
 const page = await open(desktop);
-for (const shot of shots) {
+for (const shot of shots.filter((item) => wanted(item.name))) {
   await page.goto(`${baseUrl}${shot.url}`, { waitUntil: "networkidle", timeout: 60000 });
   if (shot.anchor) {
     await page.evaluate((selector) => {
@@ -45,14 +59,17 @@ for (const shot of shots) {
       window.scrollTo(0, top - 80);
     }, shot.anchor);
   }
+  if (shot.prepare) await shot.prepare(page);
   await page.waitForTimeout(3000);
   await save(page, shot.name, 1600);
 }
 
-const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
-const mobilePage = await open(mobile);
-await mobilePage.goto(`${baseUrl}/`, { waitUntil: "networkidle", timeout: 60000 });
-await mobilePage.waitForTimeout(3000);
-await save(mobilePage, "mobile-home", 600);
+if (wanted("mobile-home")) {
+  const mobile = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+  const mobilePage = await open(mobile);
+  await mobilePage.goto(`${baseUrl}/`, { waitUntil: "networkidle", timeout: 60000 });
+  await mobilePage.waitForTimeout(3000);
+  await save(mobilePage, "mobile-home", 600);
+}
 
 await browser.close();
