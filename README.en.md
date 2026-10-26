@@ -4,7 +4,7 @@
 
 **A digital museum for Chinese childhood animation memories — the cartoons that aired at 17:30, after school.**
 
-[English](./README.en.md) | [简体中文](./README.md)
+[简体中文](./README.md) | [English](./README.en.md)
 
 [![Live Demo](https://img.shields.io/badge/LIVE-museum.seanwalter.top-D4A854?style=for-the-badge)](https://museum.seanwalter.top)
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
