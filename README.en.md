@@ -34,18 +34,19 @@ The museum is laid out like a channel lineup. Every row is a real route in `src/
 
 | Channel | Route | What's on |
 |---|---|---|
-| **CH 01** · Home | `/` | CRT TV carousel of 6 core titles, film strip, previews of every hall |
+| **CH 01** · Home | `/` | CRT TV carousel of 6 core titles (on desktop, press 1–6 or turn the panel knobs to change channels), film strip, previews of every hall |
 | **CH 02** · Archive | `/archive` | All admitted titles with keyword search, genre / year filters and sorting |
 | **CH 03** · Exhibit | `/archive/[slug]` | Poster, studio, broadcaster, characters, licensed watch links, share & "I watched it too" |
 | **CH 04** · Characters | `/characters` | Interactive relationship graph — drag, pan, zoom, click a character for a profile |
 | **CH 05** · Quotes | `/quotes` | Catchphrases and battle cries, filterable by title |
 | **CH 06** · Songs | `/songs` | Openings and endings styled as cassettes, each a link to search it on Bilibili |
-| **CH 07** · Timeline | `/timeline` | Titles grouped into 4-year eras counted from the earliest admitted year |
+| **CH 07** · Timeline | `/timeline` | Pick the year you started primary school to see the titles that premiered during those six years, then 4-year eras counted from the earliest admitted year |
 | **CH 08** · Quiz | `/quiz` | Six-question "childhood concentration" test; the result can be saved as an image card |
-| **CH 09** · Memory Book | `/#contribute` | Private notebook saved in your browser, exportable as PNG cards, with backup and restore |
-| **CH 10** · About | `/about` | Project story, copyright notice and credits |
+| **CH 09** · Quote Guess | `/guess` | Ten random quotes, four titles each — guess the source, then see who said it and when |
+| **CH 10** · Memory Book | `/#contribute` | Private notebook saved in your browser, exportable as PNG cards, with backup and restore |
+| **CH 11** · About | `/about` | Project story, copyright notice and credits |
 
-On desktop, the "更多展厅" (more halls) menu in the navbar reaches the timeline, songs, Memory Book and About pages. A global search (press <kbd>/</kbd>) covers titles, songs, singers and genres from any page.
+On desktop, the "更多展厅" (more halls) menu in the navbar reaches the timeline, Quote Guess, songs, Memory Book and About pages. A global search (press <kbd>/</kbd>) covers titles, songs, singers and genres from any page.
 
 ## 🎬 Screenshots
 
@@ -65,6 +66,10 @@ All captured from a local production build with [`scripts/capture-screenshots.mj
     <td><img src="./docs/screenshots/memory-book.webp" alt="Private memory book form stored in the browser" /><br /><sub><b>Memory Book</b> — local-only notes, exported as image cards</sub></td>
   </tr>
   <tr>
+    <td><img src="./docs/screenshots/guess.webp" alt="Quote Guess after one answer, revealing the source title, speaker and scene" /><br /><sub><b>Quote Guess</b> — one line, four titles</sub></td>
+    <td><img src="./docs/screenshots/timeline.webp" alt="The 18 titles listed for a 2006 primary-school start" /><br /><sub><b>Childhood lineup</b> — your six primary-school years on TV</sub></td>
+  </tr>
+  <tr>
     <td><img src="./docs/screenshots/quiz.webp" alt="Childhood concentration quiz, question 1 of 6" /><br /><sub><b>Quiz</b> — six questions, one shareable verdict</sub></td>
     <td align="center"><img src="./docs/screenshots/mobile-home.webp" alt="Home page on a phone-sized screen" width="45%" /><br /><sub><b>Mobile</b> — the same evening, on a phone</sub></td>
   </tr>
@@ -79,7 +84,10 @@ All captured from a local production build with [`scripts/capture-screenshots.mj
 | Licensed watch links | 127 outbound links that open each title's search page on official platforms (Tencent Video, Bilibili, iQIYI, Youku, CCTV, Xigua) — nothing is played on-site |
 | Character graph | Per-title relationship graph with drag, pan, zoom, relation labels and character profiles |
 | Memory Book | Write memories in your own browser (the latest 20 are kept); export any of them as a canvas-drawn PNG card; back the whole book up to JSON and restore it on another device (duplicates are skipped) |
-| Quiz result card | Turn your quiz result into a 1200×630 image card: native share sheet on phones, download on desktop |
+| Working TV channels | While the home TV is on screen, keys 1–6 jump to a channel; the three panel knobs are previous, random and next; arrow keys switch channels when focus is inside the TV; every switch is announced to screen readers |
+| Quote Guess | Each round draws 10 quotes from 10 different titles, skipping lines that name their own show; each answer reveals the source, speaker and scene |
+| Childhood lineup | Pick your primary-school start year on the timeline page to list the titles that premiered in those six years; the `?entry=` link can be sent straight to classmates |
+| Result cards | Quiz results, Quote Guess scores and childhood lineups all render as 1200×630 image cards: native share sheet on phones, download on desktop |
 | "I watched it too" | One-click mark on each exhibit, remembered locally |
 | Share previews | Every hall has its own share title and preview image (captured from the real page); exhibit pages use the title's poster |
 | Share | Native share sheet where supported, clipboard fallback elsewhere |
@@ -98,6 +106,7 @@ flowchart LR
     Home --> Songs[Songs]
     Home --> Timeline[Timeline]
     Home --> Quiz[Quiz]
+    Quotes --> Guess[Quote Guess]
     Home --> Memory[Memory Book]
     Memory -->|export| Card[/PNG card/]
     Search{{Global search  /}} -.-> Exhibit
@@ -116,7 +125,7 @@ The site exposes these entry points for search engines and AI search. All of the
 
 | Entry point | Content |
 |---|---|
-| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | Home, the 7 halls and every exhibit page |
+| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | Home, the 8 halls and every exhibit page |
 | [`/robots.txt`](https://museum.seanwalter.top/robots.txt) | Allows all crawlers and explicitly lists AI crawlers such as GPTBot, ClaudeBot and PerplexityBot |
 | [`/llms.txt`](https://museum.seanwalter.top/llms.txt) | A site guide for AI tools: the halls plus each title's year, studio, broadcaster, genres and characters |
 | JSON-LD structured data | `WebSite` on the home page, an `ItemList` on the archive, a `TVSeries` per title (characters, studio, Baidu Baike link) and breadcrumbs |
@@ -160,13 +169,13 @@ Open `http://localhost:3000`.
 | `npm start` | Serve the production build |
 | `npm run test:e2e` | Playwright end-to-end tests |
 | `node scripts/capture-screenshots.mjs` | Regenerate `docs/screenshots/` from a running server (`BASE_URL`, default `http://localhost:3000`) |
-| `node scripts/capture-og-images.mjs` | Re-capture each hall's share image `src/app/**/opengraph-image.jpg` from a running server; rebuild afterwards |
+| `node scripts/capture-og-images.mjs` | Re-capture each hall's share image `src/app/**/opengraph-image.jpg` from a running server; rebuild afterwards. Both capture scripts accept `ONLY=guess,timeline` to re-shoot selected pages only |
 
 The production build intentionally uses webpack (`next build --webpack`). Keep it that way unless bundle behavior has been re-tested.
 
 ## 🧪 Testing
 
-`tests/e2e/museum.spec.ts` covers home stats and global search, archive filters, the Memory Book (save, export entry, delete, backup and restore, kept out of the public archive), "I watched it too", the quiz and its result card, exhibit metadata and licensed links, the character graph (switching titles, opening profiles, drag and zoom), and the sitemap, robots, `llms.txt`, structured data and share metadata.
+`tests/e2e/museum.spec.ts` covers home stats and global search, archive filters, the Memory Book (save, export entry, delete, backup and restore, kept out of the public archive), "I watched it too", the quiz and its result card, Quote Guess (ten-round flow, source reveal, score card), the primary-school lineup, home TV channel switching (number keys, knobs, arrow keys, and no key stealing while typing), exhibit metadata and licensed links, the character graph (switching titles, opening profiles, drag and zoom), and the sitemap, robots, `llms.txt`, structured data and share metadata.
 
 - Playwright starts its own dev server on `127.0.0.1:3100` and runs a **desktop Chrome** and a **Pixel 5** project.
 - Locally the projects use your installed Google Chrome (`channel: "chrome"`); with `CI` set they use Playwright's bundled Chromium (`npx playwright install chromium`).
@@ -176,7 +185,7 @@ The production build intentionally uses webpack (`next build --webpack`). Keep i
 
 ```text
 src/
-├── app/                 # routes: /, archive, archive/[slug], characters, quotes, songs, timeline, quiz, about,
+├── app/                 # routes: /, archive, archive/[slug], characters, quotes, songs, timeline, quiz, guess, about,
 │                        # plus sitemap.ts, robots.ts, llms.txt/ and each hall's opengraph-image.jpg
 ├── components/          # hero (CRT, boot intro, film strip), archive, characters, quotes, songs, timeline,
 │                        # quiz, search, engagement (Memory Book), motion, layout, ui
@@ -208,6 +217,7 @@ public/images/           # posters, scene and memory artwork
 - [x] Character relationship graph
 - [x] Quotes, songs and era timeline
 - [x] Childhood quiz
+- [x] Quote Guess, primary-school lineup and a home TV that really changes channels
 - [x] Local Memory Book with image-card export
 - [ ] More titles and animation categories
 - [ ] Childhood TV dramas, Flash games and old-web memories

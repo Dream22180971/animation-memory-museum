@@ -3,7 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clapperboard, Quote } from "lucide-react";
+import { Clapperboard, Gamepad2, Quote } from "lucide-react";
 import { animations, quoteCount } from "@/lib/animations";
 import PosterImage from "@/components/ui/PosterImage";
 import { useUrlParam } from "@/lib/use-url-param";
@@ -42,10 +42,16 @@ export default function QuoteArchive() {
             口头禅、登场句和燃点台词，全部按作品归档。点开一部动画，只听它的声音。
           </p>
         </div>
-        <span className="cassette-label w-fit">
-          <Quote size={14} />
-          {animations.length} 部馆藏 · {quoteCount} 条台词
-        </span>
+        <div className="flex flex-wrap items-center gap-3">
+          <span className="cassette-label w-fit">
+            <Quote size={14} />
+            {animations.length} 部馆藏 · {quoteCount} 条台词
+          </span>
+          <Link href="/guess" className="retro-button retro-button-ghost text-sm">
+            <Gamepad2 size={16} />
+            玩台词猜出处
+          </Link>
+        </div>
       </div>
 
       <div className="chip-rail mb-4">

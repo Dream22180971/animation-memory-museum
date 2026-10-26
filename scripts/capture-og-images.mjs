@@ -1,4 +1,5 @@
 // 社交分享预览图：先 npm run build && npm start，再 node scripts/capture-og-images.mjs，然后重新 build
+// 只重拍部分展厅：ONLY=guess,timeline node scripts/capture-og-images.mjs（首页用 ONLY=home）
 // 每个展厅截一张真实页面首屏，输出到对应路由段的 opengraph-image.jpg（Next 文件约定，自动生成 og:image）
 import { chromium } from "@playwright/test";
 import { writeFileSync } from "node:fs";
@@ -16,8 +17,9 @@ const halls = [
   { segment: "characters", url: "/characters", alt: "角色关系图谱：每部动画一张可拖拽的角色星座图" },
   { segment: "quotes", url: "/quotes", alt: "名台词档案馆：按作品归档的国产动画经典台词" },
   { segment: "songs", url: "/songs", alt: "动画歌曲：磁带样式的片头曲与片尾曲" },
-  { segment: "timeline", url: "/timeline", alt: "动画年代时间线：按年代串起国产动画的黄金时代" },
+  { segment: "timeline", url: "/timeline", alt: "动画年代时间线：选出你哪年上小学看童年片单，再按年代重访国产动画" },
   { segment: "quiz", url: "/quiz", alt: "童年浓度测试：六道题测出你的童年浓度" },
+  { segment: "guess", url: "/guess", alt: "台词猜出处：一句国产动画台词，四选一猜出自哪部" },
   { segment: "about", url: "/about", alt: "关于 00后动画记忆馆：不存视频，只收藏放学后的时间感" },
 ];
 
@@ -27,7 +29,8 @@ const context = await browser.newContext({ viewport: { width: 1440, height: 756 
 await context.addInitScript(() => sessionStorage.setItem("museum-crt-booted", "1"));
 const page = await context.newPage();
 
-for (const hall of halls) {
+const only = process.env.ONLY?.split(",");
+for (const hall of halls.filter((item) => !only || only.includes(item.segment || "home"))) {
   await page.goto(`${baseUrl}${hall.url}`, { waitUntil: "networkidle", timeout: 60000 });
   await page.waitForTimeout(3000);
   const png = await page.screenshot();

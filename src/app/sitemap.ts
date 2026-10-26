@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { animations } from "@/lib/animations";
 import { SITE_URL } from "@/lib/constants";
 
-const HALLS = ["archive", "characters", "quotes", "songs", "timeline", "quiz", "about"] as const;
+const HALLS = ["archive", "characters", "quotes", "songs", "timeline", "quiz", "guess", "about"] as const;
 
 /** 展厅固定，馆藏详情页随 animations.json 自动增减；lastModified 用入馆日期 */
 export default function sitemap(): MetadataRoute.Sitemap {

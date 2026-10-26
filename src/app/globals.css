@@ -1407,6 +1407,30 @@ html[data-crt-boot="on"] body {
   opacity: 1;
 }
 
+/* 电视面板旋钮：可按，悬停时微亮、按下时像旋钮被拧了一下 */
+.tv-knob {
+  cursor: pointer;
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    box-shadow var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+
+.tv-knob:hover,
+.tv-knob:focus-visible {
+  border-color: rgba(255, 210, 77, .7);
+  box-shadow: inset 0 2px 6px rgba(255, 255, 255, .12), 0 0 12px rgba(255, 210, 77, .28);
+}
+
+.tv-knob:focus-visible {
+  outline: 2px solid rgba(255, 210, 77, .85);
+  outline-offset: 3px;
+}
+
+.tv-knob:active {
+  transform: rotate(35deg);
+}
+
 /* 全局氛围：胶片颗粒 + 尘埃（规范 §10，替代科技粒子）
    颗粒 opacity .028（0.015–0.035），闪烁 ~9fps（8–12fps），漂移 ~5px/s（2–8px/s） */
 .dust-layer {
@@ -1594,4 +1618,5 @@ html[data-crt-boot="on"] body {
   .tilt-card { transform: none !important; }
   .tilt-card::after { display: none; }
   .stamp-seal { animation: none; opacity: 1; }
+  .tv-knob:active { transform: none; }
 }
