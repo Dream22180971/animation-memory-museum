@@ -40,12 +40,12 @@ The museum is laid out like a channel lineup. Every row is a real route in `src/
 | **CH 04** · Characters | `/characters` | Interactive relationship graph — drag, pan, zoom, click a character for a profile |
 | **CH 05** · Quotes | `/quotes` | Catchphrases and battle cries, filterable by title |
 | **CH 06** · Songs | `/songs` | Openings and endings styled as cassettes, each a link to search it on Bilibili |
-| **CH 07** · Timeline | `/timeline` | Titles grouped into eras derived from the data |
-| **CH 08** · Quiz | `/quiz` | Six-question "childhood concentration" test with a shareable result |
-| **CH 09** · Memory Book | `/#contribute` | Private notebook saved in your browser, exportable as a PNG card |
+| **CH 07** · Timeline | `/timeline` | Titles grouped into 4-year eras counted from the earliest admitted year |
+| **CH 08** · Quiz | `/quiz` | Six-question "childhood concentration" test; the result can be saved as an image card |
+| **CH 09** · Memory Book | `/#contribute` | Private notebook saved in your browser, exportable as PNG cards, with backup and restore |
 | **CH 10** · About | `/about` | Project story, copyright notice and credits |
 
-A global search (press <kbd>/</kbd>) covers titles, songs, singers and genres from any page.
+On desktop, the "更多展厅" (more halls) menu in the navbar reaches the timeline, songs, Memory Book and About pages. A global search (press <kbd>/</kbd>) covers titles, songs, singers and genres from any page.
 
 ## 🎬 Screenshots
 
@@ -78,8 +78,10 @@ All captured from a local production build with [`scripts/capture-screenshots.mj
 | Curated collection | 35 titles (1999–2018), 160 characters, 155 character relations, 112 quotes, 42 songs |
 | Licensed watch links | 127 outbound links that open each title's search page on official platforms (Tencent Video, Bilibili, iQIYI, Youku, CCTV, Xigua) — nothing is played on-site |
 | Character graph | Per-title relationship graph with drag, pan, zoom, relation labels and character profiles |
-| Memory Book | Write memories in your own browser (the latest 20 are kept); export any of them as a canvas-drawn PNG card |
+| Memory Book | Write memories in your own browser (the latest 20 are kept); export any of them as a canvas-drawn PNG card; back the whole book up to JSON and restore it on another device (duplicates are skipped) |
+| Quiz result card | Turn your quiz result into a 1200×630 image card: native share sheet on phones, download on desktop |
 | "I watched it too" | One-click mark on each exhibit, remembered locally |
+| Share previews | Every hall has its own share title and preview image (captured from the real page); exhibit pages use the title's poster |
 | Share | Native share sheet where supported, clipboard fallback elsewhere |
 | Motion system | Motion tokens and rituals documented in [`Museum-Motion-Design-System-v1.0.md`](./Museum-Motion-Design-System-v1.0.md) |
 
@@ -103,10 +105,34 @@ flowchart LR
 
 ## 🔐 Privacy & Content Boundary
 
-- **Your memories stay on your device.** Memory Book entries and "watched" marks live in `localStorage`; they are never uploaded. Want a memory admitted to the public archive? Open an [issue](https://github.com/Dream22180971/animation-memory-museum/issues).
+- **Your memories stay on your device.** Memory Book entries and "watched" marks live in `localStorage`; they are never uploaded, and backups are downloaded only to your own device. Want a memory admitted to the public archive? Open an [issue](https://github.com/Dream22180971/animation-memory-museum/issues).
 - **The deployed site uses Vercel Web Analytics** (`@vercel/analytics`) for page-view statistics.
 - **No video or audio is hosted.** Watch buttons and song links leave the site for licensed platforms or a Bilibili search.
 - **Sources are cited.** Facts reference public sources such as Baidu Baike (linked per title); posters come from community databases such as [Bangumi](https://bgm.tv), recorded in [`scripts/poster-credits.json`](./scripts/poster-credits.json). All rights belong to the original creators — rights holders can request removal via GitHub Issues, as stated on `/about`.
+
+## 🔎 Search & AI Discoverability
+
+The site exposes these entry points for search engines and AI search. All of them are generated from `animations.json`, so new titles need no manual upkeep:
+
+| Entry point | Content |
+|---|---|
+| [`/sitemap.xml`](https://museum.seanwalter.top/sitemap.xml) | Home, the 7 halls and every exhibit page |
+| [`/robots.txt`](https://museum.seanwalter.top/robots.txt) | Allows all crawlers and explicitly lists AI crawlers such as GPTBot, ClaudeBot and PerplexityBot |
+| [`/llms.txt`](https://museum.seanwalter.top/llms.txt) | A site guide for AI tools: the halls plus each title's year, studio, broadcaster, genres and characters |
+| JSON-LD structured data | `WebSite` on the home page, an `ItemList` on the archive, a `TVSeries` per title (characters, studio, Baidu Baike link) and breadcrumbs |
+| Page metadata | Per-page title, description, canonical URL and share image |
+
+Every page is prerendered at build time, so quotes, characters and songs are in the HTML itself and readable by crawlers that don't run JavaScript.
+
+**One step only the site owner can do:** verify ownership on each platform and submit the sitemap. Verification tags are already wired up; set the matching variable in the deployment environment (e.g. Vercel) and redeploy:
+
+| Platform | Environment variable | Tag emitted |
+|---|---|---|
+| Google Search Console | `GOOGLE_SITE_VERIFICATION` | `google-site-verification` |
+| Bing Webmaster Tools | `BING_SITE_VERIFICATION` | `msvalidate.01` |
+| Baidu Search Resource Platform | `BAIDU_SITE_VERIFICATION` | `baidu-site-verification` |
+
+Unset variables emit nothing.
 
 ## ⚡ Quick Start
 
@@ -134,12 +160,13 @@ Open `http://localhost:3000`.
 | `npm start` | Serve the production build |
 | `npm run test:e2e` | Playwright end-to-end tests |
 | `node scripts/capture-screenshots.mjs` | Regenerate `docs/screenshots/` from a running server (`BASE_URL`, default `http://localhost:3000`) |
+| `node scripts/capture-og-images.mjs` | Re-capture each hall's share image `src/app/**/opengraph-image.jpg` from a running server; rebuild afterwards |
 
 The production build intentionally uses webpack (`next build --webpack`). Keep it that way unless bundle behavior has been re-tested.
 
 ## 🧪 Testing
 
-`tests/e2e/museum.spec.ts` covers home stats and global search, archive filters, the Memory Book (save, export entry, delete, kept out of the public archive), "I watched it too", the quiz, exhibit metadata and licensed links, and the character graph (switching titles, opening profiles, drag and zoom).
+`tests/e2e/museum.spec.ts` covers home stats and global search, archive filters, the Memory Book (save, export entry, delete, backup and restore, kept out of the public archive), "I watched it too", the quiz and its result card, exhibit metadata and licensed links, the character graph (switching titles, opening profiles, drag and zoom), and the sitemap, robots, `llms.txt`, structured data and share metadata.
 
 - Playwright starts its own dev server on `127.0.0.1:3100` and runs a **desktop Chrome** and a **Pixel 5** project.
 - Locally the projects use your installed Google Chrome (`channel: "chrome"`); with `CI` set they use Playwright's bundled Chromium (`npx playwright install chromium`).
@@ -149,11 +176,13 @@ The production build intentionally uses webpack (`next build --webpack`). Keep i
 
 ```text
 src/
-├── app/                 # routes: /, archive, archive/[slug], characters, quotes, songs, timeline, quiz, about
+├── app/                 # routes: /, archive, archive/[slug], characters, quotes, songs, timeline, quiz, about,
+│                        # plus sitemap.ts, robots.ts, llms.txt/ and each hall's opengraph-image.jpg
 ├── components/          # hero (CRT, boot intro, film strip), archive, characters, quotes, songs, timeline,
 │                        # quiz, search, engagement (Memory Book), motion, layout, ui
 ├── data/animations.json # the whole collection — single source of truth
-└── lib/                 # data helpers, quiz logic, site constants (HERO_FEATURED_SLUGS …)
+└── lib/                 # data helpers, quiz logic, site constants (HERO_FEATURED_SLUGS …), page metadata,
+                         # structured data, share-card drawing, Memory Book backup
 scripts/                 # data validation, poster fetching/optimization, screenshots
 tests/e2e/               # Playwright specs
 public/images/           # posters, scene and memory artwork
@@ -169,7 +198,7 @@ public/images/           # posters, scene and memory artwork
 
 - The interface is Chinese-only.
 - The collection is hand-curated: 35 titles from 1999 to 2018, mainland Chinese TV animation only.
-- Memory Book is per-browser: no accounts, no sync, only the latest 20 entries are kept; clearing site data erases it.
+- Memory Book is per-browser: no accounts and no automatic sync, only the latest 20 entries are kept; use "备份回忆册" (back up) before clearing site data.
 - No playback by design — the museum only points to licensed platforms.
 
 ## 🗺 Roadmap
