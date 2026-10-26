@@ -88,6 +88,8 @@ test("童年浓度测试可以完成并查看结果", async ({ page }) => {
   await expect(page.getByText("100%")).toBeVisible();
   await expect(page.getByRole("heading", { name: "镇馆之宝" })).toBeVisible();
   await expect(page.getByRole("button", { name: "晒出我的童年浓度" })).toBeVisible();
+  await page.getByRole("button", { name: "保存结果卡片" }).click();
+  await expect(page.getByRole("button", { name: "卡片已生成" })).toBeVisible();
 
   await page.getByRole("button", { name: "再测一次" }).click();
   await expect(page.getByText("第 1 / 6 题")).toBeVisible();
@@ -304,3 +306,73 @@ test("reduced-motion 用户直接跳过开机仪式", async ({ page }) => {
   await expect(page.getByText("已整理 35 部馆藏 · 112 条台词")).toBeVisible();
 });
 
+
+test("回忆册可以备份成文件并从备份恢复", async ({ page }) => {
+  await page.goto("/", { waitUntil: "networkidle" });
+  await page.getByLabel("动画名称").fill("备份测试动画");
+  await page.getByLabel("你的回忆").fill("换手机前先把回忆册备份下来。");
+  await page.getByLabel("昵称").fill("备份测试");
+  await page.getByRole("button", { name: "存进我的回忆册" }).click();
+  const heading = page.getByRole("heading", { name: "《备份测试动画》" });
+  await expect(heading).toBeVisible();
+
+  const downloadPromise = page.waitForEvent("download");
+  await page.getByRole("button", { name: "备份回忆册" }).click();
+  const download = await downloadPromise;
+  expect(download.suggestedFilename()).toMatch(/^回忆册备份-\d{8}\.json$/);
+  const backupPath = test.info().outputPath("memory-backup.json");
+  await download.saveAs(backupPath);
+
+  await page.getByRole("button", { name: "删除《备份测试动画》的回忆" }).click();
+  await expect(heading).toHaveCount(0);
+
+  const restore = page.getByLabel("从备份恢复");
+  await restore.setInputFiles(backupPath);
+  await expect(page.getByText("已恢复 1 条回忆。")).toBeVisible();
+  await expect(heading).toBeVisible();
+
+  // 同一份备份再导一次不会出现重复的回忆
+  await restore.setInputFiles(backupPath);
+  await expect(page.getByText("备份里的回忆都已经在册子里了。")).toBeVisible();
+  await expect(heading).toHaveCount(1);
+
+  await restore.setInputFiles({ name: "not-a-backup.json", mimeType: "application/json", buffer: Buffer.from('{"hello":"world"}') });
+  // Next 自带一个空的 role=alert 路由播报节点，按文案收窄
+  await expect(page.getByRole("alert").filter({ hasText: "这个文件不是回忆册备份，没有导入任何内容。" })).toBeVisible();
+});
+
+test("站点地图与 robots 覆盖全部展厅和馆藏", async ({ request }) => {
+  const robots = await (await request.get("/robots.txt")).text();
+  expect(robots).toContain("Sitemap: https://museum.seanwalter.top/sitemap.xml");
+
+  const sitemap = await (await request.get("/sitemap.xml")).text();
+  // 首页 + 7 个展厅 + 35 部馆藏详情
+  expect(sitemap.match(/<url>/g)).toHaveLength(43);
+  expect(sitemap).toContain("<loc>https://museum.seanwalter.top/archive/chaoshou-wuzhuang</loc>");
+});
+
+test("AI 搜索可以读到站点导读、爬虫放行和结构化数据", async ({ page, request }) => {
+  const robots = await (await request.get("/robots.txt")).text();
+  for (const bot of ["GPTBot", "ClaudeBot", "PerplexityBot"]) expect(robots).toContain(`User-Agent: ${bot}`);
+
+  const llms = await request.get("/llms.txt");
+  expect(llms.headers()["content-type"]).toContain("text/plain");
+  const guide = await llms.text();
+  expect(guide).toContain("# 00后动画记忆馆");
+  expect(guide).toContain("[超兽武装（2011）](https://museum.seanwalter.top/archive/chaoshou-wuzhuang)");
+
+  await page.goto("/archive/chaoshou-wuzhuang", { waitUntil: "networkidle" });
+  const jsonLd = JSON.parse((await page.locator('script[type="application/ld+json"]').textContent()) ?? "{}");
+  const series = jsonLd["@graph"].find((node: { "@type": string }) => node["@type"] === "TVSeries");
+  expect(series).toMatchObject({ name: "超兽武装", startDate: "2011", productionCompany: { name: "广州蓝弧文化传播有限公司" } });
+});
+
+test("各展厅分享时带自己的标题和预览图", async ({ page }) => {
+  await page.goto("/quiz", { waitUntil: "networkidle" });
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "童年浓度测试 | 00后动画记忆馆");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /\/quiz\/opengraph-image/);
+
+  await page.goto("/archive/chaoshou-wuzhuang", { waitUntil: "networkidle" });
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", "超兽武装 | 00后动画记忆馆");
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /chaoshou-wuzhuang\.webp$/);
+});

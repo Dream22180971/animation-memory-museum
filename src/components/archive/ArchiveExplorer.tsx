@@ -7,6 +7,7 @@ import { ArrowUpDown, ExternalLink, Library, PenLine, Search, SlidersHorizontal,
 import animationsData from "@/data/animations.json";
 import PosterImage from "@/components/ui/PosterImage";
 import PosterTilt from "@/components/motion/PosterTilt";
+import { newArrivalSlugs } from "@/lib/animations";
 
 type OfficialAnimation = (typeof animationsData.animations)[number];
 
@@ -133,7 +134,7 @@ export default function ArchiveExplorer() {
 
               <div className="relative z-10 flex min-h-[330px] flex-col justify-between p-5">
                 <div className="flex items-start justify-between gap-3">
-                  <span className="cassette-label">馆藏收录</span>
+                  {newArrivalSlugs.has(item.slug) ? <span className="cassette-label">新入馆</span> : <span />}
                   <span className="cassette-label cassette-label-muted">
                     {item.year}
                   </span>

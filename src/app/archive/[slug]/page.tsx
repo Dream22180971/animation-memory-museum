@@ -6,10 +6,13 @@ import { ArrowLeft, ExternalLink, MessageSquareQuote, PenLine, Sparkles, Tv } fr
 import ShareDetailButton from "@/components/archive/ShareDetailButton";
 import WatchedButton from "@/components/archive/WatchedButton";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/seo/JsonLd";
 import Navbar from "@/components/layout/Navbar";
 import animationsData from "@/data/animations.json";
 import { bilibiliDanmakuUrl, bilibiliNameSceneUrl, getAnimationBySlug } from "@/lib/animations";
-import { FEEDBACK_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { FEEDBACK_URL, SITE_URL } from "@/lib/constants";
+import { pageMetadata } from "@/lib/metadata";
+import { animationJsonLd } from "@/lib/structured-data";
 
 type ArchiveDetailProps = {
   params: Promise<{ slug: string }>;
@@ -29,18 +32,12 @@ export async function generateMetadata({ params }: ArchiveDetailProps): Promise<
 
   if (!animation) return {};
 
-  return {
-    title: `${animation.name} | ${SITE_NAME}`,
+  return pageMetadata({
+    title: animation.name,
     description: animation.description,
-    alternates: {
-      canonical: `${SITE_URL}archive/${animation.slug}`,
-    },
-    openGraph: {
-      title: `${animation.name} | ${SITE_NAME}`,
-      description: animation.description,
-      images: [animation.poster],
-    },
-  };
+    path: `archive/${animation.slug}`,
+    images: [animation.poster],
+  });
 }
 
 export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) {
@@ -61,6 +58,7 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
 
   return (
     <div className="relative min-h-screen bg-[#070806] text-[#fff3df] vignette">
+      <JsonLd data={animationJsonLd(animation)} />
       <Navbar />
       <main className="pb-16 pt-[88px]">
         <section className="museum-card site-shell relative rounded-2xl backdrop-blur-sm">
@@ -108,29 +106,9 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                 角色：{animation.characters.map((character) => character.name).join("、")}
               </p>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap items-start gap-3">
                 <WatchedButton slug={animation.slug} name={animation.name} />
-                <a
-                  href={animation.baikeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="retro-button retro-button-secondary text-sm"
-                >
-                  百度百科介绍
-                  <ExternalLink size={17} />
-                </a>
-                {animation.watchLinks.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="retro-button retro-button-secondary text-sm"
-                  >
-                    {link.label} 正版观看
-                    <ExternalLink size={17} />
-                  </a>
-                ))}
+                <ShareDetailButton name={animation.name} url={detailUrl} />
                 <Link
                   href="/#contribute"
                   className="retro-button retro-button-ghost text-sm"
@@ -138,7 +116,35 @@ export default async function ArchiveDetailPage({ params }: ArchiveDetailProps) 
                   <PenLine size={17} />
                   写进我的回忆册
                 </Link>
-                <ShareDetailButton name={animation.name} url={detailUrl} />
+              </div>
+
+              {/* 正版入口收成一组「去哪看」，不和主操作抢按钮层级 */}
+              <div className="mt-5">
+                <p className="archive-kicker text-[11px] text-[#d8ac55]/70">去哪看 · 正版平台</p>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  {animation.watchLinks.map((link) => (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${link.label} 正版观看`}
+                      className="tag-pill gap-1.5 border-[#c99a45]/30 bg-[#070806]/60 text-[#f7ebd4]/85 hover:border-[#ffd24d]/50 hover:text-[#ffd24d]"
+                    >
+                      {link.label}
+                      <ExternalLink size={12} />
+                    </a>
+                  ))}
+                  <a
+                    href={animation.baikeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-1 inline-flex items-center gap-1 text-xs font-bold text-[#d9c39a]/70 underline decoration-[#c99a45]/40 underline-offset-4 transition hover:text-[#ffd24d]"
+                  >
+                    百度百科介绍
+                    <ExternalLink size={12} />
+                  </a>
+                </div>
               </div>
             </div>
 

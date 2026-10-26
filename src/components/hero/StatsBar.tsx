@@ -3,7 +3,7 @@ import { animations, quoteCount, recentAnimationsLabel, statsAvatars } from "@/l
 
 export default function StatsBar() {
   return (
-    <div className="mx-auto mt-7 flex max-w-[1180px] flex-col items-center justify-between gap-4 rounded-full border border-[#d8ac55]/28 bg-[#090b0b]/45 px-7 py-4 text-sm text-[#ead6ad]/86 shadow-[0_16px_50px_rgba(0,0,0,.35)] backdrop-blur-md sm:flex-row">
+    <div className="mx-auto mt-7 flex max-w-[1180px] flex-col items-center justify-between gap-4 rounded-2xl border border-[#d8ac55]/28 bg-[#090b0b]/45 px-7 py-4 text-sm text-[#ead6ad]/86 shadow-[0_16px_50px_rgba(0,0,0,.35)] backdrop-blur-md sm:flex-row sm:rounded-full">
       <div className="flex items-center gap-3">
         <Volume2 size={18} className="text-[#f0c45d]" />
         <span>最新入馆：{recentAnimationsLabel}</span>
@@ -20,7 +20,7 @@ export default function StatsBar() {
             </span>
           ))}
         </div>
-        <span>
+        <span className="whitespace-nowrap">
           已整理 <b className="text-[#ffd45a]">{animations.length}</b> 部馆藏 · {quoteCount} 条台词
         </span>
       </div>

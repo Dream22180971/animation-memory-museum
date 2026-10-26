@@ -117,6 +117,11 @@ export const statsAvatars = [...animations]
     color: animation.color,
   }));
 
+/** 「新入馆」角标：与统计条文案同一批最新入馆的 3 部 */
+export const newArrivalSlugs = new Set(
+  [...animations].sort(byAddedDesc).slice(0, 3).map((animation) => animation.slug),
+);
+
 /** 统计条「年代新近馆藏」文案：最新入馆的 3 部 */
 export const recentAnimationsLabel = [...animations]
   .sort(byAddedDesc)
@@ -130,7 +135,7 @@ export type TimelinePeriod = {
   items: { name: string; year: number; poster: string; slug: string }[];
 };
 
-/** 每 4 年一个年代桶，起止随馆藏实际年份自动伸缩——加作品零维护 */
+/** 每 4 年一个年代桶，从最早馆藏年份起算——起止随馆藏实际年份自动伸缩，加作品零维护 */
 const BUCKET_YEARS = 4;
 
 /** 有把握的历史命名沿用，其余桶用「N0后」这类中性说法，避免硬编朝代词露怯 */
@@ -147,10 +152,9 @@ export const deriveTimeline = (): TimelinePeriod[] => {
   if (animations.length === 0) return [];
   const minYear = Math.min(...animations.map((animation) => animation.year));
   const maxYear = Math.max(...animations.map((animation) => animation.year));
-  const firstBucket = Math.floor(minYear / BUCKET_YEARS) * BUCKET_YEARS;
-
+  // 以最早年份为锚点（而不是 4 的整倍数），桶边界才能对上 ERA_LABELS，也不会出现早于馆藏的「1996」
   const periods: TimelinePeriod[] = [];
-  for (let start = firstBucket; start <= maxYear; start += BUCKET_YEARS) {
+  for (let start = minYear; start <= maxYear; start += BUCKET_YEARS) {
     const end = start + BUCKET_YEARS - 1;
     const items = animations
       .filter((animation) => animation.year >= start && animation.year <= end)

@@ -48,7 +48,7 @@ export default function QuoteArchive() {
         </span>
       </div>
 
-      <div className="mb-4 flex flex-wrap gap-2">
+      <div className="chip-rail mb-4">
         <button
           type="button"
           onClick={() => setPicked("all")}

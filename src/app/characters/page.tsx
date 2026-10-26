@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import CharacterGraph from "@/components/characters/CharacterGraph";
 import Footer from "@/components/layout/Footer";
 import Navbar from "@/components/layout/Navbar";
-import { SITE_NAME } from "@/lib/constants";
+import { pageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: `角色关系图谱 | ${SITE_NAME}`,
+export const metadata: Metadata = pageMetadata({
+  title: "角色关系图谱",
   description: "从虹猫蓝兔到熊出没——用一张星座图看懂馆藏动画里的角色羁绊。",
-  alternates: { canonical: "https://museum.seanwalter.top/characters" },
-};
+  path: "characters",
+});
 
 export default function CharactersPage() {
   return (

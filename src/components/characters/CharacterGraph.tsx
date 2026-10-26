@@ -177,7 +177,7 @@ export default function CharacterGraph() {
         </span>
       </div>
 
-      <div className="mb-5 flex flex-wrap gap-2">
+      <div className="chip-rail mb-5">
         {animations.map((item) => {
           const active = item.slug === animation.slug;
           return (

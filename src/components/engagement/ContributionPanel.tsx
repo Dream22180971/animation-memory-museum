@@ -1,9 +1,11 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { motion, type Variants } from "framer-motion";
-import { BookMarked, CheckCircle2, Download, HeartHandshake, PenLine, Share2, Trash2 } from "lucide-react";
+import { BookMarked, CheckCircle2, Download, FileDown, FileUp, HeartHandshake, PenLine, Share2, Trash2 } from "lucide-react";
 import { FEEDBACK_URL, SITE_NAME, SITE_URL } from "@/lib/constants";
+import { isMemoryEntry, mergeEntries, parseBackup, serializeBackup, type MemoryEntry } from "@/lib/memory-backup";
+import { CARD_PADDING, CARD_WIDTH, downloadBlob, renderShareCard, safeFileName, shareOrDownloadCard, wrapLines } from "@/lib/share-card";
 
 const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 34 },
@@ -26,23 +28,11 @@ const itemVariants: Variants = {
 const STORAGE_KEY = "animation-memory-user-contributions";
 const MAX_ENTRIES = 20;
 
-type MemoryEntry = {
-  animationName: string;
-  memory: string;
-  nickname: string;
-  createdAt: string;
-};
-
 function readEntries(): MemoryEntry[] {
   try {
     const parsed = JSON.parse(window.localStorage.getItem(STORAGE_KEY) || "[]") as unknown;
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter(
-      (entry): entry is MemoryEntry =>
-        !!entry &&
-        typeof (entry as MemoryEntry).animationName === "string" &&
-        typeof (entry as MemoryEntry).memory === "string",
-    );
+    return parsed.filter(isMemoryEntry);
   } catch {
     return [];
   }
@@ -54,116 +44,30 @@ function formatDate(iso: string) {
   return `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}`;
 }
 
-function wrapLines(ctx: CanvasRenderingContext2D, text: string, maxWidth: number, maxLines: number) {
-  const lines: string[] = [];
-  let current = "";
-  for (const char of text) {
-    if (current && ctx.measureText(current + char).width > maxWidth) {
-      lines.push(current);
-      current = char;
-      if (lines.length >= maxLines) return lines;
-    } else {
-      current += char;
-    }
-  }
-  if (current && lines.length < maxLines) lines.push(current);
-  return lines;
-}
+/** 回忆卡片：共用底图之上写片名、署名和回忆正文 */
+function drawMemoryCard(entry: MemoryEntry) {
+  return renderShareCard((ctx) => {
+    ctx.fillStyle = "rgba(255,210,77,.78)";
+    ctx.font = "700 22px 'Noto Sans SC', sans-serif";
+    ctx.fillText("我的回忆册 · DIGITAL CHILDHOOD MUSEUM", CARD_PADDING, 130);
 
-/** 卡片用 canvas 画，避免为一张分享图引入截图依赖 */
-async function drawMemoryCard(entry: MemoryEntry) {
-  const width = 1200;
-  const height = 630;
-  const canvas = document.createElement("canvas");
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) return null;
+    ctx.fillStyle = "#fff6e8";
+    ctx.font = "900 56px 'Noto Sans SC', serif";
+    ctx.fillText(`《${entry.animationName}》`, CARD_PADDING, 210);
 
-  await document.fonts.ready;
+    ctx.fillStyle = "#f2c96a";
+    ctx.font = "700 26px 'Noto Sans SC', sans-serif";
+    ctx.fillText(`—— ${entry.nickname || "匿名观众"} · ${formatDate(entry.createdAt)}`, CARD_PADDING, 262);
 
-  const background = ctx.createLinearGradient(0, 0, width, height);
-  background.addColorStop(0, "#17120a");
-  background.addColorStop(1, "#060505");
-  ctx.fillStyle = background;
-  ctx.fillRect(0, 0, width, height);
-
-  const glow = ctx.createRadialGradient(210, 130, 0, 210, 130, 620);
-  glow.addColorStop(0, "rgba(255,210,77,.24)");
-  glow.addColorStop(1, "rgba(255,210,77,0)");
-  ctx.fillStyle = glow;
-  ctx.fillRect(0, 0, width, height);
-
-  ctx.fillStyle = "rgba(255,255,255,.035)";
-  for (let y = 0; y < height; y += 6) ctx.fillRect(0, y, width, 1);
-
-  ctx.strokeStyle = "rgba(255,210,77,.42)";
-  ctx.lineWidth = 2;
-  ctx.strokeRect(46, 46, width - 92, height - 92);
-
-  ctx.fillStyle = "rgba(255,210,77,.78)";
-  ctx.font = "700 22px 'Noto Sans SC', sans-serif";
-  ctx.fillText("我的回忆册 · DIGITAL CHILDHOOD MUSEUM", 92, 130);
-
-  ctx.fillStyle = "#fff6e8";
-  ctx.font = "900 56px 'Noto Sans SC', serif";
-  ctx.fillText(`《${entry.animationName}》`, 92, 210);
-
-  ctx.fillStyle = "#f2c96a";
-  ctx.font = "700 26px 'Noto Sans SC', sans-serif";
-  ctx.fillText(`—— ${entry.nickname || "匿名观众"} · ${formatDate(entry.createdAt)}`, 92, 262);
-
-  ctx.fillStyle = "#f6ead2";
-  ctx.font = "400 34px 'Noto Sans SC', serif";
-  const lines = wrapLines(ctx, entry.memory, width - 196, 6);
-  lines.forEach((line, index) => ctx.fillText(line, 92, 340 + index * 52));
-
-  ctx.fillStyle = "rgba(217,195,154,.62)";
-  ctx.font = "600 22px 'Geist Mono', monospace";
-  ctx.fillText(SITE_URL.replace(/^https?:\/\//, "").replace(/\/$/, ""), 92, height - 92);
-
-  return new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, "image/png"));
+    ctx.fillStyle = "#f6ead2";
+    ctx.font = "400 34px 'Noto Sans SC', serif";
+    const lines = wrapLines(ctx, entry.memory, CARD_WIDTH - 196, 6);
+    lines.forEach((line, index) => ctx.fillText(line, CARD_PADDING, 340 + index * 52));
+  });
 }
 
 function fileNameFor(entry: MemoryEntry) {
-  const safe = entry.animationName.replace(/[\\/:*?"<>|\s]+/g, "-").slice(0, 24) || "memory";
-  return `回忆册-${safe}.png`;
-}
-
-function downloadBlob(blob: Blob, filename: string) {
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = filename;
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
-}
-
-/**
- * 桌面 Chrome 上 canShare(文件) 会返回 true，但 navigator.share 在没有分享目标时
- * 可能永远不 settle，所以必须带超时兜底，否则按钮会卡在「生成中」。
- */
-async function tryShareFile(file: File, title: string, text: string): Promise<"shared" | "cancelled" | "unsupported"> {
-  const data = { files: [file], title, text };
-  if (!navigator.canShare?.(data)) return "unsupported";
-
-  let timer: ReturnType<typeof setTimeout> | undefined;
-  try {
-    await Promise.race([
-      navigator.share(data),
-      new Promise<never>((_, reject) => {
-        timer = setTimeout(() => reject(new DOMException("timeout", "TimeoutError")), 4000);
-      }),
-    ]);
-    return "shared";
-  } catch (error) {
-    if (error instanceof DOMException && error.name === "AbortError") return "cancelled";
-    return "unsupported";
-  } finally {
-    if (timer) clearTimeout(timer);
-  }
+  return `回忆册-${safeFileName(entry.animationName, "memory")}.png`;
 }
 
 export default function ContributionPanel() {
@@ -172,6 +76,7 @@ export default function ContributionPanel() {
   const [submitState, setSubmitState] = useState<"idle" | "saved" | "error">("idle");
   const [shareState, setShareState] = useState<"idle" | "copied" | "shared" | "error">("idle");
   const [cardState, setCardState] = useState<{ key: string; tone: "busy" | "done" | "error" } | null>(null);
+  const [backupNote, setBackupNote] = useState<{ tone: "ok" | "error"; text: string } | null>(null);
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => setEntries(readEntries()));
@@ -210,16 +115,47 @@ export default function ContributionPanel() {
     try {
       const blob = await drawMemoryCard(entry);
       if (!blob) throw new Error("canvas unavailable");
-      const file = new File([blob], fileNameFor(entry), { type: "image/png" });
-      const outcome = await tryShareFile(
-        file,
+      const outcome = await shareOrDownloadCard(
+        blob,
+        fileNameFor(entry),
         `${SITE_NAME} · 我的回忆册`,
         `我和《${entry.animationName}》的那段回忆。`,
       );
-      if (outcome === "unsupported") downloadBlob(blob, fileNameFor(entry));
       setCardState(outcome === "cancelled" ? null : { key, tone: "done" });
     } catch {
       setCardState({ key, tone: "error" });
+    }
+  };
+
+  const handleBackup = () => {
+    const blob = new Blob([serializeBackup(entries)], { type: "application/json" });
+    const today = formatDate(new Date().toISOString()).replaceAll(".", "");
+    downloadBlob(blob, `回忆册备份-${today}.json`);
+    setBackupNote({ tone: "ok", text: `已导出 ${entries.length} 条回忆，换设备时用「从备份恢复」导回来。` });
+  };
+
+  const handleRestore = async (event: ChangeEvent<HTMLInputElement>) => {
+    const input = event.currentTarget;
+    const file = input.files?.[0];
+    // 清空选择，同一个文件可以再选一次
+    input.value = "";
+    if (!file) return;
+
+    const incoming = parseBackup(await file.text());
+    if (!incoming) {
+      setBackupNote({ tone: "error", text: "这个文件不是回忆册备份，没有导入任何内容。" });
+      return;
+    }
+    try {
+      const { entries: merged, added, dropped } = mergeEntries(readEntries(), incoming, MAX_ENTRIES);
+      persist(merged);
+      const droppedText = dropped > 0 ? `册子最多留 ${MAX_ENTRIES} 条，最早的 ${dropped} 条没有保留。` : "";
+      setBackupNote({
+        tone: "ok",
+        text: added > 0 ? `已恢复 ${added} 条回忆。${droppedText}` : "备份里的回忆都已经在册子里了。",
+      });
+    } catch {
+      setBackupNote({ tone: "error", text: "恢复失败，请检查浏览器存储权限后重试。" });
     }
   };
 
@@ -360,6 +296,22 @@ export default function ContributionPanel() {
           <BookMarked size={18} className="text-[#f2c96a]" />
           <h3 className="retro-title text-2xl text-[#fff6e8]">册子里的回忆</h3>
           <span className="cassette-label">{entries.length} 条</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={handleBackup}
+              disabled={entries.length === 0}
+              className="retro-button retro-button-ghost text-xs disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              <FileDown size={14} />
+              备份回忆册
+            </button>
+            <label className="retro-button retro-button-ghost cursor-pointer text-xs focus-within:ring-2 focus-within:ring-[#ffd24d]/60">
+              <FileUp size={14} />
+              从备份恢复
+              <input type="file" accept="application/json,.json" onChange={handleRestore} className="sr-only" />
+            </label>
+          </div>
           <a
             href={FEEDBACK_URL}
             target="_blank"
@@ -369,6 +321,15 @@ export default function ContributionPanel() {
             想让某段回忆进入公开馆藏？提 issue
           </a>
         </div>
+
+        {backupNote ? (
+          <p
+            role={backupNote.tone === "error" ? "alert" : "status"}
+            className={`mt-3 text-xs font-bold ${backupNote.tone === "error" ? "text-[#ff9a85]" : "text-[#9ee6a8]"}`}
+          >
+            {backupNote.text}
+          </p>
+        ) : null}
 
         {entries.length === 0 ? (
           <p className="memory-text mt-4 text-sm text-[#d9c39a]/72">

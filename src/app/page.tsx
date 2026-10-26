@@ -7,10 +7,13 @@ import ContributionPanel from "@/components/engagement/ContributionPanel";
 import YearTimeline from "@/components/timeline/YearTimeline";
 import MemoryQuotes from "@/components/memories/MemoryQuotes";
 import SongCards from "@/components/songs/SongCards";
+import JsonLd from "@/components/seo/JsonLd";
+import { websiteJsonLd } from "@/lib/structured-data";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#070806] text-[#fff3df] vignette">
+      <JsonLd data={websiteJsonLd()} />
       {/* 规范 §10：胶片颗粒 + 尘埃氛围，替代科技粒子背景 */}
       <div className="dust-layer" aria-hidden="true" />
       <Navbar />
